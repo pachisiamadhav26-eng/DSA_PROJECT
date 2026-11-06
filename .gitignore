@@ -1,0 +1,15 @@
+# Generated build products and local editor files
+build/
+dist/
+*.o
+*.obj
+*.exe
+*.pyc
+__pycache__/
+.venv/
+.vscode/
+.idea/
+
+# Temporary benchmark and test files
+tmp/
+*.log

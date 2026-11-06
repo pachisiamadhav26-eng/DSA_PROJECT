@@ -6,8 +6,6 @@ The project compares an order-statistic AVL tree and a Fenwick tree for a leader
 
 This repository is being set up. The team roles, interface, build commands, tests, and benchmark instructions will be documented as they are defined and implemented.
 
-See [WORKFLOW.md](WORKFLOW.md) for the six-member work plan, checkpoints, testing, GitHub routine, and release criteria.
-
 ## Project requirements
 
 - Support at least one million players and one million operations.

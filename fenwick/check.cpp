@@ -1,139 +1,107 @@
-#include "fenwick_leaderboard.hpp"
+#include "leaderboard.h"
+#include <algorithm>
+#include <cstdlib>
 #include <iostream>
-#include <limits>
-#include <map>
 #include <random>
 
-using namespace leaderboard;
-using Records = std::map<Id, Score>;
-
-void require(bool condition, const char* reason) {
-    if (!condition) throw std::logic_error(reason);
-}
-
-template<class Error, class Fn>
-void expect_error(Fn fn) {
-    try { fn(); }
-    catch (const Error&) { return; }
-    throw std::logic_error("expected operation to reject its input");
-}
-
-// The oracle materializes the leaderboard as a sorted array; it does no tree arithmetic.
-template<class Board>
-void verify(const Board& board, const Records& records) {
-    board.audit();
-    std::vector<Player> sorted;
-    for (const auto& [id, score] : records) sorted.push_back({id, score});
-    std::sort(sorted.begin(), sorted.end(), [](Player a, Player b) {
-        if (a.score == b.score) return a.id < b.id;
-        return a.score > b.score;
-    });
-    require(board.size() == sorted.size(), "size mismatch");
-    Position expected_rank = 0;
-    for (Position i = 0; i < sorted.size(); ++i) {
-        if (!i || sorted[i].score != sorted[i - 1].score) expected_rank = i + 1;
-        require(board.rank(sorted[i].id) == expected_rank, "competition rank mismatch");
-        require(board.select(i + 1) == sorted[i], "select mismatch");
-    }
-    if (!sorted.empty()) {
-        require(board.range(1, sorted.size()) == sorted, "full range mismatch");
-        Position first = sorted.size() >= 50 ? 40 : (sorted.size() + 1) / 2;
-        Position last = std::min(sorted.size(), first + 10);
-        std::vector<Player> page(sorted.begin() + first - 1, sorted.begin() + last);
-        require(board.range(first, last) == page, "page mismatch");
+void check(bool correct, const char* message) {
+    if (!correct) {
+        std::cerr << "Failed: " << message << '\n';
+        std::exit(1);
     }
 }
 
-template<class Board>
-void check_split(Board& board, const Records& records, Score threshold) {
-    Records low_records, high_records;
-    for (const auto& [id, s] : records)
-        (s < threshold ? low_records : high_records).emplace(id, s);
-    auto high = board.split_off(threshold);
-    verify(board, low_records);
-    verify(high, high_records);
-    board.merge_from(high);
-    verify(board, records);
-    verify(high, {});
+bool oracleOrder(Player a, Player b) {
+    if (a.score == b.score) return a.id < b.id;
+    return a.score > b.score;
 }
 
-template<class Board>
-void check_merge(Board& a, Board& b) {
-    a.insert(10, 100); a.insert(11, 80); a.insert(14, 60);
-    b.insert(12, 90); b.insert(13, 80); b.insert(10, 50);
-    expect_error<std::invalid_argument>([&] { a.merge_from(b); });
-    verify(a, {{10,100}, {11,80}, {14,60}});
-    verify(b, {{12,90}, {13,80}, {10,50}});
-    b.erase(10);
-    a.merge_from(b);
-    verify(a, {{10,100}, {12,90}, {11,80}, {13,80}, {14,60}});
-    verify(b, {});
-    expect_error<std::invalid_argument>([&] { a.merge_from(a); });
-    b.insert(12, 90); // emptied donor remains usable
-    verify(b, {{12,90}});
-}
-
-template<class Board>
-void check_errors(Board& board) {
-    expect_error<std::out_of_range>([&] { board.select(1); });
-    expect_error<std::out_of_range>([&] { board.erase(1); });
-    expect_error<std::out_of_range>([&] { board.update(1, 0); });
-    expect_error<std::out_of_range>([&] { board.rank(1); });
-    board.insert(-1, 0);
-    expect_error<std::invalid_argument>([&] { board.insert(-1, 0); });
-    expect_error<std::out_of_range>([&] { board.select(0); });
-    expect_error<std::out_of_range>([&] { board.range(2, 1); });
-    expect_error<std::out_of_range>([&] { board.range(1, 2); });
-    verify(board, {{-1,0}});
-    board.erase(-1);
-    verify(board, {});
-}
-
-void random_replay() {
-    std::vector<Score> universe;
-    for (Score s = -10; s <= 10; ++s) universe.push_back(s * 2);
-    FenwickLeaderboard board(universe);
-    Records records;
-    std::mt19937 rng(253);
-    for (int step = 0; step < 3000; ++step) {
-        Id id = static_cast<Id>(rng() % 90) - 45;
-        Score s = universe[rng() % universe.size()];
-        if (records.count(id) == 0) {
-            board.insert(id, s); records[id] = s;
-        } else if (rng() % 3 == 0) {
-            board.erase(id); records.erase(id);
-        } else {
-            board.update(id, s); records[id] = s;
-        }
-        verify(board, records);
-        if (step % 31 == 0) {
-            const Score threshold = static_cast<Score>(rng() % 65) - 32;
-            check_split(board, records, threshold);
-        }
+void checkStructure(const Board& board) {
+    int total = 0;
+    for (int i = 0; i < int(board.ids.size()); ++i) {
+        total += int(board.ids[i].size());
+        check(prefixSum(board.tree, i + 1) == total, "Fenwick prefix");
     }
+    check(total == board.players.count, "Fenwick count");
+}
+
+void verify(Board& board, std::vector<Player> list) {
+    checkStructure(board);
+    std::sort(list.begin(), list.end(), oracleOrder);
+    check(board.players.count == int(list.size()), "player count");
+    std::vector<Player> page = listPositions(board, 1, int(list.size()));
+    check(page.size() == list.size(), "page length");
+    int rank = 0;
+    for (int i = 0; i < int(list.size()); ++i) {
+        if (i == 0 || list[i].score != list[i - 1].score) rank = i + 1;
+        check(rankOf(board, list[i].id) == rank, "competition rank");
+        Player p;
+        check(selectPlayer(board, i + 1, p), "valid position");
+        check(p.id == list[i].id && p.score == list[i].score, "selected player");
+        check(page[i].id == p.id && page[i].score == p.score, "page order");
+    }
+    Player unused;
+    check(!selectPlayer(board, 0, unused), "position zero");
+    check(!selectPlayer(board, int(list.size()) + 1, unused), "past last position");
 }
 
 int main() {
-    try {
-        FenwickLeaderboard b({100, 60, 80, 80}), other_b({50, 80, 90});
-        check_merge(b, other_b);
-        FenwickLeaderboard empty_b({0});
-        check_errors(empty_b);
-        empty_b.insert(5, 0);
-        expect_error<std::invalid_argument>([&] { empty_b.update(5, 99); });
-        expect_error<std::invalid_argument>([&] { empty_b.insert(6, 99); });
-        verify(empty_b, {{5,0}});
-        const Score minimum = std::numeric_limits<Score>::min();
-        const Score maximum = std::numeric_limits<Score>::max();
-        FenwickLeaderboard extremes({minimum, maximum});
-        for (Score s : {minimum, maximum}) extremes.insert(s, s);
-        check_split(extremes, {{minimum,minimum},{maximum,maximum}}, maximum);
-        FenwickLeaderboard no_coordinates({});
-        check_split(no_coordinates, {}, 0);
-        random_replay();
-        std::cout << "Passed: Fenwick matches the sorted-array oracle and passes all invariant checks.\n";
-    } catch (const std::exception& e) {
-        std::cerr << "Check failed: " << e.what() << '\n';
-        return 1;
+    std::vector<long long> scores = {-20, -1, 0, 10, 25, 100, 500};
+    Board board;
+    initBoard(board, scores);
+    std::vector<Player> list;
+    std::mt19937 random(253);
+    for (int step = 0; step < 3000; ++step) {
+        long long id = int(random() % 80) - 40;
+        long long score = scores[random() % scores.size()];
+        int i = 0;
+        while (i < int(list.size()) && list[i].id != id) ++i;
+        if (i == int(list.size())) {
+            check(insertPlayer(board, id, score), "insert");
+            list.push_back({id, score});
+        } else if (random() % 3 == 0) {
+            check(erasePlayer(board, id), "erase");
+            list.erase(list.begin() + i);
+        } else {
+            check(updateScore(board, id, score), "update");
+            list[i].score = score;
+        }
+        verify(board, list);
+        if (step % 30 == 0) {
+            long long threshold = scores[random() % scores.size()];
+            std::vector<Player> lowList, highList;
+            for (Player p : list) {
+                if (p.score < threshold) lowList.push_back(p);
+                else highList.push_back(p);
+            }
+            Board high;
+            check(splitBoard(board, threshold, high), "split");
+            verify(board, lowList);
+            verify(high, highList);
+            check(mergeBoards(board, high), "merge split divisions");
+            verify(board, list);
+            verify(high, {});
+            clearBoard(high);
+        }
     }
+    clearBoard(board);
+    Board other;
+    initBoard(board, {5, 20, 100});
+    initBoard(other, {5, 50});
+    insertPlayer(board, 1, 100);
+    insertPlayer(board, 3, 5);
+    insertPlayer(other, 1, 50);
+    check(!mergeBoards(board, other), "duplicate ID in two leagues");
+    verify(board, {{1,100}, {3,5}});
+    verify(other, {{1,50}});
+    erasePlayer(other, 1);
+    insertPlayer(other, 2, 50);
+    insertPlayer(other, 4, 5);
+    check(mergeBoards(board, other), "interleaved leagues");
+    verify(board, {{1,100}, {2,50}, {3,5}, {4,5}});
+    check(!insertPlayer(board, 1, 5), "duplicate insert");
+    check(!erasePlayer(board, 99) && !updateScore(board, 99, 5), "missing ID");
+    clearBoard(board);
+    clearBoard(other);
+    std::cout << "Passed the sorted-list checks, including 3000 updates/inserts/deletes.\n";
 }

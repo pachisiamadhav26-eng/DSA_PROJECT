@@ -1,28 +1,31 @@
-#include "fenwick_leaderboard.hpp"
+#include "leaderboard.h"
 #include <iostream>
 
-using namespace leaderboard;
-
 int main() {
-    FenwickLeaderboard board({40, 70, 90, 100});
-    for (Player p : std::vector<Player>{{1,100}, {2,90}, {3,90}, {4,70}, {5,40}})
-        board.insert(p.id, p.score);
+    Board board;
+    initBoard(board, {40, 70, 90, 100});
+    insertPlayer(board, 1, 100);
+    insertPlayer(board, 2, 90);
+    insertPlayer(board, 3, 90);
+    insertPlayer(board, 4, 70);
+    insertPlayer(board, 5, 40);
 
-    std::cout << "Initial leaderboard (position, ID, score, rank)\n";
-    for (Position k = 1; k <= board.size(); ++k) {
-        const Player p = board.select(k);
-        std::cout << k << "  " << p.id << "  " << p.score << "  " << board.rank(p.id) << '\n';
-    }
+    std::cout << "ID  Score  Rank\n";
+    for (Player p : listPositions(board, 1, 5))
+        std::cout << p.id << "   " << p.score << "     " << rankOf(board, p.id) << '\n';
 
-    board.update(4, 100);
-    board.erase(5);
-    std::cout << "After ID 4 moves to 100 and ID 5 leaves, positions 2..4 contain IDs";
-    for (Player p : board.range(2, 4)) std::cout << ' ' << p.id;
-    std::cout << '\n';
+    updateScore(board, 4, 100);
+    erasePlayer(board, 5);
+    Player p;
+    if (selectPlayer(board, 2, p))
+        std::cout << "After the update, position 2 is player " << p.id << '\n';
 
-    auto high = board.split_off(100);
-    std::cout << "Split at 100: " << board.size() << " below, " << high.size() << " at or above\n";
-    board.merge_from(high);
-    board.audit();
-    std::cout << "Merged size: " << board.size() << ", donor size: " << high.size() << '\n';
+    Board high;
+    splitBoard(board, 100, high);
+    std::cout << "Below 100: " << board.players.count << '\n';
+    std::cout << "At or above 100: " << high.players.count << '\n';
+    mergeBoards(board, high);
+    std::cout << "Merged players: " << board.players.count << '\n';
+    clearBoard(board);
+    clearBoard(high);
 }

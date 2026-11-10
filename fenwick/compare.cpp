@@ -1,103 +1,69 @@
-#include "fenwick_leaderboard.hpp"
+#include "leaderboard.h"
 #include <chrono>
-#include <iomanip>
 #include <iostream>
-#include <limits>
-#include <numeric>
 #include <random>
-#include <string>
+#include <sstream>
 
-using namespace leaderboard;
-using Clock = std::chrono::steady_clock;
-
-struct Revision {
-    Id id;
-    Score score;
-    Id query_id;
-    Position position;
-};
-
-template<class Fn>
-double measure_ns(Fn fn) {
-    const auto start = Clock::now();
-    fn();
-    return std::chrono::duration<double, std::nano>(Clock::now() - start).count();
-}
-
-template<class Board>
-void replay(const char* name, Board& board, const std::vector<Score>& initial,
-                     const std::vector<Revision>& events, Score threshold) {
-    double update_ns = 0, rank_ns = 0, select_ns = 0;
-    std::uint64_t checksum = 0;
-    auto mix = [&](std::uint64_t x) { checksum = checksum * 1000003ULL + x; };
-    const double load_ns = measure_ns([&] {
-        for (Position i = 0; i < initial.size(); ++i)
-            board.insert(static_cast<Id>(i), initial[i]);
-    });
-    for (const auto& e : events) {
-        update_ns += measure_ns([&] { board.update(e.id, e.score); });
-        Position rank = 0;
-        rank_ns += measure_ns([&] { rank = board.rank(e.query_id); });
-        mix(rank);
-        Player selected{};
-        select_ns += measure_ns([&] { selected = board.select(e.position); });
-        mix(static_cast<std::uint64_t>(selected.id));
-        mix(static_cast<std::uint64_t>(selected.score));
-    }
-    const Position last = std::min<Position>(50, board.size());
-    const Position first = std::min<Position>(40, last);
-    std::vector<Player> page;
-    const double range_ns = measure_ns([&] { page = board.range(first, last); });
-    for (Player p : page) mix(static_cast<std::uint64_t>(p.id));
-    const auto start = Clock::now();
-    auto high = board.split_off(threshold);
-    const double split_ms = std::chrono::duration<double, std::milli>(Clock::now() - start).count();
-    mix(high.size());
-    const double merge_ns = measure_ns([&] { board.merge_from(high); });
-    board.audit();
-    mix(board.size());
-    const double samples = static_cast<double>(events.size());
-    std::cout << name << ',' << load_ns / 1e6 << ',' << update_ns / samples << ','
-              << rank_ns / samples << ',' << select_ns / samples << ',' << range_ns << ','
-              << split_ms << ',' << merge_ns / 1e6 << ',' << checksum << '\n';
-}
-
-Position positive(const char* value) {
-    const std::string s(value);
-    if (s.empty() || s.find_first_not_of("0123456789") != std::string::npos)
-        throw std::invalid_argument("arguments must be positive integers");
-    const auto n = std::stoll(s);
-    if (!n || static_cast<unsigned long long>(n) > std::numeric_limits<Position>::max())
-        throw std::out_of_range("unsupported argument size");
-    return static_cast<Position>(n);
+long long nowNs() {
+    return std::chrono::duration_cast<std::chrono::nanoseconds>(
+        std::chrono::steady_clock::now().time_since_epoch()).count();
 }
 
 int main(int argc, char** argv) {
-    try {
-        if (argc > 4) throw std::invalid_argument("usage: compare [players [revisions [scores]]]");
-        const Position n = argc > 1 ? positive(argv[1]) : 10000;
-        const Position revisions = argc > 2 ? positive(argv[2]) : 10000;
-        const Position u = argc > 3 ? positive(argv[3]) : 1024;
-        std::mt19937_64 rng(2026);
-        std::uniform_int_distribution<Score> score(0, static_cast<Score>(u - 1));
-        std::uniform_int_distribution<Position> player(0, n - 1);
-        std::vector<Score> initial(n), universe(u);
-        std::iota(universe.begin(), universe.end(), Score{0});
-        for (auto& s : initial) s = score(rng);
-        std::vector<Revision> events;
-        events.reserve(revisions);
-        for (Position i = 0; i < revisions; ++i)
-            events.push_back({static_cast<Id>(player(rng)), score(rng),
-                              static_cast<Id>(player(rng)), 1 + player(rng)});
-        std::cout << "players=" << n << " revisions=" << revisions << " U=" << u << " seed=2026\n"
-                  << "structure,insert_all_ms,update_mean_ns,rank_mean_ns,select_mean_ns,"
-                     "one_range_ns,split_ms,ordered_merge_ms,checksum\n" << std::fixed
-                  << std::setprecision(2);
-        const Score threshold = static_cast<Score>(u / 2);
-        FenwickLeaderboard board(std::move(universe));
-        replay("Fenwick", board, initial, events, threshold);
-    } catch (const std::exception& e) {
-        std::cerr << e.what() << '\n';
-        return 1;
+    int args[] = {10000, 10000, 1024};
+    if (argc > 4) return 1;
+    for (int i = 1; i < argc; ++i) {
+        std::istringstream input(argv[i]);
+        char extra;
+        if (!(input >> args[i - 1]) || args[i - 1] <= 0 || (input >> extra)) {
+            std::cerr << "Use positive integers for players, revisions and possible scores.\n";
+            return 1;
+        }
     }
+    int players = args[0], revisions = args[1], possibleScores = args[2];
+    std::vector<long long> scores;
+    for (int i = 0; i < possibleScores; ++i) scores.push_back(i);
+    Board board;
+    initBoard(board, scores);
+    std::mt19937 random(253);
+    for (int i = 0; i < players; ++i) insertPlayer(board, i, random() % possibleScores);
+    long long updateTime = 0, rankTime = 0, selectTime = 0;
+    unsigned long long checksum = 0;
+    for (int i = 0; i < revisions; ++i) {
+        int id = random() % players;
+        int score = random() % possibleScores;
+        int queryId = random() % players;
+        int position = 1 + random() % players;
+        long long start = nowNs();
+        updateScore(board, id, score);
+        updateTime += nowNs() - start;
+        start = nowNs();
+        int rank = rankOf(board, queryId);
+        rankTime += nowNs() - start;
+        Player p;
+        start = nowNs();
+        if (!selectPlayer(board, position, p)) return 1;
+        selectTime += nowNs() - start;
+        checksum = checksum * 31 + rank;
+        checksum = checksum * 31 + p.id;
+        checksum = checksum * 31 + p.score;
+    }
+    Board high;
+    long long start = nowNs();
+    splitBoard(board, possibleScores / 2, high);
+    long long splitTime = nowNs() - start;
+    checksum = checksum * 31 + high.players.count;
+    start = nowNs();
+    mergeBoards(board, high);
+    long long mergeTime = nowNs() - start;
+    std::cout << "players=" << players << " revisions=" << revisions
+              << " coordinates=" << possibleScores << '\n'
+              << "Mean update (ns): " << double(updateTime) / revisions << '\n'
+              << "Mean rank (ns): " << double(rankTime) / revisions << '\n'
+              << "Mean select (ns): " << double(selectTime) / revisions << '\n'
+              << "Split (ms): " << splitTime / 1000000.0 << '\n'
+              << "Merge (ms): " << mergeTime / 1000000.0 << '\n'
+              << "Checksum: " << checksum << '\n';
+    clearBoard(board);
+    clearBoard(high);
 }

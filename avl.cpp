@@ -91,7 +91,6 @@ struct AVL {
         return balance(t);
     }
 
-    // Competition rank = 1 + the number of players with a strictly higher score.
     int rank(Node* t, long long score) {
         int higher = 0;
         while (t) {
@@ -114,7 +113,6 @@ struct AVL {
         throw logic_error("incorrect subtree size");
     }
 
-    // first and last are inclusive positions relative to the current subtree.
     void range(Node* t, int first, int last, vector<Player>& result) {
         if (!t || first > last) return;
         int position = size(t->left) + 1;
@@ -123,7 +121,6 @@ struct AVL {
         if (position < last) range(t->right, first - position, last - position, result);
     }
 
-    // In leaderboard order: every player in left precedes p, and p precedes right.
     Node* join(Node* left, Player p, Node* right) {
         if (height(left) > height(right) + 1) {
             left->right = join(left->right, p, right);
@@ -138,7 +135,6 @@ struct AVL {
         return root;
     }
 
-    // Consume t. The two output roots own disjoint sets of nodes.
     void split(Node* t, long long cutoff, Node*& high, Node*& low) {
         if (!t) { high = nullptr; low = nullptr; return; }
         if (t->player.score >= cutoff) {
@@ -161,7 +157,6 @@ struct AVL {
     }
 };
 
-// The replay uses this lookup when a query supplies only a player ID.
 unordered_map<int, long long> currentScore;
 
 int main() {
@@ -194,7 +189,6 @@ int main() {
     cout << "At or above 100: " << tree.size(high) << '\n';
     cout << "Below 100: " << tree.size(low) << '\n';
 
-    // The last player in high is the separator for join(high, pivot, low).
     Player pivot = tree.select(high, tree.size(high));
     high = tree.erase(high, pivot);
     root = tree.join(high, pivot, low);

@@ -2,135 +2,84 @@
 
 CS 253 / MA 253 Data Structures and Algorithms Laboratory project.
 
-The project compares an order-statistic AVL tree and a Fenwick tree for a leaderboard with score revisions, rank and position queries, and season split/merge operations.
+Structure 1 uses an AVL tree. Structure 2 uses a Fenwick tree and is on the `Saksham` branch. Both implementations use structs for data and ordinary functions for operations. The examples use signed 64-bit player IDs and scores and support the project's million-player scale with integer counts.
 
-Both C++17 implementations maintain the same leaderboard. A player has a signed 64-bit ID and score. Higher scores appear first. Players with equal scores share their competition rank and appear in ascending ID order. For example, scores `100, 90, 90, 70` produce ranks `1, 2, 2, 4`. The third position contains the second player scoring 90.
+## Run the demo
 
-## Repository layout
-
-The [Saksham branch](https://github.com/pachisiamadhav26-eng/DSA_PROJECT/tree/Saksham) contains Structure B in `fenwick/` and its player lookup table in `common.hpp`. This README on `main` documents both structures and their baseline comparison. The AVL build instructions apply to the separate Structure A source package.
-
-## Build and run
-
-For Structure B, check out `Saksham` and run `cd fenwick` from the repository root. For the Structure A package, run `cd avl`. The following commands work from either source directory with a C++17 compiler and its standard library. Each source program builds independently.
-
-**Windows PowerShell with MinGW GCC**
+From the repository root on `Saksham`, use these PowerShell commands:
 
 ```powershell
-g++ -std=c++17 -O2 -Wall -Wextra -pedantic main.cpp -o demo.exe
-g++ -std=c++17 -O2 -Wall -Wextra -pedantic check.cpp -o check.exe
-g++ -std=c++17 -O2 -Wall -Wextra -pedantic compare.cpp -o compare.exe
+cd fenwick
+g++ -std=c++17 main.cpp fenwick.cpp ../player_table.cpp -o demo.exe
 .\demo.exe
+```
+
+For Structure 1, use `cd avl` and compile `main.cpp avl.cpp ../player_table.cpp`. On Linux or macOS, run the executable as `./demo.exe`. Each branch has its own `leaderboard.h` with the structs and function declarations. Start with `main.cpp` to see a five-player example. The Fenwick algorithm is in the first three functions of `fenwick.cpp`.
+
+## How the two structures work
+
+**Fenwick.** Each distinct possible score has a numbered position, starting at 1, in ascending score order. The tree stores counts. `add` changes a count, `prefixSum` counts players up to a score, and `findKth` uses binary lifting to find the first position whose prefix count reaches k. Give `initBoard` all scores that can appear in the replay. An update to an unknown score returns `false`.
+
+If player 7 moves from 90 to 100, look up their old score, subtract one player at the position for 90, and add one at the position for 100. Each score also has a sorted list of player IDs so an exact position query can return a player inside a tie. Split and merge rebuild the count arrays.
+
+**AVL.** Each node stores a player, left and right pointers, a height and a subtree size. Rotations update both numbers. Rank counts players with a higher score. Select compares the requested position with the size of the left subtree. Split uses AVL joins. Merge joins disjoint ordered ranges and inserts donor nodes for interleaved ranges.
+
+**Player lookup.** The course specifies a handwritten ID-to-score hash table. It lives in `player_table.cpp`, outside both trees. For example, with eight buckets, IDs 7 and 15 both use bucket 7. Searching that short list finds the right ID. The table uses `id % bucketCount`, handles negative IDs, and doubles its bucket count as it fills.
+
+## Operations
+
+Higher scores come first. Tied players share a rank and are listed by increasing ID. For scores 100, 90, 90 and 70, ranks are 1, 2, 2 and 4.
+
+| Function | Behavior |
+|---|---|
+| `insertPlayer(board, id, score)` | Add a new player. Duplicate IDs return false. |
+| `erasePlayer(board, id)`, `updateScore(board, id, score)` | Remove a player or change their score. Missing IDs return false. |
+| `rankOf(board, id)` | One plus the number of strictly higher scores. Returns 0 for a missing ID. |
+| `selectPlayer(board, k, answer)` | Write the player at one-based position k into `answer`. Invalid positions return false. |
+| `listPositions(board, first, last)` | Return an inclusive page. An invalid request gives an empty vector. |
+| `splitBoard(board, threshold, high)` | Move players scoring at least the threshold into an empty board called `high`. |
+| `mergeBoards(board, other)` | Move players into `board` and empty `other`. A shared ID or self-merge returns false. |
+
+Create a board with `Board board;` and call `initBoard` before inserting players. Pass boards by reference. The AVL board owns its nodes, so copying an active AVL board by assignment would copy its pointers. Call `clearBoard` on each board at the end.
+
+## Comparisons
+
+Let n be the active player count, U the possible score count, t a tie-group size, q a page length and m the number of players moved. Player-table costs assume well-distributed IDs and amortized resizing. A long chain of colliding IDs increases lookup cost.
+
+| Operation | AVL | Fenwick |
+|---|---|---|
+| Insert or erase | O(log n) | O(log U + t) because a sorted vector can shift IDs |
+| Update score | O(log n) | O(log U + t_old + t_new) |
+| Rank and exact-player select | O(log n) | O(log U) |
+| List q positions | O(log n + q) | O(q log U) |
+| Split | O(log n) tree work plus expected O(m) for ID records | Expected O(U + m) |
+| Merge | Ordered ranges take O(log(n + m)) tree work plus expected amortized O(m) for IDs. Interleaved ranges take O(m log(n + m)) tree work. | Rebuild the combined buckets and counts in expected O(U1 + U2 + n1 + n2). |
+
+## Run the checks and benchmark
+
+From `fenwick/` on `Saksham`:
+
+```powershell
+g++ -std=c++17 -O2 check.cpp fenwick.cpp ../player_table.cpp -o check.exe
 .\check.exe
+g++ -std=c++17 -O2 compare.cpp fenwick.cpp ../player_table.cpp -o compare.exe
 .\compare.exe 10000 10000 1024
 ```
 
-**Linux or macOS with GCC or Clang**
+For AVL, run the same commands from `avl/` with `avl.cpp` in place of `fenwick.cpp`. The checker compares the board with a sorted list after 3,000 inserts, deletions and score changes. It checks split, merge, ties and invalid requests. The AVL checker also verifies heights, balance and subtree sizes. The Fenwick checker verifies every prefix count.
 
-```sh
-c++ -std=c++17 -O2 -Wall -Wextra -pedantic main.cpp -o demo
-c++ -std=c++17 -O2 -Wall -Wextra -pedantic check.cpp -o check
-c++ -std=c++17 -O2 -Wall -Wextra -pedantic compare.cpp -o compare
-./demo
-./check
-./compare 10000 10000 1024
-```
+The benchmark arguments are players, revisions and possible scores. Each revision is followed by a rank query and an exact-player selection. Use the same arguments and compiler settings for both programs, then compare the checksums, average query times and total split/merge times. Timing excludes data generation and includes clock overhead. The timed merge reunites the two divisions from a split. A project-sized example is `compare.exe 1000000 1000000 100000`.
 
-The demo gives IDs 2 and 3 rank 2. After ID 4 moves to score 100 and ID 5 leaves, positions 2 through 4 contain IDs `4, 2, 3`. Splitting at 100 produces two leagues of size two.
+## Example measurement
 
-## Interface
+In a single GCC 13.1 run with optimization enabled (`-O2`), one million players, one million revisions and 100,000 possible scores, both programs produced checksum `77401577035553977`.
 
-From the repository root, include `avl/avl_leaderboard.hpp` on Structure 1 or `fenwick/fenwick_leaderboard.hpp` on Structure 2. Both classes are in the `leaderboard` namespace.
+| Implementation | Mean rank | Mean select | Split | Merge after split |
+|---|---:|---:|---:|---:|
+| AVL | 2,201 ns | 1,926 ns | 363 ms | 83 ms |
+| Fenwick | 704 ns | 619 ns | 376 ms | 121 ms |
 
-```cpp
-// Structure A package
-leaderboard::AvlLeaderboard a;
-```
-
-```cpp
-// Saksham branch
-leaderboard::FenwickLeaderboard b({40, 70, 90, 100});
-```
-
-| Call on either board | Behavior |
-|---|---|
-| `insert(id, score)` | Add a unique player |
-| `erase(id)` | Remove an existing player |
-| `update(id, score)` | Revise an existing player's score. An identical score is a no-op |
-| `size()` | Return the active player count |
-| `rank(id)` | Return one plus the number of players with a strictly higher score |
-| `select(k)` | Return the `Player{id, score}` at one-based position k |
-| `range(first, last)` | Return players at every position in the inclusive range. Use `range(40, 50)` for the project example |
-| `auto high = board.split_off(T)` | Move scores ≥ T to the returned league. The original league keeps scores < T |
-| `board.merge_from(other)` | Move all players into the receiving league. The donor becomes empty and can be used again |
-| `audit()` | Check internal invariants and throw on an inconsistency |
-
-Duplicate insertions, self-merges, and merges containing a shared ID throw `std::invalid_argument`. Missing player IDs and invalid positions throw `std::out_of_range`. A page requires `1 <= first <= last <= size()`. A failed duplicate-ID merge preserves both leagues.
-
-## Structure A · augmented AVL tree
-
-`avl_leaderboard.hpp` stores one node per player, ordered by descending score and then ascending ID. Every node stores its height and subtree size. Rotations refresh the former root before refreshing the new root. A score change removes the old key and inserts the new key.
-
-Rank counts strictly higher scores by skipping whole subtrees. Select compares the requested position with the size of the left subtree. Range traversal skips branches outside the requested page.
-
-The internal `join(left, pivot, right)` requires every left key to precede the pivot and every right key to follow it. It walks the taller tree's spine, attaches the pivot, and rebalances on the way back. Threshold split follows one search path and reconstructs its two outputs with joins.
-
-For leagues with separated key ranges, merge detaches a boundary player to use as the pivot. For interleaved leagues, it inserts the donor's nodes into the receiving AVL. Each league also owns its ID table, so the public split and merge operations include membership updates.
-
-## Structure B · Fenwick tree over score counts
-
-`fenwick_leaderboard.hpp` sorts and deduplicates the possible scores. For a recorded replay, supply all initial scores and all scores that later updates can introduce. Within a league, an insert or update to a score outside this universe throws `std::invalid_argument`. Merging two leagues takes the sorted union of their universes.
-
-Compressed coordinates run from 1 to U in ascending score order. If `i` is the coordinate of a player's score and `n` is the player count, `prefix(i)` counts all players at or below that score. Therefore `rank = 1 + n - prefix(i)`.
-
-For position `k` from the top, binary lifting finds the smallest coordinate whose prefix count reaches `n - k + 1`. The descent tries one power of two at a time and skips a block only when its cumulative count is strictly below the target. This handles duplicate scores and coordinates whose current count is zero.
-
-Each coordinate also has a sorted vector of player IDs. After selecting a coordinate, the zero-based ID offset is `k - (n - prefix(i)) - 1`. Reading that ID costs constant time. Insertion and deletion can shift the remainder of the vector. This baseline deliberately keeps the bucket code small.
-
-A split transfers complete score buckets and rebuilds both Fenwick arrays. A merge combines sorted score universes, merges the sorted ID vectors at equal scores, and builds a new count array. The linear Fenwick build initializes each block with its bucket size and adds it once to its parent.
-
-## Shared player lookup
-
-`common.hpp` implements the ID-to-score hash table from scratch with separate chaining, a 64-bit hash mixer, and capacity doubling. Both structures use it to locate a player's old score. The verification program uses a separate set of oracle records and sorts the active players independently.
-
-## Comparisons and predicted costs
-
-Let **n** be the active players, **U** the number of compressed coordinates, **t** the size of an affected tie group, **q** the number of returned players, and **m** the number of players moved from one league to another. Hash-table bounds assume well-distributed IDs and amortized resizing. Logs in the table describe growth for nonempty inputs.
-
-| Operation | A · AVL | B · Fenwick with sorted ID buckets |
-|---|---|---|
-| Insert or erase | O(log n) | O(log U + t) |
-| Revise a score | O(log n) | O(log U + t_old + t_new) |
-| Competition rank | O(log n) | O(log U) |
-| Select an exact player | O(log n) | O(log U) |
-| List q consecutive positions | O(log n + q) | O(q log U) using repeated select |
-| Split at a score | O(log n) tree work, plus expected O(m) to transfer ID records | O(U + m) expected, including both rebuilds |
-| Merge separated key ranges | O(log(n + m)) tree work, plus expected amortized O(m) for IDs | O(U_A + U_B + n + m) expected |
-| Merge interleaved leagues | O(m log(n + m)) tree work, plus ID-table work | Same rebuild as for separated leagues |
-| Storage | One node and one ID record per player | U coordinates and count blocks, plus bucket entries and ID records for n players |
-
-For AVL join with a supplied pivot, the tree-only cost is O(1 + |h_left − h_right|). Public ordered merge also has to locate and detach its pivot. The table assumes hash capacity is proportional to the current or recent player count. After extensive deletion, iterating a table also scans retained hash capacity. Both implementations can retain allocated storage after players leave.
-
-## Replay and measurements
-
-`compare [players] [revisions] [score_coordinates]` defaults to `10000 10000 1024`. It pre-generates initial scores and a fixed-seed stream. Each revision is followed by one rank query and one exact-player select. Run the benchmark for each implementation with the same arguments and C++ toolchain to replay identical events. Compare the final checksum columns first, then compare operation times. Each executable reports its own row. After the replay it reads positions 40–50 (clamped for small leagues), splits at the midpoint of the score universe, and merges the two divisions.
-
-The output includes total insertion time, mean update/rank/select time, one range latency, full split and ordered-merge times, and a result checksum. Query timing includes clock overhead. Event generation, Fenwick coordinate preparation, board construction, and audits are outside the timers. Merge timing covers the separated ranges produced by the split. Correctness checks separately exercise interleaved regional leagues.
-
-The original combined driver ran AVL followed by Fenwick on Windows with GCC 13.1 and `-O2`. That run used **1,000,000 players, 1,000,000 revisions, and 100,000 possible scores**. The table reports timings for the public leaderboard operations.
-
-| Structure | Load (ms) | Mean update (ns) | Mean rank (ns) | Mean select (ns) | Split (ms) | Ordered merge (ms) |
-|---|---:|---:|---:|---:|---:|---:|
-| A · AVL | 1,993.79 | 4,832.53 | 1,808.40 | 1,609.79 | 296.99 | 62.89 |
-| B · Fenwick | 811.10 | 1,140.32 | 605.80 | 502.47 | 220.04 | 136.75 |
-
-Both runs produced checksum `6285843591463296880`. Fenwick had lower rank and select latency in this run. AVL merged the split divisions faster. Its full split still moved individual ID records, which helps explain why the logarithmic tree split alone cannot predict the measured time. These are single-run observations with AVL executed first. To study growth, repeat runs while increasing n at fixed U, then vary U at fixed n to change tie-group sizes.
-
-## Correctness checks
-
-`check.cpp` compares size, every player's rank, every selected position, and page contents with a sorted-array oracle. It performs 3,000 deterministic randomized insertions, deletions, and score revisions, checking the implementation on the current branch after each change. It also splits and rejoins the league during that replay.
-
-Additional cases cover the four AVL rotation patterns, sorted insert/delete sequences, different join heights, all-tied inputs, empty leagues, sparse coordinates, signed score extremes, overlapping league scores, different Fenwick universes, duplicate-ID merge rejection, and invalid requests. AVL audits recompute heights and subtree sizes recursively and check ordering, balance, and player records. Fenwick audits check ID ordering within each bucket, player membership, every prefix count, and the total.
+These timings include player lookup and membership updates. They describe one run on this machine.
 
 ## Project requirements
 

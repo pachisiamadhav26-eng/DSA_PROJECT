@@ -4,7 +4,7 @@ This document is the common behavior contract for the AVL implementation (A), Fe
 
 ## 1. Language and data model
 
-The project uses C++17, matching the current repository build instructions. The logical types are:
+The project uses C++17, matching the current repository build instructions. The shared declarations are in `include/leaderboard.hpp`; the logical types are:
 
 ```cpp
 using PlayerId = std::uint64_t;
@@ -29,7 +29,7 @@ The application's `rank(id)` looks up the current score and computes `1 + count_
 
 ## 3. Observable operations
 
-The application exposes the following logical operations. These names define behavior; exact C++ header signatures and replay-file syntax will be fixed when the application adapter is written.
+The application exposes the following logical operations. The backend signatures are in `include/leaderboard.hpp`, and the replay-file syntax is in section 8.
 
 | Operation | Successful result | Invalid input |
 | --- | --- | --- |
@@ -90,3 +90,27 @@ After revising ID `8` to score `110`, the list is `8, 5, 3, 2` and the ranks are
 AVL targets logarithmic insertion, deletion, rank, select, and split; ordered join with supplied pivot targets `O(|h1 - h2| + 1)`. Returning `r` players requires at least `O(r)` output work, so AVL range extraction is stated as `O(log n + r)`. Fenwick rank and score-bucket selection target `O(log U)` for `U` compressed scores; ID-bucket maintenance and full rebuild costs must be included in measurements. General league merge is measured separately from ordered AVL join.
 
 Both structures and the oracle use C++. A library container must not replace the AVL, Fenwick, or required handwritten player hash table in the final application.
+
+## 8. C++ adapter and replay format
+
+The `Board` interface in `include/leaderboard.hpp` is implemented by one adapter for each structure. The application selects one backend for a replay. Both factories return a new empty board. The Fenwick factory receives every score that can appear in the replay; the application gathers scores from `ADD` and `SET` commands before running it.
+
+The application checks normal user errors before calling a backend. It supplies the exact `Player` value to `erase`, including the old score from its handwritten hash table. `select` uses one-based positions. `range` clears its output vector and fills it in leaderboard order. `split_by_score` returns `{high, low}` and leaves its source empty. `merge_from` accepts only another board of the same backend type and leaves that board empty on success. Backend methods may reject a violated precondition; they must not silently return a wrong answer.
+
+The replay is UTF-8 text with one whitespace-separated command per line. Board `0` exists and is empty at the start. Board IDs and player IDs are nonnegative decimal integers. Scores are signed decimal integers. New board IDs supplied to `SPLIT` or `MERGE` must be unused and distinct from each other and from the source IDs. A successful split or merge invalidates its source board IDs.
+
+| Command | Effect |
+| --- | --- |
+| `ADD board id score` | Add a new player. |
+| `SET board id new_score` | Revise an existing player's score. |
+| `REMOVE board id` | Remove a player. |
+| `RANK board id` | Query competition rank. |
+| `SELECT board position` | Query one player by position. |
+| `RANGE board first last` | Query an inclusive position range. |
+| `SIZE board` | Query the active player count. |
+| `SPLIT board threshold high_board low_board` | Create high and low divisions. |
+| `MERGE left_board right_board result_board` | Combine two leagues with distinct IDs. |
+
+Every input command produces exactly one output line. Successful mutations print `OK`. Queries print `RANK value`, `PLAYER id score`, `PLAYERS count id score ...`, or `SIZE value`. Invalid input prints `ERR code` and leaves the state unchanged. Error codes are `UNKNOWN_BOARD`, `BOARD_EXISTS`, `DUPLICATE_ID`, `UNKNOWN_PLAYER`, `WRONG_BOARD`, `BAD_POSITION`, `BAD_RANGE`, `SAME_BOARD`, and `ID_CONFLICT`. Parsing errors print `ERR BAD_COMMAND`.
+
+`app/examples/basic.trace` is a valid replay. Its complete expected output is `app/examples/basic.expected`. Both backends and the oracle must produce those same twelve output lines.

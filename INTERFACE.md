@@ -47,10 +47,11 @@ Successful split consumes its source board. Successful merge consumes its two so
 
 ## 4. Structure-facing operations
 
-The application owns the handwritten hash table from `PlayerId` to current `Score` and board identity. It enforces ID uniqueness and supplies the exact `(score, id)` key to a structure for deletion. Each structure must support these logical primitives:
+The application owns the handwritten hash table from `PlayerId` to current `Score`. It enforces ID uniqueness and supplies the exact `(score, id)` key to a structure for deletion. A backend's `contains(Player)` confirms that the player belongs to the requested board without changing the hash table during a split or merge. Each structure must support these logical primitives:
 
 | Primitive | Contract |
 | --- | --- |
+| `contains(Player)` | Report whether the exact player key is on this board. |
 | `insert(Player)` | Insert a player whose ID is not already active. |
 | `erase(Player)` | Remove the exact existing `(score, id)` entry. |
 | `count_strictly_higher(Score)` | Count players whose score is greater than the argument. |
@@ -65,7 +66,7 @@ The Fenwick tree stores counts over compressed scores. Its score counts alone id
 
 ## 5. Structural and cross-implementation invariants
 
-- **Application/hash:** every active ID has exactly one hash entry containing its current board and score; every hash entry has exactly one matching structure entry. The hash and structure sizes agree after each successful operation.
+- **Application/hash:** every active ID has exactly one hash entry containing its current score; every hash entry has exactly one matching entry across all active boards. The hash size equals the sum of the active board sizes after each successful operation. A board-specific operation checks `contains(Player)` before changing that board.
 - **AVL:** keys follow the total order; each stored height equals `1 + max(child heights)`; each balance factor is in `{-1, 0, 1}`; each stored subtree size equals `1 + left size + right size`. These facts must remain true after rotations, deletion, split, and join.
 - **Fenwick:** every count is nonnegative and equals the number of live players at its score; prefix sums and total size agree with those counts; compressed coordinates have consistent score order; IDs inside a tied-score bucket are sorted and occur exactly once.
 - **Split/merge:** the outputs of a split are disjoint and their union equals the input. A successful merge contains exactly the union of both inputs. All outputs remain ordered and satisfy their structure invariants.
@@ -95,7 +96,7 @@ Both structures and the oracle use C++. A library container must not replace the
 
 The `Board` interface in `include/leaderboard.hpp` is implemented by one adapter for each structure. The application selects one backend for a replay. Both factories return a new empty board. The Fenwick factory receives every score that can appear in the replay; the application gathers scores from `ADD` and `SET` commands before running it.
 
-The application checks normal user errors before calling a backend. It supplies the exact `Player` value to `erase`, including the old score from its handwritten hash table. `select` uses one-based positions. `range` clears its output vector and fills it in leaderboard order. `split_by_score` returns `{high, low}` and leaves its source empty. `merge_from` accepts only another board of the same backend type and leaves that board empty on success. Backend methods may reject a violated precondition; they must not silently return a wrong answer.
+The application checks normal user errors before calling a backend. It supplies the exact `Player` value to `erase`, including the old score from its handwritten hash table. It uses `contains` to distinguish an unknown player from a player on another board. `select` uses one-based positions. `range` clears its output vector and fills it in leaderboard order. `split_by_score` returns `{high, low}` and leaves its source empty. `merge_from` accepts only another board of the same backend type and leaves that board empty on success. Backend methods may reject a violated precondition; they must not silently return a wrong answer.
 
 The replay is UTF-8 text with one whitespace-separated command per line. Board `0` exists and is empty at the start. Board IDs and player IDs are nonnegative decimal integers. Scores are signed decimal integers. New board IDs supplied to `SPLIT` or `MERGE` must be unused and distinct from each other and from the source IDs. A successful split or merge invalidates its source board IDs.
 

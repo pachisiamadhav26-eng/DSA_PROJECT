@@ -1,4 +1,4 @@
-# Generated build products and local editor files
+# Generated build products and local editor files:
 build/
 dist/
 *.o
@@ -10,6 +10,6 @@ __pycache__/
 .vscode/
 .idea/
 
-# Temporary benchmark and test files
+# Temporary benchmark and test files:
 tmp/
 *.log

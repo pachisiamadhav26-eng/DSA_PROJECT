@@ -13,3 +13,4 @@ __pycache__/
 # Temporary benchmark and test files
 tmp/
 *.log
+/oracle-failure*.trace

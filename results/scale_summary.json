@@ -15,11 +15,11 @@
   "backends": {
     "avl": {
       "output_lines": 2000106,
-      "audit_wall_seconds": 14.230681499990169
+      "audit_wall_seconds": 17.511776499988628
     },
     "fenwick": {
       "output_lines": 2000106,
-      "audit_wall_seconds": 15.02391410000564
+      "audit_wall_seconds": 13.69229410000844
     }
   }
 }

@@ -26,48 +26,48 @@
 <path d="M696.00 90V356" stroke="#e0e6ed"/>
 <text x="696.00" y="376" font-size="11" text-anchor="middle">1,000,000</text>
 <text x="390" y="402" font-size="13" text-anchor="middle">Live players (log)</text>
-<polyline points="84.00,249.99 288.00,213.52 492.00,174.31 696.00,108.47" fill="none" stroke="#1466a3" stroke-width="2"/>
-<path d="M84.00 253.48V244.81" stroke="#1466a3"/>
-<circle cx="84.00" cy="249.99" r="3" fill="#1466a3"/>
-<path d="M288.00 223.33V205.36" stroke="#1466a3"/>
-<circle cx="288.00" cy="213.52" r="3" fill="#1466a3"/>
-<path d="M492.00 176.25V170.70" stroke="#1466a3"/>
-<circle cx="492.00" cy="174.31" r="3" fill="#1466a3"/>
-<path d="M696.00 109.94V107.48" stroke="#1466a3"/>
-<circle cx="696.00" cy="108.47" r="3" fill="#1466a3"/>
+<polyline points="84.00,300.52 288.00,251.62 492.00,196.96 696.00,128.37" fill="none" stroke="#1466a3" stroke-width="2"/>
+<path d="M84.00 305.61V293.05" stroke="#1466a3"/>
+<circle cx="84.00" cy="300.52" r="3" fill="#1466a3"/>
+<path d="M288.00 256.76V243.08" stroke="#1466a3"/>
+<circle cx="288.00" cy="251.62" r="3" fill="#1466a3"/>
+<path d="M492.00 203.21V192.61" stroke="#1466a3"/>
+<circle cx="492.00" cy="196.96" r="3" fill="#1466a3"/>
+<path d="M696.00 132.90V120.35" stroke="#1466a3"/>
+<circle cx="696.00" cy="128.37" r="3" fill="#1466a3"/>
 <path d="M84 438h20" stroke="#1466a3" stroke-width="2"/>
 <text x="111" y="442" font-size="12">AVL, ties 1</text>
-<polyline points="84.00,256.28 288.00,219.35 492.00,175.72 696.00,106.19" fill="none" stroke="#1466a3" stroke-width="2" stroke-dasharray="6 4"/>
-<path d="M84.00 273.77V247.98" stroke="#1466a3"/>
-<circle cx="84.00" cy="256.28" r="3" fill="#1466a3"/>
-<path d="M288.00 224.29V214.79" stroke="#1466a3"/>
-<circle cx="288.00" cy="219.35" r="3" fill="#1466a3"/>
-<path d="M492.00 179.82V170.58" stroke="#1466a3"/>
-<circle cx="492.00" cy="175.72" r="3" fill="#1466a3"/>
-<path d="M696.00 111.40V102.29" stroke="#1466a3"/>
-<circle cx="696.00" cy="106.19" r="3" fill="#1466a3"/>
+<polyline points="84.00,298.87 288.00,248.25 492.00,196.48 696.00,125.82" fill="none" stroke="#1466a3" stroke-width="2" stroke-dasharray="6 4"/>
+<path d="M84.00 301.91V293.42" stroke="#1466a3"/>
+<circle cx="84.00" cy="298.87" r="3" fill="#1466a3"/>
+<path d="M288.00 254.74V238.04" stroke="#1466a3"/>
+<circle cx="288.00" cy="248.25" r="3" fill="#1466a3"/>
+<path d="M492.00 201.16V189.32" stroke="#1466a3"/>
+<circle cx="492.00" cy="196.48" r="3" fill="#1466a3"/>
+<path d="M696.00 133.85V114.95" stroke="#1466a3"/>
+<circle cx="696.00" cy="125.82" r="3" fill="#1466a3"/>
 <path d="M237 438h20" stroke="#1466a3" stroke-width="2" stroke-dasharray="6 4"/>
 <text x="264" y="442" font-size="12">AVL, ties 16</text>
-<polyline points="84.00,318.32 288.00,275.38 492.00,228.25 696.00,155.71" fill="none" stroke="#b64c2e" stroke-width="2"/>
-<path d="M84.00 325.01V315.49" stroke="#b64c2e"/>
-<circle cx="84.00" cy="318.32" r="3" fill="#b64c2e"/>
-<path d="M288.00 281.46V270.01" stroke="#b64c2e"/>
-<circle cx="288.00" cy="275.38" r="3" fill="#b64c2e"/>
-<path d="M492.00 229.32V227.70" stroke="#b64c2e"/>
-<circle cx="492.00" cy="228.25" r="3" fill="#b64c2e"/>
-<path d="M696.00 163.94V139.37" stroke="#b64c2e"/>
-<circle cx="696.00" cy="155.71" r="3" fill="#b64c2e"/>
+<polyline points="84.00,324.41 288.00,281.74 492.00,215.76 696.00,157.45" fill="none" stroke="#b64c2e" stroke-width="2"/>
+<path d="M84.00 325.40V323.18" stroke="#b64c2e"/>
+<circle cx="84.00" cy="324.41" r="3" fill="#b64c2e"/>
+<path d="M288.00 284.59V276.69" stroke="#b64c2e"/>
+<circle cx="288.00" cy="281.74" r="3" fill="#b64c2e"/>
+<path d="M492.00 224.03V207.46" stroke="#b64c2e"/>
+<circle cx="492.00" cy="215.76" r="3" fill="#b64c2e"/>
+<path d="M696.00 164.51V144.97" stroke="#b64c2e"/>
+<circle cx="696.00" cy="157.45" r="3" fill="#b64c2e"/>
 <path d="M390 438h20" stroke="#b64c2e" stroke-width="2"/>
 <text x="417" y="442" font-size="12">Fenwick, ties 1</text>
-<polyline points="84.00,308.41 288.00,263.85 492.00,223.17 696.00,155.86" fill="none" stroke="#b64c2e" stroke-width="2" stroke-dasharray="6 4"/>
-<path d="M84.00 315.72V296.75" stroke="#b64c2e"/>
-<circle cx="84.00" cy="308.41" r="3" fill="#b64c2e"/>
-<path d="M288.00 271.56V257.79" stroke="#b64c2e"/>
-<circle cx="288.00" cy="263.85" r="3" fill="#b64c2e"/>
-<path d="M492.00 225.82V219.18" stroke="#b64c2e"/>
-<circle cx="492.00" cy="223.17" r="3" fill="#b64c2e"/>
-<path d="M696.00 158.03V154.46" stroke="#b64c2e"/>
-<circle cx="696.00" cy="155.86" r="3" fill="#b64c2e"/>
+<polyline points="84.00,287.36 288.00,260.79 492.00,210.97 696.00,144.72" fill="none" stroke="#b64c2e" stroke-width="2" stroke-dasharray="6 4"/>
+<path d="M84.00 311.10V269.02" stroke="#b64c2e"/>
+<circle cx="84.00" cy="287.36" r="3" fill="#b64c2e"/>
+<path d="M288.00 272.59V247.13" stroke="#b64c2e"/>
+<circle cx="288.00" cy="260.79" r="3" fill="#b64c2e"/>
+<path d="M492.00 222.20V202.75" stroke="#b64c2e"/>
+<circle cx="492.00" cy="210.97" r="3" fill="#b64c2e"/>
+<path d="M696.00 154.75V128.66" stroke="#b64c2e"/>
+<circle cx="696.00" cy="144.72" r="3" fill="#b64c2e"/>
 <path d="M543 438h20" stroke="#b64c2e" stroke-width="2" stroke-dasharray="6 4"/>
 <text x="570" y="442" font-size="12">Fenwick, ties 16</text>
 </g></svg>

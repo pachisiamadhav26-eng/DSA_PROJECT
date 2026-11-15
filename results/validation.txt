@@ -1,0 +1,100 @@
+Clean clone of integration commit 1709159
+Command: python tools/project.py --full all
+Exit status: 0
+
+Built 9 executables in build\project
+Sample replay with avl
+OK
+OK
+OK
+OK
+RANK 2
+PLAYER 8 90
+PLAYERS 2 3 90 8 90
+OK
+SIZE 3
+OK
+OK
+RANK 1
+Sample replay with fenwick
+OK
+OK
+OK
+OK
+RANK 2
+PLAYER 8 90
+PLAYERS 2 3 90 8 90
+OK
+SIZE 3
+OK
+OK
+RANK 1
+PASS player_table_test
+PASS replay_test
+PASS avl_test
+PASS fenwick_test
+PASS oracle boundaries, rotations, unequal joins, shrinker
+PASS seed=253 commands=12 max_live=128 full invariant/state audits after every command seconds=0
+PASS golden basic with oracle, AVL and Fenwick
+PASS oracle boundaries, rotations, unequal joins, shrinker
+PASS seed=253 commands=28 max_live=128 full invariant/state audits after every command seconds=0.000998
+PASS golden errors with oracle, AVL and Fenwick
+PASS oracle boundaries, rotations, unequal joins, shrinker
+PASS seed=253 commands=26 max_live=128 full invariant/state audits after every command seconds=0.000997
+PASS golden seasons with oracle, AVL and Fenwick
+PASS oracle boundaries, rotations, unequal joins, shrinker
+PASS seed=253 commands=6 max_live=128 full invariant/state audits after every command seconds=0
+PASS golden wide_ids with oracle, AVL and Fenwick
+PASS oracle boundaries, rotations, unequal joins, shrinker
+PASS seed=253 commands=1000000 max_live=48 full invariant/state audits after every command seconds=90.5572
+PASS oracle boundaries, rotations, unequal joins, shrinker
+PASS seed=42 commands=100000 max_live=48 full invariant/state audits after every command seconds=4.04228
+PASS oracle boundaries, rotations, unequal joins, shrinker
+PASS seed=20261112 commands=100000 max_live=48 full invariant/state audits after every command seconds=7.20911
+PASS oracle boundaries, rotations, unequal joins, shrinker
+PASS scale players=1000000 queries=1000000 split/merge (full audits at phase boundaries)
+PASS oracle boundaries, rotations, unequal joins, shrinker
+PASS seed=253 commands=14 max_live=128 full invariant/state audits after every command seconds=0.002001
+PASS ties.trace through the production app and oracle
+PASS oracle boundaries, rotations, unequal joins, shrinker
+PASS seed=253 commands=5 max_live=128 full invariant/state audits after every command seconds=0.001
+PASS wide.trace through the production app and oracle
+PASS oracle boundaries, rotations, unequal joins, shrinker
+PASS seed=253 commands=60 max_live=128 full invariant/state audits after every command seconds=0.001504
+PASS rotations-253.trace through the production app and oracle
+PASS oracle boundaries, rotations, unequal joins, shrinker
+PASS seed=253 commands=87 max_live=128 full invariant/state audits after every command seconds=0.003565
+PASS ascending-253.trace through the production app and oracle
+PASS oracle boundaries, rotations, unequal joins, shrinker
+PASS seed=253 commands=87 max_live=128 full invariant/state audits after every command seconds=0.003045
+PASS descending-253.trace through the production app and oracle
+PASS oracle boundaries, rotations, unequal joins, shrinker
+PASS seed=253 commands=87 max_live=128 full invariant/state audits after every command seconds=0.004088
+PASS ties-253.trace through the production app and oracle
+PASS oracle boundaries, rotations, unequal joins, shrinker
+PASS seed=253 commands=449 max_live=128 full invariant/state audits after every command seconds=0.018121
+PASS churn-253.trace through the production app and oracle
+PASS oracle boundaries, rotations, unequal joins, shrinker
+PASS seed=253 commands=22 max_live=128 full invariant/state audits after every command seconds=0
+PASS extremes-253.trace through the production app and oracle
+PASS oracle boundaries, rotations, unequal joins, shrinker
+PASS seed=253 commands=99 max_live=128 full invariant/state audits after every command seconds=0.004311
+PASS seasons-253.trace through the production app and oracle
+PASS oracle boundaries, rotations, unequal joins, shrinker
+PASS seed=253 commands=97 max_live=128 full invariant/state audits after every command seconds=0.008135
+PASS unequal-253.trace through the production app and oracle
+PASS oracle boundaries, rotations, unequal joins, shrinker
+PASS seed=253 commands=31 max_live=128 full invariant/state audits after every command seconds=0
+PASS errors-253.trace through the production app and oracle
+PASS oracle boundaries, rotations, unequal joins, shrinker
+PASS seed=253 commands=10000 max_live=128 full invariant/state audits after every command seconds=0.380434
+PASS mixed-253.trace through the production app and oracle
+PASS oracle boundaries, rotations, unequal joins, shrinker
+PASS seed=253 commands=10000 max_live=128 full invariant/state audits after every command seconds=0.395143
+PASS mixed-42.trace through the production app and oracle
+PASS oracle boundaries, rotations, unequal joins, shrinker
+PASS seed=253 commands=10000 max_live=128 full invariant/state audits after every command seconds=0.431884
+PASS mixed-20261115.trace through the production app and oracle
+PASS avl scale 1000000 players, 1000000 revisions, 2000106 outputs (17.51 s including audits and I/O)
+PASS fenwick scale 1000000 players, 1000000 revisions, 2000106 outputs (13.69 s including audits and I/O)
+Benchmark CSV and figures written to build/benchmark

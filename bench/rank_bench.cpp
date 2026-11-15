@@ -1,9 +1,11 @@
 #include <algorithm>
 #include <array>
 #include <chrono>
+#include <cstdint>
 #include <functional>
 #include <iomanip>
 #include <iostream>
+#include <iterator>
 #include <numeric>
 #include <stdexcept>
 #include <unordered_map>
@@ -67,7 +69,8 @@ int main() {
     avl_demo::Node* root = nullptr;
     fenwick_demo::Fenwick fenwick(scores);
     for (int id = 1; id <= 100; ++id) {
-        root = avl.insert(root, {id, scores[id - 1]});
+        using AvlId = decltype(avl_demo::Player{}.id);
+        root = avl.insert(root, {static_cast<AvlId>(id), scores[id - 1]});
         fenwick.insert({id, scores[id - 1]});
     }
 

@@ -1,4 +1,4 @@
-# Validation 
+# Historical standalone validation
 
 Environment: Windows, Python 3.12, MSYS2 UCRT64 GCC 14.2.0.
 Flags: `-std=c++17 -O2 -Wall -Wextra -Wpedantic`.

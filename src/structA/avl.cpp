@@ -152,12 +152,20 @@ void page(const Node* node, Position first, Position last, std::vector<Player>& 
         page(node->right.get(), first > pivot ? first - pivot : 1, last - pivot, result);
 }
 
-Tree build_balanced(const std::vector<Player>& players, std::size_t first, std::size_t end) {
+void collect_nodes(Tree node, std::vector<Tree>& ordered) {
+    if (!node) return;
+    auto right = std::move(node->right);
+    collect_nodes(std::move(node->left), ordered);
+    ordered.push_back(std::move(node));
+    collect_nodes(std::move(right), ordered);
+}
+
+Tree build_balanced(std::vector<Tree>& ordered, std::size_t first, std::size_t end) {
     if (first == end) return {};
     std::size_t middle = first + (end - first) / 2;
-    auto root = std::make_unique<Node>(players[middle]);
-    root->left = build_balanced(players, first, middle);
-    root->right = build_balanced(players, middle + 1, end);
+    auto root = std::move(ordered[middle]);
+    root->left = build_balanced(ordered, first, middle);
+    root->right = build_balanced(ordered, middle + 1, end);
     refresh(*root);
     return root;
 }
@@ -249,14 +257,19 @@ public:
             root = join(std::move(donor->root), std::move(pivot), std::move(root),
                         rotations, join_visits);
         } else {
-            std::vector<Player> left, right, combined;
-            range(1, size(), left);
-            donor->range(1, donor->size(), right);
-            combined.reserve(left.size() + right.size());
-            std::merge(left.begin(), left.end(), right.begin(), right.end(),
-                       std::back_inserter(combined), before);
+            // Reserve before taking ownership of either tree. Reuse the same
+            // nodes in the rebuilt tree, as in the standalone AVL update.
+            std::vector<Tree> left, right, combined;
+            left.reserve(static_cast<std::size_t>(size()));
+            right.reserve(static_cast<std::size_t>(donor->size()));
+            combined.reserve(left.capacity() + right.capacity());
+            collect_nodes(std::move(root), left);
+            collect_nodes(std::move(donor->root), right);
+            std::merge(std::make_move_iterator(left.begin()), std::make_move_iterator(left.end()),
+                       std::make_move_iterator(right.begin()), std::make_move_iterator(right.end()),
+                       std::back_inserter(combined),
+                       [](const Tree& a, const Tree& b) { return before(a->player, b->player); });
             root = build_balanced(combined, 0, combined.size());
-            donor->root.reset();
         }
     }
 };

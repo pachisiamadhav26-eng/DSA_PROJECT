@@ -36,3 +36,17 @@ No manual changes or review by Om are claimed here. Om should record any later
 changes and teammate review after they actually occur, and understand the code
 and proof before the viva. This disclosure covers only this contribution;
 other members should append their own tool usage.
+## Production integration
+
+OpenAI Codex completed the shared replay rules, integrated the existing AVL
+and Fenwick algorithms with the application, migrated oracle and adversary
+tests to the real backends, and built the full sweep benchmark. It drafted
+D1, D2, D5 and D6 and updated D4's test explanation. The named module owners
+and original commits identify team contributions. The integration commits
+use the actual configured Git identity. Human review and viva preparation
+should be recorded by each member after they occur.
+
+MinGW GCC and Python ran production validation and generated trial logs and
+figures. ReportLab rendered derivations, and Poppler rendered the pages for
+visual inspection. Git preserved the branch histories; earlier adversary
+tool-use records are in [adversary/TOOLS.md](adversary/TOOLS.md).

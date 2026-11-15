@@ -1,6 +1,7 @@
 #include "backend_tools.hpp"
 #include <cassert>
 #include <limits>
+#include <stdexcept>
 
 int main() {
     using namespace leaderboard;
@@ -23,4 +24,20 @@ int main() {
     assert(donor->size() == 0 && audit_fenwick(*parts.second).size() == 4);
     assert(parts.second->select(1).id == 5 && parts.second->select(3).id == 7);
     assert(!parts.second->contains({7, 12}) && parts.second->contains({7, 80}));
+
+    // A merge conflict must preserve both boards, including IDs at different scores.
+    for (const std::vector<Score>& scores : {std::vector<Score>{100, 80, -5},
+                                            std::vector<Score>{80, 60}}) {
+        auto left = make_fenwick({100, 80, -5});
+        auto right = make_fenwick(scores);
+        left->insert({42, 80});
+        right->insert({42, scores.front()});
+        bool rejected = false;
+        try { left->merge_from(*right); }
+        catch (const std::invalid_argument&) { rejected = true; }
+        assert(rejected);
+        assert(left->size() == 1 && right->size() == 1);
+        assert(audit_fenwick(*left).front().id == 42);
+        assert(audit_fenwick(*right).front().score == scores.front());
+    }
 }

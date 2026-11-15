@@ -29,8 +29,7 @@ Bucket join_bucket(const Bucket& first, const Bucket& second) {
     return result;
 }
 
-class FenwickBoard final : public Board {
-public:
+struct FenwickBoard final : Board {
     explicit FenwickBoard(Coordinates scores) : scores_(std::move(scores)) {}
 
     Position size() const override { return total_; }
@@ -94,6 +93,7 @@ public:
     void range(Position first, Position last, std::vector<Player>& out) const override {
         if (first == 0 || first > last || last > total_)
             throw std::out_of_range("Fenwick range");
+        out.reserve(static_cast<std::size_t>(last - first + 1));
         out.clear();
         for (Position k = first; ; ++k) {
             out.push_back(select(k));
@@ -120,6 +120,13 @@ public:
     void merge_from(Board& other) override {
         auto* donor = dynamic_cast<FenwickBoard*>(&other);
         if (!donor || donor == this) throw std::invalid_argument("Fenwick merge backend or self");
+        // Validate IDs before transferring buckets, including conflicts at different scores.
+        std::unordered_set<PlayerId> existing;
+        for (const auto& bucket : buckets_)
+            existing.insert(bucket.begin(), bucket.end());
+        for (const auto& bucket : donor->buckets_)
+            for (PlayerId id : bucket)
+                if (existing.count(id)) throw std::invalid_argument("ID_CONFLICT");
         if (scores_ == donor->scores_ || *scores_ == *donor->scores_) {
             merge_same_coordinates(*donor);
         } else {

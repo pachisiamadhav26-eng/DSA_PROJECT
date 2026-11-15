@@ -115,10 +115,24 @@ void generate(const std::string& name, U n, U ops, U seed, Writer& w) {
             else w.line("SIZE",0);
         }
     } else if (name == "scale") {
-        // Stream, rather than retain, one million players and score revisions.
+        // The live scores are always a complete interval of n unique values.
         for (U i=1; i<=n; ++i) w.add(i,S(i));
-        for (U i=0; i<ops; ++i) w.line("SET",0,i%n+1,S(n)+S(i)+1);
-        w.page(0,n);
+        U stride=std::max<U>(1,n/32);
+        for (U i=0; i<ops; ++i) {
+            U player=i%n+1;
+            w.line("SET",0,player,S(n)+S(i)+1);
+            if ((i+1)%stride==0 || i+1==ops) {
+                w.line("RANK",0,player);
+                w.line("SELECT",0,n);
+                w.line("RANGE",0,1,std::min<U>(n,3));
+            }
+        }
+        U high=n/2;
+        w.line("SPLIT",0,S(n)+S(ops)-S(high)+1,1,2);
+        w.line("SIZE",1); w.line("SELECT",1,1);
+        w.line("SIZE",2); w.line("SELECT",2,1);
+        w.line("MERGE",1,2,3);
+        w.page(3,n);
     } else throw std::invalid_argument("unknown case: "+name);
 }
 int main(int argc,char** argv) {

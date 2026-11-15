@@ -1,4 +1,4 @@
-# Validation performed 15 November 2026
+# Validation 
 
 Environment: Windows, Python 3.12, MSYS2 UCRT64 GCC 14.2.0.
 Flags: `-std=c++17 -O2 -Wall -Wextra -Wpedantic`.

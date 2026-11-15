@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="470" viewBox="0 0 760 470">
+<rect width="760" height="470" fill="white"/>
+<g font-family="Arial, sans-serif" fill="#19283a">
+<text x="84" y="35" font-size="23" font-weight="bold">Competition rank latency</text>
+<text x="84" y="61" font-size="13">Five trials per point · bars show min to max · time in ns (log)</text>
+<path d="M84 356.00H696" stroke="#e0e6ed"/>
+<text x="74" y="360.00" font-size="11" text-anchor="end">10</text>
+<path d="M84 267.33H696" stroke="#e0e6ed"/>
+<text x="74" y="271.33" font-size="11" text-anchor="end">100</text>
+<path d="M84 178.67H696" stroke="#e0e6ed"/>
+<text x="74" y="182.67" font-size="11" text-anchor="end">1000</text>
+<path d="M84 90.00H696" stroke="#e0e6ed"/>
+<text x="74" y="94.00" font-size="11" text-anchor="end">10000</text>
+<path d="M84.00 90V356" stroke="#e0e6ed"/>
+<text x="84.00" y="376" font-size="11" text-anchor="middle">1,000</text>
+<path d="M288.00 90V356" stroke="#e0e6ed"/>
+<text x="288.00" y="376" font-size="11" text-anchor="middle">10,000</text>
+<path d="M492.00 90V356" stroke="#e0e6ed"/>
+<text x="492.00" y="376" font-size="11" text-anchor="middle">100,000</text>
+<path d="M696.00 90V356" stroke="#e0e6ed"/>
+<text x="696.00" y="376" font-size="11" text-anchor="middle">1,000,000</text>
+<text x="390" y="402" font-size="13" text-anchor="middle">Live players (log)</text>
+<polyline points="84.00,263.50 288.00,266.50 492.00,224.20 696.00,147.33" fill="none" stroke="#1466a3" stroke-width="2"/>
+<path d="M84.00 291.82V252.86" stroke="#1466a3"/>
+<circle cx="84.00" cy="263.50" r="3" fill="#1466a3"/>
+<path d="M288.00 278.05V259.17" stroke="#1466a3"/>
+<circle cx="288.00" cy="266.50" r="3" fill="#1466a3"/>
+<path d="M492.00 231.04V219.78" stroke="#1466a3"/>
+<circle cx="492.00" cy="224.20" r="3" fill="#1466a3"/>
+<path d="M696.00 169.40V135.19" stroke="#1466a3"/>
+<circle cx="696.00" cy="147.33" r="3" fill="#1466a3"/>
+<path d="M84 438h20" stroke="#1466a3" stroke-width="2"/>
+<text x="111" y="442" font-size="12">AVL, ties 1</text>
+<polyline points="84.00,273.88 288.00,273.05 492.00,230.96 696.00,148.08" fill="none" stroke="#1466a3" stroke-width="2" stroke-dasharray="6 4"/>
+<path d="M84.00 280.66V267.13" stroke="#1466a3"/>
+<circle cx="84.00" cy="273.88" r="3" fill="#1466a3"/>
+<path d="M288.00 279.01V266.07" stroke="#1466a3"/>
+<circle cx="288.00" cy="273.05" r="3" fill="#1466a3"/>
+<path d="M492.00 246.07V217.64" stroke="#1466a3"/>
+<circle cx="492.00" cy="230.96" r="3" fill="#1466a3"/>
+<path d="M696.00 154.12V142.02" stroke="#1466a3"/>
+<circle cx="696.00" cy="148.08" r="3" fill="#1466a3"/>
+<path d="M237 438h20" stroke="#1466a3" stroke-width="2" stroke-dasharray="6 4"/>
+<text x="264" y="442" font-size="12">AVL, ties 16</text>
+<polyline points="84.00,262.65 288.00,271.09 492.00,262.72 696.00,185.92" fill="none" stroke="#b64c2e" stroke-width="2"/>
+<path d="M84.00 272.31V251.48" stroke="#b64c2e"/>
+<circle cx="84.00" cy="262.65" r="3" fill="#b64c2e"/>
+<path d="M288.00 277.01V266.26" stroke="#b64c2e"/>
+<circle cx="288.00" cy="271.09" r="3" fill="#b64c2e"/>
+<path d="M492.00 266.66V257.03" stroke="#b64c2e"/>
+<circle cx="492.00" cy="262.72" r="3" fill="#b64c2e"/>
+<path d="M696.00 195.97V172.30" stroke="#b64c2e"/>
+<circle cx="696.00" cy="185.92" r="3" fill="#b64c2e"/>
+<path d="M390 438h20" stroke="#b64c2e" stroke-width="2"/>
+<text x="417" y="442" font-size="12">Fenwick, ties 1</text>
+<polyline points="84.00,295.36 288.00,280.11 492.00,281.33 696.00,224.86" fill="none" stroke="#b64c2e" stroke-width="2" stroke-dasharray="6 4"/>
+<path d="M84.00 301.83V291.31" stroke="#b64c2e"/>
+<circle cx="84.00" cy="295.36" r="3" fill="#b64c2e"/>
+<path d="M288.00 288.30V262.18" stroke="#b64c2e"/>
+<circle cx="288.00" cy="280.11" r="3" fill="#b64c2e"/>
+<path d="M492.00 281.44V281.17" stroke="#b64c2e"/>
+<circle cx="492.00" cy="281.33" r="3" fill="#b64c2e"/>
+<path d="M696.00 232.74V219.17" stroke="#b64c2e"/>
+<circle cx="696.00" cy="224.86" r="3" fill="#b64c2e"/>
+<path d="M543 438h20" stroke="#b64c2e" stroke-width="2" stroke-dasharray="6 4"/>
+<text x="570" y="442" font-size="12">Fenwick, ties 16</text>
+</g></svg>

@@ -1,5 +1,9 @@
 # Oracle validation record
 
+This file records the initial standalone snapshots. Current production evidence
+and the commands to reproduce it are in [REPORT.md](../REPORT.md) and
+[README.md](README.md).
+
 Date: 12 November 2026. Compiler: MinGW.org GCC 6.3.0, C++17, Windows.
 Build flags: `-std=c++17 -O2 -Wall -Wextra -Wpedantic`.
 Sources tested are the immutable commits listed in `README.md` in this directory.

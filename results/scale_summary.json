@@ -1,0 +1,25 @@
+{
+  "players": 1000000,
+  "revisions": 1000000,
+  "sha256": "61e6798c1c7808aea262ab17fd0c393d5255de9a99dcf793503a51cb349a5163",
+  "command_counts": {
+    "ADD": 1000000,
+    "SET": 1000000,
+    "RANK": 32,
+    "SELECT": 36,
+    "RANGE": 33,
+    "SPLIT": 1,
+    "SIZE": 3,
+    "MERGE": 1
+  },
+  "backends": {
+    "avl": {
+      "output_lines": 2000106,
+      "audit_wall_seconds": 14.230681499990169
+    },
+    "fenwick": {
+      "output_lines": 2000106,
+      "audit_wall_seconds": 15.02391410000564
+    }
+  }
+}

@@ -158,7 +158,6 @@ struct AVL {
 };
 
 unordered_map<int, long long> currentScore;
-
 int main() {
     AVL tree;
     Node* root = nullptr;

@@ -1,6 +1,8 @@
-# Rank benchmark
+# Leaderboard benchmarks
 
 This is the first benchmark for the leaderboard. It checks whether the AVL and Fenwick versions give the right rank on a small board, then times the same rank calls on both. The board is fixed so anyone on the team can reproduce the answers.
+
+`select_split_bench.cpp` adds select and split benchmarks using the same board. The original rank runner can still be run on its own.
 
 ## Test board
 
@@ -65,4 +67,37 @@ g++ -std=c++17 -O2 -Ibuild bench/rank_bench.cpp -o build/rank_bench.exe
 
 # Check the five expected ranks and run the small timing trial.
 .\build\rank_bench.exe
+```
+
+## Select and split
+
+Select takes a one-based position and returns a player. Equal scores are listed by increasing player ID. We check both the returned ID and score against these answers before timing select.
+
+| Position | Expected player ID | Expected score |
+| ---: | ---: | ---: |
+| 1 | 1 | 100 |
+| 12 | 12 | 90 |
+| 20 | 20 | 90 |
+| 56 | 56 | 50 |
+| 100 | 100 | 10 |
+
+The calls are `avl.select(root, position)` and `fenwick.select(position)`. Each timing run repeats the five queries 2,000,000 times. I expect AVL select to follow a path through the player tree, while Fenwick select searches the score counts and then indexes the sorted IDs in that score group.
+
+Split uses a score cutoff of 60. The high division must contain IDs 1–50, including the players scoring exactly 60. The low division must contain IDs 51–100. We check the size, ID order, and score of every player in every split result.
+
+I expect AVL split to follow a search path and join pieces of the tree, with cost growing logarithmically with player count. Fenwick moves the relevant score buckets and rebuilds the count arrays, with cost growing with the number of score coordinates. Both create two divisions with the same players.
+
+Split changes the input board, so each timing run uses 10,000 separate copies of the original board prepared before the timer starts. The timed batch includes the split calls and storing their output boards. Checks and cleanup happen afterwards. Both benchmarks report the mean and minimum and maximum run averages over five runs. A single board size is an initial timing check; measuring growth needs additional sizes.
+
+After preparing the source copies with the commands above, run these commands from the repo root.
+
+```powershell
+# Compile the select and split runner.
+g++ -std=c++17 -O2 -Ibuild bench/select_split_bench.cpp -o build/select_split_bench.exe
+
+# Create the folder for saved results.
+New-Item -ItemType Directory -Force results | Out-Null
+
+# Run the checks and benchmarks and save terminal output and errors.
+.\build\select_split_bench.exe 2>&1 | Tee-Object -FilePath results/select-split-100-smoke.txt
 ```

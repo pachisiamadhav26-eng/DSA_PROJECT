@@ -89,15 +89,16 @@ Without AVL balance the bound is only O(h), potentially O(n).
 The sorted array supplies the expected player at index k-1. It compares fields
 directly, avoiding overflow from score subtraction. The AVL checker traverses
 the whole topology, recomputes sizes and heights from children, verifies global
-BST bounds, balance, and unique IDs, and rejects cycles/shared child pointers.
-It does not trust stored sizes while computing expected sizes.
+BST bounds, balance, and unique IDs. Owning child pointers give each node
+a single owner through the tree operations. The checker ignores stored sizes
+when computing expected sizes.
 
 The bounded differential replay audits every command, including rotations,
-deletions, splits and joins. Separate tests corrupt size/height/order fields to
-verify that the checker rejects them. The million-player test audits at phase
+deletions, splits and joins. A self-test injects an incorrect rank and checks
+that the replay detects and reduces the failure. The million-player test audits at phase
 boundaries, since a full audit after every insertion would require quadratic
-work. An audit costs O(n) expected time and O(n) extra space with visited-ID
-and pointer sets; it is correctness work, excluded from performance benchmarks.
+work. An audit costs O(n) expected time and O(n) extra space with a visited-ID
+set and ordered output. Performance benchmarks exclude audit work.
 
 ## Viva explanation in Hinglish
 

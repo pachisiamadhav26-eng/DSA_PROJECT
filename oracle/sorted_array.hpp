@@ -23,6 +23,10 @@ public:
     }
     const std::vector<Player>& entries() const { return players_; }
     Position size() const override { return players_.size(); }
+    bool contains(Player p) const override {
+        auto at = std::lower_bound(players_.begin(), players_.end(), p, before);
+        return at != players_.end() && equal(*at, p);
+    }
     void insert(Player p) override {
         for (auto q : players_)
             if (p.id == q.id) throw std::invalid_argument("duplicate ID");

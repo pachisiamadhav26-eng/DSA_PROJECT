@@ -10,10 +10,8 @@ try {
         $expected = Get-Content "oracle/tests/$case.expected"
         if (($actual -join "`n") -cne ($expected -join "`n")) { throw "Golden output mismatch: $case" }
         Write-Output "PASS golden $case"
-        if ($case -ne 'wide_ids') {
-            & ./build/oracle/differential.exe --trace "oracle/tests/$case.trace"
-            if ($LASTEXITCODE -ne 0) { throw "Differential failed: $case" }
-        }
+        & ./build/oracle/differential.exe --trace "oracle/tests/$case.trace"
+        if ($LASTEXITCODE -ne 0) { throw "Differential failed: $case" }
     }
     foreach ($seed in @(253, 20261112, 42)) {
         $operations = if ($Quick) { 10000 } elseif ($seed -eq 253) { 1000000 } else { 100000 }

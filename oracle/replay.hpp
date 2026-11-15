@@ -49,8 +49,7 @@ inline Command parse(const std::string& line) {
 }
 
 // Test-only application facade. This is NOT the required handwritten hash table.
-// Error precedence is deterministic; the architect specifies codes, not precedence
-// when one command violates multiple preconditions simultaneously.
+// Match the architect's syntax, source, repetition and destination precedence.
 class Session {
     Factory factory_;
     std::set<std::uint64_t> used_{0};
@@ -90,7 +89,8 @@ public:
         } else if (c.name=="SIZE") return "SIZE "+std::to_string(board.size());
         else if (c.name=="SPLIT") {
             auto high=c.u[1],low=c.u[2];
-            if (high==low || used_.count(high) || used_.count(low)) return "ERR BOARD_EXISTS";
+            if (b==high || b==low || high==low) return "ERR SAME_BOARD";
+            if (used_.count(high) || used_.count(low)) return "ERR BOARD_EXISTS";
             auto pieces=board.split_by_score(c.score);
             if (board.size()!=0) throw std::logic_error("split source not empty");
             boards[high]=std::move(pieces.first); boards[low]=std::move(pieces.second);
@@ -100,7 +100,7 @@ public:
         } else if (c.name=="MERGE") {
             auto right=c.u[1],result=c.u[2];
             if (!boards.count(right)) return "ERR UNKNOWN_BOARD";
-            if (right==b) return "ERR SAME_BOARD";
+            if (right==b || result==b || result==right) return "ERR SAME_BOARD";
             if (used_.count(result)) return "ERR BOARD_EXISTS";
             // Global uniqueness at ADD makes ID_CONFLICT unreachable in a valid session.
             board.merge_from(*boards.at(right));

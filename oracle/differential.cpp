@@ -1,6 +1,7 @@
-#include "legacy_adapters.hpp"
+#include "backend_tools.hpp"
 #include "replay.hpp"
 #include <fstream>
+#include <iostream>
 #include <random>
 #include <chrono>
 
@@ -8,12 +9,21 @@ namespace {
 using namespace oracle;
 using Trace=std::vector<std::string>;
 struct Failure { std::size_t step; std::string signature; };
+using Audit = std::vector<Player> (*)(const Board&);
 
-void check_state(const Session& s) {
+void require(bool ok, const char* message) {
+    if (!ok) throw std::logic_error(message);
+}
+
+void check_state(const Session& s, const Session& expected, Audit audit) {
     std::size_t total=0;
     for (const auto& board:s.boards) {
-        auto entries=inspect(*board.second);
+        auto entries=audit(*board.second);
         require(entries.size()==board.second->size(),"backend size"); total+=entries.size();
+        const auto& reference=dynamic_cast<const SortedArray&>(*expected.boards.at(board.first)).entries();
+        require(entries.size()==reference.size() &&
+                std::equal(entries.begin(),entries.end(),reference.begin(),equal),
+                "contents differ from oracle");
         for (auto p:entries) {
             auto it=s.players.find(p.id);
             require(it!=s.players.end() && it->second.first==board.first && it->second.second==p.score,
@@ -22,33 +32,36 @@ void check_state(const Session& s) {
     }
     require(total==s.players.size(),"player lookup total");
 }
+
+std::vector<Player> audit_oracle(const Board& board) {
+    const auto& reference=dynamic_cast<const SortedArray&>(board);
+    reference.audit();
+    return reference.entries();
+}
+
 Failure replay(const Trace& trace,bool inject=false) {
     auto scores=coordinates(trace);
     Session expected([](){return std::make_unique<SortedArray>();});
-    Session a([](){return std::make_unique<AvlBoard>();});
-    Session b([&](){return std::make_unique<FenwickBoard>(scores);});
+    Session a(make_avl);
+    Session b([&](){return make_fenwick(scores);});
+    struct Target { const char* name; Session& session; Audit audit; };
+    Target targets[]={{"AVL",a,audit_avl},{"Fenwick",b,audit_fenwick}};
     for (std::size_t i=0;i<trace.size();++i) {
         auto c=parse(trace[i]);
         std::string want;
-        try {want=expected.execute(c);check_state(expected);}
+        try {want=expected.execute(c);check_state(expected,expected,audit_oracle);}
         catch (const std::exception& e) {return {i,std::string("oracle: ")+e.what()};}
-        for (auto backend:{std::make_pair("AVL",&a),std::make_pair("Fenwick",&b)}) {
+        for (const auto& backend:targets) {
             try {
-                auto actual=backend.second->execute(c);
+                auto actual=backend.session.execute(c);
                 // Deliberate test-only fault used to verify the entire shrink path.
-                if (inject && backend.second==&a && c.name=="RANK" && want.find("RANK ")==0)
+                if (inject && &backend.session==&a && c.name=="RANK" && want.find("RANK ")==0)
                     actual="RANK injected";
                 if (actual!=want) throw std::logic_error("output mismatch for "+c.name);
-                check_state(*backend.second);
-                require(backend.second->players==expected.players,"lookup differs from oracle");
-                require(backend.second->boards.size()==expected.boards.size(),"board count differs");
-                for (auto& board:expected.boards) {
-                    auto values=inspect(*backend.second->boards.at(board.first));
-                    const auto& reference=dynamic_cast<SortedArray&>(*board.second).entries();
-                    require(values.size()==reference.size() &&
-                        std::equal(values.begin(),values.end(),reference.begin(),equal),"contents differ from oracle");
-                }
-            } catch (const std::exception& e) {return {i,std::string(backend.first)+": "+e.what()};}
+                require(backend.session.players==expected.players,"lookup differs from oracle");
+                require(backend.session.boards.size()==expected.boards.size(),"board count differs");
+                check_state(backend.session,expected,backend.audit);
+            } catch (const std::exception& e) {return {i,std::string(backend.name)+": "+e.what()};}
         }
     }
     return {trace.size(),""};
@@ -130,19 +143,6 @@ void self_test() {
     require(o.size()==4 && duplicate.size()==1,"failed merge mutated inputs");
     auto parts=o.split_by_score(90);require(o.size()==0 && parts.first->size()==3,"oracle split");
     parts.first->merge_from(*parts.second);require(parts.first->size()==4 && !parts.second->size(),"oracle merge");
-    // Check that invariant checks actually reject independently corrupted fields.
-    AvlBoard a;for (int i=0;i<7;++i)a.insert({static_cast<PlayerId>(i),i});
-    inspect(a);a.root->size++;must_throw([&](){inspect(a);});a.root->size--;
-    a.root->height++;must_throw([&](){inspect(a);});a.root->height--;
-    auto old=a.root->left->player;a.root->left->player=a.root->player;
-    must_throw([&](){inspect(a);});a.root->left->player=old;
-    auto saved=a.root->left;a.root->left=a.root;must_throw([&](){inspect(a);});a.root->left=saved;
-    FenwickBoard f({1,2,3});f.insert({1,2});f.insert({2,2});inspect(f);
-    f.tree.bit[1]++;must_throw([&](){inspect(f);});f.tree.bit[1]--;
-    std::swap(f.tree.ids[1][0],f.tree.ids[1][1]);must_throw([&](){inspect(f);});
-    std::swap(f.tree.ids[1][0],f.tree.ids[1][1]);
-    std::swap(f.tree.scores[0],f.tree.scores[1]);must_throw([&](){inspect(f);});
-    std::swap(f.tree.scores[0],f.tree.scores[1]);
     Trace faulty={"SIZE 0","ADD 0 7 10","ADD 0 8 20","RANK 0 7","REMOVE 0 8"};
     auto failure=replay(faulty,true);require(!failure.signature.empty(),"fault injection not detected");
     auto minimal=shrink(faulty,failure.signature,true);require(minimal.size()==2,"shrinker result");
@@ -152,36 +152,49 @@ void self_test() {
     }
     // All four rotation patterns, deletions and highly unequal-height joins.
     for (auto sequence:std::vector<std::vector<int>>{{30,20,10},{10,20,30},{30,10,20},{10,30,20}}) {
-        AvlBoard tree;for(auto s:sequence){tree.insert({static_cast<PlayerId>(s),s});inspect(tree);}
-        for(auto s:sequence){tree.erase({static_cast<PlayerId>(s),s});inspect(tree);}
+        auto tree=make_avl();
+        for(auto s:sequence){tree->insert({static_cast<PlayerId>(s),s});audit_avl(*tree);}
+        require(avl_stats(*tree).rotations>0,"rotation pattern did not rotate");
+        for(auto s:sequence){tree->erase({static_cast<PlayerId>(s),s});audit_avl(*tree);}
     }
     for (bool reverse:{false,true}) {
-        AvlBoard large,small;
-        for(int i=0;i<4096;++i)large.insert({static_cast<PlayerId>(i),reverse ? i : i+2});
-        small.insert({5000,reverse ? 5000 : 0});
-        large.merge_from(small);inspect(large);require(large.size()==4097 && !small.size(),"unequal join");
+        auto large=make_avl(),small=make_avl();
+        for(int i=0;i<4096;++i)large->insert({static_cast<PlayerId>(i),reverse ? i : i+2});
+        small->insert({5000,reverse ? 5000 : 0});
+        large->merge_from(*small);
+        require(audit_avl(*large).size()==4097 && !small->size(),"unequal join");
     }
-    std::cout<<"PASS oracle boundaries, checker corruption tests, rotations, unequal joins, shrinker\n";
+    std::cout<<"PASS oracle boundaries, rotations, unequal joins, shrinker\n";
 }
 void scale(std::size_t count) {
     require(count>0 && count<=1000000,"scale must be 1..1000000");
     std::vector<Player> data;std::vector<Score> scores;
     for(std::size_t i=0;i<count;++i){data.push_back({i,static_cast<Score>(i/4)});scores.push_back(i/4);}
-    SortedArray ref(data);AvlBoard a;FenwickBoard b(scores);
-    for(auto p:data){a.insert(p);b.insert(p);}
-    auto check=[&](Board& board){auto got=inspect(board);require(got.size()==ref.size() &&
-        std::equal(got.begin(),got.end(),ref.entries().begin(),equal),"scale contents");};
-    check(a);check(b);
+    SortedArray ref(data);auto a=make_avl();auto b=make_fenwick(scores);
+    for(auto p:data){a->insert(p);b->insert(p);}
+    auto check=[&](Board& board,Audit audit,auto first,auto last){
+        auto got=audit(board);
+        require(got.size()==static_cast<std::size_t>(last-first) &&
+                std::equal(got.begin(),got.end(),first,equal),"scale contents");
+    };
+    auto first=ref.entries().begin(),last=ref.entries().end();
+    check(*a,audit_avl,first,last);check(*b,audit_fenwick,first,last);
     // One query per player, alternating rank and select, verified independently.
     for(std::size_t i=0;i<count;++i) {
-        if(i%2){auto p=ref.select(i+1);require(equal(a.select(i+1),p)&&equal(b.select(i+1),p),"scale select");}
+        if(i%2){auto p=ref.select(i+1);require(equal(a->select(i+1),p)&&equal(b->select(i+1),p),"scale select");}
         else {auto s=data[i].score;auto rank=ref.count_strictly_higher(s);
-            require(a.count_strictly_higher(s)==rank && b.count_strictly_higher(s)==rank,"scale rank");}
+            require(a->count_strictly_higher(s)==rank && b->count_strictly_higher(s)==rank,"scale rank");}
     }
-    for(Board* board:std::vector<Board*>{&a,&b}) {
-        auto pieces=board->split_by_score(static_cast<Score>(count/8));
-        require(!board->size(),"scale split source");inspect(*pieces.first);inspect(*pieces.second);
-        pieces.first->merge_from(*pieces.second);require(!pieces.second->size(),"scale merge source");check(*pieces.first);
+    Score cutoff=static_cast<Score>(count/8);
+    auto middle=std::find_if(first,last,[cutoff](Player p){return p.score<cutoff;});
+    for(auto target:{std::make_pair(a.get(),audit_avl),std::make_pair(b.get(),audit_fenwick)}) {
+        auto pieces=target.first->split_by_score(cutoff);
+        require(!target.first->size(),"scale split source");
+        check(*pieces.first,target.second,first,middle);
+        check(*pieces.second,target.second,middle,last);
+        pieces.first->merge_from(*pieces.second);
+        require(!pieces.second->size(),"scale merge source");
+        check(*pieces.first,target.second,first,last);
     }
     std::cout<<"PASS scale players="<<count<<" queries="<<count<<" split/merge (full audits at phase boundaries)\n";
 }

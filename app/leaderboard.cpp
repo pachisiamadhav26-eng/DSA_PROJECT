@@ -1,4 +1,5 @@
 #include "replay.hpp"
+#include "backend_tools.hpp"
 
 #include <exception>
 #include <fstream>
@@ -7,21 +8,26 @@
 #include <vector>
 
 int main(int argc, char** argv) {
-    if (argc != 3) {
-        std::cerr << "usage: leaderboard <avl|fenwick> <trace-file>\n";
+    std::ios::sync_with_stdio(false);
+    bool check = argc == 4 && std::string(argv[3]) == "--audit";
+    if (argc != 3 && !check) {
+        std::cerr << "usage: leaderboard <avl|fenwick> <trace-file> [--audit]\n";
         return 2;
     }
 
     std::string backend = argv[1];
     leaderboard::BoardFactory factory;
+    leaderboard::BoardAudit audit = nullptr;
     if (backend == "avl") {
         factory = [](const std::vector<leaderboard::Score>&) {
             return leaderboard::make_avl();
         };
+        if (check) audit = leaderboard::audit_avl;
     } else if (backend == "fenwick") {
         factory = [](const std::vector<leaderboard::Score>& scores) {
             return leaderboard::make_fenwick(scores);
         };
+        if (check) audit = leaderboard::audit_fenwick;
     } else {
         std::cerr << "backend must be avl or fenwick\n";
         return 2;
@@ -34,7 +40,7 @@ int main(int argc, char** argv) {
     }
 
     try {
-        leaderboard::run_replay(input, std::cout, factory);
+        leaderboard::run_replay(input, std::cout, factory, audit);
     } catch (const std::exception& error) {
         std::cerr << error.what() << '\n';
         return 1;

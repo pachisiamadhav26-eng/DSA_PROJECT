@@ -9,6 +9,7 @@
 #include <sstream>
 #include <stdexcept>
 #include <string>
+#include <unordered_set>
 #include <utility>
 #include <vector>
 
@@ -143,6 +144,23 @@ public:
         std::unique_ptr<Board> board = std::move(entry->board);
         entries_.erase(entry);
         return board;
+    }
+
+    void verify(const PlayerTable& players, BoardAudit audit) const {
+        std::unordered_set<PlayerId> seen;
+        seen.reserve(players.size());
+        for (const auto& entry : entries_) {
+            auto contents = audit(*entry.board);
+            if (contents.size() != entry.board->size())
+                throw std::logic_error("board size differs from inspected contents");
+            for (Player p : contents) {
+                Score score = 0;
+                if (!seen.insert(p.id).second || !players.get(p.id, score) || score != p.score)
+                    throw std::logic_error("board contents differ from player table");
+            }
+        }
+        if (seen.size() != players.size())
+            throw std::logic_error("player table contains an unlisted player");
     }
 
 private:
@@ -290,7 +308,7 @@ void run_command(const Command& command, Boards& boards, PlayerTable& players,
 }
 
 void run_replay(std::istream& input, std::ostream& output,
-                const BoardFactory& factory) {
+                const BoardFactory& factory, BoardAudit audit) {
     std::vector<Command> commands;
     std::vector<Score> possible_scores;
     std::size_t additions = 0;
@@ -313,8 +331,13 @@ void run_replay(std::istream& input, std::ostream& output,
     Boards boards(std::move(initial));
     PlayerTable players;
     players.reserve(additions);
-    for (const Command& command : commands)
+    for (const Command& command : commands) {
         run_command(command, boards, players, output);
+        if (audit && (command.operation == Operation::Split ||
+                      command.operation == Operation::Merge))
+            boards.verify(players, audit);
+    }
+    if (audit) boards.verify(players, audit);
 }
 
 }

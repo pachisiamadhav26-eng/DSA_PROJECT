@@ -1,5 +1,10 @@
 ## Rank Queries on a Live Leaderboard
 
+Oracle contribution (Om): see [`oracle/README.md`](oracle/README.md) for the
+sorted-array reference, differential tests, invariant checkers, failure shrinker,
+and D4 proof. Run `./oracle/run_tests.ps1` in PowerShell to build and execute the
+oracle test suite against pinned teammate implementations.
+
 CS 253 / MA 253 Data Structures and Algorithms Laboratory project.
 
 We compare two ways to maintain a leaderboard as players' scores change. The main measurements are **rank and select latency as the player count grows**, and **the time to split and rejoin a league**. Both structures must return the same ranks, players and divisions for the same sequence of operations.

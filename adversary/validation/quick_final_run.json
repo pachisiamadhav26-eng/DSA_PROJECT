@@ -1,0 +1,675 @@
+{
+  "dependencies": [
+    {
+      "branch": "prince-chavda",
+      "commit": "2db28739e291a07bf65c68b44db6a86fbd187b91",
+      "path": "avl.cpp",
+      "sha256": "c776b34324024daacd29e0b9890ab2670a37ebf94772aed49d057d20048b2ede"
+    },
+    {
+      "branch": "Saksham",
+      "commit": "de0ab032ce8599d1ef7c9be048377c23cd571327",
+      "path": "Fenvick.cpp",
+      "sha256": "9c7aa4795af7e8c5390e59eb58917ffdb5418fd4d4b381cb9fad7d407e8cc803"
+    },
+    {
+      "branch": "om-oracle",
+      "commit": "fc2a10c93514b18d1cb87adfbcc0c71205afec1a",
+      "path": "oracle/differential.cpp",
+      "sha256": "e6ef2db087cc9bbb3abd44c13148109f0c49ba374f11daae9cea3b808e399268"
+    },
+    {
+      "branch": "om-oracle",
+      "commit": "fc2a10c93514b18d1cb87adfbcc0c71205afec1a",
+      "path": "oracle/legacy_adapters.hpp",
+      "sha256": "73fd7c6b56b31a9b1668d19abe813897543d1c1eeec2dd6d2fb610f8d2783297"
+    },
+    {
+      "branch": "om-oracle",
+      "commit": "fc2a10c93514b18d1cb87adfbcc0c71205afec1a",
+      "path": "oracle/replay.hpp",
+      "sha256": "e5f1af5c9bb743ee29c7fa8d2ea0497e3df267eed5d713d720f1e66d40e821ca"
+    },
+    {
+      "branch": "om-oracle",
+      "commit": "fc2a10c93514b18d1cb87adfbcc0c71205afec1a",
+      "path": "oracle/sorted_array.hpp",
+      "sha256": "1be7cc3fa5873c317c849be79b2b4a776b65f80d3aec6faadb6a2e7abddbfc1c"
+    },
+    {
+      "branch": "om-oracle",
+      "commit": "fc2a10c93514b18d1cb87adfbcc0c71205afec1a",
+      "path": "oracle/main.cpp",
+      "sha256": "b86aa3517a5532b3b6bf6f00dcde359ea0a5fbc161ac8c88bb871b032d232cda"
+    },
+    {
+      "branch": "om-oracle",
+      "commit": "fc2a10c93514b18d1cb87adfbcc0c71205afec1a",
+      "path": "include/leaderboard.hpp",
+      "sha256": "5c5fd027cd19b3616c88f1651ef3b190a0871111a17568bf62a6e3b7e09d34de"
+    }
+  ],
+  "commands": [
+    {
+      "command": [
+        "C:\\msys64\\ucrt64\\bin\\g++.exe",
+        "-std=c++17",
+        "-O2",
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "C:\\Live_query_ranking\\package\\adversary\\generator.cpp",
+        "-o",
+        "C:\\Live_query_ranking\\package\\build\\adversary\\generator.exe"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "command": [
+        "C:\\msys64\\ucrt64\\bin\\g++.exe",
+        "-std=c++17",
+        "-O2",
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "C:\\Live_query_ranking\\package\\build\\adversary\\deps\\oracle\\main.cpp",
+        "-o",
+        "C:\\Live_query_ranking\\package\\build\\adversary\\oracle.exe"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "command": [
+        "C:\\msys64\\ucrt64\\bin\\g++.exe",
+        "-std=c++17",
+        "-O2",
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "-IC:\\Live_query_ranking\\package\\build\\adversary\\deps",
+        "C:\\Live_query_ranking\\package\\build\\adversary\\deps\\oracle\\differential.cpp",
+        "-o",
+        "C:\\Live_query_ranking\\package\\build\\adversary\\differential.exe"
+      ],
+      "exit_code": 0,
+      "stderr": "C:\\Live_query_ranking\\package\\build\\adversary\\deps\\oracle\\differential.cpp: In function '{anonymous}::Failure {anonymous}::replay(const Trace&, bool)':\nC:\\Live_query_ranking\\package\\build\\adversary\\deps\\oracle\\differential.cpp:35:81: warning: possibly dangling reference to a temporary [-Wdangling-reference]\n   35 |         for (auto backend:{std::make_pair(\"AVL\",&a),std::make_pair(\"Fenwick\",&b)}) {\n      |                                                                                 ^\nC:\\Live_query_ranking\\package\\build\\adversary\\deps\\oracle\\differential.cpp:35:42: note: the temporary was destroyed at the end of the full expression 'std::make_pair<const char (&)[4], oracle::Session*>(\"AVL\", (& a))'\n   35 |         for (auto backend:{std::make_pair(\"AVL\",&a),std::make_pair(\"Fenwick\",&b)}) {\n      |                            ~~~~~~~~~~~~~~^~~~~~~~~~\nC:\\Live_query_ranking\\package\\build\\adversary\\deps\\oracle\\differential.cpp:35:81: warning: possibly dangling reference to a temporary [-Wdangling-reference]\n   35 |         for (auto backend:{std::make_pair(\"AVL\",&a),std::make_pair(\"Fenwick\",&b)}) {\n      |                                                                                 ^\nC:\\Live_query_ranking\\package\\build\\adversary\\deps\\oracle\\differential.cpp:35:67: note: the temporary was destroyed at the end of the full expression 'std::make_pair<const char (&)[8], oracle::Session*>(\"Fenwick\", (& b))'\n   35 |         for (auto backend:{std::make_pair(\"AVL\",&a),std::make_pair(\"Fenwick\",&b)}) {\n      |                                                     ~~~~~~~~~~~~~~^~~~~~~~~~~~~~\n",
+      "stdout": ""
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\package\\build\\adversary\\oracle.exe",
+        "C:\\Live_query_ranking\\package\\adversary\\tests\\ties.trace"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": "OK\nOK\nOK\nOK\nRANK 2\nPLAYER 8 90\nPLAYERS 2 3 90 8 90\nOK\nRANK 1\nOK\nSIZE 2\nSIZE 2\nOK\nPLAYER 8 110\n"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\package\\build\\adversary\\differential.exe",
+        "--trace",
+        "C:\\Live_query_ranking\\package\\adversary\\tests\\ties.trace"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": "PASS oracle boundaries, checker corruption tests, rotations, unequal joins, shrinker\nPASS seed=253 commands=14 max_live=128 full invariant/state audits after every command seconds=0.000541\n"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\package\\build\\adversary\\generator.exe",
+        "--case",
+        "rotations",
+        "--players",
+        "64",
+        "--ops",
+        "1000",
+        "--seed",
+        "253"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "output_lines": 60,
+      "output_sha256": "ab7f42c09a0ad4d7a93b337b6312861ad4f3204957fc707865cace6c89a9cda7"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\package\\build\\adversary\\generator.exe",
+        "--case",
+        "rotations",
+        "--players",
+        "64",
+        "--ops",
+        "1000",
+        "--seed",
+        "253"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "output_lines": 60,
+      "output_sha256": "ab7f42c09a0ad4d7a93b337b6312861ad4f3204957fc707865cace6c89a9cda7"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\package\\build\\adversary\\differential.exe",
+        "--trace",
+        "C:\\Live_query_ranking\\package\\build\\adversary\\traces\\rotations-253.trace"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": "PASS oracle boundaries, checker corruption tests, rotations, unequal joins, shrinker\nPASS seed=253 commands=60 max_live=128 full invariant/state audits after every command seconds=0.0027846\n"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\package\\build\\adversary\\generator.exe",
+        "--case",
+        "ascending",
+        "--players",
+        "64",
+        "--ops",
+        "1000",
+        "--seed",
+        "253"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "output_lines": 87,
+      "output_sha256": "7cecc3883102276c693be3cad9d23397d3b76cc1816cfbb031e1a7aab62c1965"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\package\\build\\adversary\\generator.exe",
+        "--case",
+        "ascending",
+        "--players",
+        "64",
+        "--ops",
+        "1000",
+        "--seed",
+        "253"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "output_lines": 87,
+      "output_sha256": "7cecc3883102276c693be3cad9d23397d3b76cc1816cfbb031e1a7aab62c1965"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\package\\build\\adversary\\differential.exe",
+        "--trace",
+        "C:\\Live_query_ranking\\package\\build\\adversary\\traces\\ascending-253.trace"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": "PASS oracle boundaries, checker corruption tests, rotations, unequal joins, shrinker\nPASS seed=253 commands=87 max_live=128 full invariant/state audits after every command seconds=0.0036641\n"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\package\\build\\adversary\\generator.exe",
+        "--case",
+        "descending",
+        "--players",
+        "64",
+        "--ops",
+        "1000",
+        "--seed",
+        "253"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "output_lines": 87,
+      "output_sha256": "859d1f58dc22b7d4a3223706ce1cb0188ffc2f225ca3242f2110afe83a609e19"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\package\\build\\adversary\\generator.exe",
+        "--case",
+        "descending",
+        "--players",
+        "64",
+        "--ops",
+        "1000",
+        "--seed",
+        "253"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "output_lines": 87,
+      "output_sha256": "859d1f58dc22b7d4a3223706ce1cb0188ffc2f225ca3242f2110afe83a609e19"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\package\\build\\adversary\\differential.exe",
+        "--trace",
+        "C:\\Live_query_ranking\\package\\build\\adversary\\traces\\descending-253.trace"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": "PASS oracle boundaries, checker corruption tests, rotations, unequal joins, shrinker\nPASS seed=253 commands=87 max_live=128 full invariant/state audits after every command seconds=0.004343\n"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\package\\build\\adversary\\generator.exe",
+        "--case",
+        "ties",
+        "--players",
+        "64",
+        "--ops",
+        "1000",
+        "--seed",
+        "253"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "output_lines": 87,
+      "output_sha256": "ca01215b78403e4e1a1f6465c70a9fcec0d5cc59cbec24796beb7213f42971a5"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\package\\build\\adversary\\generator.exe",
+        "--case",
+        "ties",
+        "--players",
+        "64",
+        "--ops",
+        "1000",
+        "--seed",
+        "253"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "output_lines": 87,
+      "output_sha256": "ca01215b78403e4e1a1f6465c70a9fcec0d5cc59cbec24796beb7213f42971a5"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\package\\build\\adversary\\differential.exe",
+        "--trace",
+        "C:\\Live_query_ranking\\package\\build\\adversary\\traces\\ties-253.trace"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": "PASS oracle boundaries, checker corruption tests, rotations, unequal joins, shrinker\nPASS seed=253 commands=87 max_live=128 full invariant/state audits after every command seconds=0.0046531\n"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\package\\build\\adversary\\generator.exe",
+        "--case",
+        "churn",
+        "--players",
+        "64",
+        "--ops",
+        "1000",
+        "--seed",
+        "253"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "output_lines": 449,
+      "output_sha256": "6ea5f9f149f93f3cba3f5583eac56f3ebf6e2af4d66e26c65936bd02ca8de52d"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\package\\build\\adversary\\generator.exe",
+        "--case",
+        "churn",
+        "--players",
+        "64",
+        "--ops",
+        "1000",
+        "--seed",
+        "253"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "output_lines": 449,
+      "output_sha256": "6ea5f9f149f93f3cba3f5583eac56f3ebf6e2af4d66e26c65936bd02ca8de52d"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\package\\build\\adversary\\differential.exe",
+        "--trace",
+        "C:\\Live_query_ranking\\package\\build\\adversary\\traces\\churn-253.trace"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": "PASS oracle boundaries, checker corruption tests, rotations, unequal joins, shrinker\nPASS seed=253 commands=449 max_live=128 full invariant/state audits after every command seconds=0.0151861\n"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\package\\build\\adversary\\generator.exe",
+        "--case",
+        "extremes",
+        "--players",
+        "64",
+        "--ops",
+        "1000",
+        "--seed",
+        "253"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "output_lines": 22,
+      "output_sha256": "1767ef2a057efaf9b253f2893532427782a1b2f32d752c2d085fd86b988286f6"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\package\\build\\adversary\\generator.exe",
+        "--case",
+        "extremes",
+        "--players",
+        "64",
+        "--ops",
+        "1000",
+        "--seed",
+        "253"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "output_lines": 22,
+      "output_sha256": "1767ef2a057efaf9b253f2893532427782a1b2f32d752c2d085fd86b988286f6"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\package\\build\\adversary\\differential.exe",
+        "--trace",
+        "C:\\Live_query_ranking\\package\\build\\adversary\\traces\\extremes-253.trace"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": "PASS oracle boundaries, checker corruption tests, rotations, unequal joins, shrinker\nPASS seed=253 commands=22 max_live=128 full invariant/state audits after every command seconds=0.0016046\n"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\package\\build\\adversary\\generator.exe",
+        "--case",
+        "seasons",
+        "--players",
+        "64",
+        "--ops",
+        "1000",
+        "--seed",
+        "253"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "output_lines": 99,
+      "output_sha256": "b0a2040deafb3c1bd21853122ebad8ea25177f7d65a6daab053fd88928aa2fa0"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\package\\build\\adversary\\generator.exe",
+        "--case",
+        "seasons",
+        "--players",
+        "64",
+        "--ops",
+        "1000",
+        "--seed",
+        "253"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "output_lines": 99,
+      "output_sha256": "b0a2040deafb3c1bd21853122ebad8ea25177f7d65a6daab053fd88928aa2fa0"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\package\\build\\adversary\\differential.exe",
+        "--trace",
+        "C:\\Live_query_ranking\\package\\build\\adversary\\traces\\seasons-253.trace"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": "PASS oracle boundaries, checker corruption tests, rotations, unequal joins, shrinker\nPASS seed=253 commands=99 max_live=128 full invariant/state audits after every command seconds=0.0049086\n"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\package\\build\\adversary\\generator.exe",
+        "--case",
+        "unequal",
+        "--players",
+        "64",
+        "--ops",
+        "1000",
+        "--seed",
+        "253"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "output_lines": 97,
+      "output_sha256": "920ca00e215168908153c70196febf6e67979903613123b8f78f9cbf0fa3b33b"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\package\\build\\adversary\\generator.exe",
+        "--case",
+        "unequal",
+        "--players",
+        "64",
+        "--ops",
+        "1000",
+        "--seed",
+        "253"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "output_lines": 97,
+      "output_sha256": "920ca00e215168908153c70196febf6e67979903613123b8f78f9cbf0fa3b33b"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\package\\build\\adversary\\differential.exe",
+        "--trace",
+        "C:\\Live_query_ranking\\package\\build\\adversary\\traces\\unequal-253.trace"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": "PASS oracle boundaries, checker corruption tests, rotations, unequal joins, shrinker\nPASS seed=253 commands=97 max_live=128 full invariant/state audits after every command seconds=0.0120096\n"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\package\\build\\adversary\\generator.exe",
+        "--case",
+        "errors",
+        "--players",
+        "64",
+        "--ops",
+        "1000",
+        "--seed",
+        "253"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "output_lines": 31,
+      "output_sha256": "e69337ad7fb72f5b1f644a081b84a7c9ba2dff4926081c9c0a32e204820a27d0"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\package\\build\\adversary\\generator.exe",
+        "--case",
+        "errors",
+        "--players",
+        "64",
+        "--ops",
+        "1000",
+        "--seed",
+        "253"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "output_lines": 31,
+      "output_sha256": "e69337ad7fb72f5b1f644a081b84a7c9ba2dff4926081c9c0a32e204820a27d0"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\package\\build\\adversary\\differential.exe",
+        "--trace",
+        "C:\\Live_query_ranking\\package\\build\\adversary\\traces\\errors-253.trace"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": "PASS oracle boundaries, checker corruption tests, rotations, unequal joins, shrinker\nPASS seed=253 commands=31 max_live=128 full invariant/state audits after every command seconds=0.0031732\n"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\package\\build\\adversary\\generator.exe",
+        "--case",
+        "mixed",
+        "--players",
+        "64",
+        "--ops",
+        "1000",
+        "--seed",
+        "253"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "output_lines": 1000,
+      "output_sha256": "eefd7621c2e6e073c5238411c8ab5ab6c9a1d1a8a813f31667a50dfbf46ffa7f"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\package\\build\\adversary\\generator.exe",
+        "--case",
+        "mixed",
+        "--players",
+        "64",
+        "--ops",
+        "1000",
+        "--seed",
+        "253"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "output_lines": 1000,
+      "output_sha256": "eefd7621c2e6e073c5238411c8ab5ab6c9a1d1a8a813f31667a50dfbf46ffa7f"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\package\\build\\adversary\\differential.exe",
+        "--trace",
+        "C:\\Live_query_ranking\\package\\build\\adversary\\traces\\mixed-253.trace"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": "PASS oracle boundaries, checker corruption tests, rotations, unequal joins, shrinker\nPASS seed=253 commands=1000 max_live=128 full invariant/state audits after every command seconds=0.0561386\n"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\package\\build\\adversary\\generator.exe",
+        "--case",
+        "mixed",
+        "--players",
+        "64",
+        "--ops",
+        "1000",
+        "--seed",
+        "42"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "output_lines": 1000,
+      "output_sha256": "589cc933ce4d5cd8eae1ae3eec21dfffe910a61a78de19c7d18c2a88eafb61b4"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\package\\build\\adversary\\generator.exe",
+        "--case",
+        "mixed",
+        "--players",
+        "64",
+        "--ops",
+        "1000",
+        "--seed",
+        "42"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "output_lines": 1000,
+      "output_sha256": "589cc933ce4d5cd8eae1ae3eec21dfffe910a61a78de19c7d18c2a88eafb61b4"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\package\\build\\adversary\\differential.exe",
+        "--trace",
+        "C:\\Live_query_ranking\\package\\build\\adversary\\traces\\mixed-42.trace"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": "PASS oracle boundaries, checker corruption tests, rotations, unequal joins, shrinker\nPASS seed=253 commands=1000 max_live=128 full invariant/state audits after every command seconds=0.0622432\n"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\package\\build\\adversary\\generator.exe",
+        "--case",
+        "mixed",
+        "--players",
+        "64",
+        "--ops",
+        "1000",
+        "--seed",
+        "20261115"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "output_lines": 1000,
+      "output_sha256": "b2dfa1caa498aeb77df7417cf6744de8c0062ce49ae9f0b4ca3e2e6e6fba363e"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\package\\build\\adversary\\generator.exe",
+        "--case",
+        "mixed",
+        "--players",
+        "64",
+        "--ops",
+        "1000",
+        "--seed",
+        "20261115"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "output_lines": 1000,
+      "output_sha256": "b2dfa1caa498aeb77df7417cf6744de8c0062ce49ae9f0b4ca3e2e6e6fba363e"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\package\\build\\adversary\\differential.exe",
+        "--trace",
+        "C:\\Live_query_ranking\\package\\build\\adversary\\traces\\mixed-20261115.trace"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": "PASS oracle boundaries, checker corruption tests, rotations, unequal joins, shrinker\nPASS seed=253 commands=1000 max_live=128 full invariant/state audits after every command seconds=0.0592138\n"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\package\\build\\adversary\\oracle.exe",
+        "C:\\Live_query_ranking\\package\\adversary\\tests\\wide.trace"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": "OK\nOK\nPLAYER 0 9223372036854775807\nPLAYER 18446744073709551615 -9223372036854775808\nRANK 2\n"
+    },
+    {
+      "test": "intentional fault injection",
+      "exit_code": 1,
+      "stdout": "PASS oracle boundaries, checker corruption tests, rotations, unequal joins, shrinker\n",
+      "stderr": "FAIL seed=253 step=5 AVL: output mismatch for RANK\nSaved full failing prefix and 1-minimal trace (2 commands)\n"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\package\\build\\adversary\\differential.exe",
+        "--scale",
+        "10000"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": "PASS oracle boundaries, checker corruption tests, rotations, unequal joins, shrinker\nPASS scale players=10000 queries=10000 split/merge (full audits at phase boundaries)\n"
+    }
+  ]
+}

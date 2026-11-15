@@ -1,0 +1,20 @@
+{
+  "compiler14_vs_compiler6_seed253_trace_equal": true,
+  "trace_sha256": "5b28e7273a9114dbb1d3c5b95187585edf8c12f03c42921999614ee29fd2eaa9",
+  "million_scale": {
+    "bytes": 42666740,
+    "lines": 2000004,
+    "ADD": 1000000,
+    "SET": 1000000,
+    "sha256": "02489a435610234da0dabb095f54625bcbba2e93eabd8bd37981b5b25404fae5",
+    "executed_against_oracle": false
+  },
+  "small_scale_replay": {
+    "players": 2000,
+    "revisions": 2000,
+    "exit_code": 0,
+    "stdout": "PASS oracle boundaries, checker corruption tests, rotations, unequal joins, shrinker\nPASS seed=253 commands=4004 max_live=128 full invariant/state audits after every command seconds=3.80214\n"
+  },
+  "existing_app_tests": "player_table_test and replay_test compiled and exited 0 with assertions enabled",
+  "benchmark": "five fixed expected ranks passed in both structures"
+}

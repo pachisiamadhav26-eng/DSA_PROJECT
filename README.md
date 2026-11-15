@@ -1,4 +1,9 @@
-# Rank Queries on a Live Leaderboard
+## Rank Queries on a Live Leaderboard
+
+Oracle contribution (Om): see [`oracle/README.md`](oracle/README.md) for the
+sorted-array reference, differential tests, invariant checkers, failure shrinker,
+and D4 proof. Run `./oracle/run_tests.ps1` in PowerShell to build and execute the
+oracle test suite against pinned teammate implementations.
 
 CS 253 / MA 253 Data Structures and Algorithms Laboratory project.
 

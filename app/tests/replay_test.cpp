@@ -156,4 +156,17 @@ int main() {
            "OK\n"
            "RANK 1\n"
            "ERR BAD_COMMAND\n");
+
+    std::istringstream seasons(
+        "SPLIT 0 0 1 2\n"
+        "MERGE 1 99 1\n"
+        "MERGE 1 2 1\n"
+        "MERGE 1 2 3\n"
+        "SPLIT 3 0 0 4\n"
+        "\n"
+        "SIZE 3\n");
+    std::ostringstream season_output;
+    leaderboard::run_replay(seasons, season_output, factory());
+    assert(season_output.str() == "OK\nERR UNKNOWN_BOARD\nERR SAME_BOARD\n"
+                                  "OK\nERR BOARD_EXISTS\nERR BAD_COMMAND\nSIZE 0\n");
 }

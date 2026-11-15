@@ -112,6 +112,8 @@ The replay is UTF-8 text with one whitespace-separated command per line. Board `
 | `SPLIT board threshold high_board low_board` | Create high and low divisions. |
 | `MERGE left_board right_board result_board` | Combine two leagues with distinct IDs. |
 
-Every input command produces exactly one output line. Successful mutations print `OK`. Queries print `RANK value`, `PLAYER id score`, `PLAYERS count id score ...`, or `SIZE value`. Invalid input prints `ERR code` and leaves the state unchanged. Error codes are `UNKNOWN_BOARD`, `BOARD_EXISTS`, `DUPLICATE_ID`, `UNKNOWN_PLAYER`, `WRONG_BOARD`, `BAD_POSITION`, `BAD_RANGE`, `SAME_BOARD`, and `ID_CONFLICT`. Parsing errors print `ERR BAD_COMMAND`.
+Every input line produces exactly one output line. Empty and whitespace-only lines are parsing errors. Successful mutations print `OK`. Queries print `RANK value`, `PLAYER id score`, `PLAYERS count id score ...`, or `SIZE value`. Invalid input prints `ERR code` and leaves the state unchanged. Error codes are `UNKNOWN_BOARD`, `BOARD_EXISTS`, `DUPLICATE_ID`, `UNKNOWN_PLAYER`, `WRONG_BOARD`, `BAD_POSITION`, `BAD_RANGE`, `SAME_BOARD`, and `ID_CONFLICT`. Parsing errors print `ERR BAD_COMMAND`.
+
+Validation checks syntax first, then all source board IDs. For `SPLIT` and `MERGE`, any repeated board argument returns `ERR SAME_BOARD`, followed by `ERR BOARD_EXISTS` if a destination ID is active or has been consumed earlier in this replay. Consumed IDs are retired permanently. `ID_CONFLICT` is unreachable through valid replay state since `ADD` enforces globally unique active player IDs.
 
 `app/examples/basic.trace` is a valid replay. Its complete expected output is `app/examples/basic.expected`. Both backends and the oracle must produce those same twelve output lines.

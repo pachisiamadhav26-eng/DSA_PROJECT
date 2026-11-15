@@ -123,6 +123,11 @@ public:
         return find(id) != nullptr;
     }
 
+    bool has_used(BoardId id) {
+        Score unused = 0;
+        return contains(id) || retired_.get(id, unused);
+    }
+
     void insert(BoardId id, std::unique_ptr<Board> board) {
         auto entry = lower(id);
         if (entry != entries_.end() && entry->id == id)
@@ -134,6 +139,7 @@ public:
         auto entry = lower(id);
         if (entry == entries_.end() || entry->id != id)
             throw std::logic_error("missing board ID");
+        retired_.insert(id, 0);
         std::unique_ptr<Board> board = std::move(entry->board);
         entries_.erase(entry);
         return board;
@@ -146,6 +152,7 @@ private:
     };
 
     std::vector<Entry> entries_;
+    PlayerTable retired_;
 
     std::vector<Entry>::iterator lower(BoardId id) {
         return std::lower_bound(entries_.begin(), entries_.end(), id,
@@ -179,7 +186,7 @@ void run_command(const Command& command, Boards& boards, PlayerTable& players,
             output << "ERR SAME_BOARD\n";
             return;
         }
-        if (boards.contains(command.b) || boards.contains(command.c)) {
+        if (boards.has_used(command.b) || boards.has_used(command.c)) {
             output << "ERR BOARD_EXISTS\n";
             return;
         }
@@ -192,17 +199,17 @@ void run_command(const Command& command, Boards& boards, PlayerTable& players,
     }
 
     if (command.operation == Operation::Merge) {
-        if (command.a == command.b || command.a == command.c ||
-            command.b == command.c) {
-            output << "ERR SAME_BOARD\n";
-            return;
-        }
         Board* right = boards.find(command.b);
         if (!right) {
             output << "ERR UNKNOWN_BOARD\n";
             return;
         }
-        if (boards.contains(command.c)) {
+        if (command.a == command.b || command.a == command.c ||
+            command.b == command.c) {
+            output << "ERR SAME_BOARD\n";
+            return;
+        }
+        if (boards.has_used(command.c)) {
             output << "ERR BOARD_EXISTS\n";
             return;
         }
@@ -293,7 +300,6 @@ void run_replay(std::istream& input, std::ostream& output,
         std::vector<std::string> fields;
         std::string field;
         while (stream >> field) fields.push_back(field);
-        if (fields.empty()) continue;
         Command command = parse_command(fields);
         commands.push_back(command);
         if (command.operation == Operation::Add) ++additions;

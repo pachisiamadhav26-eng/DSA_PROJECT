@@ -148,8 +148,22 @@ struct AVL {
         return count;
     }
 
-    Position rank(Node* t, Score score) const {
-        return count_strictly_higher(t, score) + 1;
+    Position rank(Node* t, Player p) const {
+        Position ans = 1;
+        while (t) {
+            if (before(p, t->player)) {
+                t = t->left;
+            }
+            else if (before(t->player, p)) {
+                ans += size(t->left) + 1;
+                t = t->right;
+            }
+            else {
+                return ans + size(t->left);
+            }
+        }
+    
+        throw out_of_range("Player not found");
     }
 
     Player select(Node* t, Position k) const {

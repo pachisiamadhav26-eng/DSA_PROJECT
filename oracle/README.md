@@ -27,7 +27,7 @@ hashes to `build/oracle/sources.txt`:
 | --- | --- |
 | Architect's shared header and replay app | `a4dc4382b11d60ed85697fb9560574d24a8d2366` |
 | Prince's production AVL | `03f3f57186f96bac6b2ad8f22acbedd7da2de153` |
-| Saksham's production Fenwick and common audit declarations | `c921385a635deb2bd6ff8ca70ec67cf554752fed` |
+| Saksham's production Fenwick and common audit declarations | `0d5ad686ea2349147a4b6eb1ca2b64eb52feae38` |
 
 The build exports dependencies to the ignored build directory and verifies
 that the checked-in header matches Madhav's header. Future revisions can be

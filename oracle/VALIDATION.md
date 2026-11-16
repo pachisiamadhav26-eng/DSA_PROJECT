@@ -1,5 +1,28 @@
 # Oracle validation record
 
+## Fenwick default pin update, 17 November 2026
+
+Both commands built with the default dependency refs. The exact commits were
+confirmed in `build/oracle/sources.txt` after each run.
+
+| Dependency | Commit |
+| --- | --- |
+| Architect | `a4dc4382b11d60ed85697fb9560574d24a8d2366` |
+| AVL | `03f3f57186f96bac6b2ad8f22acbedd7da2de153` |
+| Fenwick | `0d5ad686ea2349147a4b6eb1ca2b64eb52feae38` |
+
+- `./oracle/run_tests.ps1 -Quick` passed. All four golden fixtures matched
+  the oracle and both production app modes. Seeds 253, 20261112, and 42
+  each passed 10,000 differential commands, with peak live populations
+  of 46, 46, and 48. The separate 10,000-player and 10,000-query scale
+  test passed, including split and rejoin.
+- `./oracle/run_tests.ps1` passed. The same fixtures passed on both production
+  app modes and the oracle. Seed 253 passed 1,000,000 differential commands,
+  and seeds 20261112 and 42 each passed 100,000. All three runs peaked at
+  48 live players, with invariants and full state checked after every command.
+  The separate 1,000,000-player and 1,000,000-query scale test passed,
+  including split and rejoin audits at phase boundaries.
+
 ## Current shared interface, 17 November 2026
 
 Built with MinGW GCC 6.3.0 and `-std=c++17 -O2 -Wall -Wextra -Wpedantic`.

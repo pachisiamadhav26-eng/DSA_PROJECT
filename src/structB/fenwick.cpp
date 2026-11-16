@@ -3,7 +3,6 @@
 #include <functional>
 #include <iterator>
 #include <stdexcept>
-#include <unordered_set>
 using namespace std;
 typedef long long ll;
 
@@ -139,18 +138,24 @@ struct FenwickBoard : Board {
         return {move(high),move(low)};
     }
 
+    static bool hasDuplicateIds(vector<PlayerId>& playerIds){
+        sort(playerIds.begin(), playerIds.end());
+        return adjacent_find(playerIds.begin(), playerIds.end())!=playerIds.end();
+    }
+
     void merge_from(Board& other){
         auto* donor=dynamic_cast<FenwickBoard*>(&other);
         if (donor==nullptr || donor==this) throw invalid_argument("Invalid merge");
 
-        unordered_set<PlayerId> seen;
-        seen.reserve(total+donor->total);
-        for (const auto& bucket : ids) seen.insert(bucket.begin(),bucket.end());
-        for (const auto& bucket : donor->ids){
-            for (PlayerId id : bucket){
-                if (seen.count(id)) throw invalid_argument("ID_CONFLICT");
-            }
+        vector<PlayerId> playerIds;
+        playerIds.reserve(total+donor->total);
+        for (const auto& bucket : ids){
+            playerIds.insert(playerIds.end(), bucket.begin(), bucket.end());
         }
+        for (const auto& bucket : donor->ids){
+            playerIds.insert(playerIds.end(), bucket.begin(), bucket.end());
+        }
+        if (hasDuplicateIds(playerIds)) throw invalid_argument("ID_CONFLICT");
 
         FenwickBoard joined;
         set_union(scores.begin(), scores.end(), donor->scores.begin(), donor->scores.end(),
@@ -188,22 +193,23 @@ struct FenwickBoard : Board {
             throw logic_error("Wrong Fenwick array sizes");
         vector<Player> players;
         vector<ll> sums(bit.size(),0);
-        unordered_set<PlayerId> seen;
+        vector<PlayerId> playerIds;
         players.reserve(total);
-        seen.reserve(total);
+        playerIds.reserve(total);
         for (ll i=0; i<(ll)scores.size(); i++){
             if (i>0 && scores[i-1]<=scores[i]) throw logic_error("Score order");
             for (ll j=0; j<(ll)ids[i].size(); j++){
                 PlayerId id=ids[i][j];
-                if ((j>0 && ids[i][j-1]>=id) || !seen.insert(id).second)
-                    throw logic_error("Player ID order or duplicate");
+                if (j>0 && ids[i][j-1]>=id) throw logic_error("Player ID order");
                 players.push_back({id,scores[i]});
+                playerIds.push_back(id);
             }
             ll k=i+1;
             sums[k]=sums[k-1]+ids[i].size();
             if (bit[k]!=sums[k]-sums[k-(k&-k)]) throw logic_error("Fenwick count");
         }
         if (sums.back()!=(ll)total) throw logic_error("Wrong board size");
+        if (hasDuplicateIds(playerIds)) throw logic_error("Duplicate player ID");
         return players;
     }
 };

@@ -17,8 +17,6 @@ Owner: Sumit, Member 6. This code measures the real AVL and Fenwick implementati
 | `../results/plot.py` | Generate the summary CSV and PNG/SVG charts |
 | `../docs/derivations/D6.md`, `D6.pdf` | Editable and submitted cost predictions |
 
-The earlier exercises and their outputs are preserved in `bench/practice/` and `results/practice/`. They use older standalone source snapshots.
-
 ## Inputs
 
 The runner generates ordinary initial players and updates from a recorded seed. Both structures receive the same workload. There is one ID per player, and scores lie in 0..U-1. The supplied universe can include currently unused scores.
@@ -43,7 +41,9 @@ python bench/run_all.py --suite quick
 python bench/run_all.py --suite full
 ```
 
-The default build exports the current local snapshots of `origin/madhav`, `origin/prince-chavda`, `origin/Saksham` and `origin/om-oracle`. It records their resolved commits and source/binary hashes. It never fetches, switches branches or changes teammate sources. Build failures remove stale executable records. See [HANDOFF.md](HANDOFF.md) for the required factories and helper functions.
+The default build exports the current local snapshots of `origin/madhav`, `origin/prince-chavda`, `origin/Saksham` and `origin/om-oracle`. It records their resolved commits and source/binary hashes. It never fetches, switches branches or changes teammate sources. Build failures remove stale executable records.
+
+Both structures implement `Board` and their factories in `include/leaderboard.hpp`. The harness also uses the team's `include/backend_tools.hpp` for audits, AVL height/rotation/join statistics, ordered join and Fenwick bucket-shift counts. The oracle supplies `oracle/sorted_array.hpp`. These versions compiled together during preparation.
 
 After the team integrates its modules, add `--local` to build this checkout. Use `--compiler PATH` to select another compiler. Advanced source/ref overrides are available through `python bench/build.py --help`.
 
@@ -111,4 +111,4 @@ Save the ETL, WPRP, metadata, logs and exported WPA analysis. Filter to the benc
 
 ## Submission
 
-Review D6 before formal timings. Fill `REPORT.md` from actual results, update `TOOLS.md`, obtain PR review and verify the documented command from a fresh clone. The Architect should include the benchmark invocation in the team's final all-in-one command. Historical checks are recorded in [VALIDATION.md](VALIDATION.md).
+Review D6 before formal timings. Fill `REPORT.md` from actual results, update `TOOLS.md`, obtain PR review and verify the documented command from a fresh clone. The Architect should include the benchmark invocation in the team's final all-in-one command. Preparation history is recorded in `WORK_LOG.md`.

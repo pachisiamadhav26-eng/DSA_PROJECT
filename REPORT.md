@@ -1,6 +1,6 @@
 # Analyst experiment report
 
-Author: Sumit. Status: code and predictions prepared; formal experiments will run later. Component compatibility checks have passed. Add measured findings from completed result directories and profiler exports. Earlier 100-player outputs remain practice evidence.
+Author: Sumit. Status: code and predictions prepared; formal experiments will run later. Component compatibility checks have passed. Add measured findings from completed result directories and profiler exports. Earlier development checks are separate from the formal measurements.
 
 ## Predictions
 

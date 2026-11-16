@@ -34,3 +34,8 @@ in `oracle/VALIDATION.md`. No human review of this update is claimed.
 readability, separated trace generation and backend checks, and added a code
 reading guide. Tests compared the new code with the previous version. Human
 review is pending.
+
+17 November 2026: OpenAI Codex revised D4 in English against the assignment,
+added rotation diagrams and a worked selection example, and regenerated the
+two-page PDF with ReportLab. It also corrected stale README instructions and
+fixed test-runner count validation. The full Oracle suite was rerun.

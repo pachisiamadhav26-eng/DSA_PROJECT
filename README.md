@@ -2,7 +2,7 @@
 
 Oracle contribution (Om): see [`oracle/README.md`](oracle/README.md) for the
 sorted-array reference, differential tests, invariant checkers, failure shrinker,
-and D4 proof. Run `./oracle/run_tests.ps1` in PowerShell to build and execute the
+and [D4 proof](docs/derivations/D4.pdf). Run `./oracle/run_tests.ps1` in PowerShell to build and execute the
 oracle test suite against pinned teammate implementations.
 
 CS 253 / MA 253 Data Structures and Algorithms Laboratory project.
@@ -11,10 +11,10 @@ We compare two ways to maintain a leaderboard as players' scores change. The mai
 
 | Structure | Source | Representation |
 |---|---|---|
-| A | `avl/main.cpp` in the Structure A package | AVL tree keyed by score and player ID, with height and subtree size in each node |
-| B | [`fenwick/main.cpp` on Saksham](https://github.com/pachisiamadhav26-eng/DSA_PROJECT/blob/Saksham/fenwick/main.cpp) | Fenwick tree of counts over compressed scores, with sorted IDs at each score |
+| A | [`avl.cpp` on Prince's branch](https://github.com/pachisiamadhav26-eng/DSA_PROJECT/blob/prince-chavda/avl.cpp) | AVL tree keyed by score and player ID, with height and subtree size in each node |
+| B | [`src/structB/fenwick.cpp` on Saksham's branch](https://github.com/pachisiamadhav26-eng/DSA_PROJECT/blob/Saksham/src/structB/fenwick.cpp) | Fenwick tree of counts over compressed scores, with sorted IDs at each score |
 
-Each source is a standalone C++17 program. Data and operations are defined in structs above `main()`. Both examples use an `unordered_map` to look up a player's current score by ID. The project-wide requirement for a handwritten player table is separate from these two structure implementations.
+Both structures implement [the shared C++17 Board interface](https://github.com/pachisiamadhav26-eng/DSA_PROJECT/blob/madhav/INTERFACE.md). The Architect application uses a handwritten player table to look up each player's current score.
 
 ## What we compare
 
@@ -40,18 +40,17 @@ In the table, **n** is the number of active players, **U** is the number of poss
 3. **Correctness under updates.** Use a sorted array of `(score, player ID)` as the reference. Compare each player's competition rank, the exact ID at position k, and the full page of IDs. Include equal scores, updates into and out of ties, and insert/delete sequences that force AVL rotations. Recompute AVL subtree sizes during correctness checks and verify Fenwick prefix counts against the array.
 4. **Prediction versus observation.** Compare measured times with the table above. For example, at fixed U, increasing a tie group's size can make Fenwick updates slower because IDs shift in the vector. Keep oracle checks and score preprocessing outside query timings.
 
-The two standalone programs demonstrate the operations on five players. The larger replay will supply the benchmark measurements.
-
 ## Build and run
 
-From the repository root on `Saksham`:
+From the repository root on `om-oracle`, use PowerShell with Git and a C++17 compiler:
 
 ```powershell
-g++ -std=c++17 fenwick/main.cpp -o fenwick.exe
-.\fenwick.exe
+git fetch origin
+./oracle/run_tests.ps1 -Quick
 ```
 
-For Structure A, compile `avl/main.cpp` the same way. Both examples show insertion, rank, selection, a page of results, a score revision, deletion, a threshold split and a join.
+Omit `-Quick` to run the full oracle validation suite. The runner builds the
+actual replay app with pinned teammate revisions and tests both backends.
 
 ## Project requirements
 

@@ -1,5 +1,22 @@
 # Oracle validation record
 
+## D4 and branch review, 17 November 2026
+
+Both suites passed with Architect `a4dc438`, AVL `03f3f57`, and Fenwick
+`0d5ad68`. The golden fixtures matched the independent oracle and both real
+app modes. The full suite passed one million seeded commands, two 100,000-
+command seeds, and the separate one-million-player rank/select and split/rejoin
+test.
+
+Verified that the runner rejects `--scale 0` and values above the supported
+range before narrowing them. In particular, `--max-live 4294967297` and
+`--ops 4294967297` each returned exit code 2 on the 32-bit compiler instead
+of wrapping around.
+
+The English D4 proof was regenerated from `docs/derivations/D4.md`.
+Both PDF pages were rendered and visually inspected. The PDF names the
+author and contains the single-rotation, double-rotation, and selection proofs.
+
 ## Readability refactor, 17 November 2026
 
 The shared Board header stayed byte-identical. The test executables used

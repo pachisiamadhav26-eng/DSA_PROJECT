@@ -191,6 +191,17 @@ struct Options {
     bool inject_fault = false;
 };
 
+std::size_t read_count(const std::string& text, const std::string& name,
+                       std::uint64_t minimum, std::uint64_t maximum) {
+    // Check the full number before narrowing it on a 32-bit build.
+    std::uint64_t count = read_unsigned(text);
+    if (count < minimum || count > maximum) {
+        throw std::invalid_argument(name + " must be " + std::to_string(minimum) +
+                                    ".." + std::to_string(maximum));
+    }
+    return static_cast<std::size_t>(count);
+}
+
 Options read_options(int argc, char** argv) {
     Options options;
     for (int index = 1; index < argc; ++index) {
@@ -211,21 +222,18 @@ Options read_options(int argc, char** argv) {
         if (flag == "--seed") {
             options.seed = read_unsigned(value);
         } else if (flag == "--ops") {
-            options.operations = read_unsigned(value);
+            options.operations = read_count(value, "ops", 0, Trace().max_size());
         } else if (flag == "--max-live") {
-            options.max_live = read_unsigned(value);
+            options.max_live = read_count(value, "max-live", 1, 1000000);
         } else if (flag == "--trace") {
             options.input_file = value;
         } else if (flag == "--dump") {
             options.dump_file = value;
         } else if (flag == "--scale") {
-            options.scale_players = read_unsigned(value);
+            options.scale_players = read_count(value, "scale", 1, 1000000);
         } else {
             throw std::invalid_argument("unknown option: " + flag);
         }
-    }
-    if (options.max_live == 0 || options.max_live > 1000000) {
-        throw std::invalid_argument("max-live must be 1..1000000");
     }
     return options;
 }

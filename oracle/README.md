@@ -71,7 +71,8 @@ can be set with `-Compiler PATH` on the build script.
 | `oracle/differential.cpp` | Run each command on three implementations, compare answers and state, and reduce a failing trace. |
 | `oracle/backend_checks.hpp` | Test exact membership, rotations, split/join and the million-player case. |
 | `oracle/build.ps1`, `run_tests.ps1` | Build the pinned sources and compare both real app modes to the golden fixtures. |
-| `docs/derivations/render_d4.py` | Read the D4 Markdown in blocks and turn it into the PDF. |
+| [D4 source](../docs/derivations/D4.md) and [D4 PDF](../docs/derivations/D4.pdf) | The two required proofs about AVL subtree sizes and selection. |
+| `docs/derivations/render_d4.py` | Build the submission PDF from its English source with ReportLab. |
 
 `override` tells the compiler to check that a method matches the shared
 Board interface. `unique_ptr` owns a board. `std::move` transfers that

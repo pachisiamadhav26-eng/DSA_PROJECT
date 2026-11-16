@@ -1,114 +1,108 @@
 #include "replay.hpp"
 
-#include <algorithm>
-#include <cassert>
-#include <fstream>
-#include <memory>
-#include <sstream>
-#include <stdexcept>
-#include <string>
-#include <utility>
-#include <vector>
+#include <bits/stdc++.h>
+
+using namespace std;
+using namespace leaderboard;
 
 namespace {
 
-bool before(leaderboard::Player left, leaderboard::Player right) {
+bool higher_first(Player left, Player right) {
     if (left.score != right.score) return left.score > right.score;
     return left.id < right.id;
 }
 
-class TestBoard final : public leaderboard::Board {
+class TestBoard final : public Board {
 public:
-    leaderboard::Position size() const override {
+    Position size() const override {
         return players_.size();
     }
 
-    bool contains(leaderboard::Player player) const override {
+    bool contains(Player player) const override {
         for (const auto& current : players_)
             if (current.id == player.id && current.score == player.score)
                 return true;
         return false;
     }
 
-    void insert(leaderboard::Player player) override {
-        if (contains(player)) throw std::logic_error("duplicate player");
-        auto place = std::lower_bound(players_.begin(), players_.end(), player,
-                                      before);
+    void insert(Player player) override {
+        if (contains(player)) throw logic_error("duplicate player");
+        auto place = lower_bound(players_.begin(), players_.end(), player,
+                                 higher_first);
         players_.insert(place, player);
     }
 
-    void erase(leaderboard::Player player) override {
+    void erase(Player player) override {
         for (auto place = players_.begin(); place != players_.end(); ++place) {
             if (place->id == player.id && place->score == player.score) {
                 players_.erase(place);
                 return;
             }
         }
-        throw std::logic_error("missing player");
+        throw logic_error("missing player");
     }
 
-    leaderboard::Position count_strictly_higher(leaderboard::Score score)
+    Position count_strictly_higher(Score score)
         const override {
-        leaderboard::Position count = 0;
+        Position count = 0;
         for (const auto& player : players_)
             if (player.score > score) ++count;
         return count;
     }
 
-    leaderboard::Player select(leaderboard::Position position) const override {
-        return players_.at(static_cast<std::size_t>(position - 1));
+    Player select(Position position) const override {
+        return players_.at(static_cast<size_t>(position - 1));
     }
 
-    void range(leaderboard::Position first, leaderboard::Position last,
-               std::vector<leaderboard::Player>& result) const override {
+    void range(Position first, Position last,
+               vector<Player>& result) const override {
         result.clear();
-        for (leaderboard::Position position = first; position <= last; ++position)
+        for (Position position = first; position <= last; ++position)
             result.push_back(select(position));
     }
 
-    std::pair<std::unique_ptr<leaderboard::Board>,
-              std::unique_ptr<leaderboard::Board>>
-    split_by_score(leaderboard::Score threshold) override {
-        auto high = std::unique_ptr<TestBoard>(new TestBoard());
-        auto low = std::unique_ptr<TestBoard>(new TestBoard());
+    pair<unique_ptr<Board>, unique_ptr<Board>>
+    split_by_score(Score threshold) override {
+        auto high = make_unique<TestBoard>();
+        auto low = make_unique<TestBoard>();
         for (const auto& player : players_) {
             if (player.score >= threshold) high->players_.push_back(player);
             else low->players_.push_back(player);
         }
         players_.clear();
-        return {std::move(high), std::move(low)};
+        return {move(high), move(low)};
     }
 
-    void merge_from(leaderboard::Board& other) override {
+    void merge_from(Board& other) override {
         auto* source = dynamic_cast<TestBoard*>(&other);
-        if (!source) throw std::invalid_argument("wrong backend");
+        if (!source) throw invalid_argument("wrong backend");
         for (const auto& player : source->players_) insert(player);
         source->players_.clear();
     }
 
 private:
-    std::vector<leaderboard::Player> players_;
+    vector<Player> players_;
 };
 
-leaderboard::BoardFactory factory() {
-    return [](const std::vector<leaderboard::Score>&) {
-        return std::unique_ptr<leaderboard::Board>(new TestBoard());
-    };
+unique_ptr<Board> new_test_board(const vector<Score>&) {
+    return make_unique<TestBoard>();
 }
 
 }
 
-int main() {
-    std::ifstream trace("app/examples/basic.trace");
-    std::ifstream expected_file("app/examples/basic.expected");
+void test_example() {
+    ifstream trace("app/examples/basic.trace");
+    ifstream expected_file("app/examples/basic.expected");
     assert(trace && expected_file);
-    std::ostringstream actual;
-    leaderboard::run_replay(trace, actual, factory());
-    std::ostringstream expected;
+    ostringstream actual;
+    run_replay(trace, actual, new_test_board);
+    ostringstream expected;
     expected << expected_file.rdbuf();
     assert(actual.str() == expected.str());
+}
 
-    std::istringstream errors(
+void test_error_commands() {
+    istringstream errors(
         "ADD 0 1 10\n"
         "ADD 0 1 20\n"
         "RANK 0 1\n"
@@ -130,9 +124,12 @@ int main() {
         "ADD 3 4 9223372036854775808\n"
         "ADD 3 18446744073709551615 9223372036854775807\n"
         "RANK 3 18446744073709551615\n"
-        "ADD 3 18446744073709551616 0\n");
-    std::ostringstream error_output;
-    leaderboard::run_replay(errors, error_output, factory());
+        "ADD 3 18446744073709551616 0\n"
+        "ADD 3 +4 10\n"
+        "ADD 3 4 --1\n"
+        "ADD 3 4 1x\n");
+    ostringstream error_output;
+    run_replay(errors, error_output, new_test_board);
     assert(error_output.str() ==
            "OK\n"
            "ERR DUPLICATE_ID\n"
@@ -155,5 +152,13 @@ int main() {
            "ERR BAD_COMMAND\n"
            "OK\n"
            "RANK 1\n"
+           "ERR BAD_COMMAND\n"
+           "ERR BAD_COMMAND\n"
+           "ERR BAD_COMMAND\n"
            "ERR BAD_COMMAND\n");
+}
+
+int main() {
+    test_example();
+    test_error_commands();
 }

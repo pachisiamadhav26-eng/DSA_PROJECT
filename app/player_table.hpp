@@ -20,7 +20,7 @@ public:
     std::size_t size() const;
 
 private:
-    enum class State : std::uint8_t { Empty, Occupied, Deleted };
+    enum class State { Empty, Occupied, Deleted };
 
     struct Slot {
         PlayerId id = 0;
@@ -30,11 +30,11 @@ private:
 
     std::vector<Slot> slots_;
     std::size_t size_ = 0;
-    std::size_t deleted_ = 0;
+    std::size_t deleted_count_ = 0;
 
-    static std::uint64_t mix(PlayerId id);
-    std::size_t find_index(PlayerId id) const;
-    void rehash(std::size_t capacity);
+    static std::uint64_t hash_id(PlayerId id);
+    std::size_t find_slot(PlayerId id) const;
+    void resize_table(std::size_t capacity);
 };
 
 }

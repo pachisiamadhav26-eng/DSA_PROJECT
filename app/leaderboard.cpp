@@ -1,42 +1,44 @@
 #include "replay.hpp"
+#include <bits/stdc++.h>
 
-#include <exception>
-#include <fstream>
-#include <iostream>
-#include <string>
-#include <vector>
+using namespace std;
+using namespace leaderboard;
+
+unique_ptr<Board> new_avl_board(const vector<Score>&) {
+    return make_avl();
+}
+
+unique_ptr<Board> new_fenwick_board(const vector<Score>& scores) {
+    return make_fenwick(scores);
+}
 
 int main(int argc, char** argv) {
     if (argc != 3) {
-        std::cerr << "usage: leaderboard <avl|fenwick> <trace-file>\n";
+        cerr << "usage: leaderboard <avl|fenwick> <trace-file>\n";
         return 2;
     }
 
-    std::string backend = argv[1];
-    leaderboard::BoardFactory factory;
+    string backend = argv[1];
+    BoardFactory factory;
     if (backend == "avl") {
-        factory = [](const std::vector<leaderboard::Score>&) {
-            return leaderboard::make_avl();
-        };
+        factory = new_avl_board;
     } else if (backend == "fenwick") {
-        factory = [](const std::vector<leaderboard::Score>& scores) {
-            return leaderboard::make_fenwick(scores);
-        };
+        factory = new_fenwick_board;
     } else {
-        std::cerr << "backend must be avl or fenwick\n";
+        cerr << "backend must be avl or fenwick\n";
         return 2;
     }
 
-    std::ifstream input(argv[2]);
+    ifstream input(argv[2]);
     if (!input) {
-        std::cerr << "cannot open trace file\n";
+        cerr << "cannot open trace file\n";
         return 2;
     }
 
     try {
-        leaderboard::run_replay(input, std::cout, factory);
-    } catch (const std::exception& error) {
-        std::cerr << error.what() << '\n';
+        run_replay(input, cout, factory);
+    } catch (const exception& error) {
+        cerr << error.what() << '\n';
         return 1;
     }
     return 0;

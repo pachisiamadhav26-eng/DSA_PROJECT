@@ -2,8 +2,6 @@
 #include "../src/structA/avl.cpp"
 #include "replay.hpp"
 #include <cassert>
-#include <cstddef>
-#include <cstdint>
 #include <fstream>
 #include <limits>
 #include <map>
@@ -11,26 +9,16 @@
 #include <string>
 
 namespace {
-
-// Each adversary case must produce exactly these errors, so a case cannot drift.
-std::map<std::string,int> expected_errors(const std::string& name) {
-    if (name == "churn")   return {{"ERR BAD_POSITION", 1}};
-    if (name == "seasons") return {{"ERR UNKNOWN_BOARD", 3}};
-    if (name == "errors")  return {{"ERR BAD_COMMAND", 7}, {"ERR BAD_POSITION", 3},
-                                   {"ERR BAD_RANGE", 2}, {"ERR DUPLICATE_ID", 2},
-                                   {"ERR SAME_BOARD", 1}, {"ERR UNKNOWN_BOARD", 1},
-                                   {"ERR UNKNOWN_PLAYER", 2}, {"ERR WRONG_BOARD", 1}};
-    return {};
-}
-
-// Tallest AVL that fits the node count, using the generator's own recurrence.
-int tallest(std::size_t nodes) {
-    std::vector<std::size_t> counts{0, 1};
-    while (1 + counts.back() + counts[counts.size()-2] <= nodes)
-        counts.push_back(1 + counts.back() + counts[counts.size()-2]);
-    return static_cast<int>(counts.size()) - 1;
-}
-
+    // Each adversary case must produce exactly these errors, so a case cannot drift.
+    std::map<std::string,int> expected_errors(const std::string& name) {
+        if (name == "churn")   return {{"ERR BAD_POSITION", 1}};
+        if (name == "seasons") return {{"ERR UNKNOWN_BOARD", 3}};
+        if (name == "errors")  return {{"ERR BAD_COMMAND", 7}, {"ERR BAD_POSITION", 3},
+                                    {"ERR BAD_RANGE", 2}, {"ERR DUPLICATE_ID", 2},
+                                    {"ERR SAME_BOARD", 1}, {"ERR UNKNOWN_BOARD", 1},
+                                    {"ERR UNKNOWN_PLAYER", 2}, {"ERR WRONG_BOARD", 1}};
+        return {};
+    }
 }
 
 int main(int argc, char** argv) {
@@ -40,36 +28,21 @@ int main(int argc, char** argv) {
         assert(trace.is_open());
         const std::string name = argv[1];
         assert(name == "cascade" || name == "unequal" || name == "churn" ||
-               name == "seasons" || name == "errors" || name == "mixed");
+            name == "seasons" || name == "errors" || name == "mixed");
         std::stringstream replies;
         run_replay(trace, replies, [](const auto&) { return make_avl(); });
         std::map<std::string,int> errors;
         for (std::string line; std::getline(replies, line); )
             if (line.rfind("ERR ", 0) == 0) ++errors[line];
         assert(errors == expected_errors(name));
-        if (name != "cascade" && name != "unequal") return 0;
-
-        // The board holding the most players is the tree the generator built.
-        std::map<std::uint64_t,int> added;
-        trace.clear();
-        trace.seekg(0);
-        for (std::string line; std::getline(trace, line); ) {
-            std::istringstream parts(line);
-            std::string op;
-            std::uint64_t board = 0;
-            parts >> op;
-            if (op == "ADD" && (parts >> board)) ++added[board];
-        }
-        std::size_t nodes = 0;
-        for (const auto& entry : added)
-            nodes = std::max(nodes, static_cast<std::size_t>(entry.second));
+        // Match the fixed 88- and 64-player budgets in adversary/run.py.
         if (name == "cascade") {
-            assert(adversary_probe.erase_height == tallest(nodes));
+            assert(adversary_probe.erase_height == 9);
             assert(adversary_probe.rotations_before_erase == 0);
-            assert(adversary_probe.erase_rotations == 2*((adversary_probe.erase_height-1)/2));
-        } else {
+            assert(adversary_probe.erase_rotations == 8);
+        } else if (name == "unequal") {
             assert(adversary_probe.join_left_height == 0);
-            assert(adversary_probe.join_right_height == tallest(nodes));
+            assert(adversary_probe.join_right_height == 8);
         }
         return 0;
     }

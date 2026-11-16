@@ -1,19 +1,11 @@
-
+#include "leaderboard.hpp"
 #include <algorithm>
-#include <cstdint>
+#include <cstdlib>
 #include <iterator>
+#include <memory>
 #include <stdexcept>
+#include <utility>
 #include <vector>
-using namespace std;
-
-using PlayerId = uint64_t;
-using Score = int64_t;
-using Position = uint64_t;
-
-struct Player {
-    PlayerId id;
-    Score score;
-};
 
 struct Node {
     Player player;
@@ -23,392 +15,406 @@ struct Node {
     Position size = 1;
 };
 
-struct AVL {
-    int height(Node* t) const {
-        return t ? t->height : 0;
+int height(Node* t) { return t ? t->height : 0; }
+Position nodeSize(Node* t) { return t ? t->size : 0; }
+
+bool before(Player a, Player b) {
+    return a.score != b.score ? a.score > b.score : a.id < b.id;
+}
+
+void refresh(Node* t) {
+    if (!t) return;
+    t->height = 1 + std::max(height(t->left), height(t->right));
+    t->size = 1 + nodeSize(t->left) + nodeSize(t->right);
+}
+
+Node* rotateRight(Node* t) {
+    Node* p = t->left;
+    t->left = p->right;
+    p->right = t;
+    refresh(t);
+    refresh(p);
+    return p;
+}
+
+Node* rotateLeft(Node* t) {
+    Node* p = t->right;
+    t->right = p->left;
+    p->left = t;
+    refresh(t);
+    refresh(p);
+    return p;
+}
+
+Node* balance(Node* t) {
+    if (!t) return nullptr;
+    refresh(t);
+    int d = height(t->left) - height(t->right);
+
+    if (d > 1) {
+        if (height(t->left->right) > height(t->left->left))
+            t->left = rotateLeft(t->left);
+        return rotateRight(t);
     }
 
-    Position size(Node* t) const {
-        return t ? t->size : 0;
+    if (d < -1) {
+        if (height(t->right->left) > height(t->right->right))
+            t->right = rotateRight(t->right);
+        return rotateLeft(t);
+    }
+    return t;
+}
+
+Node* insertNode(Node* t, Node* p) {
+    if (!t) return p;
+    if (before(p->player, t->player))
+        t->left = insertNode(t->left, p);
+    else
+        t->right = insertNode(t->right, p);
+    return balance(t);
+}
+
+Node* eraseNode(Node* t, Player p) {
+    if (before(p, t->player))
+        t->left = eraseNode(t->left, p);
+    else if (before(t->player, p))
+        t->right = eraseNode(t->right, p);
+    else {
+        if (!t->left || !t->right) {
+            Node* child = t->left ? t->left : t->right;
+            delete t;
+            return child;
+        }
+
+        Node* next = t->right;
+        while (next->left) next = next->left;
+        t->player = next->player;
+        t->right = eraseNode(t->right, next->player);
+    }
+    return balance(t);
+}
+
+Node* joinNodes(Node* a, Node* pivot, Node* b) {
+    if (height(a) > height(b) + 1) {
+        a->right = joinNodes(a->right, pivot, b);
+        return balance(a);
     }
 
-    bool before(Player a, Player b) const {
-        if (a.score != b.score) return a.score > b.score;
-        return a.id < b.id;
+    if (height(b) > height(a) + 1) {
+        b->left = joinNodes(a, pivot, b->left);
+        return balance(b);
     }
 
-    void refresh(Node* t) const {
-        if (!t) return;
-        t->height = 1 + max(height(t->left), height(t->right));
-        t->size = 1 + size(t->left) + size(t->right);
+    pivot->left = a;
+    pivot->right = b;
+    refresh(pivot);
+    return pivot;
+}
+
+void splitScore(Node* t, Score cut, Node*& high, Node*& low) {
+    if (!t) {
+        high = low = nullptr;
+        return;
     }
 
-    Node* rotateRight(Node* top) const {
-        Node* pivot = top->left;
-        top->left = pivot->right;
-        pivot->right = top;
-        refresh(top);
-        refresh(pivot);
-        return pivot;
+    if (t->player.score >= cut) {
+        Node* middle = nullptr;
+        splitScore(t->right, cut, middle, low);
+        Node* left = t->left;
+        t->left = t->right = nullptr;
+        high = joinNodes(left, t, middle);
+    }
+    else {
+        Node* middle = nullptr;
+        splitScore(t->left, cut, high, middle);
+        Node* right = t->right;
+        t->left = t->right = nullptr;
+        low = joinNodes(middle, t, right);
+    }
+}
+
+void splitKey(Node* t, Player key, Node*& first, Node*& second) {
+    if (!t) {
+        first = second = nullptr;
+        return;
     }
 
-    Node* rotateLeft(Node* top) const {
-        Node* pivot = top->right;
-        top->right = pivot->left;
-        pivot->left = top;
-        refresh(top);
-        refresh(pivot);
-        return pivot;
+    if (before(t->player, key)) {
+        Node* middle = nullptr;
+        splitKey(t->right, key, middle, second);
+        Node* left = t->left;
+        t->left = t->right = nullptr;
+        first = joinNodes(left, t, middle);
     }
+    else {
+        Node* middle = nullptr;
+        splitKey(t->left, key, first, middle);
+        Node* right = t->right;
+        t->left = t->right = nullptr;
+        second = joinNodes(middle, t, right);
+    }
+}
 
-    Node* balance(Node* t) const {
-        if (!t) return nullptr;
+Node* firstNode(Node* t) {
+    while (t && t->left) t = t->left;
+    return t;
+}
 
+Node* lastNode(Node* t) {
+    while (t && t->right) t = t->right;
+    return t;
+}
+
+Node* takeLast(Node* t, Node*& last) {
+    if (!t->right) {
+        last = t;
+        Node* left = t->left;
+        t->left = t->right = nullptr;
         refresh(t);
-        int diff = height(t->left) - height(t->right);
-
-        if (diff > 1) {
-            if (height(t->left->right) > height(t->left->left))
-                t->left = rotateLeft(t->left);
-            return rotateRight(t);
-        }
-
-        if (diff < -1) {
-            if (height(t->right->left) > height(t->right->right))
-                t->right = rotateRight(t->right);
-            return rotateLeft(t);
-        }
-
-        return t;
+        return left;
     }
 
-    bool contains(Node* t, Player p) const {
+    t->right = takeLast(t->right, last);
+    return balance(t);
+}
+
+void rangeNodes(Node* t, Position first, Position last,
+                std::vector<Player>& out) {
+    if (!t || first > last) return;
+
+    Position pos = nodeSize(t->left) + 1;
+
+    if (first < pos)
+        rangeNodes(t->left, first, last, out);
+
+    if (first <= pos && pos <= last)
+        out.push_back(t->player);
+
+    if (pos < last)
+        rangeNodes(t->right, first > pos ? first - pos : 1,
+                   last - pos, out);
+}
+
+void inorder(Node* t, std::vector<Node*>& nodes) {
+    if (!t) return;
+    inorder(t->left, nodes);
+    nodes.push_back(t);
+    inorder(t->right, nodes);
+}
+
+Node* build(std::vector<Node*>& nodes, std::size_t l, std::size_t r) {
+    if (l == r) return nullptr;
+
+    std::size_t m = l + (r - l) / 2;
+    Node* t = nodes[m];
+    t->left = build(nodes, l, m);
+    t->right = build(nodes, m + 1, r);
+    refresh(t);
+    return t;
+}
+
+void destroy(Node* t) {
+    if (!t) return;
+    destroy(t->left);
+    destroy(t->right);
+    delete t;
+}
+
+bool audit(Node* t, const Player* low, const Player* high,
+           int& h, Position& s) {
+    if (!t) {
+        h = 0;
+        s = 0;
+        return true;
+    }
+
+    if (low && !before(*low, t->player)) return false;
+    if (high && !before(t->player, *high)) return false;
+
+    int lh = 0, rh = 0;
+    Position ls = 0, rs = 0;
+
+    if (!audit(t->left, low, &t->player, lh, ls)) return false;
+    if (!audit(t->right, &t->player, high, rh, rs)) return false;
+
+    h = 1 + std::max(lh, rh);
+    s = 1 + ls + rs;
+
+    return std::abs(lh - rh) <= 1 &&
+           t->height == h && t->size == s;
+}
+
+struct AvlBoard final : Board {
+    Node* root = nullptr;
+
+    ~AvlBoard() override { destroy(root); }
+    AvlBoard() = default;
+    AvlBoard(const AvlBoard&) = delete;
+    AvlBoard& operator=(const AvlBoard&) = delete;
+
+    Position size() const noexcept override {
+        return nodeSize(root);
+    }
+
+    bool contains(Player p) const noexcept override {
+        Node* t = root;
         while (t) {
-            if (before(p, t->player))
-                t = t->left;
-            else if (before(t->player, p))
-                t = t->right;
-            else
-                return true;
+            if (before(p, t->player)) t = t->left;
+            else if (before(t->player, p)) t = t->right;
+            else return true;
         }
         return false;
     }
 
-    Node* insert(Node* t, Player p) const {
-        if (!t) return new Node{p};
-
-        if (before(p, t->player))
-            t->left = insert(t->left, p);
-        else if (before(t->player, p))
-            t->right = insert(t->right, p);
-        else
-            throw invalid_argument("Duplicate player key");
-
-        return balance(t);
+    void insert(Player p) override {
+        if (contains(p))
+            throw std::invalid_argument("Duplicate player key");
+        root = insertNode(root, new Node{p});
     }
 
-    Node* erase(Node* t, Player p) const {
-        if (!t)
-            throw out_of_range("Player not found");
-
-        if (before(p, t->player))
-            t->left = erase(t->left, p);
-        else if (before(t->player, p))
-            t->right = erase(t->right, p);
-        else {
-            if (!t->left || !t->right) {
-                Node* child = t->left ? t->left : t->right;
-                delete t;
-                return child;
-            }
-
-            Node* next = t->right;
-            while (next->left)
-                next = next->left;
-
-            t->player = next->player;
-            t->right = erase(t->right, next->player);
-        }
-
-        return balance(t);
+    void erase(Player p) override {
+        if (!contains(p))
+            throw std::out_of_range("Player not found");
+        root = eraseNode(root, p);
     }
 
-    Position count_strictly_higher(Node* t, Score score) const {
+    Position count_strictly_higher(Score score) const noexcept override {
         Position count = 0;
+        Node* t = root;
 
         while (t) {
             if (t->player.score > score) {
-                count += size(t->left) + 1;
+                count += nodeSize(t->left) + 1;
                 t = t->right;
             }
-            else {
-                t = t->left;
-            }
+            else t = t->left;
         }
         return count;
     }
 
-    Position rank(Node* t, Player p) const {
-        Position ans = 1;
+    Player select(Position k) const override {
+        if (!k || k > size())
+            throw std::out_of_range("Invalid position");
+
+        Node* t = root;
         while (t) {
-            if (before(p, t->player)) {
-                t = t->left;
-            }
-            else if (before(t->player, p)) {
-                ans += size(t->left) + 1;
-                t = t->right;
-            }
+            Position pos = nodeSize(t->left) + 1;
+            if (k == pos) return t->player;
+            if (k < pos) t = t->left;
             else {
-                return ans + size(t->left);
-            }
-        }
-    
-        throw out_of_range("Player not found");
-    }
-
-    Player select(Node* t, Position k) const {
-        if (k == 0 || k > size(t))
-            throw out_of_range("Invalid position");
-
-        while (t) {
-            Position leftSize = size(t->left);
-
-            if (k == leftSize + 1)
-                return t->player;
-
-            if (k <= leftSize)
-                t = t->left;
-            else {
-                k -= leftSize + 1;
+                k -= pos;
                 t = t->right;
             }
         }
-
-        throw logic_error("Incorrect subtree size");
+        throw std::logic_error("Incorrect subtree size");
     }
 
-    void rangeRec(Node* t, Position first, Position last,
-                  vector<Player>& result) const {
-        if (!t || first > last) return;
+    void range(Position first, Position last,
+               std::vector<Player>& out) const override {
+        if (!first || first > last || last > size())
+            throw std::out_of_range("Invalid range");
 
-        Position pos = size(t->left) + 1;
-
-        if (first < pos)
-            rangeRec(t->left, first, last, result);
-
-        if (first <= pos && pos <= last)
-            result.push_back(t->player);
-
-        if (pos < last) {
-            Position newFirst = first > pos ? first - pos : 1;
-            rangeRec(t->right, newFirst, last - pos, result);
-        }
+        std::vector<Player> temp;
+        temp.reserve(static_cast<std::size_t>(last - first + 1));
+        rangeNodes(root, first, last, temp);
+        out.swap(temp);
     }
 
-    void range(Node* t, Position first, Position last,
-               vector<Player>& result) const {
-        if (first == 0 || first > last || last > size(t))
-            throw out_of_range("Invalid range");
-
-        result.clear();
-        rangeRec(t, first, last, result);
-    }
-
-    // All left keys must precede pivot; pivot must precede right keys.
-    Node* join(Node* left, Node* pivot, Node* right) const {
-        if (height(left) > height(right) + 1) {
-            left->right = join(left->right, pivot, right);
-            return balance(left);
-        }
-
-        if (height(right) > height(left) + 1) {
-            right->left = join(left, pivot, right->left);
-            return balance(right);
-        }
-
-        pivot->left = left;
-        pivot->right = right;
-        refresh(pivot);
-        return pivot;
-    }
-
-    Node* join_ordered(Node* left, Player pivot, Node* right) const {
-        return join(left, new Node{pivot}, right);
-    }
-
-    void splitScoreRec(Node* t, Score cutoff,
-                       Node*& high, Node*& low) const {
-        if (!t) {
-            high = low = nullptr;
-            return;
-        }
-
-        Node* left = t->left;
-        Node* right = t->right;
-        t->left = t->right = nullptr;
-
-        if (t->player.score >= cutoff) {
-            Node* middle = nullptr;
-
-            splitScoreRec(right, cutoff, middle, low);
-            high = join(left, t, middle);
-        }
-        else {
-            Node* middle = nullptr;
-
-            splitScoreRec(left, cutoff, high, middle);
-            low = join(middle, t, right);
-        }
-    }
-
-    // Consumes root; all three root variables must be distinct.
-    void split_by_score(Node*& root, Score cutoff,
-                        Node*& high, Node*& low) const {
-        splitScoreRec(root, cutoff, high, low);
+    std::pair<std::unique_ptr<Board>, std::unique_ptr<Board>>
+    split_by_score(Score cut) override {
+        auto high = std::make_unique<AvlBoard>();
+        auto low = std::make_unique<AvlBoard>();
+        splitScore(root, cut, high->root, low->root);
         root = nullptr;
+        return {std::move(high), std::move(low)};
     }
 
-    void splitKeyRec(Node* t, Player key,
-                     Node*& first, Node*& second) const {
-        if (!t) {
-            first = second = nullptr;
-            return;
-        }
-
-        Node* left = t->left;
-        Node* right = t->right;
-        t->left = t->right = nullptr;
-
-        if (before(t->player, key)) {
-            Node* middle = nullptr;
-
-            splitKeyRec(right, key, middle, second);
-            first = join(left, t, middle);
-        }
-        else {
-            Node* middle = nullptr;
-
-            splitKeyRec(left, key, first, middle);
-            second = join(middle, t, right);
-        }
-    }
-
-    void split_by_key(Node*& root, Player key,
-                      Node*& first, Node*& second) const {
-        splitKeyRec(root, key, first, second);
+    std::pair<std::unique_ptr<AvlBoard>, std::unique_ptr<AvlBoard>>
+    split_by_key(Player key) {
+        auto first = std::make_unique<AvlBoard>();
+        auto second = std::make_unique<AvlBoard>();
+        splitKey(root, key, first->root, second->root);
         root = nullptr;
+        return {std::move(first), std::move(second)};
     }
 
-    void inorder(Node* t, vector<Node*>& nodes) const {
-        if (!t) return;
+    void join_ordered(AvlBoard& left, Player pivot, AvlBoard& right) {
+        if (this == &left || this == &right ||
+            &left == &right || root)
+            throw std::invalid_argument("Invalid join boards");
 
-        inorder(t->left, nodes);
-        nodes.push_back(t);
-        inorder(t->right, nodes);
+        if (left.root && !before(lastNode(left.root)->player, pivot))
+            throw std::invalid_argument("Left keys not before pivot");
+
+        if (right.root && !before(pivot, firstNode(right.root)->player))
+            throw std::invalid_argument("Right keys not after pivot");
+
+        Node* middle = new Node{pivot};
+        root = joinNodes(left.root, middle, right.root);
+        left.root = right.root = nullptr;
     }
 
-    Node* build(vector<Node*>& nodes, size_t l, size_t r) const {
-        if (l == r) return nullptr;
+    void merge_from(Board& other) override {
+        auto* b = dynamic_cast<AvlBoard*>(&other);
+        if (!b || b == this)
+            throw std::invalid_argument("Invalid merge board");
 
-        size_t m = l + (r - l) / 2;
-        Node* root = nodes[m];
-
-        root->left = build(nodes, l, m);
-        root->right = build(nodes, m + 1, r);
-
-        refresh(root);
-        return root;
-    }
-
-    // Merges leagues even when their score ranges overlap.
-    void merge_leagues(Node*& a, Node*& b) const {
-        if (&a == &b)
-            throw invalid_argument("Cannot merge a board with itself");
-
-        if (!a) {
-            a = b;
-            b = nullptr;
+        if (!b->root) return;
+        if (!root) {
+            root = b->root;
+            b->root = nullptr;
             return;
         }
 
-        if (!b) return;
+        if (before(lastNode(root)->player, firstNode(b->root)->player)) {
+            Node* pivot = nullptr;
+            root = takeLast(root, pivot);
+            root = joinNodes(root, pivot, b->root);
+            b->root = nullptr;
+            return;
+        }
 
-        vector<Node*> x, y, all;
+        if (before(lastNode(b->root)->player, firstNode(root)->player)) {
+            Node* pivot = nullptr;
+            b->root = takeLast(b->root, pivot);
+            root = joinNodes(b->root, pivot, root);
+            b->root = nullptr;
+            return;
+        }
 
-        inorder(a, x);
-        inorder(b, y);
+        std::vector<Node*> a, c, all;
+        inorder(root, a);
+        inorder(b->root, c);
 
-        vector<PlayerId> ids;
-        ids.reserve(x.size() + y.size());
+        std::vector<PlayerId> ids;
+        ids.reserve(a.size() + c.size());
 
-        for (Node* p : x)
-            ids.push_back(p->player.id);
+        for (Node* p : a) ids.push_back(p->player.id);
+        for (Node* p : c) ids.push_back(p->player.id);
 
-        for (Node* p : y)
-            ids.push_back(p->player.id);
-
-        sort(ids.begin(), ids.end());
-
-        for (size_t i = 1; i < ids.size(); i++) {
+        std::sort(ids.begin(), ids.end());
+        for (std::size_t i = 1; i < ids.size(); ++i)
             if (ids[i] == ids[i - 1])
-                throw invalid_argument("Duplicate player ID across leagues");
-        }
+                throw std::invalid_argument("Duplicate player ID");
 
-        all.reserve(x.size() + y.size());
+        all.reserve(a.size() + c.size());
+        std::merge(a.begin(), a.end(), c.begin(), c.end(),
+                   std::back_inserter(all),
+                   [](Node* x, Node* y) {
+                       return before(x->player, y->player);
+                   });
 
-        merge(x.begin(), x.end(),
-              y.begin(), y.end(),
-              back_inserter(all),
-              [this](Node* u, Node* v) {
-                  return before(u->player, v->player);
-              });
-
-        a = build(all, 0, all.size());
-        b = nullptr;
+        root = build(all, 0, all.size());
+        b->root = nullptr;
     }
 
-    bool audit(Node* t, const Player* lower,
-               const Player* upper, int& h, Position& s) const {
-        if (!t) {
-            h = 0;
-            s = 0;
-            return true;
-        }
-
-        if (lower && !before(*lower, t->player))
-            return false;
-
-        if (upper && !before(t->player, *upper))
-            return false;
-
-        int lh = 0, rh = 0;
-        Position ls = 0, rs = 0;
-
-        if (!audit(t->left, lower, &t->player, lh, ls))
-            return false;
-
-        if (!audit(t->right, &t->player, upper, rh, rs))
-            return false;
-
-        h = 1 + max(lh, rh);
-        s = 1 + ls + rs;
-
-        return abs(lh - rh) <= 1 &&
-               t->height == h &&
-               t->size == s;
-    }
-
-    bool validate(Node* t) const {
+    bool validate() const {
         int h = 0;
         Position s = 0;
-        return audit(t, nullptr, nullptr, h, s);
-    }
-
-    void destroy(Node* t) const {
-        if (!t) return;
-
-        destroy(t->left);
-        destroy(t->right);
-        delete t;
+        return audit(root, nullptr, nullptr, h, s);
     }
 };
+
+std::unique_ptr<Board> make_avl_board() {
+    return std::make_unique<AvlBoard>();
+}

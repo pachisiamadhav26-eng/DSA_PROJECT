@@ -1,60 +1,67 @@
-## Rank Queries on a Live Leaderboard
+# Rank queries on a live leaderboard
 
-CS 253 / MA 253 Data Structures and Algorithms Laboratory project.
+CS 253 / MA 253 data structures project. This project compares Prince's
+augmented AVL tree and Saksham's compressed-score Fenwick tree through Madhav's
+replay application and handwritten player table. Om's independent sorted-array
+oracle checks both structures, and Bianca's generators supply difficult traces.
+Sumit's fixed-board rank benchmark uses the same linked implementations.
 
-We compare two ways to maintain a leaderboard as players' scores change. The main measurements are **rank and select latency as the player count grows**, and **the time to split and rejoin a league**. Both structures must return the same ranks, players and divisions for the same sequence of operations.
+Players sort by decreasing score and increasing ID within a tie. Scores
+100, 90, 90, 70 have competition ranks 1, 2, 2, 4; positions are always unique.
+Both backends support uint64 player IDs and int64 scores. Split assigns scores
+at the cutoff to the high division. Split and merge consume their source IDs.
+See `INTERFACE.md` for the complete command and error contract.
 
-| Structure | Source | Representation |
-|---|---|---|
-| A | `avl/main.cpp` in the Structure A package | AVL tree keyed by score and player ID, with height and subtree size in each node |
-| B | [`fenwick/main.cpp` on Saksham](https://github.com/pachisiamadhav26-eng/DSA_PROJECT/blob/Saksham/fenwick/main.cpp) | Fenwick tree of counts over compressed scores, with sorted IDs at each score |
+## Build and test
 
-Each source is a standalone C++17 program. Data and operations are defined in structs above `main()`. Both examples use an `unordered_map` to look up a player's current score by ID. The project-wide requirement for a handwritten player table is separate from these two structure implementations.
+Requirements: CMake 3.16+, a C++17 compiler, and Python 3.8+ for tests.
+No network, Git history, third-party C++ library, or Python package is needed.
+From the project root:
 
-## What we compare
-
-**Rank and position have different meanings when players tie.** Suppose IDs 1, 2, 3 and 4 have scores 100, 90, 90 and 70. Their ranks are 1, 2, 2 and 4. Players 2 and 3 share rank 2, but `select(3)` must return player 3 because ties are listed by increasing ID.
-
-In the table, **n** is the number of active players, **U** is the number of possible distinct scores supplied to the Fenwick tree, **t** is the number of players tied at the affected score, and **q** is the number of positions returned. These are predicted costs for the current code.
-
-| Operation | Structure A — AVL | Structure B — Fenwick |
-|---|---|---|
-| Rank a player | Count strictly higher scores using subtree sizes. **O(log n)**. | Scores are compressed highest first. Sum the counts before the player's score and add one. **O(log U)**. |
-| Select the player at position k | Descend using the left subtree size. **O(log n)**. | Use binary lifting to find the score bucket, then use the remaining position to index its sorted IDs. **O(log U)**. |
-| List positions 40–50 | Traverse the relevant part of the tree and return 11 players. **O(log n + q)**. | Call select for each requested position. **O(q log U)**. |
-| Insert or delete a player | Change one node, rebalance, and update subtree sizes. **O(log n)**. | Update a count and insert or erase an ID in its sorted vector. **O(log U + t)** in the worst case. |
-| Revise a score | Erase the old key and insert the new key. **O(log n)**. | Move the ID between two score buckets and update both counts. **O(log U + t_old + t_new)**. |
-| Split at a score threshold | Follow one search path and join the pieces. **O(log n)**. | Move whole ID vectors and rebuild both count arrays. **O(U)**. Scores equal to the threshold enter the high division in both structures. |
-| Rejoin the two divisions | With an ordered left tree, separating pivot and ordered right tree, join takes **O(1 + height difference)**. Finding and removing the pivot in the demo adds **O(log n)**. | Merge the score lists and rebuild the count array. Worst case **O(U₁ + U₂ + n₁ + n₂)** when IDs at shared coordinates must be copied. |
-| Storage | One node per player, including two pointers, height and subtree size. **O(n)**. | One count per score coordinate and one ID entry per active player. **O(U + n)**. |
-
-## How we will measure and check the comparison
-
-1. **Rank and select latency.** Replay identical score revisions and queries at increasing player counts, up to one million players and one million revisions. Record rank and select times separately. Record U as well as n so the results show what changes when many players share a score.
-2. **Split and join time.** Split both boards at the same threshold and verify the same players enter each division. Time rejoining those divisions, including pivot preparation for the AVL. Also time the AVL join itself with an already supplied pivot and vary the difference in tree heights. A single AVL join requires ordered key ranges, so use separated divisions for the direct comparison.
-3. **Correctness under updates.** Use a sorted array of `(score, player ID)` as the reference. Compare each player's competition rank, the exact ID at position k, and the full page of IDs. Include equal scores, updates into and out of ties, and insert/delete sequences that force AVL rotations. Recompute AVL subtree sizes during correctness checks and verify Fenwick prefix counts against the array.
-4. **Prediction versus observation.** Compare measured times with the table above. For example, at fixed U, increasing a tie group's size can make Fenwick updates slower because IDs shift in the vector. Keep oracle checks and score preprocessing outside query timings.
-
-The two standalone programs demonstrate the operations on five players. The larger replay will supply the benchmark measurements.
-
-## Build and run
-
-From the repository root on `Saksham`:
-
-```powershell
-g++ -std=c++17 fenwick/main.cpp -o fenwick.exe
-.\fenwick.exe
+```sh
+cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+cmake --build build --config Release --parallel 4
+cmake -E chdir build ctest -C Release --output-on-failure
+./build/bin/leaderboard avl app/examples/basic.trace
+./build/bin/leaderboard fenwick app/examples/basic.trace
 ```
 
-For Structure A, compile `avl/main.cpp` the same way. Both examples show insertion, rank, selection, a page of results, a score revision, deletion, a threshold split and a join.
+On Windows the executables have `.exe` suffixes. CMake places every configuration
+in `build/bin`. Assertions stay enabled in release tests.
 
-## Project requirements
+The `ctest` step above runs three million-command mixed traces and a scale test
+with one million players and one million revisions. Allow about one to two
+minutes for testing in a Release build. To run only the adversary suite:
 
-- Support at least one million players and one million operations.
-- Implement both structures and a player-ID-to-score hash table from scratch.
-- Compare both structures against a sorted-array oracle using differential tests and invariant checks.
-- Include adversarial generators, reproducible benchmarks, derivations, and a report.
+```sh
+python3 adversary/run.py --ops 1000000 --scale 1000000
+```
 
-## Course deliverables
+Use `python` if that is your Python 3 executable. `--skip-build` reuses an
+already-built tree; do not use it after changing C++ sources. The runner writes
+command results and source hashes to `build/validation.json`.
 
-`INTERFACE.md`, `REPORT.md`, `TOOLS.md`, `src/structA/`, `src/structB/`, `app/`, `oracle/`, `adversary/`, `bench/`, `docs/derivations/`, and `results/` will be added during development.
+For address/undefined-behavior checking with Clang or GCC:
+
+```sh
+cmake -S . -B build/sanitize -DCMAKE_BUILD_TYPE=Debug -DENABLE_SANITIZERS=ON
+cmake --build build/sanitize --parallel 4
+cmake -E chdir build/sanitize ctest --output-on-failure
+```
+
+## Project contents
+
+- `src/structA/`: AVL insertion, deletion, rank, selection, range, split and merge.
+- `src/structB/`: Fenwick counts, compressed scores and sorted tied-ID buckets.
+- `app/`: handwritten open-addressing player table, replay and CLI.
+- `oracle/`: independent reference/parser, backend invariant checks and reducer.
+- `adversary/`: deterministic trace generation and integrated test runner.
+- `bench/`: fixed 100-player rank microbenchmark.
+- `docs/derivations/`: D1–D5 sources and PDFs. `D5.md` at the project root describes the workloads.
+- `results/`: validation summary, benchmark output, and build environment.
+- `REPORT.md`: design, complexity, and results.
+- `TOOLS.md`: tool-use disclosure.
+
+The CLI replays commands in memory. Fenwick collects all ADD and SET score
+coordinates before replay. Updates can shift IDs within a tie bucket, and each
+populated Fenwick board allocates arrays for the replay’s score domain.

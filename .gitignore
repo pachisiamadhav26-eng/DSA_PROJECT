@@ -1,5 +1,6 @@
-# Generated build products and local editor files:
-build/
+# Generated build products and local editor files
+build*/
+cmake-build*/
 dist/
 *.o
 *.obj
@@ -9,7 +10,9 @@ __pycache__/
 .venv/
 .vscode/
 .idea/
+.DS_Store
 
-# Temporary benchmark and test files:
+# Temporary benchmark and test files
 tmp/
 *.log
+/oracle-failure*.trace

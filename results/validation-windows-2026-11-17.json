@@ -1,0 +1,1268 @@
+{
+  "passed": true,
+  "platform": "Windows-11-10.0.26200-SP0",
+  "python": "3.12.6 (tags/v3.12.6:a4a2d2b, Sep  6 2024, 20:11:23) [MSC v.1940 64 bit (AMD64)]",
+  "ops": 1000000,
+  "scale": 1000000,
+  "sources": {
+    "adversary\\generator.cpp": "a97de9da02dcc1dfa9d1cef6a4d6dee74c19bffc282ce1efcb79cf83f07f550f",
+    "adversary\\run.py": "5c233de7c23e610bb949f51faa4cfa3de680a173f69ee897243d5cf0bd2ec139",
+    "adversary\\tests\\nested_split.expected": "fac7259a95f49635de1bb5aaec9f6537d915a60a6ed35b01d05dea0e6b231dcb",
+    "adversary\\tests\\nested_split.trace": "40930f579a8ecd11c43605698e40fb7fa358b1d38981e48b9b754ef11e86f134",
+    "adversary\\tests\\ties.expected": "a8a8df9075321f507cf83b8b66c298c4b0a99b37c61e8191de97884350de88b4",
+    "adversary\\tests\\ties.trace": "42f7e38c490064d32b1d91eca94f3a00d7e624f4212729ad8fc3dd58e9b04dca",
+    "adversary\\tests\\wide.expected": "58f61cd1d9f4f2797a168cea1933db15bce11c478945838befac5189d0704d5a",
+    "adversary\\tests\\wide.trace": "1b003d8dec59d22f7087c0aa50ba5b920449a73cd588f9908c95277dbfa92a54",
+    "ADVERSARY_HANDOFF.md": "f3eaf8b0204fbbab7f27052d9eceb30748d432ba966230407fde004c801d1e2b",
+    "app\\examples\\basic.expected": "c0e737b1456fada2d523db92d1262561d7a1180ffa54587de0df558314452b7e",
+    "app\\examples\\basic.trace": "e59d11440af78f997e49aad22273fd5f4e2cea8bca9ccefc59b9faf23de2612e",
+    "app\\examples\\fenwick_demo.cpp": "e6e1c669491dcb48f5d3b78a51f00482b0676e970c99af80330bd4f933c0fd5e",
+    "app\\leaderboard.cpp": "07401ba1c70e457c0b1d8e3c88f073973fb30e3f18f1b9f3035be87e2c01b660",
+    "app\\player_table.cpp": "c3441d58b9a0dc3f4c6ee4e02fd5cb49136e242a3eaf56a31af4af0f9cd297c9",
+    "app\\player_table.hpp": "d4ef8767f8127bee889909a1d7c8b04e29b4ef9c8dedf30044456974c7068d4e",
+    "app\\replay.cpp": "b6ac00235de8fcad0581faa5397c4bdd326f6a8982f4110ae8e1a3239ff81047",
+    "app\\replay.hpp": "b307644bcf0fa5b721824d36a33c39b5778b9dc2fc30fc930a59277503b20f67",
+    "bench\\plot.py": "58b518c32c08df31c6eb5a8bb3577fa1c365705c53f98ba05a6d4f35c485d9e9",
+    "bench\\rank_bench.cpp": "0fd9462fd3fbd570f676e7504399a93c32739754c7cd93307dd33a00177c22ac",
+    "bench\\scaling_bench.cpp": "e2f7a37ebeaf32b87f838073c96181553e2ffdb44f9c025ed01465b1475c759b",
+    "CMakeLists.txt": "aba61fe7bdaf674c04eb5f769d1048bf7b9816dcfe0af9552a4e2dfe76b7193e",
+    "D5.md": "ea9dfabc1feeb11f983e8d92d63b187d799c0a2e6c091d9aef5cf67cd862c1e5",
+    "include\\backend_tools.hpp": "91d98172d8a9b203d772d2aefef03afb8afc0c124f3e235aa1fa8e9b82b937f5",
+    "include\\leaderboard.hpp": "b980de7fad395204f13668d96eb683e406f3f27cf42ec5b40b8e26ccad698efb",
+    "INTERFACE.md": "650b93bb75a23db47421906abd97946accfa13a58f3a33d3721fd7e63d93f46f",
+    "oracle\\differential.cpp": "a4867e65de54332404d7f19eade011f424bc1675131374976f25346a97512edf",
+    "oracle\\main.cpp": "be13fec6b4ef81e68fee6626a8f62d6df5bf9000af639eba54404afc47782e71",
+    "oracle\\replay.hpp": "3e8edd9088031ed2486df9e31de56fe29d1213b6b9c7efa15b06799c85e77c6f",
+    "oracle\\sorted_array.hpp": "6f04cf0ef2ca6b340ecf320f16909c58ee27b043974dd31777ee2448f000d52f",
+    "oracle\\tests\\errors.expected": "bd24a9b78edd18c3886dde70258c6c5f947fb9ac24fd92406e5763c159fbe9b9",
+    "oracle\\tests\\errors.trace": "41915677917152356b4bf8ac7b41513af613d0101dfd7e708c59ba7e8a611da9",
+    "oracle\\tests\\seasons.expected": "45201079916c4a6b17d8da181370d9680bca681d54fe76d61d8f8b168395e9b2",
+    "oracle\\tests\\seasons.trace": "0dbc3c6642c0f96cf45d889e1370b574c97ce31c5b7318ed11c9d1bc44dac59f",
+    "oracle\\tests\\wide_ids.expected": "5874584eb9f0eb741beed0ad6218dff0ed08f2d0a54cd62b24f78e41856b0220",
+    "oracle\\tests\\wide_ids.trace": "eec8c04a6c9f7e98dca82ddc6a36ca7d3c830418bf8f15150380a8eea2264864",
+    "PROJECT_BRIEF.md": "50361bde3e702f71260273d9dc90ff16dd9cdd585e3499b9a141b19005925e2c",
+    "README.md": "a0522b77dcacbf0da2194c4f0b89d3fd2e6e1c7a97387ba7619301fa5fe7134e",
+    "REPORT.md": "ac0d2152ab1a4cc82c8ce64a190c74ea4e20934c46007c916da12dd0b1dc94b4",
+    "src\\structA\\avl.cpp": "9ee9c7f3694dd0b14efaf6c00e6356fca47905e616e42744de231ad380eaa712",
+    "src\\structB\\fenwick.cpp": "953c42a21b9a6c719f146be6ea9dc9cfc9716588ec4f1652e74ff9238fabdfbb",
+    "tests\\avl_test.cpp": "cb618de562a3b7349faa0c9ad6834b212cf6f56159a6c250c2371b206cc578dd",
+    "tests\\fenwick_test.cpp": "be8fd0264a65328d652efc74aa0a73e1042b216bb5c427421e35aef79b72c23c",
+    "tests\\player_table_test.cpp": "4841cdf9834df9337410dc465e5ac2979ac0936c57577f06c603d9807216298f",
+    "tests\\replay_test.cpp": "ecb2ad1a9ae912b7782215b5860d567f2c092ed625107c33e06c7f77d6442df5",
+    "TOOLS.md": "ef602ff92a356056650fdf8ab9f120c68094c605559b5672c2595c791e28678c"
+  },
+  "commands": [
+    {
+      "command": [
+        "cmake",
+        "-S",
+        "C:\\Live_query_ranking\\DSA_PROJECT",
+        "-B",
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final",
+        "-DCMAKE_BUILD_TYPE=Release"
+      ],
+      "exit_code": 0,
+      "seconds": 1.0144259000080638,
+      "stderr": "",
+      "stdout": "-- Configuring done (0.7s)\n-- Generating done (0.2s)\n-- Build files have been written to: C:/Live_query_ranking/DSA_PROJECT/build/integrated-final\n"
+    },
+    {
+      "command": [
+        "cmake",
+        "--build",
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final",
+        "--config",
+        "Release",
+        "--parallel",
+        "4"
+      ],
+      "exit_code": 0,
+      "seconds": 19.26023090002127,
+      "stderr": "",
+      "stdout": "[1/28] Building CXX object CMakeFiles/replay.dir/app/player_table.cpp.obj\n[2/28] Building CXX object CMakeFiles/replay.dir/app/replay.cpp.obj\n[3/28] Building CXX object CMakeFiles/backends.dir/src/structA/avl.cpp.obj\n[4/28] Building CXX object CMakeFiles/leaderboard.dir/app/leaderboard.cpp.obj\n[5/28] Building CXX object CMakeFiles/backends.dir/src/structB/fenwick.cpp.obj\n[6/28] Linking CXX static library libreplay.a\n[7/28] Linking CXX static library libbackends.a\n[8/28] Building CXX object CMakeFiles/rank_bench.dir/bench/rank_bench.cpp.obj\n[9/28] Building CXX object CMakeFiles/generator.dir/adversary/generator.cpp.obj\n[10/28] Building CXX object CMakeFiles/oracle.dir/oracle/main.cpp.obj\n[11/28] Building CXX object CMakeFiles/scaling_bench.dir/bench/scaling_bench.cpp.obj\n[12/28] Building CXX object CMakeFiles/fenwick_demo.dir/app/examples/fenwick_demo.cpp.obj\n[13/28] Building CXX object CMakeFiles/player_table_test.dir/tests/player_table_test.cpp.obj\n[14/28] Building CXX object CMakeFiles/replay_test.dir/tests/replay_test.cpp.obj\n[15/28] Linking CXX executable bin\\leaderboard.exe\n[16/28] Linking CXX executable bin\\oracle.exe\n[17/28] Building CXX object CMakeFiles/differential.dir/oracle/differential.cpp.obj\nC:/Live_query_ranking/DSA_PROJECT/oracle/differential.cpp: In function '{anonymous}::Failure {anonymous}::replay(const Trace&, bool)':\nC:/Live_query_ranking/DSA_PROJECT/oracle/differential.cpp:48:81: warning: possibly dangling reference to a temporary [-Wdangling-reference]\n   48 |         for (auto backend:{std::make_pair(\"AVL\",&a),std::make_pair(\"Fenwick\",&b)}) {\n      |                                                                                 ^\nC:/Live_query_ranking/DSA_PROJECT/oracle/differential.cpp:48:42: note: the temporary was destroyed at the end of the full expression 'std::make_pair<const char (&)[4], oracle::Session*>(\"AVL\", (& a))'\n   48 |         for (auto backend:{std::make_pair(\"AVL\",&a),std::make_pair(\"Fenwick\",&b)}) {\n      |                            ~~~~~~~~~~~~~~^~~~~~~~~~\nC:/Live_query_ranking/DSA_PROJECT/oracle/differential.cpp:48:81: warning: possibly dangling reference to a temporary [-Wdangling-reference]\n   48 |         for (auto backend:{std::make_pair(\"AVL\",&a),std::make_pair(\"Fenwick\",&b)}) {\n      |                                                                                 ^\nC:/Live_query_ranking/DSA_PROJECT/oracle/differential.cpp:48:67: note: the temporary was destroyed at the end of the full expression 'std::make_pair<const char (&)[8], oracle::Session*>(\"Fenwick\", (& b))'\n   48 |         for (auto backend:{std::make_pair(\"AVL\",&a),std::make_pair(\"Fenwick\",&b)}) {\n      |                                                     ~~~~~~~~~~~~~~^~~~~~~~~~~~~~\n[18/28] Linking CXX executable bin\\generator.exe\n[19/28] Linking CXX executable bin\\differential.exe\n[20/28] Linking CXX executable bin\\rank_bench.exe\n[21/28] Linking CXX executable bin\\scaling_bench.exe\n[22/28] Linking CXX executable bin\\fenwick_demo.exe\n[23/28] Linking CXX executable bin\\player_table_test.exe\n[24/28] Linking CXX executable bin\\replay_test.exe\n[25/28] Building CXX object CMakeFiles/avl_test.dir/tests/avl_test.cpp.obj\n[26/28] Building CXX object CMakeFiles/fenwick_test.dir/tests/fenwick_test.cpp.obj\n[27/28] Linking CXX executable bin\\avl_test.exe\n[28/28] Linking CXX executable bin\\fenwick_test.exe\n"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\player_table_test.exe"
+      ],
+      "exit_code": 0,
+      "seconds": 0.4352444999967702,
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\replay_test.exe"
+      ],
+      "exit_code": 0,
+      "seconds": 0.15979890001472086,
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\avl_test.exe"
+      ],
+      "exit_code": 0,
+      "seconds": 0.08774390001781285,
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\fenwick_test.exe"
+      ],
+      "exit_code": 0,
+      "seconds": 0.09290969997528009,
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\oracle.exe",
+        "C:\\Live_query_ranking\\DSA_PROJECT\\app\\examples\\basic.trace"
+      ],
+      "exit_code": 0,
+      "seconds": 0.1012613000057172,
+      "stderr": "",
+      "output_lines": 12,
+      "output_sha256": "c0e737b1456fada2d523db92d1262561d7a1180ffa54587de0df558314452b7e"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\leaderboard.exe",
+        "avl",
+        "C:\\Live_query_ranking\\DSA_PROJECT\\app\\examples\\basic.trace"
+      ],
+      "exit_code": 0,
+      "seconds": 0.1123078000091482,
+      "stderr": "",
+      "output_lines": 12,
+      "output_sha256": "c0e737b1456fada2d523db92d1262561d7a1180ffa54587de0df558314452b7e"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\leaderboard.exe",
+        "fenwick",
+        "C:\\Live_query_ranking\\DSA_PROJECT\\app\\examples\\basic.trace"
+      ],
+      "exit_code": 0,
+      "seconds": 0.02496959999552928,
+      "stderr": "",
+      "output_lines": 12,
+      "output_sha256": "c0e737b1456fada2d523db92d1262561d7a1180ffa54587de0df558314452b7e"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\differential.exe",
+        "--trace",
+        "C:\\Live_query_ranking\\DSA_PROJECT\\app\\examples\\basic.trace"
+      ],
+      "exit_code": 0,
+      "seconds": 0.12762669997755438,
+      "stderr": "",
+      "stdout": "PASS oracle boundaries, rotations, unequal joins, shrinker\nPASS trace=C:\\Live_query_ranking\\DSA_PROJECT\\app\\examples\\basic.trace commands=12 full invariant/state audits after every command seconds=0.0013971\n"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\oracle.exe",
+        "C:\\Live_query_ranking\\DSA_PROJECT\\oracle\\tests\\errors.trace"
+      ],
+      "exit_code": 0,
+      "seconds": 0.021949200017843395,
+      "stderr": "",
+      "output_lines": 28,
+      "output_sha256": "bd24a9b78edd18c3886dde70258c6c5f947fb9ac24fd92406e5763c159fbe9b9"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\leaderboard.exe",
+        "avl",
+        "C:\\Live_query_ranking\\DSA_PROJECT\\oracle\\tests\\errors.trace"
+      ],
+      "exit_code": 0,
+      "seconds": 0.023930199997266755,
+      "stderr": "",
+      "output_lines": 28,
+      "output_sha256": "bd24a9b78edd18c3886dde70258c6c5f947fb9ac24fd92406e5763c159fbe9b9"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\leaderboard.exe",
+        "fenwick",
+        "C:\\Live_query_ranking\\DSA_PROJECT\\oracle\\tests\\errors.trace"
+      ],
+      "exit_code": 0,
+      "seconds": 0.022910500003490597,
+      "stderr": "",
+      "output_lines": 28,
+      "output_sha256": "bd24a9b78edd18c3886dde70258c6c5f947fb9ac24fd92406e5763c159fbe9b9"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\differential.exe",
+        "--trace",
+        "C:\\Live_query_ranking\\DSA_PROJECT\\oracle\\tests\\errors.trace"
+      ],
+      "exit_code": 0,
+      "seconds": 0.0344735000107903,
+      "stderr": "",
+      "stdout": "PASS oracle boundaries, rotations, unequal joins, shrinker\nPASS trace=C:\\Live_query_ranking\\DSA_PROJECT\\oracle\\tests\\errors.trace commands=28 full invariant/state audits after every command seconds=0.0015573\n"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\oracle.exe",
+        "C:\\Live_query_ranking\\DSA_PROJECT\\oracle\\tests\\seasons.trace"
+      ],
+      "exit_code": 0,
+      "seconds": 0.02143749999231659,
+      "stderr": "",
+      "output_lines": 26,
+      "output_sha256": "45201079916c4a6b17d8da181370d9680bca681d54fe76d61d8f8b168395e9b2"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\leaderboard.exe",
+        "avl",
+        "C:\\Live_query_ranking\\DSA_PROJECT\\oracle\\tests\\seasons.trace"
+      ],
+      "exit_code": 0,
+      "seconds": 0.024767499999143183,
+      "stderr": "",
+      "output_lines": 26,
+      "output_sha256": "45201079916c4a6b17d8da181370d9680bca681d54fe76d61d8f8b168395e9b2"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\leaderboard.exe",
+        "fenwick",
+        "C:\\Live_query_ranking\\DSA_PROJECT\\oracle\\tests\\seasons.trace"
+      ],
+      "exit_code": 0,
+      "seconds": 0.03103509999345988,
+      "stderr": "",
+      "output_lines": 26,
+      "output_sha256": "45201079916c4a6b17d8da181370d9680bca681d54fe76d61d8f8b168395e9b2"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\differential.exe",
+        "--trace",
+        "C:\\Live_query_ranking\\DSA_PROJECT\\oracle\\tests\\seasons.trace"
+      ],
+      "exit_code": 0,
+      "seconds": 0.02801409998210147,
+      "stderr": "",
+      "stdout": "PASS oracle boundaries, rotations, unequal joins, shrinker\nPASS trace=C:\\Live_query_ranking\\DSA_PROJECT\\oracle\\tests\\seasons.trace commands=26 full invariant/state audits after every command seconds=0.0015829\n"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\oracle.exe",
+        "C:\\Live_query_ranking\\DSA_PROJECT\\oracle\\tests\\wide_ids.trace"
+      ],
+      "exit_code": 0,
+      "seconds": 0.02098410000326112,
+      "stderr": "",
+      "output_lines": 6,
+      "output_sha256": "5874584eb9f0eb741beed0ad6218dff0ed08f2d0a54cd62b24f78e41856b0220"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\leaderboard.exe",
+        "avl",
+        "C:\\Live_query_ranking\\DSA_PROJECT\\oracle\\tests\\wide_ids.trace"
+      ],
+      "exit_code": 0,
+      "seconds": 0.02111309999600053,
+      "stderr": "",
+      "output_lines": 6,
+      "output_sha256": "5874584eb9f0eb741beed0ad6218dff0ed08f2d0a54cd62b24f78e41856b0220"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\leaderboard.exe",
+        "fenwick",
+        "C:\\Live_query_ranking\\DSA_PROJECT\\oracle\\tests\\wide_ids.trace"
+      ],
+      "exit_code": 0,
+      "seconds": 0.025469199987128377,
+      "stderr": "",
+      "output_lines": 6,
+      "output_sha256": "5874584eb9f0eb741beed0ad6218dff0ed08f2d0a54cd62b24f78e41856b0220"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\differential.exe",
+        "--trace",
+        "C:\\Live_query_ranking\\DSA_PROJECT\\oracle\\tests\\wide_ids.trace"
+      ],
+      "exit_code": 0,
+      "seconds": 0.039057499991031364,
+      "stderr": "",
+      "stdout": "PASS oracle boundaries, rotations, unequal joins, shrinker\nPASS trace=C:\\Live_query_ranking\\DSA_PROJECT\\oracle\\tests\\wide_ids.trace commands=6 full invariant/state audits after every command seconds=0.0013962\n"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\oracle.exe",
+        "C:\\Live_query_ranking\\DSA_PROJECT\\adversary\\tests\\nested_split.trace"
+      ],
+      "exit_code": 0,
+      "seconds": 0.042272399994544685,
+      "stderr": "",
+      "output_lines": 21,
+      "output_sha256": "fac7259a95f49635de1bb5aaec9f6537d915a60a6ed35b01d05dea0e6b231dcb"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\leaderboard.exe",
+        "avl",
+        "C:\\Live_query_ranking\\DSA_PROJECT\\adversary\\tests\\nested_split.trace"
+      ],
+      "exit_code": 0,
+      "seconds": 0.042764300014823675,
+      "stderr": "",
+      "output_lines": 21,
+      "output_sha256": "fac7259a95f49635de1bb5aaec9f6537d915a60a6ed35b01d05dea0e6b231dcb"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\leaderboard.exe",
+        "fenwick",
+        "C:\\Live_query_ranking\\DSA_PROJECT\\adversary\\tests\\nested_split.trace"
+      ],
+      "exit_code": 0,
+      "seconds": 0.058131400001002476,
+      "stderr": "",
+      "output_lines": 21,
+      "output_sha256": "fac7259a95f49635de1bb5aaec9f6537d915a60a6ed35b01d05dea0e6b231dcb"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\differential.exe",
+        "--trace",
+        "C:\\Live_query_ranking\\DSA_PROJECT\\adversary\\tests\\nested_split.trace"
+      ],
+      "exit_code": 0,
+      "seconds": 0.06243920000270009,
+      "stderr": "",
+      "stdout": "PASS oracle boundaries, rotations, unequal joins, shrinker\nPASS trace=C:\\Live_query_ranking\\DSA_PROJECT\\adversary\\tests\\nested_split.trace commands=21 full invariant/state audits after every command seconds=0.0014294\n"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\oracle.exe",
+        "C:\\Live_query_ranking\\DSA_PROJECT\\adversary\\tests\\ties.trace"
+      ],
+      "exit_code": 0,
+      "seconds": 0.04230870000901632,
+      "stderr": "",
+      "output_lines": 14,
+      "output_sha256": "a8a8df9075321f507cf83b8b66c298c4b0a99b37c61e8191de97884350de88b4"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\leaderboard.exe",
+        "avl",
+        "C:\\Live_query_ranking\\DSA_PROJECT\\adversary\\tests\\ties.trace"
+      ],
+      "exit_code": 0,
+      "seconds": 0.05259869998553768,
+      "stderr": "",
+      "output_lines": 14,
+      "output_sha256": "a8a8df9075321f507cf83b8b66c298c4b0a99b37c61e8191de97884350de88b4"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\leaderboard.exe",
+        "fenwick",
+        "C:\\Live_query_ranking\\DSA_PROJECT\\adversary\\tests\\ties.trace"
+      ],
+      "exit_code": 0,
+      "seconds": 0.08061699999962002,
+      "stderr": "",
+      "output_lines": 14,
+      "output_sha256": "a8a8df9075321f507cf83b8b66c298c4b0a99b37c61e8191de97884350de88b4"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\differential.exe",
+        "--trace",
+        "C:\\Live_query_ranking\\DSA_PROJECT\\adversary\\tests\\ties.trace"
+      ],
+      "exit_code": 0,
+      "seconds": 0.04719680000562221,
+      "stderr": "",
+      "stdout": "PASS oracle boundaries, rotations, unequal joins, shrinker\nPASS trace=C:\\Live_query_ranking\\DSA_PROJECT\\adversary\\tests\\ties.trace commands=14 full invariant/state audits after every command seconds=0.0013731\n"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\oracle.exe",
+        "C:\\Live_query_ranking\\DSA_PROJECT\\adversary\\tests\\wide.trace"
+      ],
+      "exit_code": 0,
+      "seconds": 0.0650407999928575,
+      "stderr": "",
+      "output_lines": 5,
+      "output_sha256": "58f61cd1d9f4f2797a168cea1933db15bce11c478945838befac5189d0704d5a"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\leaderboard.exe",
+        "avl",
+        "C:\\Live_query_ranking\\DSA_PROJECT\\adversary\\tests\\wide.trace"
+      ],
+      "exit_code": 0,
+      "seconds": 0.051019600010477006,
+      "stderr": "",
+      "output_lines": 5,
+      "output_sha256": "58f61cd1d9f4f2797a168cea1933db15bce11c478945838befac5189d0704d5a"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\leaderboard.exe",
+        "fenwick",
+        "C:\\Live_query_ranking\\DSA_PROJECT\\adversary\\tests\\wide.trace"
+      ],
+      "exit_code": 0,
+      "seconds": 0.047073000023374334,
+      "stderr": "",
+      "output_lines": 5,
+      "output_sha256": "58f61cd1d9f4f2797a168cea1933db15bce11c478945838befac5189d0704d5a"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\differential.exe",
+        "--trace",
+        "C:\\Live_query_ranking\\DSA_PROJECT\\adversary\\tests\\wide.trace"
+      ],
+      "exit_code": 0,
+      "seconds": 0.03835439999238588,
+      "stderr": "",
+      "stdout": "PASS oracle boundaries, rotations, unequal joins, shrinker\nPASS trace=C:\\Live_query_ranking\\DSA_PROJECT\\adversary\\tests\\wide.trace commands=5 full invariant/state audits after every command seconds=0.0021723\n"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\generator.exe",
+        "--case",
+        "rotations",
+        "--players",
+        "64",
+        "--ops",
+        "1000000",
+        "--seed",
+        "253"
+      ],
+      "exit_code": 0,
+      "seconds": 0.14038080000318587,
+      "stderr": "",
+      "output_lines": 60,
+      "output_sha256": "ab7f42c09a0ad4d7a93b337b6312861ad4f3204957fc707865cace6c89a9cda7"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\generator.exe",
+        "--case",
+        "rotations",
+        "--players",
+        "64",
+        "--ops",
+        "1000000",
+        "--seed",
+        "253"
+      ],
+      "exit_code": 0,
+      "seconds": 0.02412919999915175,
+      "stderr": "",
+      "output_lines": 60,
+      "output_sha256": "ab7f42c09a0ad4d7a93b337b6312861ad4f3204957fc707865cace6c89a9cda7"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\differential.exe",
+        "--trace",
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\traces\\rotations-253.trace"
+      ],
+      "exit_code": 0,
+      "seconds": 0.04185840001446195,
+      "stderr": "",
+      "stdout": "PASS oracle boundaries, rotations, unequal joins, shrinker\nPASS trace=C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\traces\\rotations-253.trace commands=60 full invariant/state audits after every command seconds=0.0048179\n"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\generator.exe",
+        "--case",
+        "cascade",
+        "--players",
+        "88",
+        "--ops",
+        "1000000",
+        "--seed",
+        "253"
+      ],
+      "exit_code": 0,
+      "seconds": 0.10071210001478903,
+      "stderr": "",
+      "output_lines": 97,
+      "output_sha256": "1ec009caf148f23f1f608a294157a844cfa137e93b8c29f292d42e47be83b2fd"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\generator.exe",
+        "--case",
+        "cascade",
+        "--players",
+        "88",
+        "--ops",
+        "1000000",
+        "--seed",
+        "253"
+      ],
+      "exit_code": 0,
+      "seconds": 0.032425699988380075,
+      "stderr": "",
+      "output_lines": 97,
+      "output_sha256": "1ec009caf148f23f1f608a294157a844cfa137e93b8c29f292d42e47be83b2fd"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\differential.exe",
+        "--trace",
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\traces\\cascade-253.trace"
+      ],
+      "exit_code": 0,
+      "seconds": 0.049071500019636005,
+      "stderr": "",
+      "stdout": "PASS oracle boundaries, rotations, unequal joins, shrinker\nPASS trace=C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\traces\\cascade-253.trace commands=97 full invariant/state audits after every command seconds=0.0170287\n"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\avl_test.exe",
+        "cascade",
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\traces\\cascade-253.trace"
+      ],
+      "exit_code": 0,
+      "seconds": 0.048077299987198785,
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\generator.exe",
+        "--case",
+        "ascending",
+        "--players",
+        "64",
+        "--ops",
+        "1000000",
+        "--seed",
+        "253"
+      ],
+      "exit_code": 0,
+      "seconds": 0.02816099999472499,
+      "stderr": "",
+      "output_lines": 87,
+      "output_sha256": "7cecc3883102276c693be3cad9d23397d3b76cc1816cfbb031e1a7aab62c1965"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\generator.exe",
+        "--case",
+        "ascending",
+        "--players",
+        "64",
+        "--ops",
+        "1000000",
+        "--seed",
+        "253"
+      ],
+      "exit_code": 0,
+      "seconds": 0.020752000011270866,
+      "stderr": "",
+      "output_lines": 87,
+      "output_sha256": "7cecc3883102276c693be3cad9d23397d3b76cc1816cfbb031e1a7aab62c1965"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\differential.exe",
+        "--trace",
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\traces\\ascending-253.trace"
+      ],
+      "exit_code": 0,
+      "seconds": 0.0407046000182163,
+      "stderr": "",
+      "stdout": "PASS oracle boundaries, rotations, unequal joins, shrinker\nPASS trace=C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\traces\\ascending-253.trace commands=87 full invariant/state audits after every command seconds=0.006541\n"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\generator.exe",
+        "--case",
+        "descending",
+        "--players",
+        "64",
+        "--ops",
+        "1000000",
+        "--seed",
+        "253"
+      ],
+      "exit_code": 0,
+      "seconds": 0.029253699991386384,
+      "stderr": "",
+      "output_lines": 87,
+      "output_sha256": "859d1f58dc22b7d4a3223706ce1cb0188ffc2f225ca3242f2110afe83a609e19"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\generator.exe",
+        "--case",
+        "descending",
+        "--players",
+        "64",
+        "--ops",
+        "1000000",
+        "--seed",
+        "253"
+      ],
+      "exit_code": 0,
+      "seconds": 0.01972459998796694,
+      "stderr": "",
+      "output_lines": 87,
+      "output_sha256": "859d1f58dc22b7d4a3223706ce1cb0188ffc2f225ca3242f2110afe83a609e19"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\differential.exe",
+        "--trace",
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\traces\\descending-253.trace"
+      ],
+      "exit_code": 0,
+      "seconds": 0.04530860000522807,
+      "stderr": "",
+      "stdout": "PASS oracle boundaries, rotations, unequal joins, shrinker\nPASS trace=C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\traces\\descending-253.trace commands=87 full invariant/state audits after every command seconds=0.0053004\n"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\generator.exe",
+        "--case",
+        "ties",
+        "--players",
+        "64",
+        "--ops",
+        "1000000",
+        "--seed",
+        "253"
+      ],
+      "exit_code": 0,
+      "seconds": 0.03502700000535697,
+      "stderr": "",
+      "output_lines": 87,
+      "output_sha256": "ca01215b78403e4e1a1f6465c70a9fcec0d5cc59cbec24796beb7213f42971a5"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\generator.exe",
+        "--case",
+        "ties",
+        "--players",
+        "64",
+        "--ops",
+        "1000000",
+        "--seed",
+        "253"
+      ],
+      "exit_code": 0,
+      "seconds": 0.018079199973726645,
+      "stderr": "",
+      "output_lines": 87,
+      "output_sha256": "ca01215b78403e4e1a1f6465c70a9fcec0d5cc59cbec24796beb7213f42971a5"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\differential.exe",
+        "--trace",
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\traces\\ties-253.trace"
+      ],
+      "exit_code": 0,
+      "seconds": 0.029148000001441687,
+      "stderr": "",
+      "stdout": "PASS oracle boundaries, rotations, unequal joins, shrinker\nPASS trace=C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\traces\\ties-253.trace commands=87 full invariant/state audits after every command seconds=0.0048606\n"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\generator.exe",
+        "--case",
+        "churn",
+        "--players",
+        "64",
+        "--ops",
+        "1000000",
+        "--seed",
+        "253"
+      ],
+      "exit_code": 0,
+      "seconds": 0.017885499983094633,
+      "stderr": "",
+      "output_lines": 449,
+      "output_sha256": "6ea5f9f149f93f3cba3f5583eac56f3ebf6e2af4d66e26c65936bd02ca8de52d"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\generator.exe",
+        "--case",
+        "churn",
+        "--players",
+        "64",
+        "--ops",
+        "1000000",
+        "--seed",
+        "253"
+      ],
+      "exit_code": 0,
+      "seconds": 0.013932699977885932,
+      "stderr": "",
+      "output_lines": 449,
+      "output_sha256": "6ea5f9f149f93f3cba3f5583eac56f3ebf6e2af4d66e26c65936bd02ca8de52d"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\differential.exe",
+        "--trace",
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\traces\\churn-253.trace"
+      ],
+      "exit_code": 0,
+      "seconds": 0.040471000014804304,
+      "stderr": "",
+      "stdout": "PASS oracle boundaries, rotations, unequal joins, shrinker\nPASS trace=C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\traces\\churn-253.trace commands=449 full invariant/state audits after every command seconds=0.0145892\n"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\avl_test.exe",
+        "churn",
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\traces\\churn-253.trace"
+      ],
+      "exit_code": 0,
+      "seconds": 0.024693400016985834,
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\generator.exe",
+        "--case",
+        "extremes",
+        "--players",
+        "64",
+        "--ops",
+        "1000000",
+        "--seed",
+        "253"
+      ],
+      "exit_code": 0,
+      "seconds": 0.021722900011809543,
+      "stderr": "",
+      "output_lines": 22,
+      "output_sha256": "1767ef2a057efaf9b253f2893532427782a1b2f32d752c2d085fd86b988286f6"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\generator.exe",
+        "--case",
+        "extremes",
+        "--players",
+        "64",
+        "--ops",
+        "1000000",
+        "--seed",
+        "253"
+      ],
+      "exit_code": 0,
+      "seconds": 0.01786690001608804,
+      "stderr": "",
+      "output_lines": 22,
+      "output_sha256": "1767ef2a057efaf9b253f2893532427782a1b2f32d752c2d085fd86b988286f6"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\differential.exe",
+        "--trace",
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\traces\\extremes-253.trace"
+      ],
+      "exit_code": 0,
+      "seconds": 0.03771879998384975,
+      "stderr": "",
+      "stdout": "PASS oracle boundaries, rotations, unequal joins, shrinker\nPASS trace=C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\traces\\extremes-253.trace commands=22 full invariant/state audits after every command seconds=0.0076001\n"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\generator.exe",
+        "--case",
+        "seasons",
+        "--players",
+        "64",
+        "--ops",
+        "1000000",
+        "--seed",
+        "253"
+      ],
+      "exit_code": 0,
+      "seconds": 0.02023729999200441,
+      "stderr": "",
+      "output_lines": 99,
+      "output_sha256": "b0a2040deafb3c1bd21853122ebad8ea25177f7d65a6daab053fd88928aa2fa0"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\generator.exe",
+        "--case",
+        "seasons",
+        "--players",
+        "64",
+        "--ops",
+        "1000000",
+        "--seed",
+        "253"
+      ],
+      "exit_code": 0,
+      "seconds": 0.014688199997181073,
+      "stderr": "",
+      "output_lines": 99,
+      "output_sha256": "b0a2040deafb3c1bd21853122ebad8ea25177f7d65a6daab053fd88928aa2fa0"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\differential.exe",
+        "--trace",
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\traces\\seasons-253.trace"
+      ],
+      "exit_code": 0,
+      "seconds": 0.052537100011250004,
+      "stderr": "",
+      "stdout": "PASS oracle boundaries, rotations, unequal joins, shrinker\nPASS trace=C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\traces\\seasons-253.trace commands=99 full invariant/state audits after every command seconds=0.0272743\n"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\avl_test.exe",
+        "seasons",
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\traces\\seasons-253.trace"
+      ],
+      "exit_code": 0,
+      "seconds": 0.03170899997348897,
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\generator.exe",
+        "--case",
+        "unequal",
+        "--players",
+        "64",
+        "--ops",
+        "1000000",
+        "--seed",
+        "253"
+      ],
+      "exit_code": 0,
+      "seconds": 0.02259020000929013,
+      "stderr": "",
+      "output_lines": 69,
+      "output_sha256": "980260659ada55062b15d40e53e4056873b086fbc3d89826eb8079ccd3f067a9"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\generator.exe",
+        "--case",
+        "unequal",
+        "--players",
+        "64",
+        "--ops",
+        "1000000",
+        "--seed",
+        "253"
+      ],
+      "exit_code": 0,
+      "seconds": 0.015046699991216883,
+      "stderr": "",
+      "output_lines": 69,
+      "output_sha256": "980260659ada55062b15d40e53e4056873b086fbc3d89826eb8079ccd3f067a9"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\differential.exe",
+        "--trace",
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\traces\\unequal-253.trace"
+      ],
+      "exit_code": 0,
+      "seconds": 0.030496799998218194,
+      "stderr": "",
+      "stdout": "PASS oracle boundaries, rotations, unequal joins, shrinker\nPASS trace=C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\traces\\unequal-253.trace commands=69 full invariant/state audits after every command seconds=0.004417\n"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\avl_test.exe",
+        "unequal",
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\traces\\unequal-253.trace"
+      ],
+      "exit_code": 0,
+      "seconds": 0.023447199986549094,
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\generator.exe",
+        "--case",
+        "errors",
+        "--players",
+        "64",
+        "--ops",
+        "1000000",
+        "--seed",
+        "253"
+      ],
+      "exit_code": 0,
+      "seconds": 0.022638599999481812,
+      "stderr": "",
+      "output_lines": 31,
+      "output_sha256": "e69337ad7fb72f5b1f644a081b84a7c9ba2dff4926081c9c0a32e204820a27d0"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\generator.exe",
+        "--case",
+        "errors",
+        "--players",
+        "64",
+        "--ops",
+        "1000000",
+        "--seed",
+        "253"
+      ],
+      "exit_code": 0,
+      "seconds": 0.015966600010870025,
+      "stderr": "",
+      "output_lines": 31,
+      "output_sha256": "e69337ad7fb72f5b1f644a081b84a7c9ba2dff4926081c9c0a32e204820a27d0"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\differential.exe",
+        "--trace",
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\traces\\errors-253.trace"
+      ],
+      "exit_code": 0,
+      "seconds": 0.04691970002022572,
+      "stderr": "",
+      "stdout": "PASS oracle boundaries, rotations, unequal joins, shrinker\nPASS trace=C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\traces\\errors-253.trace commands=31 full invariant/state audits after every command seconds=0.0200267\n"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\avl_test.exe",
+        "errors",
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\traces\\errors-253.trace"
+      ],
+      "exit_code": 0,
+      "seconds": 0.024587699997937307,
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\generator.exe",
+        "--case",
+        "mixed",
+        "--players",
+        "64",
+        "--ops",
+        "1000000",
+        "--seed",
+        "253"
+      ],
+      "exit_code": 0,
+      "seconds": 0.3380890999978874,
+      "stderr": "",
+      "output_lines": 1000000,
+      "output_sha256": "0db7a19557a9225f3873b099b668b1baebc442b722306b8b65383fd5aad01f83"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\generator.exe",
+        "--case",
+        "mixed",
+        "--players",
+        "64",
+        "--ops",
+        "1000000",
+        "--seed",
+        "253"
+      ],
+      "exit_code": 0,
+      "seconds": 0.36989750000066124,
+      "stderr": "",
+      "output_lines": 1000000,
+      "output_sha256": "0db7a19557a9225f3873b099b668b1baebc442b722306b8b65383fd5aad01f83"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\differential.exe",
+        "--trace",
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\traces\\mixed-253.trace"
+      ],
+      "exit_code": 0,
+      "seconds": 40.069687100010924,
+      "stderr": "",
+      "stdout": "PASS oracle boundaries, rotations, unequal joins, shrinker\nPASS trace=C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\traces\\mixed-253.trace commands=1000000 full invariant/state audits after every command seconds=40.0358\n"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\avl_test.exe",
+        "mixed",
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\traces\\mixed-253.trace"
+      ],
+      "exit_code": 0,
+      "seconds": 0.8468611000280362,
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\generator.exe",
+        "--case",
+        "mixed",
+        "--players",
+        "64",
+        "--ops",
+        "1000000",
+        "--seed",
+        "42"
+      ],
+      "exit_code": 0,
+      "seconds": 0.32866460000514053,
+      "stderr": "",
+      "output_lines": 1000000,
+      "output_sha256": "8263337cb6d10469236bee5512b5c90c8f8b1038afe58ec920caa6bc4aa49abf"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\generator.exe",
+        "--case",
+        "mixed",
+        "--players",
+        "64",
+        "--ops",
+        "1000000",
+        "--seed",
+        "42"
+      ],
+      "exit_code": 0,
+      "seconds": 0.3123098000069149,
+      "stderr": "",
+      "output_lines": 1000000,
+      "output_sha256": "8263337cb6d10469236bee5512b5c90c8f8b1038afe58ec920caa6bc4aa49abf"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\differential.exe",
+        "--trace",
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\traces\\mixed-42.trace"
+      ],
+      "exit_code": 0,
+      "seconds": 42.723816099984106,
+      "stderr": "",
+      "stdout": "PASS oracle boundaries, rotations, unequal joins, shrinker\nPASS trace=C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\traces\\mixed-42.trace commands=1000000 full invariant/state audits after every command seconds=42.6866\n"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\avl_test.exe",
+        "mixed",
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\traces\\mixed-42.trace"
+      ],
+      "exit_code": 0,
+      "seconds": 0.6754998999822419,
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\generator.exe",
+        "--case",
+        "mixed",
+        "--players",
+        "64",
+        "--ops",
+        "1000000",
+        "--seed",
+        "20261115"
+      ],
+      "exit_code": 0,
+      "seconds": 0.31003860000055283,
+      "stderr": "",
+      "output_lines": 1000000,
+      "output_sha256": "7af37a0d138afc22d6a43362c3e3886e94c099912273862a863de8f916acf42a"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\generator.exe",
+        "--case",
+        "mixed",
+        "--players",
+        "64",
+        "--ops",
+        "1000000",
+        "--seed",
+        "20261115"
+      ],
+      "exit_code": 0,
+      "seconds": 0.28359330000239424,
+      "stderr": "",
+      "output_lines": 1000000,
+      "output_sha256": "7af37a0d138afc22d6a43362c3e3886e94c099912273862a863de8f916acf42a"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\differential.exe",
+        "--trace",
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\traces\\mixed-20261115.trace"
+      ],
+      "exit_code": 0,
+      "seconds": 37.593825999996625,
+      "stderr": "",
+      "stdout": "PASS oracle boundaries, rotations, unequal joins, shrinker\nPASS trace=C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\traces\\mixed-20261115.trace commands=1000000 full invariant/state audits after every command seconds=37.547\n"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\avl_test.exe",
+        "mixed",
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\traces\\mixed-20261115.trace"
+      ],
+      "exit_code": 0,
+      "seconds": 0.6707131000002846,
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\generator.exe",
+        "--players",
+        "0"
+      ],
+      "exit_code": 2,
+      "seconds": 0.03800339999725111,
+      "stderr": "generator: players must be 2..1000000; ops 0..10000000\n",
+      "output_lines": 0,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\generator.exe",
+        "--case",
+        "unknown"
+      ],
+      "exit_code": 2,
+      "seconds": 0.033132499986095354,
+      "stderr": "generator: unknown case: unknown\n",
+      "output_lines": 0,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\generator.exe",
+        "--seed",
+        "-1"
+      ],
+      "exit_code": 2,
+      "seconds": 0.023425299994414672,
+      "stderr": "generator: expected unsigned decimal\n",
+      "output_lines": 0,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\differential.exe",
+        "--trace",
+        "C:\\Live_query_ranking\\DSA_PROJECT\\adversary\\tests\\ties.trace",
+        "--inject-fault"
+      ],
+      "exit_code": 1,
+      "seconds": 0.04577279998920858,
+      "stderr": "FAIL trace=C:\\Live_query_ranking\\DSA_PROJECT\\adversary\\tests\\ties.trace step=5 AVL: output mismatch for RANK\nSaved full failing prefix and 1-minimal trace (2 commands)\n",
+      "stdout": "PASS oracle boundaries, rotations, unequal joins, shrinker\n"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\differential.exe",
+        "--scale",
+        "1000000"
+      ],
+      "exit_code": 0,
+      "seconds": 3.4770618000184186,
+      "stderr": "",
+      "stdout": "PASS oracle boundaries, rotations, unequal joins, shrinker\nPASS scale players=1000000 queries=1000000 split/merge (full audits at phase boundaries)\n"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\generator.exe",
+        "--case",
+        "scale",
+        "--players",
+        "1000000",
+        "--ops",
+        "1000000"
+      ],
+      "exit_code": 0,
+      "seconds": 1.0617518000071868,
+      "stderr": "",
+      "output_lines": 2003019,
+      "output_sha256": "bc99a016752b8f578b8d2a0a1d9589b3910d7411c37aff1c54e2f3f5c86256ab"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\generator.exe",
+        "--case",
+        "scale",
+        "--players",
+        "1000",
+        "--ops",
+        "1000"
+      ],
+      "exit_code": 0,
+      "seconds": 0.026871099980780855,
+      "stderr": "",
+      "output_lines": 2022,
+      "output_sha256": "cdb31f3d005c0b5813833a4fb4da385c2c3726c5edaed9ec57a366fa8937ca35"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\differential.exe",
+        "--trace",
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\traces\\scale-small.trace"
+      ],
+      "exit_code": 0,
+      "seconds": 0.9379915000172332,
+      "stderr": "",
+      "stdout": "PASS oracle boundaries, rotations, unequal joins, shrinker\nPASS trace=C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\traces\\scale-small.trace commands=2022 full invariant/state audits after every command seconds=0.893446\n"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\leaderboard.exe",
+        "avl",
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\traces\\scale.trace"
+      ],
+      "exit_code": 0,
+      "seconds": 4.211075799976243,
+      "stderr": "",
+      "output_lines": 2003019,
+      "output_sha256": "11140d25cf362f28c579f07a52218e1a53a979821f62f4b3d28d733b13bc655a"
+    },
+    {
+      "command": [
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\bin\\leaderboard.exe",
+        "fenwick",
+        "C:\\Live_query_ranking\\DSA_PROJECT\\build\\integrated-final\\traces\\scale.trace"
+      ],
+      "exit_code": 0,
+      "seconds": 2.448470700008329,
+      "stderr": "",
+      "output_lines": 2003019,
+      "output_sha256": "11140d25cf362f28c579f07a52218e1a53a979821f62f4b3d28d733b13bc655a"
+    }
+  ]
+}

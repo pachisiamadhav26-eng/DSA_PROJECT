@@ -1,22 +1,55 @@
-param([string]$Compiler = 'g++')
+param(
+    [string]$Compiler = 'g++',
+    [string]$ArchitectRef = 'a4dc4382b11d60ed85697fb9560574d24a8d2366',
+    [string]$AvlRef = '03f3f57186f96bac6b2ad8f22acbedd7da2de153',
+    [string]$FenwickRef = 'c921385a635deb2bd6ff8ca70ec67cf554752fed'
+)
 $ErrorActionPreference = 'Stop'
 $root = Split-Path $PSScriptRoot -Parent
 Push-Location $root
 try {
-    New-Item -ItemType Directory -Force build/oracle/deps | Out-Null
-    # Immutable teammate commits, exported without checking out/merging branches.
-    $sources = @(
-        @('2db28739e291a07bf65c68b44db6a86fbd187b91', 'avl.cpp'),
-        @('de0ab032ce8599d1ef7c9be048377c23cd571327', 'Fenvick.cpp')
-    )
-    foreach ($source in $sources) {
-        $content = git show ($source[0] + ':' + $source[1])
-        if ($LASTEXITCODE -ne 0) { throw 'Missing source commit: run git fetch origin first.' }
-        [IO.File]::WriteAllLines((Join-Path $root ('build/oracle/deps/' + $source[1])),
-            [string[]]$content, [Text.UTF8Encoding]::new($false))
+    function Resolve-Source([string]$Ref) {
+        $sha = git rev-parse --verify --end-of-options "$Ref^{commit}"
+        if ($LASTEXITCODE -ne 0) { throw "Missing dependency $Ref. Run git fetch origin." }
+        return $sha
     }
-    & $Compiler -std=c++17 -O2 -Wall -Wextra -Wpedantic oracle/main.cpp -o build/oracle/oracle.exe
-    if ($LASTEXITCODE -ne 0) { throw 'Oracle compilation failed' }
-    & $Compiler -std=c++17 -O2 -Wall -Wextra -Wpedantic -I build/oracle/deps oracle/differential.cpp -o build/oracle/differential.exe
-    if ($LASTEXITCODE -ne 0) { throw 'Differential compilation failed' }
+
+    function Read-Source([string]$Sha, [string]$Path) {
+        $content = git show "${Sha}:$Path"
+        if ($LASTEXITCODE -ne 0) { throw "Unable to read ${Sha}:$Path" }
+        return $content
+    }
+
+    function Export-Source([string]$Sha, [string]$Path) {
+        $destination = Join-Path $root "build/oracle/deps/$Path"
+        New-Item -ItemType Directory -Force (Split-Path $destination -Parent) | Out-Null
+        [IO.File]::WriteAllLines($destination, [string[]](Read-Source $Sha $Path),
+            [Text.UTF8Encoding]::new($false))
+    }
+
+    function Build-Executable([string]$Name, [string[]]$Sources) {
+        & $Compiler -std=c++17 -O2 -Wall -Wextra -Wpedantic -Iinclude -Ibuild/oracle/deps/include @Sources -o "build/oracle/$Name.exe"
+        if ($LASTEXITCODE -ne 0) { throw "$Name compilation failed" }
+    }
+
+    $architect = Resolve-Source $ArchitectRef
+    $avl = Resolve-Source $AvlRef
+    $fenwick = Resolve-Source $FenwickRef
+    $sharedHeader = (Read-Source $architect 'include/leaderboard.hpp') -join "`n"
+    if (((Get-Content include/leaderboard.hpp) -join "`n") -cne $sharedHeader) {
+        throw "Oracle's shared header differs from the Architect header at $architect."
+    }
+    Export-Source $avl 'avl.cpp'
+    Export-Source $fenwick 'include/backend_tools.hpp'
+    Export-Source $fenwick 'src/structB/fenwick.cpp'
+    foreach ($path in @('leaderboard.cpp','replay.cpp','replay.hpp','player_table.cpp','player_table.hpp')) {
+        Export-Source $architect "app/$path"
+    }
+    $backends = @('build/oracle/deps/avl.cpp','build/oracle/deps/src/structB/fenwick.cpp')
+    $app = @('leaderboard.cpp','replay.cpp','player_table.cpp') | ForEach-Object { "build/oracle/deps/app/$_" }
+    Build-Executable 'oracle' @('oracle/main.cpp')
+    Build-Executable 'differential' (@('oracle/differential.cpp') + $backends)
+    Build-Executable 'leaderboard' ($app + $backends)
+    @("Architect $architect","AVL $avl","Fenwick $fenwick") |
+        Set-Content -Encoding ascii build/oracle/sources.txt
 } finally { Pop-Location }

@@ -1,6 +1,7 @@
 #pragma once
 #include "../include/leaderboard.hpp"
 #include <algorithm>
+#include <iterator>
 #include <stdexcept>
 #include <unordered_set>
 
@@ -23,6 +24,10 @@ public:
     }
     const std::vector<Player>& entries() const { return players_; }
     Position size() const override { return players_.size(); }
+    bool contains(Player p) const override {
+        auto it = std::lower_bound(players_.begin(), players_.end(), p, before);
+        return it != players_.end() && equal(*it, p);
+    }
     void insert(Player p) override {
         for (auto q : players_)
             if (p.id == q.id) throw std::invalid_argument("duplicate ID");

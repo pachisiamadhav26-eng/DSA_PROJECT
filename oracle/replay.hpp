@@ -2,7 +2,6 @@
 #include "sorted_array.hpp"
 #include <functional>
 #include <map>
-#include <set>
 #include <sstream>
 #include <string>
 #include <limits>
@@ -14,6 +13,7 @@ struct Command {
     std::vector<std::uint64_t> u;
     Score score=0;
     bool valid=false;
+    bool blank=false;
 };
 inline std::uint64_t unsigned_number(const std::string& s) {
     if (s.empty() || s.find_first_not_of("0123456789")!=std::string::npos)
@@ -28,6 +28,7 @@ inline Score signed_number(const std::string& s) {
 }
 inline Command parse(const std::string& line) {
     std::istringstream in(line); Command c; in>>c.name;
+    if (c.name.empty()) { c.blank=true; return c; }
     std::vector<std::string> args; std::string token;
     while (in>>token) args.push_back(token);
     int count=0,score_index=-1;
@@ -49,16 +50,15 @@ inline Command parse(const std::string& line) {
 }
 
 // Test-only application facade. This is NOT the required handwritten hash table.
-// Error precedence is deterministic; the architect specifies codes, not precedence
-// when one command violates multiple preconditions simultaneously.
+// Follow section 3's active board rule and the architect's replay precedence.
 class Session {
     Factory factory_;
-    std::set<std::uint64_t> used_{0};
 public:
     std::map<std::uint64_t,std::unique_ptr<Board>> boards;
     std::map<PlayerId,std::pair<std::uint64_t,Score>> players;
     explicit Session(Factory factory):factory_(std::move(factory)) { boards[0]=factory_(); }
     std::string execute(const Command& c) {
+        if (c.blank) return {};
         if (!c.valid) return "ERR BAD_COMMAND";
         auto b=c.u[0]; auto found=boards.find(b);
         if (found==boards.end()) return "ERR UNKNOWN_BOARD";
@@ -90,23 +90,23 @@ public:
         } else if (c.name=="SIZE") return "SIZE "+std::to_string(board.size());
         else if (c.name=="SPLIT") {
             auto high=c.u[1],low=c.u[2];
-            if (high==low || used_.count(high) || used_.count(low)) return "ERR BOARD_EXISTS";
+            if (b==high || b==low || high==low) return "ERR SAME_BOARD";
+            if (boards.count(high) || boards.count(low)) return "ERR BOARD_EXISTS";
             auto pieces=board.split_by_score(c.score);
             if (board.size()!=0) throw std::logic_error("split source not empty");
             boards[high]=std::move(pieces.first); boards[low]=std::move(pieces.second);
-            boards.erase(b); used_.insert(high); used_.insert(low);
+            boards.erase(b);
             for (auto& p:players) if (p.second.first==b)
                 p.second.first=p.second.second>=c.score ? high : low;
         } else if (c.name=="MERGE") {
             auto right=c.u[1],result=c.u[2];
+            if (right==b || result==b || result==right) return "ERR SAME_BOARD";
             if (!boards.count(right)) return "ERR UNKNOWN_BOARD";
-            if (right==b) return "ERR SAME_BOARD";
-            if (used_.count(result)) return "ERR BOARD_EXISTS";
+            if (boards.count(result)) return "ERR BOARD_EXISTS";
             // Global uniqueness at ADD makes ID_CONFLICT unreachable in a valid session.
             board.merge_from(*boards.at(right));
             if (boards.at(right)->size()!=0) throw std::logic_error("merge source not empty");
             boards[result]=std::move(found->second); boards.erase(b); boards.erase(right);
-            used_.insert(result);
             for (auto& p:players) if (p.second.first==b || p.second.first==right) p.second.first=result;
         }
         return "OK";

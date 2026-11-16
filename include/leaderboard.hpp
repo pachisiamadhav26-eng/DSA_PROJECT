@@ -21,6 +21,7 @@ public:
     virtual ~Board() = default;
 
     virtual Position size() const = 0;
+    virtual bool contains(Player player) const = 0;
     virtual void insert(Player player) = 0;
     virtual void erase(Player player) = 0;
     virtual Position count_strictly_higher(Score score) const = 0;

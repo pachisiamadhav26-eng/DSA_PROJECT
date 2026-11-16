@@ -23,3 +23,9 @@ No manual changes or review by Om are claimed here. Om should record any later
 changes and teammate review after they actually occur, and understand the code
 and proof before the viva. This disclosure covers only this contribution;
 other members should append their own tool usage.
+
+17 November 2026: OpenAI Codex updated the Oracle for Madhav's current
+`Board` interface and replay rules. The revised harness links the teammate
+factories and audit helpers, and the runner checks the Architect application
+against golden outputs. The original standalone results are marked historical
+in `oracle/VALIDATION.md`. No human review of this update is claimed.

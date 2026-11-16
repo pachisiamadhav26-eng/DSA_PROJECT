@@ -21,8 +21,10 @@ styles['Heading2'].fontSize = 12
 styles['Heading2'].leading = 16
 styles['Heading2'].spaceBefore = 12
 styles['Heading2'].textColor = colors.black
+proof = (folder / 'D4-om.md').read_text(encoding='utf-8')
 story = []
-for block in (folder / 'D4-om.md').read_text(encoding='utf-8').strip().split('\n\n'):
+# Each blank-line-separated block becomes a title, example, or paragraph.
+for block in proof.strip().split('\n\n'):
     if block.startswith('# '):
         story.append(Paragraph(escape(block[2:]), styles['Title']))
     elif block.startswith('## '):
@@ -30,12 +32,17 @@ for block in (folder / 'D4-om.md').read_text(encoding='utf-8').strip().split('\n
             story.append(PageBreak())
         story.append(Paragraph(escape(block[3:]), styles['Heading2']))
     elif block.startswith('    '):
-        story.append(Preformatted('\n'.join(line[4:] for line in block.splitlines()),
-                                  styles['Code']))
+        example_lines = [line[4:] for line in block.splitlines()]
+        example = '\n'.join(example_lines)
+        story.append(Preformatted(example, styles['Code']))
         story.append(Spacer(1, 5))
     else:
-        text = '<br/>'.join(escape(line) for line in block.splitlines()) if block.startswith('1.') \
-            else escape(' '.join(block.splitlines()))
+        lines = block.splitlines()
+        if block.startswith('1.'):
+            # Preserve the line breaks between the three select cases.
+            text = '<br/>'.join(escape(line) for line in lines)
+        else:
+            text = escape(' '.join(lines))
         story.append(Paragraph(text, styles['ProofBody']))
 
 def footer(canvas, doc):

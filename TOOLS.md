@@ -29,3 +29,8 @@ other members should append their own tool usage.
 factories and audit helpers, and the runner checks the Architect application
 against golden outputs. The original standalone results are marked historical
 in `oracle/VALIDATION.md`. No human review of this update is claimed.
+
+17 November 2026: OpenAI Codex rewrote the Oracle and helper scripts for
+readability, separated trace generation and backend checks, and added a code
+reading guide. Tests compared the new code with the previous version. Human
+review is pending.

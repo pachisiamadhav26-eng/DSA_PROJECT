@@ -59,6 +59,35 @@ can be set with `-Compiler PATH` on the build script.
   record apply to the old standalone snapshots. Production audits are
   exercised through the current inspection functions.
 
+## Code reading order
+
+| File | What to explain |
+| --- | --- |
+| `include/leaderboard.hpp` | The shared Board operations. AVL, Fenwick and the oracle expose the same interface. |
+| `oracle/sorted_array.hpp` | Keep a sorted vector. Find a key with binary search, move entries when inserting or erasing, and merge two ordered vectors. |
+| `oracle/replay.hpp` | Parse a line, check the board and player's location, then call the Board operation. |
+| `oracle/main.cpp` | Read a trace file or standard input and print each answer. |
+| `oracle/trace.hpp` | Generate a reproducible command list, or read and write a trace file. |
+| `oracle/differential.cpp` | Run each command on three implementations, compare answers and state, and reduce a failing trace. |
+| `oracle/backend_checks.hpp` | Test exact membership, rotations, split/join and the million-player case. |
+| `oracle/build.ps1`, `run_tests.ps1` | Build the pinned sources and compare both real app modes to the golden fixtures. |
+| `docs/derivations/render_d4.py` | Read the D4 Markdown in blocks and turn it into the PDF. |
+
+`override` tells the compiler to check that a method matches the shared
+Board interface. `unique_ptr` owns a board. `std::move` transfers that
+ownership when split or merge changes which board ID owns it.
+
+Try explaining these small changes aloud:
+
+- If `select` uses `position` instead of `position - 1`, every answer
+  moves one place and the last position goes outside the vector.
+- If the rank search counts scores equal to the target, tied players get
+  the wrong rank. A player's rank is one plus the number of strictly higher scores.
+- If a successful split keeps its old board ID active, a later query can use
+  a board the interface says has already been consumed.
+- If a reducer drops a line without rerunning the trace, it can remove the
+  command that caused the failure and save a passing trace.
+
 ```powershell
 ./build/oracle/oracle.exe oracle/tests/basic.trace
 ./build/oracle/differential.exe --trace oracle/tests/seasons.trace

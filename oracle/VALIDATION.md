@@ -1,5 +1,28 @@
 # Oracle validation record
 
+## Readability refactor, 17 November 2026
+
+The shared Board header stayed byte-identical. The test executables used
+Architect `a4dc4382b11d60ed85697fb9560574d24a8d2366`, AVL
+`03f3f57186f96bac6b2ad8f22acbedd7da2de153`, and Fenwick
+`0d5ad686ea2349147a4b6eb1ca2b64eb52feae38`. Saksham's newer tip
+`2d758efdc7bdd69587981c0c3f44bf26984a7801` has identical Fenwick
+source and shared headers.
+
+- `./oracle/run_tests.ps1 -Quick` passed. The four golden fixtures matched
+  the oracle and both production app modes. Each of the three seeds passed
+  10,000 commands, and the 10,000-player scale test passed.
+- `./oracle/run_tests.ps1 -SkipBuild` passed using the freshly built binaries.
+  Seed 253 passed 1,000,000 differential commands. Seeds 20261112 and 42
+  each passed 100,000, with peak live population 48 in all three runs.
+  The separate 1,000,000-player test passed 1,000,000 rank/select queries
+  and verified both split partitions and the rejoined board.
+- For seed 253, the 10,000-command trace and every oracle output line were
+  identical before and after the refactor. An injected rank fault still
+  exited with code 1 and saved a three-command 1-minimal trace.
+- Before-and-after runs of the PDF helper rendered identical images for
+  both D4 pages.
+
 ## Fenwick default pin update, 17 November 2026
 
 Both commands built with the default dependency refs. The exact commits were

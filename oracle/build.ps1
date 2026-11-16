@@ -20,15 +20,19 @@ try {
         return $content
     }
 
+    # Export the exact source without switching or changing a teammate branch.
     function Export-Source([string]$Sha, [string]$Path) {
         $destination = Join-Path $root "build/oracle/deps/$Path"
         New-Item -ItemType Directory -Force (Split-Path $destination -Parent) | Out-Null
-        [IO.File]::WriteAllLines($destination, [string[]](Read-Source $Sha $Path),
-            [Text.UTF8Encoding]::new($false))
+        $lines = Read-Source $Sha $Path
+        $utf8 = [Text.UTF8Encoding]::new($false)
+        [IO.File]::WriteAllLines($destination, [string[]]$lines, $utf8)
     }
 
     function Build-Executable([string]$Name, [string[]]$Sources) {
-        & $Compiler -std=c++17 -O2 -Wall -Wextra -Wpedantic -Iinclude -Ibuild/oracle/deps/include @Sources -o "build/oracle/$Name.exe"
+        $flags = @('-std=c++17', '-O2', '-Wall', '-Wextra', '-Wpedantic',
+            '-Iinclude', '-Ibuild/oracle/deps/include')
+        & $Compiler @flags @Sources -o "build/oracle/$Name.exe"
         if ($LASTEXITCODE -ne 0) { throw "$Name compilation failed" }
     }
 
@@ -36,7 +40,8 @@ try {
     $avl = Resolve-Source $AvlRef
     $fenwick = Resolve-Source $FenwickRef
     $sharedHeader = (Read-Source $architect 'include/leaderboard.hpp') -join "`n"
-    if (((Get-Content include/leaderboard.hpp) -join "`n") -cne $sharedHeader) {
+    $oracleHeader = (Get-Content include/leaderboard.hpp) -join "`n"
+    if ($oracleHeader -cne $sharedHeader) {
         throw "Oracle's shared header differs from the Architect header at $architect."
     }
     Export-Source $avl 'avl.cpp'
@@ -46,7 +51,8 @@ try {
         Export-Source $architect "app/$path"
     }
     $backends = @('build/oracle/deps/avl.cpp','build/oracle/deps/src/structB/fenwick.cpp')
-    $app = @('leaderboard.cpp','replay.cpp','player_table.cpp') | ForEach-Object { "build/oracle/deps/app/$_" }
+    $app = @('build/oracle/deps/app/leaderboard.cpp', 'build/oracle/deps/app/replay.cpp',
+        'build/oracle/deps/app/player_table.cpp')
     Build-Executable 'oracle' @('oracle/main.cpp')
     Build-Executable 'differential' (@('oracle/differential.cpp') + $backends)
     Build-Executable 'leaderboard' ($app + $backends)

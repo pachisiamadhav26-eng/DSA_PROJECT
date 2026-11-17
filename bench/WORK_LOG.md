@@ -25,6 +25,16 @@ Owner: Sumit, Member 6.
 - Updated D6 for the current merge implementations and rendered its three-page PDF. C++ compilation/linking, Python syntax and PDF layout checks passed. The revised pipeline is deferred at Sumit's request.
 - Removed the practice programs/results, personal team plan, six member guides and redundant handoff/validation notes. Kept the build instructions, derivation, report, tool disclosure and this requested activity log.
 
+## 17 November 2026 - Full measurements and hardware recordings
+
+- Verified Bianca's updated generators at `a788f17` with Architect `a4dc438`, AVL `03f3f57`, Fenwick `2d758ef` and Oracle `f3f8c29`. Used the generators and traces without replacing the other owners' modules with Bianca's integration copies.
+- Compiled the exact C++17 input generator using a portable Zig/Clang compiler because the installed GCC 6.3 cannot compile its structured bindings. Both measured structures and the oracle still use the same GCC build.
+- Checked small adversarial traces against the actual oracle. Ran the formal full suite with 17 traces, up to one million players and one million actual score revisions, five repetitions per experiment, both score policies and operation counters.
+- Saved 158 raw CSV files, 436 separately summarized groups and 29 PNG/SVG chart pairs in `results/full-20261117-final/`. All backend checks passed. Independently calculated the million-scale expected output from Bianca's reference function and verified every repetition on both backends.
+- Found and fixed summary grouping that combined different traces with equal sizes/operations. Added a regression check and regenerated summaries and charts from the unchanged raw timings. Saved the corrected postprocessor hash in `postchecks.json`.
+- With Sumit's approved Administrator prompt, recorded rank/select LLCMisses samples for both backends. Windows tracerpt reported zero lost events for all four recordings. Saved original ETLs, metadata, decoded benchmark-thread samples and analyses. The local WMI schema confirms the payload layout. These single captures are diagnostic samples, not exact miss counts or five-run timings.
+- Filled `REPORT.md` with actual measurements and their limitations, updated run instructions and recorded tool use. No commit or push was performed during this run.
+
 ## Remaining work
 
-Review D6, run the quick and full suites, supply the Adversary cases, collect and interpret hardware profiles, fill the report from measured results, obtain PR review and verify the final command from a fresh clone.
+Human review of code, D6 and results; a teammate-reviewed PR; and verification of the final integrated command from a fresh clone.

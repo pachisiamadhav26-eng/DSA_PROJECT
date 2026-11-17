@@ -1,0 +1,16 @@
+backend,experiment,operation,players,coordinates,seed,run,calls,elapsed_ns,ns_per_call,checksum,validation,left_height,right_height
+fenwick,trace_per_call_overhead_included,erase,64,71,253,1,128,13700,107.03125,17227701224715347798,output_digest_only,-1,-1
+fenwick,trace_per_call_overhead_included,insert,64,71,253,1,128,24900,194.53125,17227701224715347798,output_digest_only,-1,-1
+fenwick,trace_per_call_overhead_included,rank,64,71,253,1,64,5400,84.375,17227701224715347798,output_digest_only,-1,-1
+fenwick,trace_per_call_overhead_included,erase,64,71,253,2,128,13100,102.34375,17227701224715347798,output_digest_only,-1,-1
+fenwick,trace_per_call_overhead_included,insert,64,71,253,2,128,23600,184.375,17227701224715347798,output_digest_only,-1,-1
+fenwick,trace_per_call_overhead_included,rank,64,71,253,2,64,6200,96.875,17227701224715347798,output_digest_only,-1,-1
+fenwick,trace_per_call_overhead_included,erase,64,71,253,3,128,13600,106.25,17227701224715347798,output_digest_only,-1,-1
+fenwick,trace_per_call_overhead_included,insert,64,71,253,3,128,24900,194.53125,17227701224715347798,output_digest_only,-1,-1
+fenwick,trace_per_call_overhead_included,rank,64,71,253,3,64,5400,84.375,17227701224715347798,output_digest_only,-1,-1
+fenwick,trace_per_call_overhead_included,erase,64,71,253,4,128,13100,102.34375,17227701224715347798,output_digest_only,-1,-1
+fenwick,trace_per_call_overhead_included,insert,64,71,253,4,128,23700,185.15625,17227701224715347798,output_digest_only,-1,-1
+fenwick,trace_per_call_overhead_included,rank,64,71,253,4,64,5400,84.375,17227701224715347798,output_digest_only,-1,-1
+fenwick,trace_per_call_overhead_included,erase,64,71,253,5,128,12500,97.65625,17227701224715347798,output_digest_only,-1,-1
+fenwick,trace_per_call_overhead_included,insert,64,71,253,5,128,23900,186.71875,17227701224715347798,output_digest_only,-1,-1
+fenwick,trace_per_call_overhead_included,rank,64,71,253,5,64,5500,85.9375,17227701224715347798,output_digest_only,-1,-1

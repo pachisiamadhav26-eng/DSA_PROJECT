@@ -1,6 +1,6 @@
 # Analyst benchmarks
 
-Owner: Sumit, Member 6. This code measures the real AVL and Fenwick implementations through Madhav's `Board` interface. Om's oracle checks small runs. The code and D6 are prepared; the formal experiment pipeline will be run later.
+Owner: Sumit, Member 6. This code measures the real AVL and Fenwick implementations through Madhav's `Board` interface. Om's oracle checks small runs. The completed formal suite is in `results/full-20261117-final/`; see `REPORT.md` for measured results.
 
 ## Files
 
@@ -12,6 +12,7 @@ Owner: Sumit, Member 6. This code measures the real AVL and Fenwick implementati
 | `run.py` | Run five repetitions, compare backend results and save metadata |
 | `run_all.py` | One entry point for build, checks, experiments and charts |
 | `profile_windows.py` | Record cache-event samples around a prepared query phase |
+| `analyze_profiles.py` | Filter Windows trace exports to benchmark threads and summarize samples |
 | `tests/` | Small real-backend checks and summary-statistics checks |
 | `WORK_LOG.md` | Activity history |
 | `../results/plot.py` | Generate the summary CSV and PNG/SVG charts |
@@ -92,7 +93,7 @@ python results/plot.py results/your-run-folder
 python docs/derivations/render_d6.py
 ```
 
-## Cache profiling later
+## Cache profiling
 
 Use Administrator PowerShell and Windows Performance Analyzer (WPA). The controller samples the exposed `LLCMisses` event with interval 65,536. It starts collection after setup and stops before teardown using ready/go/done/release signals.
 
@@ -107,8 +108,20 @@ python bench/profile_windows.py --backend avl --operation rank --players 1000000
 python bench/profile_windows.py --backend fenwick --operation rank --players 1000000 --scores 1000000
 ```
 
-Save the ETL, WPRP, metadata, logs and exported WPA analysis. Filter to the benchmark PID/query phase and check lost events and adequate samples. Samples are not exact miss totals. The controller handshake and XML acceptance were checked previously; actual hardware collection and interpretation remain pending. Collection failure is recorded, and the script does not cancel another WPR session. See [Microsoft's PMU guide](https://learn.microsoft.com/en-us/windows-hardware/test/wpt/recording-pmu-events).
+Save the ETL, WPRP, metadata, logs and analysis. Filter to the benchmark PID/query phase and check lost events and adequate samples. Samples are not exact miss totals. Four formal diagnostic recordings are saved under `results/full-20261117-final/profiles/`, with filtered CSVs and JSON analyses. Each reported zero lost events. Collection failure is recorded, and the script does not cancel another WPR session. See [Microsoft's PMU guide](https://learn.microsoft.com/en-us/windows-hardware/test/wpt/recording-pmu-events).
+
+WPA is optional for the saved sample summary. Windows `tracerpt` exports can be analyzed as follows, using `avl-rank`, `avl-select`, `fenwick-rank` and `fenwick-select` as NAME:
+
+```powershell
+# Decode one recording and save its lost-event summary; replace NAME for each capture.
+tracerpt results/full-20261117-final/profiles/NAME/hardware.etl -o build/bench/NAME-events.csv -of CSV -summary results/full-20261117-final/profiles/NAME/event-summary.txt -y
+
+# Filter all four decoded exports to the recorded benchmark threads.
+python bench/analyze_profiles.py results/full-20261117-final build/bench
+```
+
+The analyzer uses the installed Windows PMU payload schema saved in `profiles/event-schema.json`. It maps thread lifecycle events to the recorded PID because PMU event header IDs can be unset. It counts LLCMisses source 29, as verified in each recording's saved event list. Counts refer to decoded samples; tracerpt's aggregate count can differ slightly. No exact miss rate or function attribution is claimed. Each diagnostic capture is separate from the five-run timing experiments.
 
 ## Submission
 
-Review D6 before formal timings. Fill `REPORT.md` from actual results, update `TOOLS.md`, obtain PR review and verify the documented command from a fresh clone. The Architect should include the benchmark invocation in the team's final all-in-one command. Preparation history is recorded in `WORK_LOG.md`.
+D6 predictions, full measurements, figures and hardware sample summaries are saved. Human review, a teammate-reviewed PR and verification of the final integrated command from a fresh clone remain. The Architect should include the benchmark invocation in the team's final all-in-one command. Preparation history is recorded in `WORK_LOG.md`.

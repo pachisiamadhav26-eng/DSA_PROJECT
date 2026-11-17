@@ -16,6 +16,10 @@ def summarize(directory):
     for path in sorted((directory / "raw").glob("*.csv")):
         with path.open(newline="", encoding="utf-8") as source:
             for row in csv.DictReader(source):
+                # Different trace files can share sizes and operations.
+                if row["experiment"].startswith("trace"):
+                    trace_name = path.stem.rsplit("-", 1)[0]
+                    row["experiment"] += "_" + trace_name
                 key = tuple(row[k] for k in ("backend", "experiment", "operation", "players", "coordinates", "seed"))
                 groups[key].append(row)
     records = []

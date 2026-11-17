@@ -46,6 +46,16 @@ def main():
             pass
         else:
             raise AssertionError("incorrect checksums were accepted")
+        for trace, multiplier in [(0, 1), (1, 10)]:
+            with (directory / "raw" / f"trace-{trace}-avl.csv").open("w", newline="") as target:
+                writer = csv.DictWriter(target, fieldnames=fields)
+                writer.writeheader()
+                for run in range(1, 6):
+                    writer.writerow(dict(zip(fields, ["avl", "trace_per_call_overhead_included", "rank",
+                                                     100, 10, 253, run, 1000, 42, run * multiplier])))
+        trace_records = [row for row in plot.summarize(directory) if row["experiment"].startswith("trace")]
+        assert len(trace_records) == 2 and all(row["runs"] == 5 for row in trace_records)
+        assert sorted(row["mean"] for row in trace_records) == [3, 30]
     print("PASS: five-run means/spread, image generation, and backend mismatch detection")
 
 

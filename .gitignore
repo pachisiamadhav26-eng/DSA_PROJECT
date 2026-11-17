@@ -13,3 +13,5 @@ __pycache__/
 # Temporary benchmark and test files
 tmp/
 *.log
+!results/**/run.log
+!results/**/profile-*.log

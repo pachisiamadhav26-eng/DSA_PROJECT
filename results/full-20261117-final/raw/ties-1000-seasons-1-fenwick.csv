@@ -1,0 +1,11 @@
+backend,experiment,operation,players,coordinates,seed,run,calls,elapsed_ns,ns_per_call,checksum,validation,left_height,right_height
+fenwick,season_high_percent_1_ties,split,1000,1000,253,1,100,4120400,41204,0,all_output_players,-1,-1
+fenwick,season_high_percent_1_ties,rejoin_merge_from,1000,1000,253,1,100,10001300,100013,0,all_output_players,-1,-1
+fenwick,season_high_percent_1_ties,split,1000,1000,253,2,100,4988400,49884,0,all_output_players,-1,-1
+fenwick,season_high_percent_1_ties,rejoin_merge_from,1000,1000,253,2,100,10381200,103812,0,all_output_players,-1,-1
+fenwick,season_high_percent_1_ties,split,1000,1000,253,3,100,4450000,44500,0,all_output_players,-1,-1
+fenwick,season_high_percent_1_ties,rejoin_merge_from,1000,1000,253,3,100,12244700,122447,0,all_output_players,-1,-1
+fenwick,season_high_percent_1_ties,split,1000,1000,253,4,100,4139500,41395,0,all_output_players,-1,-1
+fenwick,season_high_percent_1_ties,rejoin_merge_from,1000,1000,253,4,100,10017900,100179,0,all_output_players,-1,-1
+fenwick,season_high_percent_1_ties,split,1000,1000,253,5,100,4718400,47184,0,all_output_players,-1,-1
+fenwick,season_high_percent_1_ties,rejoin_merge_from,1000,1000,253,5,100,10307100,103071,0,all_output_players,-1,-1

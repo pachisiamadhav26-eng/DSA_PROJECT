@@ -21,8 +21,7 @@ invalid generator arguments, deliberate failure reduction, and scale workloads.
   reuses a removed player ID, and checks a rejected merge before a successful
   one. [nested_split.expected](tests/nested_split.expected) records the
   expected replies, including errors.
-- [Workload notes](../D5.md) explain what the cases stress. The
-  [D5 source](../docs/derivations/D5.md) and
+- The [D5 source](../docs/derivations/D5.md) and
   [submission PDF](../docs/derivations/D5_250041008.pdf) prove the AVL split
   bound and explain why the descending workload forces frequent rotations.
 

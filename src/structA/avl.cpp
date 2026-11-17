@@ -43,7 +43,13 @@ struct {
 } adversary_probe;
 #endif
 
-Node* rotateRight(Node* t) {
+struct Work {
+    std::uint64_t rotations = 0;
+    std::uint64_t visits = 0;
+};
+
+Node* rotateRight(Node* t, Work& work) {
+    ++work.rotations;
 #ifdef AVL_ADVERSARY_TEST
     adversary_probe.rotations++;
 #endif
@@ -55,7 +61,8 @@ Node* rotateRight(Node* t) {
     return p;
 }
 
-Node* rotateLeft(Node* t) {
+Node* rotateLeft(Node* t, Work& work) {
+    ++work.rotations;
 #ifdef AVL_ADVERSARY_TEST
     adversary_probe.rotations++;
 #endif
@@ -67,39 +74,39 @@ Node* rotateLeft(Node* t) {
     return p;
 }
 
-Node* balance(Node* t) {
+Node* balance(Node* t, Work& work) {
     if (!t) return nullptr;
     refresh(t);
     int d = height(t->left) - height(t->right);
 
     if (d > 1) {
         if (height(t->left->right) > height(t->left->left))
-            t->left = rotateLeft(t->left);
-        return rotateRight(t);
+            t->left = rotateLeft(t->left, work);
+        return rotateRight(t, work);
     }
 
     if (d < -1) {
         if (height(t->right->left) > height(t->right->right))
-            t->right = rotateRight(t->right);
-        return rotateLeft(t);
+            t->right = rotateRight(t->right, work);
+        return rotateLeft(t, work);
     }
     return t;
 }
 
-Node* insertNode(Node* t, Node* p) {
+Node* insertNode(Node* t, Node* p, Work& work) {
     if (!t) return p;
     if (before(p->player, t->player))
-        t->left = insertNode(t->left, p);
+        t->left = insertNode(t->left, p, work);
     else
-        t->right = insertNode(t->right, p);
-    return balance(t);
+        t->right = insertNode(t->right, p, work);
+    return balance(t, work);
 }
 
-Node* eraseNode(Node* t, Player p) {
+Node* eraseNode(Node* t, Player p, Work& work) {
     if (before(p, t->player))
-        t->left = eraseNode(t->left, p);
+        t->left = eraseNode(t->left, p, work);
     else if (before(t->player, p))
-        t->right = eraseNode(t->right, p);
+        t->right = eraseNode(t->right, p, work);
     else {
         if (!t->left || !t->right) {
             Node* child = t->left ? t->left : t->right;
@@ -110,12 +117,13 @@ Node* eraseNode(Node* t, Player p) {
         Node* next = t->right;
         while (next->left) next = next->left;
         t->player = next->player;
-        t->right = eraseNode(t->right, next->player);
+        t->right = eraseNode(t->right, next->player, work);
     }
-    return balance(t);
+    return balance(t, work);
 }
 
-Node* joinNodes(Node* a, Node* pivot, Node* b) {
+Node* joinNodes(Node* a, Node* pivot, Node* b, Work& work) {
+    ++work.visits;
 #ifdef AVL_ADVERSARY_TEST
     if (adversary_probe.join_left_height < 0) {
         adversary_probe.join_left_height = height(a);
@@ -123,13 +131,13 @@ Node* joinNodes(Node* a, Node* pivot, Node* b) {
     }
 #endif
     if (height(a) > height(b) + 1) {
-        a->right = joinNodes(a->right, pivot, b);
-        return balance(a);
+        a->right = joinNodes(a->right, pivot, b, work);
+        return balance(a, work);
     }
 
     if (height(b) > height(a) + 1) {
-        b->left = joinNodes(a, pivot, b->left);
-        return balance(b);
+        b->left = joinNodes(a, pivot, b->left, work);
+        return balance(b, work);
     }
 
     pivot->left = a;
@@ -139,7 +147,7 @@ Node* joinNodes(Node* a, Node* pivot, Node* b) {
 }
 
 template<class BeforeCut>
-void splitNodes(Node* t, BeforeCut before_cut, Node*& first, Node*& second) {
+void splitNodes(Node* t, BeforeCut before_cut, Node*& first, Node*& second, Work& work) {
     if (!t) {
         first = second = nullptr;
         return;
@@ -147,13 +155,13 @@ void splitNodes(Node* t, BeforeCut before_cut, Node*& first, Node*& second) {
 
     if (before_cut(t->player)) {
         Node* middle = nullptr;
-        splitNodes(t->right, before_cut, middle, second);
-        first = joinNodes(t->left, t, middle);
+        splitNodes(t->right, before_cut, middle, second, work);
+        first = joinNodes(t->left, t, middle, work);
     }
     else {
         Node* middle = nullptr;
-        splitNodes(t->left, before_cut, first, middle);
-        second = joinNodes(middle, t, t->right);
+        splitNodes(t->left, before_cut, first, middle, work);
+        second = joinNodes(middle, t, t->right, work);
     }
 }
 
@@ -167,7 +175,7 @@ Node* lastNode(Node* t) {
     return t;
 }
 
-Node* takeLast(Node* t, Node*& last) {
+Node* takeLast(Node* t, Node*& last, Work& work) {
     if (!t->right) {
         last = t;
         Node* left = t->left;
@@ -176,8 +184,8 @@ Node* takeLast(Node* t, Node*& last) {
         return left;
     }
 
-    t->right = takeLast(t->right, last);
-    return balance(t);
+    t->right = takeLast(t->right, last, work);
+    return balance(t, work);
 }
 
 void rangeNodes(Node* t, Position first, Position last,
@@ -251,6 +259,7 @@ bool audit(Node* t, const Player* low, const Player* high,
 
 struct AvlBoard final : Board {
     Node* root = nullptr;
+    Work work;
 
     ~AvlBoard() override { destroy(root); }
     AvlBoard() = default;
@@ -274,7 +283,7 @@ struct AvlBoard final : Board {
     void insert(Player p) override {
         if (contains(p))
             throw std::invalid_argument("Duplicate player key");
-        root = insertNode(root, new Node{p});
+        root = insertNode(root, new Node{p}, work);
     }
 
     void erase(Player p) override {
@@ -284,7 +293,7 @@ struct AvlBoard final : Board {
         adversary_probe.erase_height = height(root);
         adversary_probe.rotations_before_erase = adversary_probe.rotations;
 #endif
-        root = eraseNode(root, p);
+        root = eraseNode(root, p, work);
 #ifdef AVL_ADVERSARY_TEST
         adversary_probe.erase_rotations = adversary_probe.rotations - adversary_probe.rotations_before_erase;
 #endif
@@ -345,7 +354,8 @@ struct AvlBoard final : Board {
     std::pair<std::unique_ptr<Board>, std::unique_ptr<Board>> split(BeforeCut before_cut) {
         auto first = std::make_unique<AvlBoard>();
         auto second = std::make_unique<AvlBoard>();
-        splitNodes(root, before_cut, first->root, second->root);
+        work.visits = 0;
+        splitNodes(root, before_cut, first->root, second->root, work);
         root = nullptr;
         return {std::move(first), std::move(second)};
     }
@@ -355,6 +365,7 @@ struct AvlBoard final : Board {
         if (!b || b == this)
             throw std::invalid_argument("Invalid merge board");
 
+        work.visits = 0;
         if (!b->root) return;
         if (!root) {
             root = b->root;
@@ -381,8 +392,8 @@ struct AvlBoard final : Board {
             Node* left = root_first ? root : b->root;
             Node* right = root_first ? b->root : root;
             Node* pivot = nullptr;
-            left = takeLast(left, pivot);
-            root = joinNodes(left, pivot, right);
+            left = takeLast(left, pivot, work);
+            root = joinNodes(left, pivot, right, work);
             b->root = nullptr;
             return;
         }
@@ -411,6 +422,11 @@ int avl_height(const Board& board) {
     return height(dynamic_cast<const AvlBoard&>(board).root);
 }
 
+AvlStats avl_stats(const Board& board) {
+    const auto& tree = dynamic_cast<const AvlBoard&>(board);
+    return {height(tree.root), tree.work.rotations, tree.work.visits};
+}
+
 std::vector<Player> audit_avl(const Board& board) {
     const auto& tree = dynamic_cast<const AvlBoard&>(board);
     int height = 0;
@@ -434,7 +450,7 @@ std::unique_ptr<Board> avl_join_ordered(Board& left, Player pivot, Board& right)
     if (&a == &b) throw std::invalid_argument("join sources must differ");
     auto result = std::make_unique<AvlBoard>();
     Node* middle = new Node{pivot};
-    result->root = joinNodes(a.root, middle, b.root);
+    result->root = joinNodes(a.root, middle, b.root, result->work);
     a.root = b.root = nullptr;
     return result;
 }

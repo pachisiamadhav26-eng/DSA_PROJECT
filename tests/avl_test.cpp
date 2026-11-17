@@ -27,8 +27,6 @@ int main(int argc, char** argv) {
         std::ifstream trace(argv[2]);
         assert(trace.is_open());
         const std::string name = argv[1];
-        assert(name == "cascade" || name == "unequal" || name == "churn" ||
-            name == "seasons" || name == "errors" || name == "mixed");
         std::stringstream replies;
         run_replay(trace, replies, [](const auto&) { return make_avl(); });
         std::map<std::string,int> errors;
@@ -51,9 +49,9 @@ int main(int argc, char** argv) {
     AvlBoard balanced_child;
     for (Score score : {40, 50, 30, 60, 45})
         balanced_child.insert({static_cast<PlayerId>(score), score});
-    assert(height(balanced_child.root) == 3 && adversary_probe.rotations == 0);
+    assert(height(balanced_child.root) == 3 && avl_stats(balanced_child).rotations == 0);
     balanced_child.erase({30, 30});
-    assert(height(balanced_child.root) == 3 && adversary_probe.rotations == 1);
+    assert(height(balanced_child.root) == 3 && avl_stats(balanced_child).rotations == 1);
     assert(audit_avl(balanced_child).size() == 4);
 
     for (PlayerId cutoff : {7, 8}) {
@@ -97,6 +95,16 @@ int main(int argc, char** argv) {
     rejects([&] { joined->select(0); });
     rejects([&] { joined->erase({999, 999}); });
     rejects([&] { joined->insert({31, 31}); });
+    assert(audit_avl(*joined).size() == 63 && joined->select(32).id == 31);
+
+    AvlBoard two_children;
+    for (PlayerId id : {50, 80, 20, 90, 60, 30, 10, 65})
+        two_children.insert({id, static_cast<Score>(id)});
+    assert(two_children.root->player.id == 50);
+    two_children.erase({50, 50});
+    const auto remaining = audit_avl(two_children);
+    assert(remaining.size() == 7 && remaining[2].id == 65 && remaining[3].id == 60);
+
     auto reject_merge = [](Score first, Score second, bool overlap) {
         auto a = make_avl(), b = make_avl();
         a->insert({1, first});
@@ -126,8 +134,23 @@ int main(int argc, char** argv) {
     left.insert({0, 10}); right.insert({std::numeric_limits<PlayerId>::max(), -10});
     rejects([&] { avl_join_ordered(left, {5, 20}, left); });
     auto result = avl_join_ordered(left, {5, 0}, right);
+    assert(avl_stats(*result).last_join_visits == 1);
     assert(audit_avl(*result).size() == 3 && left.size() == 0 && right.size() == 0);
     std::vector<Player> page{{123, 456}};
     result->range(1, 2, page);
     assert(page.size() == 2 && page[0].id == 0 && page[1].id == 5);
+
+    const auto max_score = std::numeric_limits<Score>::max();
+    AvlBoard odds, evens;
+    odds.insert({1, max_score});
+    odds.insert({3, max_score});
+    evens.insert({0, max_score});
+    evens.insert({2, max_score});
+    evens.insert({4, std::numeric_limits<Score>::min()});
+    odds.merge_from(evens);
+    auto [max_scores, rest] = odds.split_by_score(max_score);
+    assert(odds.size() == 0 && evens.size() == 0);
+    const auto ties = audit_avl(*max_scores);
+    assert(ties.size() == 4 && rest->size() == 1 && rest->select(1).id == 4);
+    for (PlayerId id = 0; id < ties.size(); id++) assert(ties[id].id == id);
 }

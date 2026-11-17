@@ -64,6 +64,8 @@ struct FenwickBoard final : Board {
             throw std::invalid_argument("missing Fenwick key");
         shifts_ += static_cast<std::uint64_t>(bucket.end() - place - 1);
         bucket.erase(place);
+        if (bucket.capacity() > 1 && bucket.size() <= bucket.capacity() / 4)
+            Bucket(bucket).swap(bucket);
         for (i++; i < bit_.size(); i += low_bit(i)) --bit_[i];
         --total_;
     }
@@ -106,6 +108,17 @@ struct FenwickBoard final : Board {
         auto high = std::make_unique<FenwickBoard>(scores_);
         auto low = std::make_unique<FenwickBoard>(scores_);
         if (total_ == 0) return {std::move(high), std::move(low)};
+        const auto cut = static_cast<std::size_t>(std::upper_bound(
+            scores_->begin(), scores_->end(), threshold, std::greater<Score>()) - scores_->begin());
+        const Position high_count = prefix(cut);
+        if (high_count == 0 || high_count == total_) {
+            auto& full = high_count ? *high : *low;
+            full.buckets_.swap(buckets_);
+            full.bit_.swap(bit_);
+            full.total_ = total_;
+            total_ = 0;
+            return {std::move(high), std::move(low)};
+        }
         high->prepare();
         low->buckets_.swap(buckets_);
         low->bit_.swap(bit_);
@@ -120,6 +133,10 @@ struct FenwickBoard final : Board {
     void merge_from(Board& other) override {
         auto* donor = dynamic_cast<FenwickBoard*>(&other);
         if (!donor || donor == this) throw std::invalid_argument("Fenwick merge backend or self");
+        if (!donor->total_ && total_ &&
+            (scores_ == donor->scores_ || std::includes(
+                scores_->begin(), scores_->end(), donor->scores_->begin(),
+                donor->scores_->end(), std::greater<Score>()))) return;
         // Validate IDs before transferring buckets, including conflicts at different scores.
         std::unordered_set<PlayerId> existing;
         for (const auto& bucket : buckets_)

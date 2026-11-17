@@ -230,7 +230,11 @@ int main(int argc,char** argv) {
                 else if(arg=="--max-live")limit=unsigned_number(value);
                 else if(arg=="--trace")input=value;
                 else if(arg=="--dump")dump=value;
-                else if(arg=="--scale")scale_count=unsigned_number(value);
+                else if(arg=="--scale") {
+                    scale_count=unsigned_number(value);
+                    if(!scale_count || scale_count>1000000)
+                        throw std::invalid_argument("scale must be 1..1000000");
+                }
                 else throw std::invalid_argument("unknown option: "+arg);
             }
         }

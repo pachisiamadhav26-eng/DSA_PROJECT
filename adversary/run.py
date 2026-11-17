@@ -17,7 +17,7 @@ def expected_scale(players):
     # This run revises each ID once, in ascending order, from id to players + id.
     def players_line(first_id, count):
         entries = ''.join(f' {id_} {players + id_}'
-                          for id_ in range(first_id, first_id - count, -1))
+                        for id_ in range(first_id, first_id - count, -1))
         return f'PLAYERS {count}{entries}'
 
     def page(low_id, high_id):
@@ -75,10 +75,10 @@ def main():
         start = time.perf_counter()
         result = subprocess.run(command, cwd=cwd, capture_output=True, text=True)
         record = {'command': command, 'exit_code': result.returncode,
-                  'seconds': time.perf_counter() - start, 'stderr': result.stderr}
+                'seconds': time.perf_counter() - start, 'stderr': result.stderr}
         if Path(command[0]).stem in ('generator', 'leaderboard', 'oracle'):
             record.update(output_lines=result.stdout.count('\n'),
-                          output_sha256=hashlib.sha256(result.stdout.encode()).hexdigest())
+                        output_sha256=hashlib.sha256(result.stdout.encode()).hexdigest())
         else:
             record['stdout'] = result.stdout
         records.append(record)
@@ -109,11 +109,11 @@ def main():
         traces = build / 'traces'
         traces.mkdir(exist_ok=True)
         for case in ('rotations', 'cascade', 'ascending', 'descending', 'ties', 'churn',
-                     'extremes', 'seasons', 'unequal', 'errors', 'mixed'):
+                    'extremes', 'seasons', 'unequal', 'errors', 'mixed'):
             for seed in ([253, 42, 20261115] if case == 'mixed' else [253]):
                 players = 88 if case == 'cascade' else 64
                 command = [exe('generator'), '--case', case, '--players', players,
-                           '--ops', args.ops, '--seed', seed]
+                        '--ops', args.ops, '--seed', seed]
                 output = run(command)
                 if output != run(command):
                     raise RuntimeError('Non-reproducible generator: ' + case)
@@ -121,15 +121,19 @@ def main():
                 if case == 'mixed':
                     if lines != args.ops:
                         raise RuntimeError('Wrong mixed command count')
-                    if args.ops == 1000000 and any(output.count('\n' + op + ' ') != 100
-                                                   for op in ('SPLIT', 'MERGE')):
-                        raise RuntimeError('Expected 100 mixed splits and 100 mixed merges')
+                    cycles = args.ops // (2 * max(10, args.ops // 200))
+                    if any(output.count('\n' + op + ' ') != cycles
+                           for op in ('SPLIT', 'MERGE')):
+                        raise RuntimeError(f'Expected {cycles} mixed splits and merges each')
                 trace = traces / f'{case}-{seed}.trace'
                 trace.write_text(output, encoding='utf-8')
                 run([exe('differential'), '--trace', trace])
-                if case in ('cascade', 'unequal', 'churn', 'seasons', 'errors', 'mixed'):
-                    run([exe('avl_test'), case, trace])
+                run([exe('avl_test'), case, trace])
                 print(f'PASS {case} seed={seed} commands={lines}', flush=True)
+        # Sample arbitrary positions and ranges with the oracle's existing generator.
+        run([exe('differential'), '--seed', 4821, '--ops', 50000, '--max-live', 128])
+        for invalid in (['--scale', '0'], ['--max-live', '4294967297']):
+            run([exe('differential'), *invalid], expected_exit=2)
         for invalid in (['--players', '0'], ['--case', 'unknown'], ['--seed', '-1']):
             run([exe('generator'), *invalid], expected_exit=2)
         # Remove only our old intentional reproducer, so stale files cannot pass this check.
@@ -137,18 +141,18 @@ def main():
         if minimal.exists():
             minimal.unlink()
         run([exe('differential'), '--trace', ROOT / 'adversary/tests/ties.trace',
-             '--inject-fault'], expected_exit=1)
+            '--inject-fault'], expected_exit=1)
         if not minimal.is_file() or len(minimal.read_text().splitlines()) != 2:
             raise RuntimeError('Missing two-command fault reproducer')
         print(run([exe('differential'), '--scale', args.scale]).strip(), flush=True)
         # Run n real revisions at n simultaneous players, without quadratic oracle insertion.
         trace = traces / 'scale.trace'
         trace.write_text(run([exe('generator'), '--case', 'scale', '--players', args.scale,
-                              '--ops', args.scale]), encoding='utf-8')
+                            '--ops', args.scale]), encoding='utf-8')
         # The oracle audit runs after every command, so check the same case at a size it can afford.
         small = traces / 'scale-small.trace'
         small.write_text(run([exe('generator'), '--case', 'scale', '--players', 1000,
-                              '--ops', 1000]), encoding='utf-8')
+                            '--ops', 1000]), encoding='utf-8')
         run([exe('differential'), '--trace', small])
         n = args.scale
         for backend in ('avl', 'fenwick'):
@@ -163,10 +167,10 @@ def main():
             inputs = [ROOT / 'CMakeLists.txt', *ROOT.glob('*.md')]
             for folder in ('adversary', 'app', 'bench', 'include', 'oracle', 'src', 'tests'):
                 inputs.extend(p for p in (ROOT / folder).rglob('*')
-                              if p.suffix in ('.cpp', '.hpp', '.py', '.trace', '.expected')
-                              and 'CMakeFiles' not in p.parts and p.is_file())
+                            if p.suffix in ('.cpp', '.hpp', '.py', '.trace', '.expected')
+                            and 'CMakeFiles' not in p.parts and p.is_file())
             sources = {str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest()
-                       for p in sorted(inputs)}
+                    for p in sorted(inputs)}
         except OSError as error:
             sources = {'_error': str(error)}
         try:

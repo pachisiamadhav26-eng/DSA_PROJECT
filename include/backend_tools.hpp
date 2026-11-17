@@ -5,12 +5,19 @@
 namespace leaderboard {
 
 // Structural inspection and the two AVL primitives used by tests and benchmarks.
+struct AvlStats {
+    int height;
+    std::uint64_t rotations;
+    std::uint64_t last_join_visits;
+};
+
 struct FenwickStats {
     std::size_t coordinates;
     std::uint64_t bucket_shifts;
 };
 
 int avl_height(const Board& board);
+AvlStats avl_stats(const Board& board);
 std::vector<Player> audit_avl(const Board& board);
 std::vector<Player> audit_fenwick(const Board& board);
 FenwickStats fenwick_stats(const Board& board);

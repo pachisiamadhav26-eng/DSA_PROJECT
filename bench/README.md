@@ -16,7 +16,8 @@ Owner: Sumit, Member 6. This code measures the real AVL and Fenwick implementati
 | `tests/` | Small real-backend checks and summary-statistics checks |
 | `WORK_LOG.md` | Activity history |
 | `../results/plot.py` | Generate the summary CSV and PNG/SVG charts |
-| `../docs/derivations/D6.md`, `D6.pdf` | Editable and submitted cost predictions |
+| `../docs/derivations/D6.md`, `D6_250041038.pdf` | Editable predictions and two-page submission naming Sumit and roll number 250041038 |
+| `../results/export_submission.py` | Publish a completed run to the required results/raw and results/figures paths with hash verification |
 
 ## Inputs
 
@@ -91,7 +92,12 @@ python results/plot.py results/your-run-folder
 
 # Recreate the D6 PDF after editing its Markdown source.
 python docs/derivations/render_d6.py
+
+# Copy the completed run into the required final paths and verify each copy.
+python results/export_submission.py results/full-20261117-final
 ```
+
+For final integration, use `results/raw/`, `results/figures/` and `results/summary.csv`. Figure captions and exact raw-file selectors are in `results/figures/INDEX.md` and `sources.json`; `results/publication.json` records the original run and hashes. The timestamped run retains its original measurements, profiles and provenance. Regenerate its figure source map with the plotting command before exporting a different run. This publication step does not rerun benchmarks.
 
 ## Cache profiling
 
@@ -125,3 +131,5 @@ The analyzer uses the installed Windows PMU payload schema saved in `profiles/ev
 ## Submission
 
 D6 predictions, full measurements, figures and hardware sample summaries are saved. Human review, a teammate-reviewed PR and verification of the final integrated command from a fresh clone remain. The Architect should include the benchmark invocation in the team's final all-in-one command. Preparation history is recorded in `WORK_LOG.md`.
+
+The root `REPORT.md` is the Analyst contribution. The integration PR must combine all roles into the full team report and matching `REPORT.pdf`, and supply the team-wide `scripts/run_all.sh`. This branch's Analyst pipeline does not stand in for those team deliverables.

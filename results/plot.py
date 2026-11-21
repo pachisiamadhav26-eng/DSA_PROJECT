@@ -3,6 +3,7 @@
 import argparse
 import csv
 from collections import defaultdict
+import json
 from pathlib import Path
 import statistics
 import sys
@@ -66,6 +67,28 @@ def chart(path, rows, title):
     plt.close(figure)
 
 
+def write_captions(directory, groups):
+    sources = defaultdict(set)
+    for path in sorted((directory / "raw").glob("*.csv")):
+        with path.open(newline="", encoding="utf-8") as stream:
+            for row in csv.DictReader(stream):
+                key = (row["experiment"], row["operation"], row["seed"])
+                if key in groups:
+                    sources[key].add(path.name)
+    records = []
+    index = ["# Figure sources", "", "Generator: `results/plot.py`. Points are means of five run averages; bars show minimum/maximum. Select the experiment, operation and seed below within each input CSV.", ""]
+    for number, key in enumerate(sorted(groups), 1):
+        stem = f"{number:02d}-{key[1]}"
+        inputs = sorted(sources[key])
+        records.append({"figure": stem, "script": "results/plot.py", "experiment": key[0],
+                        "operation": key[1], "seed": key[2], "raw_files": inputs,
+                        "units": "ns/call", "spread": "min/max of five run averages"})
+        index += [f"## {stem}", "", f"Experiment `{key[0]}`, operation `{key[1]}`, seed `{key[2]}`.", "",
+                  "Raw data: " + ", ".join(f"[{name}](../raw/{name})" for name in inputs) + ".", ""]
+    (directory / "figures" / "sources.json").write_text(json.dumps(records, indent=2), encoding="utf-8")
+    (directory / "figures" / "INDEX.md").write_text("\n".join(index), encoding="utf-8")
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("directory", type=Path)
@@ -79,6 +102,7 @@ def main():
             groups[(row["experiment"], row["operation"], row["seed"])].append(row)
     for index, (key, rows) in enumerate(sorted(groups.items())):
         chart(charts / f"{index + 1:02d}-{key[1]}", rows, f"{key[0]} / {key[1]} / seed {key[2]}")
+    write_captions(args.directory, groups)
     print(f"Saved summary.csv and {len(groups)} SVG/PNG charts in {args.directory}")
 
 

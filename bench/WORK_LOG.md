@@ -35,6 +35,15 @@ Owner: Sumit, Member 6.
 - With Sumit's approved Administrator prompt, recorded rank/select LLCMisses samples for both backends. Windows tracerpt reported zero lost events for all four recordings. Saved original ETLs, metadata, decoded benchmark-thread samples and analyses. The local WMI schema confirms the payload layout. These single captures are diagnostic samples, not exact miss counts or five-run timings.
 - Filled `REPORT.md` with actual measurements and their limitations, updated run instructions and recorded tool use. No commit or push was performed during this run.
 
+## 21 November 2026 - PR submission corrections
+
+- Added author Sumit, roll number 250041038, the exact assigned D6 statement and explicit source-file/function references. Condensed D6 to a two-page PDF named `D6_250041038.pdf`; retained the original pre-run prediction commit in its provenance.
+- Added dated representative AI prompts and disclosed this revision in `TOOLS.md`.
+- Added exact figure-to-raw-CSV mappings and a hash-verified export to `results/raw/`, `results/figures/` and `results/summary.csv`. Added source captions to the Analyst report. The original formal measurements and profiling evidence remain in the recorded run directory.
+- The review-preparation checks are separate from a new performance run. No calibrated numerical cost model or repeated full-scale timing run is claimed.
+- Teammate approval, the full team report/PDF and `scripts/run_all.sh` remain team integration tasks. GitHub PR #5 had no submitted reviews when checked on 21 November.
+- At Sumit's request, `TOOLS.md` was subsequently shortened to a tools/parts/changes table. It omits dates and prompt examples, so the reviewer's dated-prompt request remains outstanding.
+
 ## Remaining work
 
 Human review of code, D6 and results; a teammate-reviewed PR; and verification of the final integrated command from a fresh clone.

@@ -56,6 +56,12 @@ def main():
         trace_records = [row for row in plot.summarize(directory) if row["experiment"].startswith("trace")]
         assert len(trace_records) == 2 and all(row["runs"] == 5 for row in trace_records)
         assert sorted(row["mean"] for row in trace_records) == [3, 30]
+        (directory / "figures").mkdir()
+        plot.write_captions(directory, {("synthetic", "rank", "253"): records})
+        import json
+        source_map = json.loads((directory / "figures/sources.json").read_text())
+        assert source_map[0]["raw_files"] == ["avl.csv", "fenwick.csv"]
+        assert source_map[0]["script"] == "results/plot.py"
     print("PASS: five-run means/spread, image generation, and backend mismatch detection")
 
 

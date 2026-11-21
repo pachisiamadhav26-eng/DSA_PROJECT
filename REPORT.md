@@ -2,7 +2,7 @@
 
 Author: Sumit. Formal timing suite completed on 17 November 2026.
 
-Submission scope: this is the Analyst contribution for the team integration report. The integration PR must combine the other roles and export the matching full-team `REPORT.pdf`. Submission copies are in `results/raw/` and `results/figures/`; the timestamped run remains the provenance record. `results/publication.json` verifies each copy against its source.
+Scope: this branch retains the Analyst contribution after PR #5 merged it into the team project. Team integration continues on `main`; the root report here covers only the Analyst experiments. Submission copies are in `results/raw/` and `results/figures/`; the timestamped run remains the provenance record. `results/publication.json` verifies each copy against its source.
 
 D6 submission: [D6_250041038.pdf](docs/derivations/D6_250041038.pdf), author Sumit, roll 250041038. The two-page 21 November formatting revision preserves the models first committed in `7b78276` before the formal run. The historical prediction hash in the run records refers to that earlier text, not the reformatted document.
 

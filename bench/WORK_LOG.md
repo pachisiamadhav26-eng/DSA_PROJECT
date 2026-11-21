@@ -45,6 +45,12 @@ Owner: Sumit, Member 6.
 - At Sumit's request, `TOOLS.md` was subsequently shortened to a tools/parts/changes table. It omits dates and prompt examples, so the reviewer's dated-prompt request remains outstanding.
 - Following the team's merge-conflict feedback, merged main `7b161a0` into `sumit` and resolved the `TOOLS.md` add/add conflict. Retained every main-branch team entry and added Sumit's declarations using its dated five-column format, including representative prompts. This supersedes the shortened table and addresses the previously outstanding dated-prompt record.
 
+## 21 November 2026 - Standalone Analyst branch layout
+
+- After owner approval and merge of PR #5, Sumit requested an Analyst-only file layout on `sumit`. Created local backup ref `backup/sumit-before-analyst-only-20261121` at `528dfc3` before changing the file tree.
+- Removed tracked teammate modules and other members' derivations from this branch. Retained `bench/`, `results/`, D6, the Analyst report/tool record and Git configuration files. Replaced the root README with Analyst instructions and restored the Analyst-only tool declarations.
+- This cleanup is a new commit, not a history rewrite. It must not be merged back into the integrated `main`, where the teammate modules and approved Analyst contribution remain.
+
 ## Remaining work
 
 Human review of code, D6 and results; a teammate-reviewed PR; and verification of the final integrated command from a fresh clone.

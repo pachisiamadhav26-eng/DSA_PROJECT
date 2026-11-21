@@ -47,7 +47,7 @@ The default build exports the current local snapshots of `origin/madhav`, `origi
 
 Both structures implement `Board` and their factories in `include/leaderboard.hpp`. The harness also uses the team's `include/backend_tools.hpp` for audits, AVL height/rotation/join statistics, ordered join and Fenwick bucket-shift counts. The oracle supplies `oracle/sorted_array.hpp`. These versions compiled together during preparation.
 
-After the team integrates its modules, add `--local` to build this checkout. Use `--compiler PATH` to select another compiler. Advanced source/ref overrides are available through `python bench/build.py --help`.
+Use `--local` only from an integrated checkout containing the teammate source files. This standalone Analyst branch uses the default remote-snapshot build. Use `--compiler PATH` to select another compiler. Advanced source/ref overrides are available through `python bench/build.py --help`.
 
 ```powershell
 # Add a supplied small adversarial trace and compare its outputs with the oracle.

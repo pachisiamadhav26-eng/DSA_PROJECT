@@ -1,19 +1,19 @@
 # Project 02: Rank Queries on a Live Leaderboard
 
-This report combines the team implementation and correctness work with the Analyst's recorded experiment. Team names still need final confirmation, as marked in the README. All reported measurements below are from the preserved five-run dataset, not estimates made for this integration pass.
+This report combines the work of team **PEAKY BLINDERS** with the Analyst's recorded experiment. All reported measurements below are from the preserved five-run dataset, not estimates made for this integration pass.
 
 ## 1. Team and contributions
 
 | Member | Roll | Role | Main contribution | Reviewed PR |
 | --- | --- | --- | --- | --- |
-| Prince Chavda | 250041011 | Structure A | Augmented AVL, ordered join, split, D1 | [#8](https://github.com/pachisiamadhav26-eng/DSA_PROJECT/pull/8) |
+| Chavda Kalpeshbhai Prince | 250041011 | Structure A | Augmented AVL, ordered join, split, D1 | [#8](https://github.com/pachisiamadhav26-eng/DSA_PROJECT/pull/8) |
 | Saksham Bhatia | 250041034 | Structure B | Compressed-score Fenwick, binary-lifting select, D2 | [#7](https://github.com/pachisiamadhav26-eng/DSA_PROJECT/pull/7) |
 | Madhav Pachisia | 250041025 | Architect | Shared contract, player table, replay application, D3 | [#9](https://github.com/pachisiamadhav26-eng/DSA_PROJECT/pull/9) |
 | Om Dehariya | 250041029 | Oracle | Sorted-array reference, differential tests, audits, D4 | [#6](https://github.com/pachisiamadhav26-eng/DSA_PROJECT/pull/6) |
-| Bianca | 250041008 | Adversary | Adversarial generator, fixtures, D5 | [#4](https://github.com/pachisiamadhav26-eng/DSA_PROJECT/pull/4) |
+| Bianca Jain | 250041008 | Adversary | Adversarial generator, fixtures, D5 | [#4](https://github.com/pachisiamadhav26-eng/DSA_PROJECT/pull/4) |
 | Sumit | 250041038 | Analyst | Benchmark, counters, profiles, raw data, figures, D6 | [#5](https://github.com/pachisiamadhav26-eng/DSA_PROJECT/pull/5) |
 
-The team will confirm Bianca's and Sumit's full names, the team name, and any paired-commit credits before the final tag. The linked PRs show the reviewed branch contributions without rewriting their history.
+The team will confirm Sumit's full name and any paired-commit credits before the final tag. The linked PRs show the reviewed branch contributions without rewriting their history.
 
 ## 2. Problem and workload
 
@@ -238,9 +238,9 @@ The measurements test the growth predicted in D6 using the actual implementation
 
 The timing coefficients depend on this one processor, compiler, memory system, and workload distribution. They should not be transferred to another machine without rerunning the suite. The AVL query-node visits were not instrumented, so the timing differences cannot be broken down into path length versus memory-access cost. Fenwick's tied-ID vectors also mean that an apparent logarithmic score-count operation can include linear movement within a large bucket. Future measurements should expose query visits, vary the tie-group size independently of `U`, and test general overlapping-league merges separately from separated-division rejoins.
 
-The Oracle is intentionally a slow sorted array. The million-command differential run keeps few simultaneous players so that a full audit after every command is feasible. The million-player scale run checks at phase boundaries, not after every one of a million revisions. Those checks, the independent full-scale expected-output calculation, and the saved Adversary traces cover different risks; none alone proves all possible traces correct. The browser demo is Windows-only and does not define the evaluator interface. Bianca's generator needs GCC 7 or newer even though the existing machine's MinGW GCC 6.3 compiles the other components. The team must rehearse the final build on a compatible compiler.
+The Oracle is intentionally a slow sorted array. The million-command differential run keeps few simultaneous players so that a full audit after every command is feasible. The million-player scale run checks at phase boundaries, not after every one of a million revisions. Those checks, the independent full-scale expected-output calculation, and the saved Adversary traces cover different risks; none alone proves all possible traces correct. The browser demo runs on Windows and does not define the evaluator interface. The adversarial generator needs GCC 7 or newer; MinGW GCC 6.3 cannot compile it. The full build should be rehearsed with a compatible compiler.
 
-This repository currently lacks confirmed team name, two full surnames, the instructor account and checkpoint tags. The course has not supplied a final hidden-test command. We record these as submission tasks rather than inventing data. The root report's early predicted model was also not historically committed at `c1`; the genuine pre-measurement D6 commit is linked in section 9. The report PDF should be regenerated from this Markdown after the missing identities are filled, and the full run should be repeated from the reviewed final commit.
+Before submission, confirm the remaining member name and instructor account, check the repository settings, and resolve the missing checkpoint tags. The course has not supplied a final hidden-test command. The predicted model was not committed to `REPORT.md` at `c1`; section 9 links the earlier D6 prediction instead. After the final PRs merge, rerun the full suite and update both this file and the PDF if any details change.
 
 ## 13. References
 

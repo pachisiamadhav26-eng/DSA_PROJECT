@@ -1,19 +1,19 @@
 # Project 02: Rank Queries on a Live Leaderboard
 
-CS 253 / MA 253. Team name will be added when the team confirms it.
+CS 253 / MA 253. Team **PEAKY BLINDERS**.
 
 ## Team and roles
 
 | Name | Roll no. | GitHub | Role | Module folder | Derivation |
 | --- | --- | --- | --- | --- | --- |
-| Prince Chavda | 250041011 | @princechavda8773 | Structure A owner | `src/structA/` | D1 |
+| Chavda Kalpeshbhai Prince | 250041011 | @princechavda8773 | Structure A owner | `src/structA/` | D1 |
 | Saksham Bhatia | 250041034 | @SakshamBhatia07 | Structure B owner | `src/structB/` | D2 |
 | Madhav Pachisia | 250041025 | @pachisiamadhav26-eng | Architect | `app/`, `include/` | D3 |
 | Om Dehariya | 250041029 | @OmDehariya111 | Oracle owner | `oracle/` | D4 |
-| Bianca (surname to confirm) | 250041008 | @Bianca-the-sensational | Adversary | `adversary/` | D5 |
-| Sumit (surname to confirm) | 250041038 | @sumitdobal04 | Analyst | `bench/`, `results/` | D6 |
+| Bianca Jain | 250041008 | @Bianca-the-sensational | Adversary | `adversary/` | D5 |
+| Sumit | 250041038 | @sumitdobal04 | Analyst | `bench/`, `results/` | D6 |
 
-The team name and two incomplete names require confirmation before the final tag.
+Sumit's full name still needs confirmation before the final tag.
 
 ## Summary
 
@@ -21,11 +21,10 @@ The application replays player score changes, competition-rank and position quer
 
 ## Requirements
 
-- C++17 compiler: **GCC 7 or newer** for the complete build, including `adversary/generator.cpp`. Bianca validated GCC 14.2.0 on Windows. GCC 6.3 compiles the other targets but cannot parse the generator's structured bindings and fold expression.
-- Python 3.8 or newer; tested with Python 3.13 on Windows. No external C++ container is used for the AVL tree, Fenwick tree, or application player table.
-- Install the plotting dependency: `python -m pip install -r bench/requirements.txt`.
-- The Python build and test scripts use portable executable paths. `app/web/server.cpp` is Windows only. `scripts/run_all.sh` needs a POSIX shell; `scripts/run_all.ps1` is the Windows equivalent.
-- Recorded formal measurements used MinGW GCC 6.3 for the unchanged AVL, Fenwick, and benchmark sources. Their exact compiler, flags, source hashes, and machine description are in `results/full-20261117-final/metadata.json`.
+- A C++17 compiler. Use **GCC 7 or newer** for the full build; GCC 6.3 cannot compile the adversarial generator.
+- Python 3.8 or newer for the build, tests, and benchmark scripts.
+- To regenerate charts, install the packages in `bench/requirements.txt` with `python -m pip install -r bench/requirements.txt`.
+- A POSIX shell for `scripts/run_all.sh`, or PowerShell for `scripts/run_all.ps1`. The optional browser demo runs on Windows.
 
 ## Build
 
@@ -121,11 +120,13 @@ These are measurements on one machine and one workload, not universal guarantees
 
 ## Known limitations
 
-- The generator needs GCC 7+; GCC 6.3 on Madhav's laptop cannot build it. The other integrated targets and quick checks were built there with GCC 6.3.
-- `app/web/` is a Windows demonstration interface and is not the evaluation CLI.
-- Team name, Bianca's and Sumit's full surnames, and instructor account await confirmation. Repository name, privacy setting, and checkpoint tags must be set by the team before submission.
-- The instructor has not yet supplied a project-specific hidden-test command. If it differs from the documented trace-file CLI, the adapter and this section must be updated before the `final` tag.
-- The cost model is symbolic; it predicts growth, not exact elapsed nanoseconds. Query-node visits were not instrumented, and cache recordings are sampled rather than exact miss totals.
+- The browser demo runs on Windows. The command-line program is the interface used for replay and testing.
+- Fenwick score buckets can be slow to update when many players have the same score. Its split and merge operations rebuild counts; an AVL merge of overlapping score ranges may also rebuild.
+- The timing results come from one machine and the recorded workloads. Cache events were sampled, and query-node visits were not measured.
+
+## Before submission
+
+Confirm Sumit's full name and the instructor's GitHub account. Check the required repository name and privacy setting, and resolve the missing checkpoint tags. If the course provides a different hidden-test command, update the documented CLI instructions to match.
 
 ## Tools and references
 

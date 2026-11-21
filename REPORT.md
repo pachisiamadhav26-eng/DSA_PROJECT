@@ -6,14 +6,14 @@ This report combines the work of team **PEAKY BLINDERS** with the Analyst's reco
 
 | Member | Roll | Role | Main contribution | Reviewed PR |
 | --- | --- | --- | --- | --- |
-| Chavda Kalpeshbhai Prince | 250041011 | Structure A | Augmented AVL, ordered join, split, D1 | [#8](https://github.com/pachisiamadhav26-eng/DSA_PROJECT/pull/8) |
-| Saksham Bhatia | 250041034 | Structure B | Compressed-score Fenwick, binary-lifting select, D2 | [#7](https://github.com/pachisiamadhav26-eng/DSA_PROJECT/pull/7) |
-| Madhav Pachisia | 250041025 | Architect | Shared contract, player table, replay application, D3 | [#9](https://github.com/pachisiamadhav26-eng/DSA_PROJECT/pull/9) |
-| Om Dehariya | 250041029 | Oracle | Sorted-array reference, differential tests, audits, D4 | [#6](https://github.com/pachisiamadhav26-eng/DSA_PROJECT/pull/6) |
-| Bianca Jain | 250041008 | Adversary | Adversarial generator, fixtures, D5 | [#4](https://github.com/pachisiamadhav26-eng/DSA_PROJECT/pull/4) |
-| Sumit | 250041038 | Analyst | Benchmark, counters, profiles, raw data, figures, D6 | [#5](https://github.com/pachisiamadhav26-eng/DSA_PROJECT/pull/5) |
+| Chavda Kalpeshbhai Prince | 250041011 | Structure A | Augmented AVL, ordered join, split, D1 | [#8](https://github.com/pachisiamadhav26-eng/cs253-peaky-blinders-p02/pull/8) |
+| Saksham Bhatia | 250041034 | Structure B | Compressed-score Fenwick, binary-lifting select, D2 | [#7](https://github.com/pachisiamadhav26-eng/cs253-peaky-blinders-p02/pull/7) |
+| Madhav Pachisia | 250041025 | Architect | Shared contract, player table, replay application, D3 | [#9](https://github.com/pachisiamadhav26-eng/cs253-peaky-blinders-p02/pull/9) |
+| Om Dehariya | 250041029 | Oracle | Sorted-array reference, differential tests, audits, D4 | [#6](https://github.com/pachisiamadhav26-eng/cs253-peaky-blinders-p02/pull/6) |
+| Bianca Jain | 250041008 | Adversary | Adversarial generator, fixtures, D5 | [#4](https://github.com/pachisiamadhav26-eng/cs253-peaky-blinders-p02/pull/4) |
+| Sumit | 250041038 | Analyst | Benchmark, counters, profiles, raw data, figures, D6 | [#5](https://github.com/pachisiamadhav26-eng/cs253-peaky-blinders-p02/pull/5) |
 
-The team will confirm Sumit's full name and any paired-commit credits before the final tag. The linked PRs show the reviewed branch contributions without rewriting their history.
+The linked PRs show each member's reviewed branch contribution without rewriting the commit history.
 
 ## 2. Problem and workload
 
@@ -63,8 +63,8 @@ In the integrated build, the four unit tests, Oracle self-test, seven fixture pa
 
 | Date | Module | Observed symptom | Found by | Fix commit |
 | --- | --- | --- | --- | --- |
-| 17 Nov 2026 | Analyst result processing | Distinct traces with the same sizes and operations were grouped together in summaries. | Checking the trace grouping and regenerating figures from unchanged raw timings. | [`71dbe20`](https://github.com/pachisiamadhav26-eng/DSA_PROJECT/commit/71dbe20) |
-| 21 Nov 2026 | Architect web launcher | The launch path was stale for the integrated backend. | Running the local web demo. | [`9dae973`](https://github.com/pachisiamadhav26-eng/DSA_PROJECT/commit/9dae973) |
+| 17 Nov 2026 | Analyst result processing | Distinct traces with the same sizes and operations were grouped together in summaries. | Checking the trace grouping and regenerating figures from unchanged raw timings. | [`71dbe20`](https://github.com/pachisiamadhav26-eng/cs253-peaky-blinders-p02/commit/71dbe20) |
+| 21 Nov 2026 | Architect web launcher | The launch path was stale for the integrated backend. | Running the local web demo. | [`9dae973`](https://github.com/pachisiamadhav26-eng/cs253-peaky-blinders-p02/commit/9dae973) |
 
 The team should add any other real bug it can identify with its exact fix commit. A synthetic fault used to test the shrinker is a test case, not a discovered production bug.
 
@@ -76,7 +76,7 @@ The runner's deterministic `mixed` case uses recorded seeds 253, 42 and 20261115
 
 ## 9. Predicted cost model before measuring
 
-Sumit's D6 predictions were committed in [`7b78276`](https://github.com/pachisiamadhav26-eng/DSA_PROJECT/commit/7b78276) before the formal 17 November run. The model is symbolic: AVL rank/select follow one height-bounded path; Fenwick rank/select do coordinate and prefix work bounded by `log U`; AVL split uses telescoping joins; Fenwick split scans `U` coordinates; ordered AVL join scales with the height gap; and public Fenwick merge includes coordinate work and duplicate-ID sorting. It does not assign measured nanosecond coefficients afterward. `docs/derivations/D6_250041038.pdf` gives each term and the measured code path.
+Sumit's D6 predictions were committed in [`7b78276`](https://github.com/pachisiamadhav26-eng/cs253-peaky-blinders-p02/commit/7b78276) before the formal 17 November run. The model is symbolic: AVL rank/select follow one height-bounded path; Fenwick rank/select do coordinate and prefix work bounded by `log U`; AVL split uses telescoping joins; Fenwick split scans `U` coordinates; ordered AVL join scales with the height gap; and public Fenwick merge includes coordinate work and duplicate-ID sorting. It does not assign measured nanosecond coefficients afterward. `docs/derivations/D6_250041038.pdf` gives each term and the measured code path.
 
 The guidelines specifically ask for a draft predicted model in `REPORT.md` at checkpoint `c1`. This repository has no `c1` tag or such historical report commit. We cannot create earlier history retroactively. The earlier D6 commit is the verifiable pre-measurement prediction; this integrated report records that limitation honestly.
 
@@ -240,7 +240,7 @@ The timing coefficients depend on this one processor, compiler, memory system, a
 
 The Oracle is intentionally a slow sorted array. The million-command differential run keeps few simultaneous players so that a full audit after every command is feasible. The million-player scale run checks at phase boundaries, not after every one of a million revisions. Those checks, the independent full-scale expected-output calculation, and the saved Adversary traces cover different risks; none alone proves all possible traces correct. The browser demo runs on Windows and does not define the evaluator interface. The adversarial generator needs GCC 7 or newer; MinGW GCC 6.3 cannot compile it. The full build should be rehearsed with a compatible compiler.
 
-Before submission, confirm the remaining member name and instructor account, check the repository settings, and resolve the missing checkpoint tags. The course has not supplied a final hidden-test command. The predicted model was not committed to `REPORT.md` at `c1`; section 9 links the earlier D6 prediction instead. After the final PRs merge, rerun the full suite and update both this file and the PDF if any details change.
+Before submission, add the instructor's GitHub account, resolve the missing checkpoint tags, and verify the final test command. The course has not supplied a final hidden-test command. The predicted model was not committed to `REPORT.md` at `c1`; section 9 links the earlier D6 prediction instead. After the final PRs merge, rerun the full suite and update both this file and the PDF if any details change.
 
 ## 13. References
 

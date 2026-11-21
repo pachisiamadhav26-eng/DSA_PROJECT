@@ -23,7 +23,7 @@ The application replays player score changes, competition-rank and position quer
 
 - C++17 compiler: **GCC 7 or newer** for the complete build, including `adversary/generator.cpp`. Bianca validated GCC 14.2.0 on Windows. GCC 6.3 compiles the other targets but cannot parse the generator's structured bindings and fold expression.
 - Python 3.8 or newer; tested with Python 3.13 on Windows. No external C++ container is used for the AVL tree, Fenwick tree, or application player table.
-- Install plot and PDF dependencies: `python -m pip install -r bench/requirements.txt`.
+- Install the plotting dependency: `python -m pip install -r bench/requirements.txt`.
 - The Python build and test scripts use portable executable paths. `app/web/server.cpp` is Windows only. `scripts/run_all.sh` needs a POSIX shell; `scripts/run_all.ps1` is the Windows equivalent.
 - Recorded formal measurements used MinGW GCC 6.3 for the unchanged AVL, Fenwick, and benchmark sources. Their exact compiler, flags, source hashes, and machine description are in `results/full-20261117-final/metadata.json`.
 

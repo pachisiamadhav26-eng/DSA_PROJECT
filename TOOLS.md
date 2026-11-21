@@ -13,6 +13,65 @@ The team should add a dated entry for each tool used on submitted work. Entries 
 | 16-17 Nov 2026 | OpenAI Codex | `INTERFACE.md`, `app/leaderboard.cpp`, `app/replay.cpp`, `app/player_table.hpp`, `app/player_table.cpp`, `app/tests/` | Reworded the interface, used clearer command handling and hash-table names, and made the entry point and tests easier to read. | Prepared for Madhav's review before commit. Both application tests pass; temporary million-command replay and million-ID hash-table checks passed. A temporary combined build passed basic, season, and wide-ID traces with both backends; the oracle error fixture still differs, and a full-scale combined run remains. |
 | 21 Nov 2026 | OpenAI Codex and PyMuPDF | `docs/derivations/D3.md`, `docs/derivations/D3_250041025.pdf`, `app/web/`, `app/tests/pipeline*.trace` | Aligned D3 with the exact assigned statement and the supplied roll number, rendered the final PDF, and corrected the web demo launcher. | The one-page PDF was visually checked. The player-table and replay tests passed; both structures matched the two new trace fixtures, and the local web page and replay API responded correctly. |
 
+## Om Dehariya - historical Oracle contribution record
+
+# Tools used for the Oracle contribution
+
+Owner: Om Dehariya. Scope: the `om-oracle` branch.
+
+OpenAI Codex generated the sorted-array reference, test-only replay facade,
+adapters for the existing standalone structures, differential runner, invariant
+checkers, shrinking logic, regression traces, build/test scripts, and the D4
+proof and PDF renderer. It inspected the course assignment and the existing
+team branches to align ordering, competition ranks and interface semantics.
+
+The tests run the actual AVL and Fenwick sources exported from pinned teammate
+commits; Codex did not rewrite those implementations. `include/leaderboard.hpp`
+and the basic replay fixture are dependencies copied from Madhav's branch.
+The adapters add validation and bridge the standalone APIs as documented in
+`oracle/README.md`. Subsequent implementation fixes and recorded checks are in
+`oracle/VALIDATION.md` and the commit history.
+
+Tools used: Git for branch inspection and source export; GCC/MinGW for C++17
+compilation and tests; PowerShell for repeatable builds and test orchestration;
+Python with ReportLab for the D4 PDF; Poppler for visual PDF verification.
+
+No manual changes or review by Om are claimed here. Om should record any later
+changes and teammate review after they actually occur, and understand the code
+and proof before the viva. This disclosure covers only this contribution;
+other members should append their own tool usage.
+
+17 November 2026: OpenAI Codex updated the Oracle for Madhav's current
+`Board` interface and replay rules. The revised harness links the teammate
+factories and audit helpers, and the runner checks the Architect application
+against golden outputs. The original standalone results are marked historical
+in `oracle/VALIDATION.md`. No human review of this update is claimed.
+
+17 November 2026: OpenAI Codex rewrote the Oracle and helper scripts for
+readability, separated trace generation and backend checks, and added a code
+reading guide. Tests compared the new code with the previous version. Human
+review is pending.
+
+17 November 2026: OpenAI Codex revised D4 in English against the assignment,
+added rotation diagrams and a worked selection example, and regenerated the
+two-page PDF with ReportLab. It also corrected stale README instructions and
+fixed test-runner count validation. The full Oracle suite was rerun.
+
+## Om's representative AI prompts
+
+The following are excerpts from the requests in the Codex conversation. Earlier
+entries above remain historical records. Codex generated the changes and ran
+the checks; teammate approval is recorded separately on GitHub.
+
+- **17 November 2026 - readability.** "use humanize karke simplest code bana yr jo saare kaam karde jo required hai". Asked Codex to simplify the Oracle while preserving required behavior. Affected `oracle/` code and scripts; comparisons with the previous implementation and the Oracle suites are recorded in `oracle/VALIDATION.md`.
+- **21 November 2026 - PR corrections.** "please ek baar tu ye message dekh aur apni om-oracle branch ke issues ko acche se resolve karde". The attached review requested the roll-number PDF, exact D4 statement, sources, file/function references, dated prompts, and final-checkout tests. Codex updated the proof and its renderer, merged current main into this branch, resolved `.gitattributes` and `TOOLS.md` conflicts while retaining both contributions, and changed the build to compile checkout files.
+- **21 November 2026 - author metadata.** "bhai mera full name Om Dehariya hai aur roll no 250041029 hai aur branch Maths and Computing hai". Codex used the supplied identity in the D4 source, PDF metadata, footer and submission filename.
+
+The proof text and layout were assisted by OpenAI Codex. Sources actually
+consulted were the two course handouts and the local code paths cited in D4.
+No external textbook consultation or human approval is claimed. ReportLab
+created the PDF; pypdf checked its pages and text; Poppler rendered it for
+visual inspection. Current-checkout test results are recorded in VALIDATION.md.
 ## Analyst - Sumit (250041038)
 
 Sumit supplied the intended workflow, requirements and requested changes. These entries describe assistance with implementation and verification; the original team entries above are retained.

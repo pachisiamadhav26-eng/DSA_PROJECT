@@ -31,8 +31,12 @@ D4 was renamed to `docs/derivations/D4_250041029.pdf`. It names Om Dehariya,
 roll number 250041029, Maths and Computing; quotes the assigned statement;
 and identifies consulted sources and implementation files/functions.
 pypdf confirmed two pages and both rendered pages were visually inspected.
-Dated representative AI prompts were added to TOOLS.md. No teammate review
-or approval is claimed by these automated checks.
+Dated representative AI prompts were added to TOOLS.md. A separate clean clone of merge commit `ad37a06` was created with
+`git clone --no-local --single-branch --branch om-oracle`.
+`./oracle/run_tests.ps1 -Quick` passed from that clone, and both documented
+`leaderboard.exe avl` and `leaderboard.exe fenwick` sample commands exactly
+matched `app/examples/basic.expected`. No historical dependency export was used.
+No teammate review or approval is claimed by these automated checks.
 
 ## D4 and branch review, 17 November 2026
 

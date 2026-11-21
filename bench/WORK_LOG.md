@@ -43,6 +43,7 @@ Owner: Sumit, Member 6.
 - The review-preparation checks are separate from a new performance run. No calibrated numerical cost model or repeated full-scale timing run is claimed.
 - Teammate approval, the full team report/PDF and `scripts/run_all.sh` remain team integration tasks. GitHub PR #5 had no submitted reviews when checked on 21 November.
 - At Sumit's request, `TOOLS.md` was subsequently shortened to a tools/parts/changes table. It omits dates and prompt examples, so the reviewer's dated-prompt request remains outstanding.
+- Following the team's merge-conflict feedback, merged main `7b161a0` into `sumit` and resolved the `TOOLS.md` add/add conflict. Retained every main-branch team entry and added Sumit's declarations using its dated five-column format, including representative prompts. This supersedes the shortened table and addresses the previously outstanding dated-prompt record.
 
 ## Remaining work
 

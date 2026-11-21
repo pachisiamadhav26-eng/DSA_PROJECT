@@ -1,4 +1,4 @@
-# Rank Queries on a Live Leaderboard
+## Rank Queries on a Live Leaderboard
 
 CS 253 / MA 253 Data Structures and Algorithms Laboratory project.
 

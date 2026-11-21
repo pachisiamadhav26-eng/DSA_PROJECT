@@ -1,7 +1,7 @@
 # Adversarial inputs
 
-Build Bianca's generator through the root CMake project. The offline Python
-runner builds and exercises the project. It checks the real application,
+Adversarial generator through the root CMake project. The offline Python
+runner has been used to build and exercise the project. It checks the real application,
 the independent oracle, backend invariants, golden fixtures, generator repeatability,
 invalid generator arguments, deliberate failure reduction, and scale workloads.
 

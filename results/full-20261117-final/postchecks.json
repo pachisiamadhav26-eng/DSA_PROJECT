@@ -1,0 +1,13 @@
+{
+  "all_groups_have_five_runs": true,
+  "query_calls_per_run": 1000000,
+  "scale_expected_output_lines": 2003019,
+  "scale_expected_checksum": 4669994430889325992,
+  "scale_expected_sha256": "11140d25cf362f28c579f07a52218e1a53a979821f62f4b3d28d733b13bc655a",
+  "scale_backend_checksums_match_expected": true,
+  "adversary_commit": "a788f1783fa3b2fcacd5cbaeb32236a8c5f12be5",
+  "predictions_sha256": "6a6c002375a1a02b929ae11c15abc38197d302b51e85f200b15655f0399687e2",
+  "postprocessor_sha256": "e363f2517f35868fc8ed46d15c55d2dc8340dedb262bbc8783de3dbe61bd8e7c",
+  "profile_analyzer_sha256": "49881de6117ef9d52d2c6a4fac5def18c92137d376d5e0b273c034b7e42720d1",
+  "four_profiles_decoded": true
+}

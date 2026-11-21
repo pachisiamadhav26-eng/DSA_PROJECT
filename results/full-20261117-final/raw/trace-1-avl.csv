@@ -1,0 +1,16 @@
+backend,experiment,operation,players,coordinates,seed,run,calls,elapsed_ns,ns_per_call,checksum,validation,left_height,right_height
+avl,trace_per_call_overhead_included,insert,2,2,253,1,2,5700,2850,9005586685809209063,output_digest_only,-1,-1
+avl,trace_per_call_overhead_included,rank,2,2,253,1,1,300,300,9005586685809209063,output_digest_only,-1,-1
+avl,trace_per_call_overhead_included,select,2,2,253,1,2,600,300,9005586685809209063,output_digest_only,-1,-1
+avl,trace_per_call_overhead_included,insert,2,2,253,2,2,1900,950,9005586685809209063,output_digest_only,-1,-1
+avl,trace_per_call_overhead_included,rank,2,2,253,2,1,400,400,9005586685809209063,output_digest_only,-1,-1
+avl,trace_per_call_overhead_included,select,2,2,253,2,2,500,250,9005586685809209063,output_digest_only,-1,-1
+avl,trace_per_call_overhead_included,insert,2,2,253,3,2,1500,750,9005586685809209063,output_digest_only,-1,-1
+avl,trace_per_call_overhead_included,rank,2,2,253,3,1,300,300,9005586685809209063,output_digest_only,-1,-1
+avl,trace_per_call_overhead_included,select,2,2,253,3,2,600,300,9005586685809209063,output_digest_only,-1,-1
+avl,trace_per_call_overhead_included,insert,2,2,253,4,2,1100,550,9005586685809209063,output_digest_only,-1,-1
+avl,trace_per_call_overhead_included,rank,2,2,253,4,1,400,400,9005586685809209063,output_digest_only,-1,-1
+avl,trace_per_call_overhead_included,select,2,2,253,4,2,300,150,9005586685809209063,output_digest_only,-1,-1
+avl,trace_per_call_overhead_included,insert,2,2,253,5,2,1000,500,9005586685809209063,output_digest_only,-1,-1
+avl,trace_per_call_overhead_included,rank,2,2,253,5,1,300,300,9005586685809209063,output_digest_only,-1,-1
+avl,trace_per_call_overhead_included,select,2,2,253,5,2,300,150,9005586685809209063,output_digest_only,-1,-1

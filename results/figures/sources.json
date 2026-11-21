@@ -1,0 +1,533 @@
+[
+  {
+    "figure": "01-ordered_join_supplied_pivot",
+    "script": "results/plot.py",
+    "experiment": "ordered_join_percent_0",
+    "operation": "ordered_join_supplied_pivot",
+    "seed": "253",
+    "raw_files": [
+      "ordered-1000-0-avl.csv",
+      "ordered-10000-0-avl.csv",
+      "ordered-100000-0-avl.csv",
+      "ordered-1000000-0-avl.csv"
+    ],
+    "units": "ns/call",
+    "spread": "min/max of five run averages"
+  },
+  {
+    "figure": "02-ordered_join_supplied_pivot",
+    "script": "results/plot.py",
+    "experiment": "ordered_join_percent_1",
+    "operation": "ordered_join_supplied_pivot",
+    "seed": "253",
+    "raw_files": [
+      "ordered-1000-1-avl.csv",
+      "ordered-10000-1-avl.csv",
+      "ordered-100000-1-avl.csv",
+      "ordered-1000000-1-avl.csv"
+    ],
+    "units": "ns/call",
+    "spread": "min/max of five run averages"
+  },
+  {
+    "figure": "03-ordered_join_supplied_pivot",
+    "script": "results/plot.py",
+    "experiment": "ordered_join_percent_100",
+    "operation": "ordered_join_supplied_pivot",
+    "seed": "253",
+    "raw_files": [
+      "ordered-1000-100-avl.csv",
+      "ordered-10000-100-avl.csv",
+      "ordered-100000-100-avl.csv",
+      "ordered-1000000-100-avl.csv"
+    ],
+    "units": "ns/call",
+    "spread": "min/max of five run averages"
+  },
+  {
+    "figure": "04-ordered_join_supplied_pivot",
+    "script": "results/plot.py",
+    "experiment": "ordered_join_percent_50",
+    "operation": "ordered_join_supplied_pivot",
+    "seed": "253",
+    "raw_files": [
+      "ordered-1000-50-avl.csv",
+      "ordered-10000-50-avl.csv",
+      "ordered-100000-50-avl.csv",
+      "ordered-1000000-50-avl.csv"
+    ],
+    "units": "ns/call",
+    "spread": "min/max of five run averages"
+  },
+  {
+    "figure": "05-ordered_join_supplied_pivot",
+    "script": "results/plot.py",
+    "experiment": "ordered_join_percent_99",
+    "operation": "ordered_join_supplied_pivot",
+    "seed": "253",
+    "raw_files": [
+      "ordered-1000-99-avl.csv",
+      "ordered-10000-99-avl.csv",
+      "ordered-100000-99-avl.csv",
+      "ordered-1000000-99-avl.csv"
+    ],
+    "units": "ns/call",
+    "spread": "min/max of five run averages"
+  },
+  {
+    "figure": "06-rejoin_merge_from",
+    "script": "results/plot.py",
+    "experiment": "season_high_percent_0_players",
+    "operation": "rejoin_merge_from",
+    "seed": "253",
+    "raw_files": [
+      "players-1000-seasons-0-avl.csv",
+      "players-1000-seasons-0-fenwick.csv",
+      "players-10000-seasons-0-avl.csv",
+      "players-10000-seasons-0-fenwick.csv",
+      "players-100000-seasons-0-avl.csv",
+      "players-100000-seasons-0-fenwick.csv",
+      "players-1000000-seasons-0-avl.csv",
+      "players-1000000-seasons-0-fenwick.csv"
+    ],
+    "units": "ns/call",
+    "spread": "min/max of five run averages"
+  },
+  {
+    "figure": "07-split",
+    "script": "results/plot.py",
+    "experiment": "season_high_percent_0_players",
+    "operation": "split",
+    "seed": "253",
+    "raw_files": [
+      "players-1000-seasons-0-avl.csv",
+      "players-1000-seasons-0-fenwick.csv",
+      "players-10000-seasons-0-avl.csv",
+      "players-10000-seasons-0-fenwick.csv",
+      "players-100000-seasons-0-avl.csv",
+      "players-100000-seasons-0-fenwick.csv",
+      "players-1000000-seasons-0-avl.csv",
+      "players-1000000-seasons-0-fenwick.csv"
+    ],
+    "units": "ns/call",
+    "spread": "min/max of five run averages"
+  },
+  {
+    "figure": "08-rejoin_merge_from",
+    "script": "results/plot.py",
+    "experiment": "season_high_percent_0_ties",
+    "operation": "rejoin_merge_from",
+    "seed": "253",
+    "raw_files": [
+      "ties-1000-seasons-0-avl.csv",
+      "ties-1000-seasons-0-fenwick.csv",
+      "ties-10000-seasons-0-avl.csv",
+      "ties-10000-seasons-0-fenwick.csv",
+      "ties-100000-seasons-0-avl.csv",
+      "ties-100000-seasons-0-fenwick.csv",
+      "ties-1000000-seasons-0-avl.csv",
+      "ties-1000000-seasons-0-fenwick.csv"
+    ],
+    "units": "ns/call",
+    "spread": "min/max of five run averages"
+  },
+  {
+    "figure": "09-split",
+    "script": "results/plot.py",
+    "experiment": "season_high_percent_0_ties",
+    "operation": "split",
+    "seed": "253",
+    "raw_files": [
+      "ties-1000-seasons-0-avl.csv",
+      "ties-1000-seasons-0-fenwick.csv",
+      "ties-10000-seasons-0-avl.csv",
+      "ties-10000-seasons-0-fenwick.csv",
+      "ties-100000-seasons-0-avl.csv",
+      "ties-100000-seasons-0-fenwick.csv",
+      "ties-1000000-seasons-0-avl.csv",
+      "ties-1000000-seasons-0-fenwick.csv"
+    ],
+    "units": "ns/call",
+    "spread": "min/max of five run averages"
+  },
+  {
+    "figure": "10-rejoin_merge_from",
+    "script": "results/plot.py",
+    "experiment": "season_high_percent_100_players",
+    "operation": "rejoin_merge_from",
+    "seed": "253",
+    "raw_files": [
+      "players-1000-seasons-100-avl.csv",
+      "players-1000-seasons-100-fenwick.csv",
+      "players-10000-seasons-100-avl.csv",
+      "players-10000-seasons-100-fenwick.csv",
+      "players-100000-seasons-100-avl.csv",
+      "players-100000-seasons-100-fenwick.csv",
+      "players-1000000-seasons-100-avl.csv",
+      "players-1000000-seasons-100-fenwick.csv"
+    ],
+    "units": "ns/call",
+    "spread": "min/max of five run averages"
+  },
+  {
+    "figure": "11-split",
+    "script": "results/plot.py",
+    "experiment": "season_high_percent_100_players",
+    "operation": "split",
+    "seed": "253",
+    "raw_files": [
+      "players-1000-seasons-100-avl.csv",
+      "players-1000-seasons-100-fenwick.csv",
+      "players-10000-seasons-100-avl.csv",
+      "players-10000-seasons-100-fenwick.csv",
+      "players-100000-seasons-100-avl.csv",
+      "players-100000-seasons-100-fenwick.csv",
+      "players-1000000-seasons-100-avl.csv",
+      "players-1000000-seasons-100-fenwick.csv"
+    ],
+    "units": "ns/call",
+    "spread": "min/max of five run averages"
+  },
+  {
+    "figure": "12-rejoin_merge_from",
+    "script": "results/plot.py",
+    "experiment": "season_high_percent_100_ties",
+    "operation": "rejoin_merge_from",
+    "seed": "253",
+    "raw_files": [
+      "ties-1000-seasons-100-avl.csv",
+      "ties-1000-seasons-100-fenwick.csv",
+      "ties-10000-seasons-100-avl.csv",
+      "ties-10000-seasons-100-fenwick.csv",
+      "ties-100000-seasons-100-avl.csv",
+      "ties-100000-seasons-100-fenwick.csv",
+      "ties-1000000-seasons-100-avl.csv",
+      "ties-1000000-seasons-100-fenwick.csv"
+    ],
+    "units": "ns/call",
+    "spread": "min/max of five run averages"
+  },
+  {
+    "figure": "13-split",
+    "script": "results/plot.py",
+    "experiment": "season_high_percent_100_ties",
+    "operation": "split",
+    "seed": "253",
+    "raw_files": [
+      "ties-1000-seasons-100-avl.csv",
+      "ties-1000-seasons-100-fenwick.csv",
+      "ties-10000-seasons-100-avl.csv",
+      "ties-10000-seasons-100-fenwick.csv",
+      "ties-100000-seasons-100-avl.csv",
+      "ties-100000-seasons-100-fenwick.csv",
+      "ties-1000000-seasons-100-avl.csv",
+      "ties-1000000-seasons-100-fenwick.csv"
+    ],
+    "units": "ns/call",
+    "spread": "min/max of five run averages"
+  },
+  {
+    "figure": "14-rejoin_merge_from",
+    "script": "results/plot.py",
+    "experiment": "season_high_percent_1_players",
+    "operation": "rejoin_merge_from",
+    "seed": "253",
+    "raw_files": [
+      "players-1000-seasons-1-avl.csv",
+      "players-1000-seasons-1-fenwick.csv",
+      "players-10000-seasons-1-avl.csv",
+      "players-10000-seasons-1-fenwick.csv",
+      "players-100000-seasons-1-avl.csv",
+      "players-100000-seasons-1-fenwick.csv",
+      "players-1000000-seasons-1-avl.csv",
+      "players-1000000-seasons-1-fenwick.csv"
+    ],
+    "units": "ns/call",
+    "spread": "min/max of five run averages"
+  },
+  {
+    "figure": "15-split",
+    "script": "results/plot.py",
+    "experiment": "season_high_percent_1_players",
+    "operation": "split",
+    "seed": "253",
+    "raw_files": [
+      "players-1000-seasons-1-avl.csv",
+      "players-1000-seasons-1-fenwick.csv",
+      "players-10000-seasons-1-avl.csv",
+      "players-10000-seasons-1-fenwick.csv",
+      "players-100000-seasons-1-avl.csv",
+      "players-100000-seasons-1-fenwick.csv",
+      "players-1000000-seasons-1-avl.csv",
+      "players-1000000-seasons-1-fenwick.csv"
+    ],
+    "units": "ns/call",
+    "spread": "min/max of five run averages"
+  },
+  {
+    "figure": "16-rejoin_merge_from",
+    "script": "results/plot.py",
+    "experiment": "season_high_percent_1_ties",
+    "operation": "rejoin_merge_from",
+    "seed": "253",
+    "raw_files": [
+      "ties-1000-seasons-1-avl.csv",
+      "ties-1000-seasons-1-fenwick.csv",
+      "ties-10000-seasons-1-avl.csv",
+      "ties-10000-seasons-1-fenwick.csv",
+      "ties-100000-seasons-1-avl.csv",
+      "ties-100000-seasons-1-fenwick.csv",
+      "ties-1000000-seasons-1-avl.csv",
+      "ties-1000000-seasons-1-fenwick.csv"
+    ],
+    "units": "ns/call",
+    "spread": "min/max of five run averages"
+  },
+  {
+    "figure": "17-split",
+    "script": "results/plot.py",
+    "experiment": "season_high_percent_1_ties",
+    "operation": "split",
+    "seed": "253",
+    "raw_files": [
+      "ties-1000-seasons-1-avl.csv",
+      "ties-1000-seasons-1-fenwick.csv",
+      "ties-10000-seasons-1-avl.csv",
+      "ties-10000-seasons-1-fenwick.csv",
+      "ties-100000-seasons-1-avl.csv",
+      "ties-100000-seasons-1-fenwick.csv",
+      "ties-1000000-seasons-1-avl.csv",
+      "ties-1000000-seasons-1-fenwick.csv"
+    ],
+    "units": "ns/call",
+    "spread": "min/max of five run averages"
+  },
+  {
+    "figure": "18-rejoin_merge_from",
+    "script": "results/plot.py",
+    "experiment": "season_high_percent_50_players",
+    "operation": "rejoin_merge_from",
+    "seed": "253",
+    "raw_files": [
+      "players-1000-seasons-50-avl.csv",
+      "players-1000-seasons-50-fenwick.csv",
+      "players-10000-seasons-50-avl.csv",
+      "players-10000-seasons-50-fenwick.csv",
+      "players-100000-seasons-50-avl.csv",
+      "players-100000-seasons-50-fenwick.csv",
+      "players-1000000-seasons-50-avl.csv",
+      "players-1000000-seasons-50-fenwick.csv"
+    ],
+    "units": "ns/call",
+    "spread": "min/max of five run averages"
+  },
+  {
+    "figure": "19-split",
+    "script": "results/plot.py",
+    "experiment": "season_high_percent_50_players",
+    "operation": "split",
+    "seed": "253",
+    "raw_files": [
+      "players-1000-seasons-50-avl.csv",
+      "players-1000-seasons-50-fenwick.csv",
+      "players-10000-seasons-50-avl.csv",
+      "players-10000-seasons-50-fenwick.csv",
+      "players-100000-seasons-50-avl.csv",
+      "players-100000-seasons-50-fenwick.csv",
+      "players-1000000-seasons-50-avl.csv",
+      "players-1000000-seasons-50-fenwick.csv"
+    ],
+    "units": "ns/call",
+    "spread": "min/max of five run averages"
+  },
+  {
+    "figure": "20-rejoin_merge_from",
+    "script": "results/plot.py",
+    "experiment": "season_high_percent_50_ties",
+    "operation": "rejoin_merge_from",
+    "seed": "253",
+    "raw_files": [
+      "ties-1000-seasons-50-avl.csv",
+      "ties-1000-seasons-50-fenwick.csv",
+      "ties-10000-seasons-50-avl.csv",
+      "ties-10000-seasons-50-fenwick.csv",
+      "ties-100000-seasons-50-avl.csv",
+      "ties-100000-seasons-50-fenwick.csv",
+      "ties-1000000-seasons-50-avl.csv",
+      "ties-1000000-seasons-50-fenwick.csv"
+    ],
+    "units": "ns/call",
+    "spread": "min/max of five run averages"
+  },
+  {
+    "figure": "21-split",
+    "script": "results/plot.py",
+    "experiment": "season_high_percent_50_ties",
+    "operation": "split",
+    "seed": "253",
+    "raw_files": [
+      "ties-1000-seasons-50-avl.csv",
+      "ties-1000-seasons-50-fenwick.csv",
+      "ties-10000-seasons-50-avl.csv",
+      "ties-10000-seasons-50-fenwick.csv",
+      "ties-100000-seasons-50-avl.csv",
+      "ties-100000-seasons-50-fenwick.csv",
+      "ties-1000000-seasons-50-avl.csv",
+      "ties-1000000-seasons-50-fenwick.csv"
+    ],
+    "units": "ns/call",
+    "spread": "min/max of five run averages"
+  },
+  {
+    "figure": "22-rejoin_merge_from",
+    "script": "results/plot.py",
+    "experiment": "season_high_percent_99_players",
+    "operation": "rejoin_merge_from",
+    "seed": "253",
+    "raw_files": [
+      "players-1000-seasons-99-avl.csv",
+      "players-1000-seasons-99-fenwick.csv",
+      "players-10000-seasons-99-avl.csv",
+      "players-10000-seasons-99-fenwick.csv",
+      "players-100000-seasons-99-avl.csv",
+      "players-100000-seasons-99-fenwick.csv",
+      "players-1000000-seasons-99-avl.csv",
+      "players-1000000-seasons-99-fenwick.csv"
+    ],
+    "units": "ns/call",
+    "spread": "min/max of five run averages"
+  },
+  {
+    "figure": "23-split",
+    "script": "results/plot.py",
+    "experiment": "season_high_percent_99_players",
+    "operation": "split",
+    "seed": "253",
+    "raw_files": [
+      "players-1000-seasons-99-avl.csv",
+      "players-1000-seasons-99-fenwick.csv",
+      "players-10000-seasons-99-avl.csv",
+      "players-10000-seasons-99-fenwick.csv",
+      "players-100000-seasons-99-avl.csv",
+      "players-100000-seasons-99-fenwick.csv",
+      "players-1000000-seasons-99-avl.csv",
+      "players-1000000-seasons-99-fenwick.csv"
+    ],
+    "units": "ns/call",
+    "spread": "min/max of five run averages"
+  },
+  {
+    "figure": "24-rejoin_merge_from",
+    "script": "results/plot.py",
+    "experiment": "season_high_percent_99_ties",
+    "operation": "rejoin_merge_from",
+    "seed": "253",
+    "raw_files": [
+      "ties-1000-seasons-99-avl.csv",
+      "ties-1000-seasons-99-fenwick.csv",
+      "ties-10000-seasons-99-avl.csv",
+      "ties-10000-seasons-99-fenwick.csv",
+      "ties-100000-seasons-99-avl.csv",
+      "ties-100000-seasons-99-fenwick.csv",
+      "ties-1000000-seasons-99-avl.csv",
+      "ties-1000000-seasons-99-fenwick.csv"
+    ],
+    "units": "ns/call",
+    "spread": "min/max of five run averages"
+  },
+  {
+    "figure": "25-split",
+    "script": "results/plot.py",
+    "experiment": "season_high_percent_99_ties",
+    "operation": "split",
+    "seed": "253",
+    "raw_files": [
+      "ties-1000-seasons-99-avl.csv",
+      "ties-1000-seasons-99-fenwick.csv",
+      "ties-10000-seasons-99-avl.csv",
+      "ties-10000-seasons-99-fenwick.csv",
+      "ties-100000-seasons-99-avl.csv",
+      "ties-100000-seasons-99-fenwick.csv",
+      "ties-1000000-seasons-99-avl.csv",
+      "ties-1000000-seasons-99-fenwick.csv"
+    ],
+    "units": "ns/call",
+    "spread": "min/max of five run averages"
+  },
+  {
+    "figure": "26-rank",
+    "script": "results/plot.py",
+    "experiment": "updates_with_batched_queries_players",
+    "operation": "rank",
+    "seed": "253",
+    "raw_files": [
+      "players-1000-queries-avl.csv",
+      "players-1000-queries-fenwick.csv",
+      "players-10000-queries-avl.csv",
+      "players-10000-queries-fenwick.csv",
+      "players-100000-queries-avl.csv",
+      "players-100000-queries-fenwick.csv",
+      "players-1000000-queries-avl.csv",
+      "players-1000000-queries-fenwick.csv"
+    ],
+    "units": "ns/call",
+    "spread": "min/max of five run averages"
+  },
+  {
+    "figure": "27-select",
+    "script": "results/plot.py",
+    "experiment": "updates_with_batched_queries_players",
+    "operation": "select",
+    "seed": "253",
+    "raw_files": [
+      "players-1000-queries-avl.csv",
+      "players-1000-queries-fenwick.csv",
+      "players-10000-queries-avl.csv",
+      "players-10000-queries-fenwick.csv",
+      "players-100000-queries-avl.csv",
+      "players-100000-queries-fenwick.csv",
+      "players-1000000-queries-avl.csv",
+      "players-1000000-queries-fenwick.csv"
+    ],
+    "units": "ns/call",
+    "spread": "min/max of five run averages"
+  },
+  {
+    "figure": "28-rank",
+    "script": "results/plot.py",
+    "experiment": "updates_with_batched_queries_ties",
+    "operation": "rank",
+    "seed": "253",
+    "raw_files": [
+      "ties-1000-queries-avl.csv",
+      "ties-1000-queries-fenwick.csv",
+      "ties-10000-queries-avl.csv",
+      "ties-10000-queries-fenwick.csv",
+      "ties-100000-queries-avl.csv",
+      "ties-100000-queries-fenwick.csv",
+      "ties-1000000-queries-avl.csv",
+      "ties-1000000-queries-fenwick.csv"
+    ],
+    "units": "ns/call",
+    "spread": "min/max of five run averages"
+  },
+  {
+    "figure": "29-select",
+    "script": "results/plot.py",
+    "experiment": "updates_with_batched_queries_ties",
+    "operation": "select",
+    "seed": "253",
+    "raw_files": [
+      "ties-1000-queries-avl.csv",
+      "ties-1000-queries-fenwick.csv",
+      "ties-10000-queries-avl.csv",
+      "ties-10000-queries-fenwick.csv",
+      "ties-100000-queries-avl.csv",
+      "ties-100000-queries-fenwick.csv",
+      "ties-1000000-queries-avl.csv",
+      "ties-1000000-queries-fenwick.csv"
+    ],
+    "units": "ns/call",
+    "spread": "min/max of five run averages"
+  }
+]

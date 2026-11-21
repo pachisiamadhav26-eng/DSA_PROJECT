@@ -1,0 +1,25 @@
+{
+  "backend": "avl",
+  "operation": "rank",
+  "benchmark_pid": 12508,
+  "benchmark_threads": [
+    9532,
+    26240,
+    29124,
+    33576
+  ],
+  "calls": 8716288,
+  "event": "LLCMisses",
+  "source_id": 29,
+  "sampling_interval": 65536,
+  "benchmark_samples": 2488,
+  "system_samples": 12894,
+  "lost_events": 0,
+  "tracerpt_reported_pmu_events": 12897,
+  "etl_sha256": "c696fa6af7a2fe978800b7681b3b74ce4fa34857c505f9c71653a87d40eb513b",
+  "samples_per_million_queries": 285.4426104323308,
+  "samples_by_thread": {
+    "9532": 2488
+  },
+  "interpretation": "One diagnostic capture; samples are not exact misses or a miss rate. Includes loop/checksum and OS activity on benchmark threads; no function attribution. Decoded sample counts may differ from tracerpt's aggregate event summary."
+}

@@ -1,0 +1,11 @@
+backend,experiment,operation,players,coordinates,seed,run,calls,elapsed_ns,ns_per_call,checksum,validation,left_height,right_height
+avl,ordered_join_percent_50,ordered_join_supplied_pivot,10000,10000,253,1,10,2600,260,0,all_output_players,13,13
+avl,ordered_join_percent_50,join_visits_count,10000,10000,253,1,10,0,0,10,all_output_players,13,13
+avl,ordered_join_percent_50,ordered_join_supplied_pivot,10000,10000,253,2,10,4400,440,0,all_output_players,13,13
+avl,ordered_join_percent_50,join_visits_count,10000,10000,253,2,10,0,0,10,all_output_players,13,13
+avl,ordered_join_percent_50,ordered_join_supplied_pivot,10000,10000,253,3,10,3200,320,0,all_output_players,13,13
+avl,ordered_join_percent_50,join_visits_count,10000,10000,253,3,10,0,0,10,all_output_players,13,13
+avl,ordered_join_percent_50,ordered_join_supplied_pivot,10000,10000,253,4,10,6300,630,0,all_output_players,13,13
+avl,ordered_join_percent_50,join_visits_count,10000,10000,253,4,10,0,0,10,all_output_players,13,13
+avl,ordered_join_percent_50,ordered_join_supplied_pivot,10000,10000,253,5,10,3200,320,0,all_output_players,13,13
+avl,ordered_join_percent_50,join_visits_count,10000,10000,253,5,10,0,0,10,all_output_players,13,13

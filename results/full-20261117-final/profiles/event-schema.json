@@ -1,0 +1,32 @@
+[
+  {
+    "class": "PmcCounterProfile",
+    "property": "Flags",
+    "data_id": null
+  },
+  {
+    "class": "PmcCounterProfile",
+    "property": "InstructionPointer",
+    "data_id": 1
+  },
+  {
+    "class": "PmcCounterProfile",
+    "property": "ProfileSource",
+    "data_id": 3
+  },
+  {
+    "class": "PmcCounterProfile",
+    "property": "Reserved",
+    "data_id": 4
+  },
+  {
+    "class": "PmcCounterProfile",
+    "property": "ThreadId",
+    "data_id": 2
+  },
+  {
+    "class": "Thread_V3",
+    "property": "Flags",
+    "data_id": null
+  }
+]

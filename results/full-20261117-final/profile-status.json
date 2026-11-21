@@ -1,0 +1,37 @@
+{
+  "finished_utc": "2026-11-16T23:37:03.9452667Z",
+  "started_utc": "2026-11-16T23:35:25.5754455Z",
+  "jobs": [
+    {
+      "output": "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\profiles\\avl-rank",
+      "backend": "avl",
+      "operation": "rank",
+      "log": "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\profile-avl-rank.log",
+      "exit_code": 0
+    },
+    {
+      "output": "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\profiles\\avl-select",
+      "backend": "avl",
+      "operation": "select",
+      "log": "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\profile-avl-select.log",
+      "exit_code": 0
+    },
+    {
+      "output": "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\profiles\\fenwick-rank",
+      "backend": "fenwick",
+      "operation": "rank",
+      "log": "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\profile-fenwick-rank.log",
+      "exit_code": 0
+    },
+    {
+      "output": "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\profiles\\fenwick-select",
+      "backend": "fenwick",
+      "operation": "select",
+      "log": "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\profile-fenwick-select.log",
+      "exit_code": 0
+    }
+  ],
+  "state": "captured_requires_analysis",
+  "analysis_status": "decoded_and_filtered",
+  "analysis": "profiles/analysis.json"
+}

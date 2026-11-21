@@ -1,82 +1,90 @@
 # Adversarial inputs
 
-Adversarial generator through the root CMake project. The offline Python
-runner has been used to build and exercise the project. It checks the real application,
-the independent oracle, backend invariants, golden fixtures, generator repeatability,
-invalid generator arguments, deliberate failure reduction, and scale workloads.
+Bianca's contribution contains the generator, reproducible test runner, three
+trace fixtures and D5. The runner builds the generator and the merged AVL and
+Fenwick modules, checks fixtures against the application and independent oracle,
+and exercises generated inputs and scale workloads.
 
-## Files
+## One-command build and test
 
-- [generator.cpp](generator.cpp) writes replay commands to standard output.
-  `make_tall_avl` builds the trees for the deletion cascade and unequal merge.
-- [run.py](run.py) builds the project, runs the traces and fixtures, checks
-  million-scale output against an independent calculation, and writes
-  `validation.json` with command results and hashes of the test inputs.
-- [ties.trace](tests/ties.trace) checks shared rank, ordering by ID within a
-  tie, and movement after a score change. [ties.expected](tests/ties.expected)
-  records the expected reply to each command.
-- [wide.trace](tests/wide.trace) checks full-width player IDs and score
-  extremes. [wide.expected](tests/wide.expected) records the expected replies.
-- [nested_split.trace](tests/nested_split.trace) keeps three boards live,
-  reuses a removed player ID, and checks a rejected merge before a successful
-  one. [nested_split.expected](tests/nested_split.expected) records the
-  expected replies, including errors.
-- The [D5 source](../docs/derivations/D5.md) and
-  [submission PDF](../docs/derivations/D5_250041008.pdf) prove the AVL split
-  bound and explain why the descending workload forces frequent rotations.
+Use Python 3.8+, Git and a compiler with full C++17 support. GCC 7 or newer is
+required for structured bindings and fold expressions. The validated Windows
+compiler is MSYS2 UCRT64 GCC 14.2.0. MinGW GCC 6.3 cannot build this generator.
 
-## Running the tests
+From a full clone on Bianca_adversary, run:
 
 ```sh
-python3 adversary/run.py
-python3 adversary/run.py --ops 1000000 --scale 1000000
-./build/bin/generator --case cascade --players 88 > build/cascade.trace
-./build/bin/generator --case unequal --players 64 > build/unequal.trace
-./build/bin/generator --case ties --players 1000 > build/ties.trace
-./build/bin/generator --case mixed --players 64 --ops 1000000 --seed 253 > build/mixed.trace
+python adversary/run.py --compiler g++
 ```
 
-The `ctest` integration test runs the full-scale form above. Allow about one to
-two minutes in a Release build. The `avl_test` replay checks the exact error
-counts and codes for `churn`, `seasons`, and `errors`, and checks that
-`cascade`, `unequal`, and `mixed` produce zero error replies.
+On this Windows installation, choose the compatible compiler explicitly:
 
-Cases: `rotations`, `cascade`, `ascending`, `descending`, `ties`, `churn`, `extremes`,
-`seasons`, `unequal`, `errors`, `mixed`, `scale`.
+```powershell
+python adversary/run.py --compiler C:/msys64/ucrt64/bin/g++.exe
+```
 
-- Rotations/monotone scores exercise rebalancing and subtree metadata.
-- Cascade constructs a minimum-node AVL of the largest height within the player
-  budget, then deletes along its shorter path. The suite checks that the
-  88-player trace builds a height-9 tree without rotating, and that its
-  deletion performs eight primitive rotations.
-- Ties insert decreasing IDs into one score bucket, forcing vector shifts.
-- Churn removes/reinserts IDs, performs no-op revisions and drains the board.
-- Extremes exercise int64 limits. Static wide fixtures exercise uint64 limits.
-- Seasons exercises consumed sources, empty splits, and reversed merges.
-  With at least four players it also merges overlapping AVL key ranges.
-- Unequal merges a singleton with the tallest AVL that fits the remaining
-  player budget. At budget 64 the boards have heights 1 and 8. The test
-  verifies that extracting the singleton as pivot gives ordered join inputs
-  of heights 0 and 8.
-- Errors exercise syntax, bounds, duplicate IDs and wrong-board requests.
-- Mixed uses portable mt19937_64 modulo decisions and a bounded live population.
-  It splits at score 0, revises players across both divisions, and merges them back.
-  Split and merge commands use fresh board IDs and alternate at intervals of
-  `max(10, ops / 200)` commands. Each million-command trace completes 100
-  split/merge cycles.
-- Scale streams n ADDs and r SETs. Every 1,000 revisions it queries the rank of
-  the most recently updated player, the rank of player 1, and the player in
-  the middle position. It then inspects the board, including positions
-  40 through 50 when they exist, splits it, checks both divisions, and rejoins
-  them. Generation uses O(1) auxiliary memory. The application and Python
-  validation retain the input. The same case is also replayed through the
-  independent oracle at 1,000 players, because the per-command oracle audit
-  cannot afford a million.
+For three million-command mixed traces and one million players/revisions:
 
-`--players` is 2..1,000,000; `--ops` is 0..10,000,000. Ops is an exact command
-count for mixed, a SET count for scale, and irrelevant to the fixed-pattern cases.
-Only mixed uses the seed. The suite uses seeds 253, 42 and 20261115.
-`--scale` in the runner controls both the structural scale check and the real
-application's equal-size player/revision workload. The runner computes the
-expected ranks, positions and pages for that workload independently.
+```powershell
+python adversary/run.py --compiler C:/msys64/ucrt64/bin/g++.exe --ops 1000000 --scale 1000000
+```
 
+A C++17 feature probe runs before compilation. The default test sizes are 10,000
+mixed commands per seed and 10,000 players/revisions. The runner writes source
+hashes and command results to build/adversary/validation.json. No Python packages
+are required. Each invocation rebuilds its executables.
+
+The merged main branch currently has no final root build command. This Python
+command builds the adversary validation dependency graph directly. It reads the
+current include/ and src/ files, preserving Prince's and Saksham's merged code.
+Application and oracle dependencies are exported into ignored build/adversary/deps
+from immutable team commits using git show:
+
+- Architect application, a4dc4382b11d60ed85697fb9560574d24a8d2366.
+- Om's oracle/checker, f3f8c29cb357a29a46ad5a654f7d5fac390aceea.
+
+The executable builds combine these pinned test dependencies with the current
+merged structures and shared headers. Teammate modules are sourced from Git
+history during validation. A full GitHub clone includes those ancestor objects.
+If an object is missing, run git fetch origin. For a shallow clone, first run
+git fetch --unshallow. The runner itself makes no network requests. The team can
+adopt a shared root build after the final application and oracle are merged.
+
+## Files and workloads
+
+- generator.cpp emits leaderboard replay commands on standard output.
+- run.py performs the build, checks all submitted fixtures, compares generated
+  traces with the oracle and both structures, and checks scale replies against
+  an independent calculation.
+- tests/ties.trace and ties.expected cover tied ranks, ID order and score changes.
+- tests/wide.trace and wide.expected cover uint64 IDs and int64 score limits.
+- tests/nested_split.trace and nested_split.expected cover three live boards,
+  removed-ID reuse, rejected merge and subsequent successful merge.
+- The D5 source and submission PDF are in docs/derivations at the repository root.
+  They prove telescoping split cost and a constant fraction of rotating insertions.
+
+Supported cases are rotations, cascade, ascending, descending, ties, churn,
+extremes, seasons, unequal, errors, mixed and scale. Cascade constructs a
+minimum-node AVL within the player budget and deletes along its short-child
+path. Unequal merges that shape with a singleton. Ties inserts decreasing IDs
+into one score bucket. Seasons exercises cutoff equality, overlapping ranges,
+consumed board IDs and empty divisions. Mixed uses mt19937_64 modulo decisions
+with seeds 253, 42 and 20261115 and fresh IDs for periodic split/merge cycles.
+
+The runner checks repeatability, exact mixed command counts, full ordered state
+and backend invariants through Om's checker. Fixture outputs must agree with
+both application backends and the oracle. At scale, the checker audits phase
+boundaries and the application executes one revision per player. The runner
+calculates expected ranks, positions, pages and split/rejoin replies separately.
+
+After building, generate an individual trace in PowerShell:
+
+```powershell
+./build/adversary/generator.exe --case cascade --players 88 | Set-Content -Encoding ascii build/adversary/cascade.trace
+./build/adversary/differential.exe --trace build/adversary/cascade.trace
+```
+
+--players accepts 2 through 1,000,000 and --ops accepts 0 through 10,000,000.
+For mixed, ops is the exact command count. For scale, ops counts score revisions
+in addition to setup and queries. Only mixed uses --seed. Full audits accompany
+bounded differential replays. Million-player tests audit at phase boundaries.

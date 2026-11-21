@@ -16,10 +16,9 @@ struct FenwickStats {
     std::uint64_t bucket_shifts;
 };
 
-int avl_height(const Board& board);
-AvlStats avl_stats(const Board& board);
 std::vector<Player> audit_avl(const Board& board);
 std::vector<Player> audit_fenwick(const Board& board);
+AvlStats avl_stats(const Board& board);
 FenwickStats fenwick_stats(const Board& board);
 
 // Returns the keys preceding key, then the keys equal to or following key.

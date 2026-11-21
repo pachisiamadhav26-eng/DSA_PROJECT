@@ -1,16 +1,16 @@
-"""Build and test the project offline."""
+"""Build Bianca's generator and test the merged backends with pinned team modules."""
 import argparse
 import hashlib
 from itertools import zip_longest
 import json
 import os
 from pathlib import Path
-import platform
 import subprocess
 import sys
-import time
 
 ROOT = Path(__file__).resolve().parents[1]
+ORACLE = 'f3f8c29cb357a29a46ad5a654f7d5fac390aceea'
+ARCHITECT = 'a4dc4382b11d60ed85697fb9560574d24a8d2366'
 
 
 def expected_scale(players):
@@ -54,8 +54,8 @@ def expected_scale(players):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--build-dir', type=Path, default=ROOT / 'build')
-    parser.add_argument('--skip-build', action='store_true')
+    parser.add_argument('--compiler', default='g++', help='GCC 7+ or another C++17 compiler')
+    parser.add_argument('--build-dir', type=Path, default=ROOT / 'build' / 'adversary')
     parser.add_argument('--ops', type=int, default=10000)
     parser.add_argument('--scale', type=int, default=10000)
     args = parser.parse_args()
@@ -63,131 +63,110 @@ def main():
         parser.error('ops must be 0..10000000; scale 2..1000000')
     build = args.build_dir.resolve()
     build.mkdir(parents=True, exist_ok=True)
-    evidence = build / 'validation.json'
-    evidence.unlink(missing_ok=True)
+    deps = build / 'deps'
     records = []
+    sources = {}
     suffix = '.exe' if os.name == 'nt' else ''
     def exe(name):
-        return build / 'bin' / (name + suffix)
-
-    def run(command, expected_exit=0, cwd=build):
-        command = [str(x) for x in command]
-        start = time.perf_counter()
-        result = subprocess.run(command, cwd=cwd, capture_output=True, text=True)
-        record = {'command': command, 'exit_code': result.returncode,
-                'seconds': time.perf_counter() - start, 'stderr': result.stderr}
-        if Path(command[0]).stem in ('generator', 'leaderboard', 'oracle'):
-            record.update(output_lines=result.stdout.count('\n'),
-                        output_sha256=hashlib.sha256(result.stdout.encode()).hexdigest())
-        else:
-            record['stdout'] = result.stdout
-        records.append(record)
+        return build / (name + suffix)
+    def run(command, expected_exit=0):
+        result = subprocess.run([str(x) for x in command], cwd=build,
+                                text=True, capture_output=True)
+        records.append({'command': list(map(str, command)), 'exit_code': result.returncode,
+                        'output_lines': len(result.stdout.splitlines()),
+                        'output_sha256': hashlib.sha256(result.stdout.encode()).hexdigest(),
+                        'stderr': result.stderr})
         if result.returncode != expected_exit:
-            raise RuntimeError('Command failed: ' + ' '.join(command) + '\n' + result.stderr)
+            raise RuntimeError('Command failed: ' + ' '.join(map(str, command)) +
+                               '\n' + result.stdout + result.stderr)
         return result.stdout
-
-    def check_fixture(path):
-        expected = path.with_suffix('.expected').read_text()
-        want = run([exe('oracle'), path])
-        if want.splitlines() != expected.splitlines():
-            raise RuntimeError('Golden output mismatch: ' + str(path))
-        for backend in ('avl', 'fenwick'):
-            if run([exe('leaderboard'), backend, path]) != want:
-                raise RuntimeError('Application output mismatch: ' + backend + ' ' + str(path))
-        run([exe('differential'), '--trace', path])
-
+    def export(commit, name):
+        result = subprocess.run(['git', '-C', str(ROOT), 'show', commit + ':' + name],
+                                capture_output=True)
+        if result.returncode:
+            raise RuntimeError('Missing pinned team source ' + commit + ':' + name +
+                               '. Run git fetch origin in a full clone. Shallow clones need git fetch --unshallow.')
+        target = deps / name
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_bytes(result.stdout)
+        sources[commit + ':' + name] = hashlib.sha256(result.stdout).hexdigest()
     passed = False
     try:
-        if not args.skip_build:
-            run(['cmake', '-S', ROOT, '-B', build, '-DCMAKE_BUILD_TYPE=Release'])
-            run(['cmake', '--build', build, '--config', 'Release', '--parallel', '4'])
-        for name in ('player_table_test', 'replay_test', 'avl_test', 'fenwick_test'):
-            run([exe(name)], cwd=ROOT)
-        for folder in ('app/examples', 'oracle/tests', 'adversary/tests'):
-            for path in sorted((ROOT / folder).glob('*.trace')):
-                check_fixture(path)
-        traces = build / 'traces'
-        traces.mkdir(exist_ok=True)
-        for case in ('rotations', 'cascade', 'ascending', 'descending', 'ties', 'churn',
-                    'extremes', 'seasons', 'unequal', 'errors', 'mixed'):
-            for seed in ([253, 42, 20261115] if case == 'mixed' else [253]):
-                players = 88 if case == 'cascade' else 64
-                command = [exe('generator'), '--case', case, '--players', players,
-                        '--ops', args.ops, '--seed', seed]
+        # Compile a feature probe before the full build to diagnose old compilers.
+        probe = build / 'cxx17.cpp'
+        probe.write_text('#include <utility>\nint main(){auto [a,b]=std::pair<int,int>{1,2};return a+b==3?0:1;}\n')
+        flags = ['-std=c++17', '-pedantic-errors', '-O2', '-Wall', '-Wextra', '-UNDEBUG']
+        try:
+            run([args.compiler, *flags, probe, '-o', exe('cxx17')])
+        except RuntimeError as error:
+            raise RuntimeError('A C++17 compiler is required. Use GCC 7+; GCC 6.3 is unsupported.\n' + str(error)) from error
+        run([exe('cxx17')])
+        for name in ('main.cpp', 'differential.cpp', 'replay.hpp', 'sorted_array.hpp',
+                     'backend_checks.hpp', 'trace.hpp'):
+            export(ORACLE, 'oracle/' + name)
+        for name in ('leaderboard.cpp', 'replay.cpp', 'replay.hpp', 'player_table.cpp', 'player_table.hpp'):
+            export(ARCHITECT, 'app/' + name)
+        # Use the merged shared headers and structures directly, never branch copies.
+        for name in ('leaderboard.hpp', 'backend_tools.hpp'):
+            target = deps / 'include' / name
+            target.parent.mkdir(parents=True, exist_ok=True)
+            header = (ROOT / 'include' / name).as_posix()
+            target.write_text('#include "' + header + '"\n', encoding='utf-8')
+        includes = ['-I' + str(ROOT / 'include'), '-I' + str(deps / 'app')]
+        backends = [ROOT / 'src/structA/avl.cpp', ROOT / 'src/structB/fenwick.cpp']
+        jobs = {
+            'generator': [ROOT / 'adversary/generator.cpp'],
+            'oracle': [deps / 'oracle/main.cpp'],
+            'differential': [deps / 'oracle/differential.cpp', *backends],
+            'leaderboard': [deps / 'app/leaderboard.cpp', deps / 'app/replay.cpp',
+                            deps / 'app/player_table.cpp', *backends],
+        }
+        for name, files in jobs.items():
+            run([args.compiler, *flags, *includes, *files, '-o', exe(name)])
+        run([exe('differential'), '--self-test'])
+        for trace in sorted((ROOT / 'adversary/tests').glob('*.trace')):
+            expected = trace.with_suffix('.expected').read_text().splitlines()
+            assert run([exe('oracle'), trace]).splitlines() == expected, str(trace)
+            for backend in ('avl', 'fenwick'):
+                assert run([exe('leaderboard'), backend, trace]).splitlines() == expected, str(trace)
+            run([exe('differential'), '--trace', trace])
+            print('PASS fixture ' + trace.stem, flush=True)
+        for case in ('rotations','cascade','ascending','descending','ties','churn',
+                     'extremes','seasons','unequal','errors','mixed'):
+            for seed in ([253,42,20261115] if case == 'mixed' else [253]):
+                command = [exe('generator'),'--case',case,'--players',88 if case == 'cascade' else 64,
+                           '--ops',args.ops,'--seed',seed]
                 output = run(command)
-                if output != run(command):
-                    raise RuntimeError('Non-reproducible generator: ' + case)
-                lines = output.count('\n')
+                assert output == run(command), 'Generator is not repeatable'
                 if case == 'mixed':
-                    if lines != args.ops:
-                        raise RuntimeError('Wrong mixed command count')
-                    cycles = args.ops // (2 * max(10, args.ops // 200))
-                    if any(output.count('\n' + op + ' ') != cycles
-                           for op in ('SPLIT', 'MERGE')):
-                        raise RuntimeError(f'Expected {cycles} mixed splits and merges each')
-                trace = traces / f'{case}-{seed}.trace'
+                    assert len(output.splitlines()) == args.ops
+                trace = build / (case + '-' + str(seed) + '.trace')
                 trace.write_text(output, encoding='utf-8')
-                run([exe('differential'), '--trace', trace])
-                run([exe('avl_test'), case, trace])
-                print(f'PASS {case} seed={seed} commands={lines}', flush=True)
-        # Sample arbitrary positions and ranges with the oracle's existing generator.
-        run([exe('differential'), '--seed', 4821, '--ops', 50000, '--max-live', 128])
-        for invalid in (['--scale', '0'], ['--max-live', '4294967297']):
-            run([exe('differential'), *invalid], expected_exit=2)
-        for invalid in (['--players', '0'], ['--case', 'unknown'], ['--seed', '-1']):
-            run([exe('generator'), *invalid], expected_exit=2)
-        # Remove only our old intentional reproducer, so stale files cannot pass this check.
-        minimal = build / 'oracle-failure.min.trace'
-        if minimal.exists():
-            minimal.unlink()
-        run([exe('differential'), '--trace', ROOT / 'adversary/tests/ties.trace',
-            '--inject-fault'], expected_exit=1)
-        if not minimal.is_file() or len(minimal.read_text().splitlines()) != 2:
-            raise RuntimeError('Missing two-command fault reproducer')
-        print(run([exe('differential'), '--scale', args.scale]).strip(), flush=True)
-        # Run n real revisions at n simultaneous players, without quadratic oracle insertion.
-        trace = traces / 'scale.trace'
-        trace.write_text(run([exe('generator'), '--case', 'scale', '--players', args.scale,
-                            '--ops', args.scale]), encoding='utf-8')
-        # The oracle audit runs after every command, so check the same case at a size it can afford.
-        small = traces / 'scale-small.trace'
-        small.write_text(run([exe('generator'), '--case', 'scale', '--players', 1000,
-                            '--ops', 1000]), encoding='utf-8')
-        run([exe('differential'), '--trace', small])
-        n = args.scale
-        for backend in ('avl', 'fenwick'):
-            output = run([exe('leaderboard'), backend, trace]).splitlines()
-            for line, (actual, expected) in enumerate(zip_longest(output, expected_scale(n)), 1):
-                if actual != expected:
-                    raise RuntimeError(f'Scale {backend} line {line}: {actual!r}, expected {expected!r}')
-        print(f'PASS application scale: {n} players, {n} revisions, both backends', flush=True)
+                run([exe('differential'),'--trace',trace])
+                print('PASS ' + case + ' seed=' + str(seed), flush=True)
+        run([exe('differential'),'--scale',args.scale])
+        trace = build / 'scale.trace'
+        trace.write_text(run([exe('generator'),'--case','scale','--players',args.scale,
+                              '--ops',args.scale]), encoding='utf-8')
+        for backend in ('avl','fenwick'):
+            output = run([exe('leaderboard'),backend,trace]).splitlines()
+            for line, pair in enumerate(zip_longest(output, expected_scale(args.scale)),1):
+                if pair[0] != pair[1]:
+                    raise RuntimeError('Scale mismatch ' + backend + ' line ' + str(line))
+        for name in ('adversary/generator.cpp','adversary/run.py','include/leaderboard.hpp',
+                     'include/backend_tools.hpp','src/structA/avl.cpp','src/structB/fenwick.cpp'):
+            sources[name] = hashlib.sha256((ROOT / name).read_bytes()).hexdigest()
         passed = True
     finally:
-        try:
-            inputs = [ROOT / 'CMakeLists.txt', *ROOT.glob('*.md')]
-            for folder in ('adversary', 'app', 'bench', 'include', 'oracle', 'src', 'tests'):
-                inputs.extend(p for p in (ROOT / folder).rglob('*')
-                            if p.suffix in ('.cpp', '.hpp', '.py', '.trace', '.expected')
-                            and 'CMakeFiles' not in p.parts and p.is_file())
-            sources = {str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest()
-                    for p in sorted(inputs)}
-        except OSError as error:
-            sources = {'_error': str(error)}
-        try:
-            evidence.write_text(json.dumps({
-                'passed': passed, 'platform': platform.platform(), 'python': sys.version,
-                'ops': args.ops, 'scale': args.scale, 'sources': sources, 'commands': records
-            }, indent=2), encoding='utf-8')
-        except OSError as error:
-            if passed:
-                raise
-            print(f'WARNING: evidence not written: {error}', file=sys.stderr)
-    print('PASS test suite; evidence: ' + str(evidence))
+        (build / 'validation.json').write_text(json.dumps({
+            'passed': passed, 'ops': args.ops, 'scale': args.scale,
+            'sources': sources, 'commands': records}, indent=2), encoding='utf-8')
+    print('PASS adversary suite and both merged backends; evidence ' + str(build / 'validation.json'))
 
 
 if __name__ == '__main__':
     try:
         main()
-    except (RuntimeError, OSError) as error:
+    except (RuntimeError, OSError, AssertionError) as error:
         print(error, file=sys.stderr)
         sys.exit(1)

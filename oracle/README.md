@@ -1,14 +1,13 @@
 # Oracle and correctness tests
 
 Owner: Om Dehariya. The independent C++17 sorted-vector model follows
-`INTERFACE.md` and `include/leaderboard.hpp` on Madhav's branch.
+`INTERFACE.md` and `include/leaderboard.hpp` in this checkout.
 
 ## Build and test
 
-From the repository root, with Git and a C++17 `g++` on PATH, run in PowerShell:
+From the repository root, with a C++17 `g++` on PATH, run in PowerShell:
 
 ```powershell
-git fetch origin
 ./oracle/run_tests.ps1 -Quick
 ./oracle/run_tests.ps1 -SkipBuild
 ```
@@ -20,20 +19,15 @@ commands, two other seeds for 100,000 commands each, and a million-player
 test. Use `-MaxLive` to set the bounded generator's live population
 limit (default 48). The runner prints the measured peak occupancy.
 
-The default build resolves these verified revisions and writes the exact
-hashes to `build/oracle/sources.txt`:
+The default build compiles `src/structA/avl.cpp`, `src/structB/fenwick.cpp`,
+and `app/` directly from this checkout with its shared headers. It requires
+no dependency fetch or historical teammate commits. `build/oracle/sources.txt`
+records SHA256 hashes and paths of the actual application and backend inputs.
+The compiler can be set with `-Compiler PATH` on `oracle/build.ps1`.
 
-| Source | Commit |
-| --- | --- |
-| Architect's shared header and replay app | `a4dc4382b11d60ed85697fb9560574d24a8d2366` |
-| Prince's production AVL | `03f3f57186f96bac6b2ad8f22acbedd7da2de153` |
-| Saksham's production Fenwick and common audit declarations | `0d5ad686ea2349147a4b6eb1ca2b64eb52feae38` |
-
-The build exports dependencies to the ignored build directory and verifies
-that the checked-in header matches Madhav's header. Future revisions can be
-selected with `-ArchitectRef`, `-AvlRef` and `-FenwickRef` on `build.ps1`.
-Then use `run_tests.ps1 -SkipBuild` to exercise those binaries. The compiler
-can be set with `-Compiler PATH` on the build script.
+The pinned revisions in older validation entries describe historical runs.
+To reproduce a historical run, check out the commit named in that entry.
+The current runner always tests the current checkout.
 
 ## What the checks establish
 
@@ -47,7 +41,7 @@ can be set with `-Compiler PATH` on the build script.
 - The golden tests also call Madhav's executable twice, once per backend.
   This exercises the production parser and handwritten player table. The
   independent Session used in the differential runner uses test-only maps.
-- Section 3 of Madhav's interface rules out destination IDs that currently
+- Section 3 of `INTERFACE.md` rules out destination IDs that currently
   exist. The current app therefore allows reuse after a board is consumed.
   Blank lines are skipped, and identical board arguments use SAME_BOARD
   with the app's validation order. The error fixture checks these cases.
@@ -70,8 +64,8 @@ can be set with `-Compiler PATH` on the build script.
 | `oracle/trace.hpp` | Generate a reproducible command list, or read and write a trace file. |
 | `oracle/differential.cpp` | Run each command on three implementations, compare answers and state, and reduce a failing trace. |
 | `oracle/backend_checks.hpp` | Test exact membership, rotations, split/join and the million-player case. |
-| `oracle/build.ps1`, `run_tests.ps1` | Build the pinned sources and compare both real app modes to the golden fixtures. |
-| [D4 source](../docs/derivations/D4.md) and [D4 PDF](../docs/derivations/D4.pdf) | The two required proofs about AVL subtree sizes and selection. |
+| `oracle/build.ps1`, `run_tests.ps1` | Build the current checkout and compare both real app modes to the golden fixtures. |
+| [D4 source](../docs/derivations/D4.md) and [D4 PDF](../docs/derivations/D4_250041029.pdf) | The two required proofs about AVL subtree sizes and selection. |
 | `docs/derivations/render_d4.py` | Build the submission PDF from its English source with ReportLab. |
 
 `override` tells the compiler to check that a method matches the shared

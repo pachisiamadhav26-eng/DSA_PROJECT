@@ -1,3 +1,20 @@
+# Tool-use record
+
+The team should add a dated entry for each tool used on submitted work. Entries must state what the tool produced and what a team member changed or verified afterward. This file records the work currently known on the `madhav` branch; other members must add their own entries.
+
+| Date | Tool | Parts affected | What it produced or assisted | Human changes and verification |
+| --- | --- | --- | --- | --- |
+| 6 Nov 2026 | OpenAI Codex | Initial `README.md` and `.gitignore` | Drafted the initial repository description and ignore rules. | The README was subsequently edited in team commits. The project owner reviewed the repository setup. |
+| 10-11 Nov 2026 | OpenAI Codex | `INTERFACE.md`, `include/leaderboard.hpp`, `app/examples/` | Drafted the shared behavior contract, C++ declarations, and sample replay/output. | The project owner chose C++, approved the proposed rank and tie rules, and requested removal of code comments. The header compiled when included by later application tests. |
+| 12-13 Nov 2026 | OpenAI Codex | `app/player_table.hpp`, `app/player_table.cpp`, `app/tests/player_table_test.cpp` | Generated the handwritten open-addressing player table and differential test. | The project owner authorized the commit. Growth, deletion, and 200,000 seeded operations were tested against a test-only standard-library map. Further line-by-line human review is pending. |
+| 13 Nov 2026 | OpenAI Codex | `app/replay.hpp`, `app/replay.cpp`, `app/leaderboard.cpp`, `app/tests/replay_test.cpp`, `docs/derivations/D3.md` | Drafted the replay application, test backend, and Architect proof. | Human review is pending. The sample and error tests passed with a test backend; the real AVL and Fenwick adapters have not been linked. |
+| 13 Nov 2026 | OpenAI Codex, ReportLab, and Poppler | `docs/derivations/D3.pdf` | Generated a temporary Python renderer, rendered the proof, inspected its page image, and removed the renderer from the repository. | The proof content and layout require the author's final review before submission. |
+| 13 Nov 2026 | MinGW GCC 6.3 | `app/` tests and entry point | Compiled C++17 code with `-Wall -Wextra -Werror`; test executables were run. | The player-table and replay tests passed. The application entry point compiled as an object; real backend linking remains. |
+| 16-17 Nov 2026 | OpenAI Codex | `INTERFACE.md`, `app/leaderboard.cpp`, `app/replay.cpp`, `app/player_table.hpp`, `app/player_table.cpp`, `app/tests/` | Reworded the interface, used clearer command handling and hash-table names, and made the entry point and tests easier to read. | Prepared for Madhav's review before commit. Both application tests pass; temporary million-command replay and million-ID hash-table checks passed. A temporary combined build passed basic, season, and wide-ID traces with both backends; the oracle error fixture still differs, and a full-scale combined run remains. |
+| 21 Nov 2026 | OpenAI Codex and PyMuPDF | `docs/derivations/D3.md`, `docs/derivations/D3_250041025.pdf`, `app/web/`, `app/tests/pipeline*.trace` | Aligned D3 with the exact assigned statement and the supplied roll number, rendered the final PDF, and corrected the web demo launcher. | The one-page PDF was visually checked. The player-table and replay tests passed; both structures matched the two new trace fixtures, and the local web page and replay API responded correctly. |
+
+## Om Dehariya - historical Oracle contribution record
+
 # Tools used for the Oracle contribution
 
 Owner: Om Dehariya. Scope: the `om-oracle` branch.
@@ -39,3 +56,19 @@ review is pending.
 added rotation diagrams and a worked selection example, and regenerated the
 two-page PDF with ReportLab. It also corrected stale README instructions and
 fixed test-runner count validation. The full Oracle suite was rerun.
+
+## Om's representative AI prompts
+
+The following are excerpts from the requests in the Codex conversation. Earlier
+entries above remain historical records. Codex generated the changes and ran
+the checks; teammate approval is recorded separately on GitHub.
+
+- **17 November 2026 - readability.** "use humanize karke simplest code bana yr jo saare kaam karde jo required hai". Asked Codex to simplify the Oracle while preserving required behavior. Affected `oracle/` code and scripts; comparisons with the previous implementation and the Oracle suites are recorded in `oracle/VALIDATION.md`.
+- **21 November 2026 - PR corrections.** "please ek baar tu ye message dekh aur apni om-oracle branch ke issues ko acche se resolve karde". The attached review requested the roll-number PDF, exact D4 statement, sources, file/function references, dated prompts, and final-checkout tests. Codex updated the proof and its renderer, merged current main into this branch, resolved `.gitattributes` and `TOOLS.md` conflicts while retaining both contributions, and changed the build to compile checkout files.
+- **21 November 2026 - author metadata.** "bhai mera full name Om Dehariya hai aur roll no 250041029 hai aur branch Maths and Computing hai". Codex used the supplied identity in the D4 source, PDF metadata, footer and submission filename.
+
+The proof text and layout were assisted by OpenAI Codex. Sources actually
+consulted were the two course handouts and the local code paths cited in D4.
+No external textbook consultation or human approval is claimed. ReportLab
+created the PDF; pypdf checked its pages and text; Poppler rendered it for
+visual inspection. Current-checkout test results are recorded in VALIDATION.md.

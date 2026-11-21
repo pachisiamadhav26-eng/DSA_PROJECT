@@ -1,4 +1,4 @@
-"""Render the English D4.md proof into D4.pdf using ReportLab."""
+"""Render the English D4.md proof into D4_250041029.pdf using ReportLab."""
 
 from html import escape
 from pathlib import Path
@@ -18,12 +18,12 @@ MUTED = colors.HexColor("#526074")
 RULE = colors.HexColor("#CFD8E3")
 PANEL = colors.HexColor("#F1F5F9")
 
-BODY = ParagraphStyle("Body", fontName="Helvetica", fontSize=10.5, leading=14,
-                      textColor=INK, spaceAfter=7)
-TITLE = ParagraphStyle("Title", parent=BODY, fontName="Helvetica-Bold", fontSize=23,
-                       leading=28, textColor=BLUE, spaceAfter=11, keepWithNext=True)
-HEADING = ParagraphStyle("Heading", parent=BODY, fontName="Helvetica-Bold", fontSize=13.2,
-                         leading=17, textColor=BLUE, spaceBefore=7, spaceAfter=5,
+BODY = ParagraphStyle("Body", fontName="Helvetica", fontSize=10, leading=12.5,
+                      textColor=INK, spaceAfter=5)
+TITLE = ParagraphStyle("Title", parent=BODY, fontName="Helvetica-Bold", fontSize=21,
+                       leading=24, textColor=BLUE, spaceAfter=11, keepWithNext=True)
+HEADING = ParagraphStyle("Heading", parent=BODY, fontName="Helvetica-Bold", fontSize=12,
+                         leading=15, textColor=BLUE, spaceBefore=5, spaceAfter=4,
                          keepWithNext=True)
 META = ParagraphStyle("Meta", parent=BODY, textColor=MUTED, spaceAfter=5,
                       keepWithNext=True)
@@ -63,7 +63,7 @@ def draw_margins(canvas, doc):
     canvas.line(left, 17 * mm, right, 17 * mm)
     canvas.setFont("Helvetica", 8)
     canvas.setFillColor(MUTED)
-    canvas.drawString(left, 12 * mm, "Om Dehariya  |  D4  |  Live Leaderboard")
+    canvas.drawString(left, 12 * mm, "Om Dehariya  |  250041029  |  D4  |  Maths and Computing")
     canvas.drawRightString(right, 12 * mm, str(doc.page))
     canvas.restoreState()
 
@@ -71,10 +71,10 @@ def draw_margins(canvas, doc):
 def main():
     proof = (HERE / "D4.md").read_text(encoding="utf-8")
     document = SimpleDocTemplate(
-        str(HERE / "D4.pdf"), pagesize=A4,
+        str(HERE / "D4_250041029.pdf"), pagesize=A4,
         leftMargin=20 * mm, rightMargin=20 * mm, topMargin=18 * mm,
         bottomMargin=22 * mm, title="D4 AVL Subtree Sizes and Selection",
-        author="Om Dehariya", invariant=True,
+        author="Om Dehariya (250041029)", invariant=True,
     )
     story = []
     for block in proof.strip().split("\n\n"):
@@ -89,7 +89,7 @@ def main():
             story.append(diagram(lines, document.width - 12))
         elif block.startswith("- "):
             for line in lines:
-                story.append(Paragraph(inline(line[2:]), BULLET, bulletText="•"))
+                story.append(Paragraph(inline(line[2:]), BULLET, bulletText="-"))
         else:
             style = BODY
             if block.startswith(("Om Dehariya |", "CS 253 / MA 253 |")):

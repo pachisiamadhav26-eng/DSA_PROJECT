@@ -1,5 +1,39 @@
 # Oracle validation record
 
+## PR 6 submission corrections, 21 November 2026
+
+Integrated `origin/main` at `7b161a09144185ee772ae3a566a6d44b109912ed`
+into `om-oracle`. Resolved the add/add conflicts in `.gitattributes` and
+`TOOLS.md`, retaining the team's and Oracle's tool records. Production files
+under `src/`, `app/` and `include/` are unchanged from that main revision.
+The default build now compiles those checkout files directly, with C++17,
+`-O2 -Wall -Wextra -Wpedantic`. Historical pinned runs below are preserved.
+
+Executed `./oracle/run_tests.ps1 -Quick` with a fresh build, then
+`./oracle/run_tests.ps1 -SkipBuild`. Both returned exit code 0.
+
+- All four fixtures (`basic`, `errors`, `seasons`, `wide_ids`) matched the
+  independent oracle and both real application modes.
+- Quick seeds 253, 20261112 and 42 passed 10,000 commands each. The
+  10,000-player/10,000-query scale and split/merge test passed.
+- Full seed 253 passed 1,000,000 commands, peak live population 48,
+  with complete invariant/state audits after every command (47.9827 seconds).
+- Full seeds 20261112 and 42 each passed 100,000 commands, peak 48
+  (4.83611 and 4.71249 seconds respectively).
+- The separate 1,000,000-player/1,000,000-query scale test passed, including
+  split/merge and full structural audits at phase boundaries.
+- Oracle boundary, membership, rotation, key-split, join and shrinker checks passed.
+- `build/oracle/sources.txt` lists current-checkout input paths and SHA256
+  hashes, including AVL `CEB536B73AC3A4855659134D7957A215296F3186DFC24E6E178B5BE828062EBD`
+  and Fenwick `7413F4306D42C0D1E8A4A175340D871166264F67BFF98344FCAE0BBDCBE45738`.
+
+D4 was renamed to `docs/derivations/D4_250041029.pdf`. It names Om Dehariya,
+roll number 250041029, Maths and Computing; quotes the assigned statement;
+and identifies consulted sources and implementation files/functions.
+pypdf confirmed two pages and both rendered pages were visually inspected.
+Dated representative AI prompts were added to TOOLS.md. No teammate review
+or approval is claimed by these automated checks.
+
 ## D4 and branch review, 17 November 2026
 
 Both suites passed with Architect `a4dc438`, AVL `03f3f57`, and Fenwick

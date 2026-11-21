@@ -2,8 +2,8 @@
 
 Oracle contribution (Om): see [`oracle/README.md`](oracle/README.md) for the
 sorted-array reference, differential tests, invariant checkers, failure shrinker,
-and [D4 proof](docs/derivations/D4.pdf). Run `./oracle/run_tests.ps1` in PowerShell to build and execute the
-oracle test suite against pinned teammate implementations.
+and [D4 proof](docs/derivations/D4_250041029.pdf). Run `./oracle/run_tests.ps1` in PowerShell to build and execute the
+oracle test suite against the application and backends in this checkout.
 
 CS 253 / MA 253 Data Structures and Algorithms Laboratory project.
 
@@ -11,10 +11,10 @@ We compare two ways to maintain a leaderboard as players' scores change. The mai
 
 | Structure | Source | Representation |
 |---|---|---|
-| A | [`avl.cpp` on Prince's branch](https://github.com/pachisiamadhav26-eng/DSA_PROJECT/blob/prince-chavda/avl.cpp) | AVL tree keyed by score and player ID, with height and subtree size in each node |
-| B | [`src/structB/fenwick.cpp` on Saksham's branch](https://github.com/pachisiamadhav26-eng/DSA_PROJECT/blob/Saksham/src/structB/fenwick.cpp) | Fenwick tree of counts over compressed scores, with sorted IDs at each score |
+| A | [`src/structA/avl.cpp`](src/structA/avl.cpp) | AVL tree keyed by score and player ID, with height and subtree size in each node |
+| B | [`src/structB/fenwick.cpp`](src/structB/fenwick.cpp) | Fenwick tree of counts over compressed scores, with sorted IDs at each score |
 
-Both structures implement [the shared C++17 Board interface](https://github.com/pachisiamadhav26-eng/DSA_PROJECT/blob/madhav/INTERFACE.md). The Architect application uses a handwritten player table to look up each player's current score.
+Both structures implement [the shared C++17 Board interface](INTERFACE.md). The Architect application uses a handwritten player table to look up each player's current score.
 
 ## What we compare
 
@@ -42,15 +42,21 @@ In the table, **n** is the number of active players, **U** is the number of poss
 
 ## Build and run
 
-From the repository root on `om-oracle`, use PowerShell with Git and a C++17 compiler:
+From the repository root, use Windows PowerShell or PowerShell 7 with a C++17
+`g++` compiler on PATH. These commands were checked with MinGW GCC 6.3.0.
 
 ```powershell
-git fetch origin
 ./oracle/run_tests.ps1 -Quick
 ```
 
 Omit `-Quick` to run the full oracle validation suite. The runner builds the
-actual replay app with pinned teammate revisions and tests both backends.
+replay app and both backends directly from the files in this checkout.
+Run `./oracle/build.ps1` to build without testing. Then run the sample with
+`./build/oracle/leaderboard.exe avl app/examples/basic.trace` or replace
+`avl` with `fenwick`. Expected output is `app/examples/basic.expected`.
+
+`build/oracle/sources.txt` records hashes of the compiled application and
+backend inputs. The tests require no dependency fetch.
 
 ## Project requirements
 

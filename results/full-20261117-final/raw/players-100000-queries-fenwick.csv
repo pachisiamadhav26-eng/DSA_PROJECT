@@ -1,0 +1,11 @@
+backend,experiment,operation,players,coordinates,seed,run,calls,elapsed_ns,ns_per_call,checksum,validation,left_height,right_height
+fenwick,updates_with_batched_queries_players,rank,100000,100000,253,1,1000000,193985400,193.9854,10320105533158284712,final_snapshot,-1,-1
+fenwick,updates_with_batched_queries_players,select,100000,100000,253,1,1000000,292467200,292.46719999999999,11139344493100667404,final_snapshot,-1,-1
+fenwick,updates_with_batched_queries_players,rank,100000,100000,253,2,1000000,201719300,201.7193,10320105533158284712,final_snapshot,-1,-1
+fenwick,updates_with_batched_queries_players,select,100000,100000,253,2,1000000,304530000,304.52999999999997,11139344493100667404,final_snapshot,-1,-1
+fenwick,updates_with_batched_queries_players,rank,100000,100000,253,3,1000000,180349600,180.34960000000001,10320105533158284712,final_snapshot,-1,-1
+fenwick,updates_with_batched_queries_players,select,100000,100000,253,3,1000000,271679500,271.67950000000002,11139344493100667404,final_snapshot,-1,-1
+fenwick,updates_with_batched_queries_players,rank,100000,100000,253,4,1000000,184897900,184.89789999999999,10320105533158284712,final_snapshot,-1,-1
+fenwick,updates_with_batched_queries_players,select,100000,100000,253,4,1000000,277920000,277.92000000000002,11139344493100667404,final_snapshot,-1,-1
+fenwick,updates_with_batched_queries_players,rank,100000,100000,253,5,1000000,184733800,184.7338,10320105533158284712,final_snapshot,-1,-1
+fenwick,updates_with_batched_queries_players,select,100000,100000,253,5,1000000,282147500,282.14749999999998,11139344493100667404,final_snapshot,-1,-1

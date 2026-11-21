@@ -1,0 +1,163 @@
+{
+  "status": "captured_requires_WPA_review",
+  "build": {
+    "binary": "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe",
+    "binary_sha256": "a1ae40f213d8492bbb40525bf57e41cecf5f1269998f21d87ef5c489e033053c",
+    "source_root": "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\deps\\4fad0b1b90b90971",
+    "compiler": "g++.exe (MinGW.org GCC-6.3.0-1) 6.3.0\nCopyright (C) 2016 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+    "command": [
+      "C:\\MinGW\\bin\\g++.EXE",
+      "-std=c++17",
+      "-O2",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Wpedantic",
+      "-DBENCH_HAS_AVL",
+      "-DBENCH_HAS_FENWICK",
+      "-DBENCH_ORACLE",
+      "-DBENCH_AVL_TOOLS",
+      "-DBENCH_FENWICK_TOOLS",
+      "-I",
+      "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\deps\\4fad0b1b90b90971\\include",
+      "-I",
+      "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\deps\\4fad0b1b90b90971\\app",
+      "-I",
+      "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\deps\\4fad0b1b90b90971\\oracle",
+      "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\bench\\runner.cpp",
+      "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\deps\\4fad0b1b90b90971\\app\\replay.cpp",
+      "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\deps\\4fad0b1b90b90971\\app\\player_table.cpp",
+      "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\deps\\4fad0b1b90b90971\\avl.cpp",
+      "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\deps\\4fad0b1b90b90971\\src\\structB\\fenwick.cpp",
+      "-o",
+      "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe"
+    ],
+    "dependencies": {
+      "architect": {
+        "ref": "origin/madhav",
+        "commit": "a4dc4382b11d60ed85697fb9560574d24a8d2366"
+      },
+      "avl": {
+        "ref": "origin/prince-chavda",
+        "commit": "03f3f57186f96bac6b2ad8f22acbedd7da2de153"
+      },
+      "fenwick": {
+        "ref": "origin/Saksham",
+        "commit": "2d758efdc7bdd69587981c0c3f44bf26984a7801"
+      },
+      "oracle": {
+        "ref": "origin/om-oracle",
+        "commit": "f3f8c29cb357a29a46ad5a654f7d5fac390aceea"
+      }
+    },
+    "backend": "both",
+    "oracle": true,
+    "avl_tools": true,
+    "fenwick_tools": true,
+    "source_sha256": {
+      "bench\\runner.cpp": "14655d3c5e34d1232a09c61baf9c4d05a92a703c782578d128eec87a0304008b",
+      "bench\\support.hpp": "4b52a4ec1396325d886ea82ada4ca4f82b5ac27b653b44dae03106e2b569235c",
+      "build\\bench\\deps\\4fad0b1b90b90971\\app\\player_table.cpp": "7d5811a322f0ca13ea1b1fee5da4afd868c6aaa6f0507b2337069140fa42677f",
+      "build\\bench\\deps\\4fad0b1b90b90971\\app\\player_table.hpp": "3592176a7520b162adf571f25df89014d75323abf15e9b457dd4ce6dde4f9b71",
+      "build\\bench\\deps\\4fad0b1b90b90971\\app\\replay.cpp": "4c7da39bc445d71165b5c24e3597ee674e54859fc5dab3326078a13191caf598",
+      "build\\bench\\deps\\4fad0b1b90b90971\\app\\replay.hpp": "b307644bcf0fa5b721824d36a33c39b5778b9dc2fc30fc930a59277503b20f67",
+      "build\\bench\\deps\\4fad0b1b90b90971\\avl.cpp": "a345fc0a418e479fb656194a37b6ea6a0f3eeedf82c9a1066f5bff43e43cae6f",
+      "build\\bench\\deps\\4fad0b1b90b90971\\include\\backend_tools.hpp": "a52d6a931a81b302a5bca3ba621464e1446cfc974dd4fea384d08685129f876c",
+      "build\\bench\\deps\\4fad0b1b90b90971\\include\\leaderboard.hpp": "b980de7fad395204f13668d96eb683e406f3f27cf42ec5b40b8e26ccad698efb",
+      "build\\bench\\deps\\4fad0b1b90b90971\\oracle\\backend_checks.hpp": "4edaece8a101d1af9dadfb300aba0534fafce820472a63ba10b01ed76fbd3564",
+      "build\\bench\\deps\\4fad0b1b90b90971\\oracle\\replay.hpp": "4ae69f7d4bedc214f8eadfd05c7dc24f7f0533d784224052872f3fcfb3279925",
+      "build\\bench\\deps\\4fad0b1b90b90971\\oracle\\sorted_array.hpp": "3fc30fd1038d2aace9374aeb51385ddee47cb85f7464187dc6887ee963009e98",
+      "build\\bench\\deps\\4fad0b1b90b90971\\oracle\\trace.hpp": "144eaed499d396f1093ba75a4281a1b3056b55cac778998dd55bbb28b369ad43",
+      "build\\bench\\deps\\4fad0b1b90b90971\\src\\structB\\fenwick.cpp": "88911892d49f04584769f40c5688275b4991e6481c888a8bf28ac701e043088b"
+    }
+  },
+  "command": [
+    "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe",
+    "--backend",
+    "fenwick",
+    "--experiment",
+    "profile",
+    "--players",
+    "1000000",
+    "--scores",
+    "1000000",
+    "--seed",
+    "253",
+    "--seconds",
+    "10",
+    "--operation",
+    "rank",
+    "--control-dir",
+    "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\profile-control-20261116T233616640267Z"
+  ],
+  "machine": {
+    "platform": "Windows-11-10.0.26300-SP0",
+    "processor": "Intel64 Family 6 Model 154 Stepping 4, GenuineIntel",
+    "python": "3.13.9",
+    "windows": {
+      "processors": [
+        {
+          "Name": "12th Gen Intel(R) Core(TM) i5-1235U",
+          "NumberOfCores": 10,
+          "NumberOfLogicalProcessors": 12,
+          "L2CacheSize": 6656,
+          "L3CacheSize": 12288
+        }
+      ],
+      "caches": [
+        {
+          "Level": 3,
+          "InstalledSize": 96,
+          "MaxCacheSize": 96,
+          "DeviceID": "Cache Memory 0"
+        },
+        {
+          "Level": 3,
+          "InstalledSize": 64,
+          "MaxCacheSize": 64,
+          "DeviceID": "Cache Memory 1"
+        },
+        {
+          "Level": 4,
+          "InstalledSize": 2560,
+          "MaxCacheSize": 2560,
+          "DeviceID": "Cache Memory 2"
+        },
+        {
+          "Level": 5,
+          "InstalledSize": 12288,
+          "MaxCacheSize": 12288,
+          "DeviceID": "Cache Memory 3"
+        },
+        {
+          "Level": 3,
+          "InstalledSize": 256,
+          "MaxCacheSize": 256,
+          "DeviceID": "Cache Memory 4"
+        },
+        {
+          "Level": 3,
+          "InstalledSize": 512,
+          "MaxCacheSize": 512,
+          "DeviceID": "Cache Memory 5"
+        },
+        {
+          "Level": 4,
+          "InstalledSize": 4096,
+          "MaxCacheSize": 4096,
+          "DeviceID": "Cache Memory 6"
+        },
+        {
+          "Level": 5,
+          "InstalledSize": 12288,
+          "MaxCacheSize": 12288,
+          "DeviceID": "Cache Memory 7"
+        }
+      ]
+    }
+  },
+  "event": "LLCMisses",
+  "sampling_interval": 65536,
+  "interpretation": "Hardware-event samples, not an exact miss count. Analyze benchmark PID in WPA; record lost events and timer-loop overhead.",
+  "benchmark_pid": 30392
+}

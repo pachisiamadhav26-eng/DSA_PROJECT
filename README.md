@@ -1,19 +1,19 @@
 # Project 02: Rank Queries on a Live Leaderboard
 
-CS 253 / MA 253. Team name will be added when the team confirms it.
+CS 253 / MA 253. Team **PEAKY BLINDERS**.
 
 ## Team and roles
 
 | Name | Roll no. | GitHub | Role | Module folder | Derivation |
 | --- | --- | --- | --- | --- | --- |
-| Prince Chavda | 250041011 | @princechavda8773 | Structure A owner | `src/structA/` | D1 |
+| Chavda Kalpeshbhai Prince | 250041011 | @princechavda8773 | Structure A owner | `src/structA/` | D1 |
 | Saksham Bhatia | 250041034 | @SakshamBhatia07 | Structure B owner | `src/structB/` | D2 |
 | Madhav Pachisia | 250041025 | @pachisiamadhav26-eng | Architect | `app/`, `include/` | D3 |
 | Om Dehariya | 250041029 | @OmDehariya111 | Oracle owner | `oracle/` | D4 |
-| Bianca (surname to confirm) | 250041008 | @Bianca-the-sensational | Adversary | `adversary/` | D5 |
-| Sumit (surname to confirm) | 250041038 | @sumitdobal04 | Analyst | `bench/`, `results/` | D6 |
+| Bianca Jain | 250041008 | @Bianca-the-sensational | Adversary | `adversary/` | D5 |
+| Sumit | 250041038 | @sumitdobal04 | Analyst | `bench/`, `results/` | D6 |
 
-The team name and two incomplete names require confirmation before the final tag.
+Sumit's full name still needs confirmation before the final tag.
 
 ## Summary
 
@@ -123,7 +123,7 @@ These are measurements on one machine and one workload, not universal guarantees
 
 - The generator needs GCC 7+; GCC 6.3 on Madhav's laptop cannot build it. The other integrated targets and quick checks were built there with GCC 6.3.
 - `app/web/` is a Windows demonstration interface and is not the evaluation CLI.
-- Team name, Bianca's and Sumit's full surnames, and instructor account await confirmation. Repository name, privacy setting, and checkpoint tags must be set by the team before submission.
+- Sumit's full name and the instructor account await confirmation. Repository name, privacy setting, and checkpoint tags must be set by the team before submission.
 - The instructor has not yet supplied a project-specific hidden-test command. If it differs from the documented trace-file CLI, the adapter and this section must be updated before the `final` tag.
 - The cost model is symbolic; it predicts growth, not exact elapsed nanoseconds. Query-node visits were not instrumented, and cache recordings are sampled rather than exact miss totals.
 

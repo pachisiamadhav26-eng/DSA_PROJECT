@@ -4,15 +4,12 @@
 #include <stdexcept>
 
 namespace leaderboard {
-namespace { // Keep helper names private to this file.
-// IDs are globally unique by the application contract. Higher scores come first.
+namespace {
 bool before(Player a, Player b) {
     if (a.score != b.score) return a.score > b.score;
     return a.id < b.id;
 }
 
-// Node* stores the address of a node; nullptr means there is no node.
-// n->left means the left child of the node pointed to by n.
 struct Node {
     Player player;
     Node* left = nullptr;
@@ -23,13 +20,12 @@ struct Node {
 
 int height(const Node* n) { return n ? n->height : 0; }
 Position nodeSize(const Node* n) { return n ? n->size : 0; }
-// Recalculate metadata after changing children.
+
 void refresh(Node* n) {
     n->height = 1 + std::max(height(n->left), height(n->right));
     n->size = 1 + nodeSize(n->left) + nodeSize(n->right);
 }
 
-// These counters measure rotations and recursive join calls.
 struct Work {
     std::uint64_t rotations = 0;
     std::uint64_t visits = 0;
@@ -53,7 +49,6 @@ Node* rotateRight(Node* n, Work& w) {
     return p;
 }
 
-// Repair LL, LR, RR or RL imbalance.
 Node* balance(Node* n, Work& w) {
     if (!n) return nullptr;
     refresh(n);
@@ -80,7 +75,6 @@ Node* insertNode(Node* n, Node* p, Work& w) {
     return balance(n, w);
 }
 
-// Ordinary BST deletion, then rebalance while returning up the tree.
 Node* eraseNode(Node* n, Player p, Work& w) {
     if (!n) return nullptr;
     if (before(p, n->player))
@@ -101,7 +95,6 @@ Node* eraseNode(Node* n, Player p, Work& w) {
     return balance(n, w);
 }
 
-// Precondition: every key in a precedes pivot, which precedes every key in b.
 Node* joinNodes(Node* a, Node* pivot, Node* b, Work& w) {
     ++w.visits;
     if (height(a) > height(b) + 1) {
@@ -118,8 +111,6 @@ Node* joinNodes(Node* a, Node* pivot, Node* b, Work& w) {
     return pivot;
 }
 
-// Split at a score: equal scores go into the high tree.
-// Node*& lets this function change the caller's output pointer.
 void splitScore(Node* n, Score cut, Node*& high, Node*& low, Work& w) {
     if (!n) {
         high = low = nullptr;
@@ -135,7 +126,6 @@ void splitScore(Node* n, Score cut, Node*& high, Node*& low, Work& w) {
     }
 }
 
-// Split at a full (score, id) key. An equal key goes into the second tree.
 void splitKey(Node* n, Player key, Node*& firstTree, Node*& secondTree, Work& w) {
     if (!n) {
         firstTree = secondTree = nullptr;
@@ -189,7 +179,6 @@ void collect(Node* n, std::vector<Node*>& out) {
     collect(n->right, out);
 }
 
-// The middle element becomes the root of each balanced subtree.
 Node* build(std::vector<Node*>& nodes, std::size_t lo, std::size_t hi) {
     if (lo == hi) return nullptr;
     std::size_t mid = lo + (hi - lo) / 2;
@@ -207,16 +196,11 @@ void destroy(Node* n) {
     delete n;
 }
 
-// Board methods are the functions the application calls.
-// override means this method implements a method declared in Board.
-// unique_ptr owns a board; std::move transfers that ownership.
 class AvlBoard final : public Board {
 public:
     Node* root = nullptr;
-    // Counters belong to this board instance; transferred nodes carry no history.
     Work work;
     AvlBoard() = default;
-    // Copying raw tree pointers would cause the same nodes to be deleted twice.
     AvlBoard(const AvlBoard&) = delete;
     AvlBoard& operator=(const AvlBoard&) = delete;
     ~AvlBoard() override { destroy(root); }
@@ -238,7 +222,6 @@ public:
         if (!contains(p)) throw std::out_of_range("missing player key");
         root = eraseNode(root, p, work);
     }
-    // Competition rank is this count + 1. Equal scores are not counted.
     Position count_strictly_higher(Score score) const override {
         Position count = 0;
         const Node* n = root;
@@ -250,7 +233,6 @@ public:
         }
         return count;
     }
-    // Left subtree size tells us the current node's position.
     Player select(Position k) const override {
         if (!k || k > size()) throw std::out_of_range("invalid position");
         const Node* n = root;
@@ -299,15 +281,12 @@ public:
             b->root = takeLast(b->root, pivot, work);
             root = joinNodes(b->root, pivot, root, work);
         } else {
-            // O(n+m): application guarantees globally distinct IDs.
-            // Finish all allocations before modifying either tree.
             std::vector<Node*> a, c, all;
             a.reserve(static_cast<std::size_t>(size()));
             c.reserve(static_cast<std::size_t>(b->size()));
             collect(root, a);
             collect(b->root, c);
             all.reserve(a.size() + c.size());
-            // Merge two sorted lists, just like the merge step of merge sort.
             std::size_t i = 0, j = 0;
             while (i < a.size() && j < c.size()) {
                 if (before(a[i]->player, c[j]->player)) all.push_back(a[i++]);
@@ -321,7 +300,6 @@ public:
     }
 };
 AvlBoard& asAvl(Board& b) {
-    // Check that this Board really is an AVL board.
     auto* a = dynamic_cast<AvlBoard*>(&b);
     if (!a) throw std::invalid_argument("expected AVL board");
     return *a;
@@ -332,7 +310,6 @@ const AvlBoard& asAvl(const Board& b) {
     return *a;
 }
 
-// Recompute height and size from the children, like the original audit.
 void checkTree(const Node* n, int& h, Position& count, std::vector<Player>& out) {
     if (!n) {
         h = 0;
@@ -349,9 +326,7 @@ void checkTree(const Node* n, int& h, Position& count, std::vector<Player>& out)
     if (std::abs(leftHeight - rightHeight) > 1 || n->height != h || n->size != count)
         throw std::logic_error("invalid AVL height/balance/size");
 }
-} // namespace
-
-// Public wrappers below match the team's shared header.
+} 
 std::unique_ptr<Board> make_avl() { return std::make_unique<AvlBoard>(); }
 std::vector<Player> audit_avl(const Board& board) {
     int h = 0;
@@ -389,9 +364,8 @@ std::unique_ptr<Board> avl_join_ordered(Board& left, Player pivot, Board& right)
     if (&a == &b) throw std::invalid_argument("join requires distinct boards");
     auto result = std::make_unique<AvlBoard>();
     Node* middle = new Node{pivot};
-    // Ordering and unique IDs are caller preconditions: no boundary scans.
     result->root = joinNodes(a.root, middle, b.root, result->work);
     a.root = b.root = nullptr;
     return result;
 }
-} // namespace leaderboard
+}

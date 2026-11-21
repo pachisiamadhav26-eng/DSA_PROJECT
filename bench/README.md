@@ -33,7 +33,7 @@ Use PowerShell from the repository root. Python 3, Git and a C++17 compiler are 
 # Download the latest teammate branch snapshots.
 git fetch origin
 
-# Install chart and PDF libraries locally for this project.
+# Install the chart library locally for this project.
 python -m pip install --target build/bench/python -r bench/requirements.txt
 
 # Build both backends and oracle, check the harness, then run the small suite.
@@ -89,9 +89,6 @@ Existing output folders are rejected. Only metadata marked `complete` represents
 ```powershell
 # Rebuild summaries and charts from saved raw CSVs.
 python results/plot.py results/your-run-folder
-
-# Recreate the D6 PDF after editing its Markdown source.
-python docs/derivations/render_d6.py
 
 # Copy the completed run into the required final paths and verify each copy.
 python results/export_submission.py results/full-20261117-final

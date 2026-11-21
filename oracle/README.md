@@ -66,7 +66,6 @@ The current runner always tests the current checkout.
 | `oracle/backend_checks.hpp` | Test exact membership, rotations, split/join and the million-player case. |
 | `oracle/build.ps1`, `run_tests.ps1` | Build the current checkout and compare both real app modes to the golden fixtures. |
 | [D4 source](../docs/derivations/D4.md) and [D4 PDF](../docs/derivations/D4_250041029.pdf) | The two required proofs about AVL subtree sizes and selection. |
-| `docs/derivations/render_d4.py` | Build the submission PDF from its English source with ReportLab. |
 
 `override` tells the compiler to check that a method matches the shared
 Board interface. `unique_ptr` owns a board. `std::move` transfers that

@@ -1,0 +1,11 @@
+backend,experiment,operation,players,coordinates,seed,run,calls,elapsed_ns,ns_per_call,checksum,validation,left_height,right_height
+avl,updates_with_batched_queries_players,rank,1000,1000,253,1,1000000,78095500,78.095500000000001,7642047928621999275,all_queries_and_snapshots,-1,-1
+avl,updates_with_batched_queries_players,select,1000,1000,253,1,1000000,75566100,75.566100000000006,2378328083914376098,all_queries_and_snapshots,-1,-1
+avl,updates_with_batched_queries_players,rank,1000,1000,253,2,1000000,77702600,77.702600000000004,7642047928621999275,all_queries_and_snapshots,-1,-1
+avl,updates_with_batched_queries_players,select,1000,1000,253,2,1000000,75312400,75.312399999999997,2378328083914376098,all_queries_and_snapshots,-1,-1
+avl,updates_with_batched_queries_players,rank,1000,1000,253,3,1000000,78012700,78.012699999999995,7642047928621999275,all_queries_and_snapshots,-1,-1
+avl,updates_with_batched_queries_players,select,1000,1000,253,3,1000000,74345800,74.345799999999997,2378328083914376098,all_queries_and_snapshots,-1,-1
+avl,updates_with_batched_queries_players,rank,1000,1000,253,4,1000000,77376100,77.376099999999994,7642047928621999275,all_queries_and_snapshots,-1,-1
+avl,updates_with_batched_queries_players,select,1000,1000,253,4,1000000,73384800,73.384799999999998,2378328083914376098,all_queries_and_snapshots,-1,-1
+avl,updates_with_batched_queries_players,rank,1000,1000,253,5,1000000,74768600,74.768600000000006,7642047928621999275,all_queries_and_snapshots,-1,-1
+avl,updates_with_batched_queries_players,select,1000,1000,253,5,1000000,71057800,71.0578,2378328083914376098,all_queries_and_snapshots,-1,-1

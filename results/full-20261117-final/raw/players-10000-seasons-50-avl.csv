@@ -1,0 +1,11 @@
+backend,experiment,operation,players,coordinates,seed,run,calls,elapsed_ns,ns_per_call,checksum,validation,left_height,right_height
+avl,season_high_percent_50_players,split,10000,10000,253,1,10,24900,2490,0,all_output_players,-1,-1
+avl,season_high_percent_50_players,rejoin_merge_from,10000,10000,253,1,10,19600,1960,0,all_output_players,-1,-1
+avl,season_high_percent_50_players,split,10000,10000,253,2,10,25500,2550,0,all_output_players,-1,-1
+avl,season_high_percent_50_players,rejoin_merge_from,10000,10000,253,2,10,15200,1520,0,all_output_players,-1,-1
+avl,season_high_percent_50_players,split,10000,10000,253,3,10,26600,2660,0,all_output_players,-1,-1
+avl,season_high_percent_50_players,rejoin_merge_from,10000,10000,253,3,10,16000,1600,0,all_output_players,-1,-1
+avl,season_high_percent_50_players,split,10000,10000,253,4,10,24600,2460,0,all_output_players,-1,-1
+avl,season_high_percent_50_players,rejoin_merge_from,10000,10000,253,4,10,17300,1730,0,all_output_players,-1,-1
+avl,season_high_percent_50_players,split,10000,10000,253,5,10,30100,3010,0,all_output_players,-1,-1
+avl,season_high_percent_50_players,rejoin_merge_from,10000,10000,253,5,10,14300,1430,0,all_output_players,-1,-1

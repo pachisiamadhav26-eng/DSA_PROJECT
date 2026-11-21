@@ -1,0 +1,25 @@
+{
+  "backend": "fenwick",
+  "operation": "select",
+  "benchmark_pid": 25052,
+  "benchmark_threads": [
+    11920,
+    24860,
+    33488,
+    33724
+  ],
+  "calls": 12845056,
+  "event": "LLCMisses",
+  "source_id": 29,
+  "sampling_interval": 65536,
+  "benchmark_samples": 8133,
+  "system_samples": 18917,
+  "lost_events": 0,
+  "tracerpt_reported_pmu_events": 18917,
+  "etl_sha256": "b4822f7d58d1cf9e6846a97bf3336926f21369ce745f8788ffc3aa07d8b58da7",
+  "samples_per_million_queries": 633.1618951291454,
+  "samples_by_thread": {
+    "33488": 8133
+  },
+  "interpretation": "One diagnostic capture; samples are not exact misses or a miss rate. Includes loop/checksum and OS activity on benchmark threads; no function attribution. Decoded sample counts may differ from tracerpt's aggregate event summary."
+}

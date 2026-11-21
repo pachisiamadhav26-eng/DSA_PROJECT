@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WindowsPerformanceRecorder Version="1.0" Author="Leaderboard Analyst">
+ <Profiles>
+  <SystemCollector Id="Collector" Name="Leaderboard hardware samples">
+   <BufferSize Value="1024"/><Buffers Value="128"/>
+  </SystemCollector>
+  <SystemProvider Id="Provider">
+   <Keywords><Keyword Value="ProcessThread"/><Keyword Value="Loader"/><Keyword Value="PmcProfile"/></Keywords>
+  </SystemProvider>
+  <HardwareCounter Id="Counters" Strict="true">
+   <SampledCounters><SampledCounter Value="LLCMisses" Interval="65536"/></SampledCounters>
+  </HardwareCounter>
+  <Profile Id="Leaderboard.Verbose.File" Name="Leaderboard" Description="Query-phase LLC miss samples" LoggingMode="File" DetailLevel="Verbose">
+   <Collectors><SystemCollectorId Value="Collector"><SystemProviderId Value="Provider"/><HardwareCounterId Value="Counters"/></SystemCollectorId></Collectors>
+  </Profile>
+ </Profiles>
+</WindowsPerformanceRecorder>

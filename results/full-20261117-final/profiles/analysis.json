@@ -1,0 +1,102 @@
+[
+  {
+    "backend": "avl",
+    "operation": "rank",
+    "benchmark_pid": 12508,
+    "benchmark_threads": [
+      9532,
+      26240,
+      29124,
+      33576
+    ],
+    "calls": 8716288,
+    "event": "LLCMisses",
+    "source_id": 29,
+    "sampling_interval": 65536,
+    "benchmark_samples": 2488,
+    "system_samples": 12894,
+    "lost_events": 0,
+    "tracerpt_reported_pmu_events": 12897,
+    "etl_sha256": "c696fa6af7a2fe978800b7681b3b74ce4fa34857c505f9c71653a87d40eb513b",
+    "samples_per_million_queries": 285.4426104323308,
+    "samples_by_thread": {
+      "9532": 2488
+    },
+    "interpretation": "One diagnostic capture; samples are not exact misses or a miss rate. Includes loop/checksum and OS activity on benchmark threads; no function attribution. Decoded sample counts may differ from tracerpt's aggregate event summary."
+  },
+  {
+    "backend": "avl",
+    "operation": "select",
+    "benchmark_pid": 32256,
+    "benchmark_threads": [
+      388,
+      30900,
+      31664,
+      32252
+    ],
+    "calls": 8126464,
+    "event": "LLCMisses",
+    "source_id": 29,
+    "sampling_interval": 65536,
+    "benchmark_samples": 3403,
+    "system_samples": 12863,
+    "lost_events": 0,
+    "tracerpt_reported_pmu_events": 12865,
+    "etl_sha256": "10b24393bda48b0304affc492dbcf5a6ff11a79c85070a67928f8d0b32f5f72e",
+    "samples_per_million_queries": 418.75531596522177,
+    "samples_by_thread": {
+      "32252": 3403
+    },
+    "interpretation": "One diagnostic capture; samples are not exact misses or a miss rate. Includes loop/checksum and OS activity on benchmark threads; no function attribution. Decoded sample counts may differ from tracerpt's aggregate event summary."
+  },
+  {
+    "backend": "fenwick",
+    "operation": "rank",
+    "benchmark_pid": 30392,
+    "benchmark_threads": [
+      7948,
+      13240,
+      19448,
+      29576
+    ],
+    "calls": 21102592,
+    "event": "LLCMisses",
+    "source_id": 29,
+    "sampling_interval": 65536,
+    "benchmark_samples": 11436,
+    "system_samples": 22596,
+    "lost_events": 0,
+    "tracerpt_reported_pmu_events": 22597,
+    "etl_sha256": "c5c873f03606b8a2448963ba186ef4adfa499413aa8c2819760c1b4f257a5e42",
+    "samples_per_million_queries": 541.9239494371118,
+    "samples_by_thread": {
+      "19448": 11436
+    },
+    "interpretation": "One diagnostic capture; samples are not exact misses or a miss rate. Includes loop/checksum and OS activity on benchmark threads; no function attribution. Decoded sample counts may differ from tracerpt's aggregate event summary."
+  },
+  {
+    "backend": "fenwick",
+    "operation": "select",
+    "benchmark_pid": 25052,
+    "benchmark_threads": [
+      11920,
+      24860,
+      33488,
+      33724
+    ],
+    "calls": 12845056,
+    "event": "LLCMisses",
+    "source_id": 29,
+    "sampling_interval": 65536,
+    "benchmark_samples": 8133,
+    "system_samples": 18917,
+    "lost_events": 0,
+    "tracerpt_reported_pmu_events": 18917,
+    "etl_sha256": "b4822f7d58d1cf9e6846a97bf3336926f21369ce745f8788ffc3aa07d8b58da7",
+    "samples_per_million_queries": 633.1618951291454,
+    "samples_by_thread": {
+      "33488": 8133
+    },
+    "interpretation": "One diagnostic capture; samples are not exact misses or a miss rate. Includes loop/checksum and OS activity on benchmark threads; no function attribution. Decoded sample counts may differ from tracerpt's aggregate event summary."
+  }
+]

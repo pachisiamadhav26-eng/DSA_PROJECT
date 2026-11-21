@@ -1,0 +1,356 @@
+{
+  "adversary_commit": "a788f1783fa3b2fcacd5cbaeb32236a8c5f12be5",
+  "generator_sha256": "a97de9da02dcc1dfa9d1cef6a4d6dee74c19bffc282ce1efcb79cf83f07f550f",
+  "generator_binary_sha256": "d5af833d8c11321650a7c79a0e3d58058b63686d5b736ba42e475a45ca7a8e37",
+  "generator_compiler": "clang version 18.1.6 (https://github.com/ziglang/zig-bootstrap 98bc6bf4fc4009888d33941daf6b600d20a42a56)\nTarget: x86_64-unknown-windows-gnu\nThread model: posix\nInstalledDir: C:/MinGW/bin\n",
+  "benchmark_build": {
+    "binary": "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe",
+    "binary_sha256": "335d74f5d3a0f75f9a4e1b1206dfda5bd3df0d1aba665f743dbe6d91c39a214d",
+    "source_root": "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\deps\\4fad0b1b90b90971",
+    "compiler": "g++.exe (MinGW.org GCC-6.3.0-1) 6.3.0\nCopyright (C) 2016 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+    "command": [
+      "C:\\MinGW\\bin\\g++.EXE",
+      "-std=c++17",
+      "-O2",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Wpedantic",
+      "-DBENCH_HAS_AVL",
+      "-DBENCH_HAS_FENWICK",
+      "-DBENCH_ORACLE",
+      "-DBENCH_AVL_TOOLS",
+      "-DBENCH_FENWICK_TOOLS",
+      "-I",
+      "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\deps\\4fad0b1b90b90971\\include",
+      "-I",
+      "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\deps\\4fad0b1b90b90971\\app",
+      "-I",
+      "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\deps\\4fad0b1b90b90971\\oracle",
+      "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\bench\\runner.cpp",
+      "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\deps\\4fad0b1b90b90971\\app\\replay.cpp",
+      "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\deps\\4fad0b1b90b90971\\app\\player_table.cpp",
+      "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\deps\\4fad0b1b90b90971\\avl.cpp",
+      "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\deps\\4fad0b1b90b90971\\src\\structB\\fenwick.cpp",
+      "-o",
+      "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe"
+    ],
+    "dependencies": {
+      "architect": {
+        "ref": "origin/madhav",
+        "commit": "a4dc4382b11d60ed85697fb9560574d24a8d2366"
+      },
+      "avl": {
+        "ref": "origin/prince-chavda",
+        "commit": "03f3f57186f96bac6b2ad8f22acbedd7da2de153"
+      },
+      "fenwick": {
+        "ref": "origin/Saksham",
+        "commit": "2d758efdc7bdd69587981c0c3f44bf26984a7801"
+      },
+      "oracle": {
+        "ref": "origin/om-oracle",
+        "commit": "f3f8c29cb357a29a46ad5a654f7d5fac390aceea"
+      }
+    },
+    "backend": "both",
+    "oracle": true,
+    "avl_tools": true,
+    "fenwick_tools": true,
+    "source_sha256": {
+      "bench\\runner.cpp": "14655d3c5e34d1232a09c61baf9c4d05a92a703c782578d128eec87a0304008b",
+      "bench\\support.hpp": "4b52a4ec1396325d886ea82ada4ca4f82b5ac27b653b44dae03106e2b569235c",
+      "build\\bench\\deps\\4fad0b1b90b90971\\app\\player_table.cpp": "7d5811a322f0ca13ea1b1fee5da4afd868c6aaa6f0507b2337069140fa42677f",
+      "build\\bench\\deps\\4fad0b1b90b90971\\app\\player_table.hpp": "3592176a7520b162adf571f25df89014d75323abf15e9b457dd4ce6dde4f9b71",
+      "build\\bench\\deps\\4fad0b1b90b90971\\app\\replay.cpp": "4c7da39bc445d71165b5c24e3597ee674e54859fc5dab3326078a13191caf598",
+      "build\\bench\\deps\\4fad0b1b90b90971\\app\\replay.hpp": "b307644bcf0fa5b721824d36a33c39b5778b9dc2fc30fc930a59277503b20f67",
+      "build\\bench\\deps\\4fad0b1b90b90971\\avl.cpp": "a345fc0a418e479fb656194a37b6ea6a0f3eeedf82c9a1066f5bff43e43cae6f",
+      "build\\bench\\deps\\4fad0b1b90b90971\\include\\backend_tools.hpp": "a52d6a931a81b302a5bca3ba621464e1446cfc974dd4fea384d08685129f876c",
+      "build\\bench\\deps\\4fad0b1b90b90971\\include\\leaderboard.hpp": "b980de7fad395204f13668d96eb683e406f3f27cf42ec5b40b8e26ccad698efb",
+      "build\\bench\\deps\\4fad0b1b90b90971\\oracle\\backend_checks.hpp": "4edaece8a101d1af9dadfb300aba0534fafce820472a63ba10b01ed76fbd3564",
+      "build\\bench\\deps\\4fad0b1b90b90971\\oracle\\replay.hpp": "4ae69f7d4bedc214f8eadfd05c7dc24f7f0533d784224052872f3fcfb3279925",
+      "build\\bench\\deps\\4fad0b1b90b90971\\oracle\\sorted_array.hpp": "3fc30fd1038d2aace9374aeb51385ddee47cb85f7464187dc6887ee963009e98",
+      "build\\bench\\deps\\4fad0b1b90b90971\\oracle\\trace.hpp": "144eaed499d396f1093ba75a4281a1b3056b55cac778998dd55bbb28b369ad43",
+      "build\\bench\\deps\\4fad0b1b90b90971\\src\\structB\\fenwick.cpp": "88911892d49f04584769f40c5688275b4991e6481c888a8bf28ac701e043088b"
+    }
+  },
+  "inputs": [
+    {
+      "case": "fixture-ties",
+      "path": "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\adversary-final\\ties.trace",
+      "sha256": "42f7e38c490064d32b1d91eca94f3a00d7e624f4212729ad8fc3dd58e9b04dca",
+      "validation": "both_backends_vs_current_oracle"
+    },
+    {
+      "case": "fixture-wide",
+      "path": "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\adversary-final\\wide.trace",
+      "sha256": "1b003d8dec59d22f7087c0aa50ba5b920449a73cd588f9908c95277dbfa92a54",
+      "validation": "both_backends_vs_current_oracle"
+    },
+    {
+      "case": "fixture-nested_split",
+      "path": "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\adversary-final\\nested_split.trace",
+      "sha256": "40930f579a8ecd11c43605698e40fb7fa358b1d38981e48b9b754ef11e86f134",
+      "validation": "both_backends_vs_current_oracle"
+    },
+    {
+      "case": "rotations",
+      "path": "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\adversary-final\\rotations-253.trace",
+      "command": [
+        "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\adversary-final\\generator.exe",
+        "--case",
+        "rotations",
+        "--players",
+        "64",
+        "--ops",
+        "10000",
+        "--seed",
+        "253"
+      ],
+      "sha256": "d4c7d77aaac5334e371b6ecacc12886c2071c49f3503d5f744ff5cc86f60c54a",
+      "commands": 60,
+      "validation": "both_backends_vs_current_oracle"
+    },
+    {
+      "case": "cascade",
+      "path": "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\adversary-final\\cascade-253.trace",
+      "command": [
+        "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\adversary-final\\generator.exe",
+        "--case",
+        "cascade",
+        "--players",
+        "88",
+        "--ops",
+        "10000",
+        "--seed",
+        "253"
+      ],
+      "sha256": "3ba5581a32706c18189dbdb00c30abbc5f5596ced61c71f499ac1e5a7706b20b",
+      "commands": 97,
+      "validation": "both_backends_vs_current_oracle"
+    },
+    {
+      "case": "ascending",
+      "path": "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\adversary-final\\ascending-253.trace",
+      "command": [
+        "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\adversary-final\\generator.exe",
+        "--case",
+        "ascending",
+        "--players",
+        "64",
+        "--ops",
+        "10000",
+        "--seed",
+        "253"
+      ],
+      "sha256": "b62ea54b57ef7a00b0d6e385a044bae6b8ee325d381f90dc7add537bc9a0a816",
+      "commands": 87,
+      "validation": "both_backends_vs_current_oracle"
+    },
+    {
+      "case": "descending",
+      "path": "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\adversary-final\\descending-253.trace",
+      "command": [
+        "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\adversary-final\\generator.exe",
+        "--case",
+        "descending",
+        "--players",
+        "64",
+        "--ops",
+        "10000",
+        "--seed",
+        "253"
+      ],
+      "sha256": "8472fdede8c9736472de6e39e212cd97fda9e8b417474dd3e7ef10646378a88e",
+      "commands": 87,
+      "validation": "both_backends_vs_current_oracle"
+    },
+    {
+      "case": "ties",
+      "path": "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\adversary-final\\ties-253.trace",
+      "command": [
+        "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\adversary-final\\generator.exe",
+        "--case",
+        "ties",
+        "--players",
+        "64",
+        "--ops",
+        "10000",
+        "--seed",
+        "253"
+      ],
+      "sha256": "8a42bcc57477c806e20f838dae87e80bf56b91e6de53c79a2cfa12e0380a291d",
+      "commands": 87,
+      "validation": "both_backends_vs_current_oracle"
+    },
+    {
+      "case": "churn",
+      "path": "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\adversary-final\\churn-253.trace",
+      "command": [
+        "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\adversary-final\\generator.exe",
+        "--case",
+        "churn",
+        "--players",
+        "64",
+        "--ops",
+        "10000",
+        "--seed",
+        "253"
+      ],
+      "sha256": "4b5d5fa192937ccc290a4ebb753429df9626d1b64f011bc54f6d059decf7835e",
+      "commands": 449,
+      "validation": "both_backends_vs_current_oracle"
+    },
+    {
+      "case": "extremes",
+      "path": "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\adversary-final\\extremes-253.trace",
+      "command": [
+        "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\adversary-final\\generator.exe",
+        "--case",
+        "extremes",
+        "--players",
+        "64",
+        "--ops",
+        "10000",
+        "--seed",
+        "253"
+      ],
+      "sha256": "056f491521c0f2db1d5a9c1db369d0910f4a1a5c779609736a3cc43ad27114ec",
+      "commands": 22,
+      "validation": "both_backends_vs_current_oracle"
+    },
+    {
+      "case": "seasons",
+      "path": "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\adversary-final\\seasons-253.trace",
+      "command": [
+        "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\adversary-final\\generator.exe",
+        "--case",
+        "seasons",
+        "--players",
+        "64",
+        "--ops",
+        "10000",
+        "--seed",
+        "253"
+      ],
+      "sha256": "f92d28c1ed4d771db0b05137b76d18cd01a6ee305b73bd74db6a97e4873e5934",
+      "commands": 99,
+      "validation": "both_backends_vs_current_oracle"
+    },
+    {
+      "case": "unequal",
+      "path": "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\adversary-final\\unequal-253.trace",
+      "command": [
+        "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\adversary-final\\generator.exe",
+        "--case",
+        "unequal",
+        "--players",
+        "64",
+        "--ops",
+        "10000",
+        "--seed",
+        "253"
+      ],
+      "sha256": "dea26ddfc8a77d05315fecadc361973c2e198a87b70371c0ff0202cf05f8f993",
+      "commands": 69,
+      "validation": "both_backends_vs_current_oracle"
+    },
+    {
+      "case": "errors",
+      "path": "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\adversary-final\\errors-253.trace",
+      "command": [
+        "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\adversary-final\\generator.exe",
+        "--case",
+        "errors",
+        "--players",
+        "64",
+        "--ops",
+        "10000",
+        "--seed",
+        "253"
+      ],
+      "sha256": "2a519c005fe741460d8729c2ad69cd0f6fd258bdf880a6501a25a93c61a17dd8",
+      "commands": 31,
+      "validation": "both_backends_vs_current_oracle"
+    },
+    {
+      "case": "mixed",
+      "path": "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\adversary-final\\mixed-253.trace",
+      "command": [
+        "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\adversary-final\\generator.exe",
+        "--case",
+        "mixed",
+        "--players",
+        "64",
+        "--ops",
+        "10000",
+        "--seed",
+        "253"
+      ],
+      "sha256": "ae3ef1a2c64bb7a15fa839dba80b3feae725d41e4cf81d0913f5e2b3b358c851",
+      "commands": 10000,
+      "validation": "both_backends_vs_current_oracle"
+    },
+    {
+      "case": "mixed",
+      "path": "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\adversary-final\\mixed-42.trace",
+      "command": [
+        "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\adversary-final\\generator.exe",
+        "--case",
+        "mixed",
+        "--players",
+        "64",
+        "--ops",
+        "10000",
+        "--seed",
+        "42"
+      ],
+      "sha256": "409a553e44683c953a60b0d65e991e502775094a473bd0410c6f29ccfbbd391a",
+      "commands": 10000,
+      "validation": "both_backends_vs_current_oracle"
+    },
+    {
+      "case": "mixed",
+      "path": "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\adversary-final\\mixed-20261115.trace",
+      "command": [
+        "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\adversary-final\\generator.exe",
+        "--case",
+        "mixed",
+        "--players",
+        "64",
+        "--ops",
+        "10000",
+        "--seed",
+        "20261115"
+      ],
+      "sha256": "49b7111686caa0078af59688cf0bd838f12d9340f4156685ee7492814215055e",
+      "commands": 10000,
+      "validation": "both_backends_vs_current_oracle"
+    },
+    {
+      "case": "scale-million",
+      "path": "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\adversary-final\\scale-million.trace",
+      "command": [
+        "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\adversary-final\\generator.exe",
+        "--case",
+        "scale",
+        "--players",
+        "1000000",
+        "--ops",
+        "1000000"
+      ],
+      "sha256": "76efccdf5637269873c1f7611b020aa507aa42f0f29feb8493b52dd11710dfc2",
+      "counts": {
+        "ADD": 1000000,
+        "SET": 1000000,
+        "RANK": 2000,
+        "SELECT": 1008,
+        "SIZE": 4,
+        "RANGE": 5,
+        "SPLIT": 1,
+        "MERGE": 1
+      },
+      "validation": "command_counts_checked; backend comparison during full run"
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+Files Processed:
+	results/full-20261117-final/profiles/fenwick-select/hardware.etl
+Total Buffers Processed 34
+Total Events  Processed 225221
+Total Events  Lost      0
+Start Time              17 November 2026
+End Time                17 November 2026
+Elapsed Time            10 sec
++-------------------------------------------------------------------------------------------------------------------------+
+|Event Count   Event Name           Task            Opcode          Version         Guid                                  |
++-------------------------------------------------------------------------------------------------------------------------+
+|          3   EventTrace           0               RDComplete      2               {68fdd900-4a3e-11d1-84f4-0000f80464e3}|
+|          3   EventTrace           0               EndExtension    2               {68fdd900-4a3e-11d1-84f4-0000f80464e3}|
+|          4   EventTrace           0               Extension       2               {68fdd900-4a3e-11d1-84f4-0000f80464e3}|
+|          3   EventTrace           0               PartitionInfoExtension 2               {68fdd900-4a3e-11d1-84f4-0000f80464e3}|
+|          1   EventTrace           0               Header          2               {68fdd900-4a3e-11d1-84f4-0000f80464e3}|
+|          1                        0               37              0               {9b79ee91-b5fd-41c0-a243-4248e266e9d0}|
+|          1                        0               32              0               {9b79ee91-b5fd-41c0-a243-4248e266e9d0}|
+|         46                        0               36              0               {9b79ee91-b5fd-41c0-a243-4248e266e9d0}|
+|         12                        0               35              0               {9b79ee91-b5fd-41c0-a243-4248e266e9d0}|
+|          2                        0               34              0               {9b79ee91-b5fd-41c0-a243-4248e266e9d0}|
+|          1                        0               33              0               {9b79ee91-b5fd-41c0-a243-4248e266e9d0}|
+|         85   Process              0               Defunct         5               {3d6fa8d0-fe05-11d0-9dda-00c04fd7ba7c}|
+|        376   Process              0               DCEnd           4               {3d6fa8d0-fe05-11d0-9dda-00c04fd7ba7c}|
+|          1   Process              0               Start           4               {3d6fa8d0-fe05-11d0-9dda-00c04fd7ba7c}|
+|          2   Process              0               End             4               {3d6fa8d0-fe05-11d0-9dda-00c04fd7ba7c}|
+|          2   Process              0               Terminate       2               {3d6fa8d0-fe05-11d0-9dda-00c04fd7ba7c}|
+|        377   Process              0               DCStart         4               {3d6fa8d0-fe05-11d0-9dda-00c04fd7ba7c}|
+|       5592   Thread               0               DCEnd           3               {3d6fa8d1-fe05-11d0-9dda-00c04fd7ba7c}|
+|         54   Thread               0               Start           3               {3d6fa8d1-fe05-11d0-9dda-00c04fd7ba7c}|
+|        156   Thread               0               End             3               {3d6fa8d1-fe05-11d0-9dda-00c04fd7ba7c}|
+|        282   Thread               0               SetName         2               {3d6fa8d1-fe05-11d0-9dda-00c04fd7ba7c}|
+|       5678   Thread               0               DCStart         3               {3d6fa8d1-fe05-11d0-9dda-00c04fd7ba7c}|
+|         12                        0               34              2               {b3e675d7-2554-4f18-830b-2762732560de}|
+|        810                        0               37              2               {b3e675d7-2554-4f18-830b-2762732560de}|
+|        174                        0               32              2               {b3e675d7-2554-4f18-830b-2762732560de}|
+|          3                        0               41              1               {b3e675d7-2554-4f18-830b-2762732560de}|
+|      36124                        0               40              1               {b3e675d7-2554-4f18-830b-2762732560de}|
+|      36554                        0               38              2               {b3e675d7-2554-4f18-830b-2762732560de}|
+|      38756                        0               36              2               {b3e675d7-2554-4f18-830b-2762732560de}|
+|      39164                        0               0               2               {b3e675d7-2554-4f18-830b-2762732560de}|
+|       2274                        0               64              0               {b3e675d7-2554-4f18-830b-2762732560de}|
+|      19547   Image                0               DCEnd           3               {2cb15d1d-5fc1-11d2-abe1-00a0c911f518}|
+|          1   Image                0               HypercallPage   2               {2cb15d1d-5fc1-11d2-abe1-00a0c911f518}|
+|          1   Image                0               KernelBase      2               {2cb15d1d-5fc1-11d2-abe1-00a0c911f518}|
+|         33   Image                0               Load            3               {2cb15d1d-5fc1-11d2-abe1-00a0c911f518}|
+|         38   Image                0               UnLoad          3               {2cb15d1d-5fc1-11d2-abe1-00a0c911f518}|
+|      19552   Image                0               DCStart         3               {2cb15d1d-5fc1-11d2-abe1-00a0c911f518}|
+|          1   PerfInfo             0               CollectionEnd   3               {ce1dbfb4-137e-4da6-87b0-3f59aa102cbc}|
+|          4   PerfInfo             0               Mark            0               {ce1dbfb4-137e-4da6-87b0-3f59aa102cbc}|
+|          1   PerfInfo             0               CollectionStart 3               {ce1dbfb4-137e-4da6-87b0-3f59aa102cbc}|
+|      18917   PerfInfo             0               PmcCounterProf  2               {ce1dbfb4-137e-4da6-87b0-3f59aa102cbc}|
+|          1   SystemConfig         0               Boot Config Info 2               {01853a65-418f-4f36-aefc-dc0f1d2fd235}|
+|          1   SystemConfig         0               Virtualization Config Info 2               {01853a65-418f-4f36-aefc-dc0f1d2fd235}|
+|          1   SystemConfig         0               TelemetryConfiguration 2               {01853a65-418f-4f36-aefc-dc0f1d2fd235}|
+|          1   SystemConfig         0               CodeIntegrity   2               {01853a65-418f-4f36-aefc-dc0f1d2fd235}|
+|          1   SystemConfig         0               FlightIds       2               {01853a65-418f-4f36-aefc-dc0f1d2fd235}|
+|          1   SystemConfig         0               DeviceFamily    2               {01853a65-418f-4f36-aefc-dc0f1d2fd235}|
+|          1   SystemConfig         0               Platform        2               {01853a65-418f-4f36-aefc-dc0f1d2fd235}|
+|          1   SystemConfig         0               Power           2               {01853a65-418f-4f36-aefc-dc0f1d2fd235}|
+|         12   SystemConfig         0               Processors      2               {01853a65-418f-4f36-aefc-dc0f1d2fd235}|
+|          1   SystemConfig         0               CPU             3               {01853a65-418f-4f36-aefc-dc0f1d2fd235}|
+|        312   SystemConfig         0               Services        3               {01853a65-418f-4f36-aefc-dc0f1d2fd235}|
+|         23   SystemConfig         0               IRQ             3               {01853a65-418f-4f36-aefc-dc0f1d2fd235}|
+|        195   SystemConfig         0               PnP             5               {01853a65-418f-4f36-aefc-dc0f1d2fd235}|
+|          4   SystemConfig         0               Defragmentation 2               {01853a65-418f-4f36-aefc-dc0f1d2fd235}|
+|          2   SystemConfig         0               LogDisk         2               {01853a65-418f-4f36-aefc-dc0f1d2fd235}|
+|          1   SystemConfig         0               19              2               {01853a65-418f-4f36-aefc-dc0f1d2fd235}|
+|          1   SystemConfig         0               PhyDisk         2               {01853a65-418f-4f36-aefc-dc0f1d2fd235}|
+|          6   SystemConfig         0               NIC             2               {01853a65-418f-4f36-aefc-dc0f1d2fd235}|
+|          1   SystemConfig         0               DPI             2               {01853a65-418f-4f36-aefc-dc0f1d2fd235}|
+|          4   SystemConfig         0               Video           2               {01853a65-418f-4f36-aefc-dc0f1d2fd235}|
+|          1                        0               37              0               {ed54dff8-c409-4cf6-bf83-05e1e61a09c4}|
+|          1                        0               35              0               {ed54dff8-c409-4cf6-bf83-05e1e61a09c4}|
+|          1                        0               33              0               {ed54dff8-c409-4cf6-bf83-05e1e61a09c4}|
++-------------------------------------------------------------------------------------------------------------------------+

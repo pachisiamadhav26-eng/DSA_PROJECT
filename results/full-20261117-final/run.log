@@ -1,0 +1,1106 @@
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "queries", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\players-1000-queries-avl.csv", "--players", "1000", "--scores", "1000", "--updates", "1000000", "--batch", "256", "--score-policy", "players"]
+avl queries run 1/5 passed
+avl queries run 2/5 passed
+avl queries run 3/5 passed
+avl queries run 4/5 passed
+avl queries run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "fenwick", "--experiment", "queries", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\players-1000-queries-fenwick.csv", "--players", "1000", "--scores", "1000", "--updates", "1000000", "--batch", "256", "--score-policy", "players"]
+fenwick queries run 1/5 passed
+fenwick queries run 2/5 passed
+fenwick queries run 3/5 passed
+fenwick queries run 4/5 passed
+fenwick queries run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\players-1000-seasons-0-avl.csv", "--players", "1000", "--scores", "1000", "--updates", "1000000", "--batch", "256", "--score-policy", "players", "--high-percent", "0"]
+avl seasons run 1/5 passed
+avl seasons run 2/5 passed
+avl seasons run 3/5 passed
+avl seasons run 4/5 passed
+avl seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "fenwick", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\players-1000-seasons-0-fenwick.csv", "--players", "1000", "--scores", "1000", "--updates", "1000000", "--batch", "256", "--score-policy", "players", "--high-percent", "0"]
+fenwick seasons run 1/5 passed
+fenwick seasons run 2/5 passed
+fenwick seasons run 3/5 passed
+fenwick seasons run 4/5 passed
+fenwick seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\players-1000-seasons-1-avl.csv", "--players", "1000", "--scores", "1000", "--updates", "1000000", "--batch", "256", "--score-policy", "players", "--high-percent", "1"]
+avl seasons run 1/5 passed
+avl seasons run 2/5 passed
+avl seasons run 3/5 passed
+avl seasons run 4/5 passed
+avl seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "fenwick", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\players-1000-seasons-1-fenwick.csv", "--players", "1000", "--scores", "1000", "--updates", "1000000", "--batch", "256", "--score-policy", "players", "--high-percent", "1"]
+fenwick seasons run 1/5 passed
+fenwick seasons run 2/5 passed
+fenwick seasons run 3/5 passed
+fenwick seasons run 4/5 passed
+fenwick seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\players-1000-seasons-50-avl.csv", "--players", "1000", "--scores", "1000", "--updates", "1000000", "--batch", "256", "--score-policy", "players", "--high-percent", "50"]
+avl seasons run 1/5 passed
+avl seasons run 2/5 passed
+avl seasons run 3/5 passed
+avl seasons run 4/5 passed
+avl seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "fenwick", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\players-1000-seasons-50-fenwick.csv", "--players", "1000", "--scores", "1000", "--updates", "1000000", "--batch", "256", "--score-policy", "players", "--high-percent", "50"]
+fenwick seasons run 1/5 passed
+fenwick seasons run 2/5 passed
+fenwick seasons run 3/5 passed
+fenwick seasons run 4/5 passed
+fenwick seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\players-1000-seasons-99-avl.csv", "--players", "1000", "--scores", "1000", "--updates", "1000000", "--batch", "256", "--score-policy", "players", "--high-percent", "99"]
+avl seasons run 1/5 passed
+avl seasons run 2/5 passed
+avl seasons run 3/5 passed
+avl seasons run 4/5 passed
+avl seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "fenwick", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\players-1000-seasons-99-fenwick.csv", "--players", "1000", "--scores", "1000", "--updates", "1000000", "--batch", "256", "--score-policy", "players", "--high-percent", "99"]
+fenwick seasons run 1/5 passed
+fenwick seasons run 2/5 passed
+fenwick seasons run 3/5 passed
+fenwick seasons run 4/5 passed
+fenwick seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\players-1000-seasons-100-avl.csv", "--players", "1000", "--scores", "1000", "--updates", "1000000", "--batch", "256", "--score-policy", "players", "--high-percent", "100"]
+avl seasons run 1/5 passed
+avl seasons run 2/5 passed
+avl seasons run 3/5 passed
+avl seasons run 4/5 passed
+avl seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "fenwick", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\players-1000-seasons-100-fenwick.csv", "--players", "1000", "--scores", "1000", "--updates", "1000000", "--batch", "256", "--score-policy", "players", "--high-percent", "100"]
+fenwick seasons run 1/5 passed
+fenwick seasons run 2/5 passed
+fenwick seasons run 3/5 passed
+fenwick seasons run 4/5 passed
+fenwick seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "queries", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\players-10000-queries-avl.csv", "--players", "10000", "--scores", "10000", "--updates", "1000000", "--batch", "256", "--score-policy", "players"]
+avl queries run 1/5 passed
+avl queries run 2/5 passed
+avl queries run 3/5 passed
+avl queries run 4/5 passed
+avl queries run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "fenwick", "--experiment", "queries", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\players-10000-queries-fenwick.csv", "--players", "10000", "--scores", "10000", "--updates", "1000000", "--batch", "256", "--score-policy", "players"]
+fenwick queries run 1/5 passed
+fenwick queries run 2/5 passed
+fenwick queries run 3/5 passed
+fenwick queries run 4/5 passed
+fenwick queries run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\players-10000-seasons-0-avl.csv", "--players", "10000", "--scores", "10000", "--updates", "1000000", "--batch", "256", "--score-policy", "players", "--high-percent", "0"]
+avl seasons run 1/5 passed
+avl seasons run 2/5 passed
+avl seasons run 3/5 passed
+avl seasons run 4/5 passed
+avl seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "fenwick", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\players-10000-seasons-0-fenwick.csv", "--players", "10000", "--scores", "10000", "--updates", "1000000", "--batch", "256", "--score-policy", "players", "--high-percent", "0"]
+fenwick seasons run 1/5 passed
+fenwick seasons run 2/5 passed
+fenwick seasons run 3/5 passed
+fenwick seasons run 4/5 passed
+fenwick seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\players-10000-seasons-1-avl.csv", "--players", "10000", "--scores", "10000", "--updates", "1000000", "--batch", "256", "--score-policy", "players", "--high-percent", "1"]
+avl seasons run 1/5 passed
+avl seasons run 2/5 passed
+avl seasons run 3/5 passed
+avl seasons run 4/5 passed
+avl seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "fenwick", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\players-10000-seasons-1-fenwick.csv", "--players", "10000", "--scores", "10000", "--updates", "1000000", "--batch", "256", "--score-policy", "players", "--high-percent", "1"]
+fenwick seasons run 1/5 passed
+fenwick seasons run 2/5 passed
+fenwick seasons run 3/5 passed
+fenwick seasons run 4/5 passed
+fenwick seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\players-10000-seasons-50-avl.csv", "--players", "10000", "--scores", "10000", "--updates", "1000000", "--batch", "256", "--score-policy", "players", "--high-percent", "50"]
+avl seasons run 1/5 passed
+avl seasons run 2/5 passed
+avl seasons run 3/5 passed
+avl seasons run 4/5 passed
+avl seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "fenwick", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\players-10000-seasons-50-fenwick.csv", "--players", "10000", "--scores", "10000", "--updates", "1000000", "--batch", "256", "--score-policy", "players", "--high-percent", "50"]
+fenwick seasons run 1/5 passed
+fenwick seasons run 2/5 passed
+fenwick seasons run 3/5 passed
+fenwick seasons run 4/5 passed
+fenwick seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\players-10000-seasons-99-avl.csv", "--players", "10000", "--scores", "10000", "--updates", "1000000", "--batch", "256", "--score-policy", "players", "--high-percent", "99"]
+avl seasons run 1/5 passed
+avl seasons run 2/5 passed
+avl seasons run 3/5 passed
+avl seasons run 4/5 passed
+avl seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "fenwick", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\players-10000-seasons-99-fenwick.csv", "--players", "10000", "--scores", "10000", "--updates", "1000000", "--batch", "256", "--score-policy", "players", "--high-percent", "99"]
+fenwick seasons run 1/5 passed
+fenwick seasons run 2/5 passed
+fenwick seasons run 3/5 passed
+fenwick seasons run 4/5 passed
+fenwick seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\players-10000-seasons-100-avl.csv", "--players", "10000", "--scores", "10000", "--updates", "1000000", "--batch", "256", "--score-policy", "players", "--high-percent", "100"]
+avl seasons run 1/5 passed
+avl seasons run 2/5 passed
+avl seasons run 3/5 passed
+avl seasons run 4/5 passed
+avl seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "fenwick", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\players-10000-seasons-100-fenwick.csv", "--players", "10000", "--scores", "10000", "--updates", "1000000", "--batch", "256", "--score-policy", "players", "--high-percent", "100"]
+fenwick seasons run 1/5 passed
+fenwick seasons run 2/5 passed
+fenwick seasons run 3/5 passed
+fenwick seasons run 4/5 passed
+fenwick seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "queries", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\players-100000-queries-avl.csv", "--players", "100000", "--scores", "100000", "--updates", "1000000", "--batch", "256", "--score-policy", "players"]
+avl queries run 1/5 passed
+avl queries run 2/5 passed
+avl queries run 3/5 passed
+avl queries run 4/5 passed
+avl queries run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "fenwick", "--experiment", "queries", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\players-100000-queries-fenwick.csv", "--players", "100000", "--scores", "100000", "--updates", "1000000", "--batch", "256", "--score-policy", "players"]
+fenwick queries run 1/5 passed
+fenwick queries run 2/5 passed
+fenwick queries run 3/5 passed
+fenwick queries run 4/5 passed
+fenwick queries run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\players-100000-seasons-0-avl.csv", "--players", "100000", "--scores", "100000", "--updates", "1000000", "--batch", "256", "--score-policy", "players", "--high-percent", "0"]
+avl seasons run 1/5 passed
+avl seasons run 2/5 passed
+avl seasons run 3/5 passed
+avl seasons run 4/5 passed
+avl seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "fenwick", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\players-100000-seasons-0-fenwick.csv", "--players", "100000", "--scores", "100000", "--updates", "1000000", "--batch", "256", "--score-policy", "players", "--high-percent", "0"]
+fenwick seasons run 1/5 passed
+fenwick seasons run 2/5 passed
+fenwick seasons run 3/5 passed
+fenwick seasons run 4/5 passed
+fenwick seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\players-100000-seasons-1-avl.csv", "--players", "100000", "--scores", "100000", "--updates", "1000000", "--batch", "256", "--score-policy", "players", "--high-percent", "1"]
+avl seasons run 1/5 passed
+avl seasons run 2/5 passed
+avl seasons run 3/5 passed
+avl seasons run 4/5 passed
+avl seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "fenwick", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\players-100000-seasons-1-fenwick.csv", "--players", "100000", "--scores", "100000", "--updates", "1000000", "--batch", "256", "--score-policy", "players", "--high-percent", "1"]
+fenwick seasons run 1/5 passed
+fenwick seasons run 2/5 passed
+fenwick seasons run 3/5 passed
+fenwick seasons run 4/5 passed
+fenwick seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\players-100000-seasons-50-avl.csv", "--players", "100000", "--scores", "100000", "--updates", "1000000", "--batch", "256", "--score-policy", "players", "--high-percent", "50"]
+avl seasons run 1/5 passed
+avl seasons run 2/5 passed
+avl seasons run 3/5 passed
+avl seasons run 4/5 passed
+avl seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "fenwick", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\players-100000-seasons-50-fenwick.csv", "--players", "100000", "--scores", "100000", "--updates", "1000000", "--batch", "256", "--score-policy", "players", "--high-percent", "50"]
+fenwick seasons run 1/5 passed
+fenwick seasons run 2/5 passed
+fenwick seasons run 3/5 passed
+fenwick seasons run 4/5 passed
+fenwick seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\players-100000-seasons-99-avl.csv", "--players", "100000", "--scores", "100000", "--updates", "1000000", "--batch", "256", "--score-policy", "players", "--high-percent", "99"]
+avl seasons run 1/5 passed
+avl seasons run 2/5 passed
+avl seasons run 3/5 passed
+avl seasons run 4/5 passed
+avl seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "fenwick", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\players-100000-seasons-99-fenwick.csv", "--players", "100000", "--scores", "100000", "--updates", "1000000", "--batch", "256", "--score-policy", "players", "--high-percent", "99"]
+fenwick seasons run 1/5 passed
+fenwick seasons run 2/5 passed
+fenwick seasons run 3/5 passed
+fenwick seasons run 4/5 passed
+fenwick seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\players-100000-seasons-100-avl.csv", "--players", "100000", "--scores", "100000", "--updates", "1000000", "--batch", "256", "--score-policy", "players", "--high-percent", "100"]
+avl seasons run 1/5 passed
+avl seasons run 2/5 passed
+avl seasons run 3/5 passed
+avl seasons run 4/5 passed
+avl seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "fenwick", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\players-100000-seasons-100-fenwick.csv", "--players", "100000", "--scores", "100000", "--updates", "1000000", "--batch", "256", "--score-policy", "players", "--high-percent", "100"]
+fenwick seasons run 1/5 passed
+fenwick seasons run 2/5 passed
+fenwick seasons run 3/5 passed
+fenwick seasons run 4/5 passed
+fenwick seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "queries", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\players-1000000-queries-avl.csv", "--players", "1000000", "--scores", "1000000", "--updates", "1000000", "--batch", "256", "--score-policy", "players"]
+avl queries run 1/5 passed
+avl queries run 2/5 passed
+avl queries run 3/5 passed
+avl queries run 4/5 passed
+avl queries run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "fenwick", "--experiment", "queries", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\players-1000000-queries-fenwick.csv", "--players", "1000000", "--scores", "1000000", "--updates", "1000000", "--batch", "256", "--score-policy", "players"]
+fenwick queries run 1/5 passed
+fenwick queries run 2/5 passed
+fenwick queries run 3/5 passed
+fenwick queries run 4/5 passed
+fenwick queries run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\players-1000000-seasons-0-avl.csv", "--players", "1000000", "--scores", "1000000", "--updates", "1000000", "--batch", "256", "--score-policy", "players", "--high-percent", "0"]
+avl seasons run 1/5 passed
+avl seasons run 2/5 passed
+avl seasons run 3/5 passed
+avl seasons run 4/5 passed
+avl seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "fenwick", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\players-1000000-seasons-0-fenwick.csv", "--players", "1000000", "--scores", "1000000", "--updates", "1000000", "--batch", "256", "--score-policy", "players", "--high-percent", "0"]
+fenwick seasons run 1/5 passed
+fenwick seasons run 2/5 passed
+fenwick seasons run 3/5 passed
+fenwick seasons run 4/5 passed
+fenwick seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\players-1000000-seasons-1-avl.csv", "--players", "1000000", "--scores", "1000000", "--updates", "1000000", "--batch", "256", "--score-policy", "players", "--high-percent", "1"]
+avl seasons run 1/5 passed
+avl seasons run 2/5 passed
+avl seasons run 3/5 passed
+avl seasons run 4/5 passed
+avl seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "fenwick", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\players-1000000-seasons-1-fenwick.csv", "--players", "1000000", "--scores", "1000000", "--updates", "1000000", "--batch", "256", "--score-policy", "players", "--high-percent", "1"]
+fenwick seasons run 1/5 passed
+fenwick seasons run 2/5 passed
+fenwick seasons run 3/5 passed
+fenwick seasons run 4/5 passed
+fenwick seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\players-1000000-seasons-50-avl.csv", "--players", "1000000", "--scores", "1000000", "--updates", "1000000", "--batch", "256", "--score-policy", "players", "--high-percent", "50"]
+avl seasons run 1/5 passed
+avl seasons run 2/5 passed
+avl seasons run 3/5 passed
+avl seasons run 4/5 passed
+avl seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "fenwick", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\players-1000000-seasons-50-fenwick.csv", "--players", "1000000", "--scores", "1000000", "--updates", "1000000", "--batch", "256", "--score-policy", "players", "--high-percent", "50"]
+fenwick seasons run 1/5 passed
+fenwick seasons run 2/5 passed
+fenwick seasons run 3/5 passed
+fenwick seasons run 4/5 passed
+fenwick seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\players-1000000-seasons-99-avl.csv", "--players", "1000000", "--scores", "1000000", "--updates", "1000000", "--batch", "256", "--score-policy", "players", "--high-percent", "99"]
+avl seasons run 1/5 passed
+avl seasons run 2/5 passed
+avl seasons run 3/5 passed
+avl seasons run 4/5 passed
+avl seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "fenwick", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\players-1000000-seasons-99-fenwick.csv", "--players", "1000000", "--scores", "1000000", "--updates", "1000000", "--batch", "256", "--score-policy", "players", "--high-percent", "99"]
+fenwick seasons run 1/5 passed
+fenwick seasons run 2/5 passed
+fenwick seasons run 3/5 passed
+fenwick seasons run 4/5 passed
+fenwick seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\players-1000000-seasons-100-avl.csv", "--players", "1000000", "--scores", "1000000", "--updates", "1000000", "--batch", "256", "--score-policy", "players", "--high-percent", "100"]
+avl seasons run 1/5 passed
+avl seasons run 2/5 passed
+avl seasons run 3/5 passed
+avl seasons run 4/5 passed
+avl seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "fenwick", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\players-1000000-seasons-100-fenwick.csv", "--players", "1000000", "--scores", "1000000", "--updates", "1000000", "--batch", "256", "--score-policy", "players", "--high-percent", "100"]
+fenwick seasons run 1/5 passed
+fenwick seasons run 2/5 passed
+fenwick seasons run 3/5 passed
+fenwick seasons run 4/5 passed
+fenwick seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "queries", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\ties-1000-queries-avl.csv", "--players", "1000", "--scores", "1000", "--updates", "1000000", "--batch", "256", "--score-policy", "ties"]
+avl queries run 1/5 passed
+avl queries run 2/5 passed
+avl queries run 3/5 passed
+avl queries run 4/5 passed
+avl queries run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "fenwick", "--experiment", "queries", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\ties-1000-queries-fenwick.csv", "--players", "1000", "--scores", "1000", "--updates", "1000000", "--batch", "256", "--score-policy", "ties"]
+fenwick queries run 1/5 passed
+fenwick queries run 2/5 passed
+fenwick queries run 3/5 passed
+fenwick queries run 4/5 passed
+fenwick queries run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\ties-1000-seasons-0-avl.csv", "--players", "1000", "--scores", "1000", "--updates", "1000000", "--batch", "256", "--score-policy", "ties", "--high-percent", "0"]
+avl seasons run 1/5 passed
+avl seasons run 2/5 passed
+avl seasons run 3/5 passed
+avl seasons run 4/5 passed
+avl seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "fenwick", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\ties-1000-seasons-0-fenwick.csv", "--players", "1000", "--scores", "1000", "--updates", "1000000", "--batch", "256", "--score-policy", "ties", "--high-percent", "0"]
+fenwick seasons run 1/5 passed
+fenwick seasons run 2/5 passed
+fenwick seasons run 3/5 passed
+fenwick seasons run 4/5 passed
+fenwick seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\ties-1000-seasons-1-avl.csv", "--players", "1000", "--scores", "1000", "--updates", "1000000", "--batch", "256", "--score-policy", "ties", "--high-percent", "1"]
+avl seasons run 1/5 passed
+avl seasons run 2/5 passed
+avl seasons run 3/5 passed
+avl seasons run 4/5 passed
+avl seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "fenwick", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\ties-1000-seasons-1-fenwick.csv", "--players", "1000", "--scores", "1000", "--updates", "1000000", "--batch", "256", "--score-policy", "ties", "--high-percent", "1"]
+fenwick seasons run 1/5 passed
+fenwick seasons run 2/5 passed
+fenwick seasons run 3/5 passed
+fenwick seasons run 4/5 passed
+fenwick seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\ties-1000-seasons-50-avl.csv", "--players", "1000", "--scores", "1000", "--updates", "1000000", "--batch", "256", "--score-policy", "ties", "--high-percent", "50"]
+avl seasons run 1/5 passed
+avl seasons run 2/5 passed
+avl seasons run 3/5 passed
+avl seasons run 4/5 passed
+avl seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "fenwick", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\ties-1000-seasons-50-fenwick.csv", "--players", "1000", "--scores", "1000", "--updates", "1000000", "--batch", "256", "--score-policy", "ties", "--high-percent", "50"]
+fenwick seasons run 1/5 passed
+fenwick seasons run 2/5 passed
+fenwick seasons run 3/5 passed
+fenwick seasons run 4/5 passed
+fenwick seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\ties-1000-seasons-99-avl.csv", "--players", "1000", "--scores", "1000", "--updates", "1000000", "--batch", "256", "--score-policy", "ties", "--high-percent", "99"]
+avl seasons run 1/5 passed
+avl seasons run 2/5 passed
+avl seasons run 3/5 passed
+avl seasons run 4/5 passed
+avl seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "fenwick", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\ties-1000-seasons-99-fenwick.csv", "--players", "1000", "--scores", "1000", "--updates", "1000000", "--batch", "256", "--score-policy", "ties", "--high-percent", "99"]
+fenwick seasons run 1/5 passed
+fenwick seasons run 2/5 passed
+fenwick seasons run 3/5 passed
+fenwick seasons run 4/5 passed
+fenwick seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\ties-1000-seasons-100-avl.csv", "--players", "1000", "--scores", "1000", "--updates", "1000000", "--batch", "256", "--score-policy", "ties", "--high-percent", "100"]
+avl seasons run 1/5 passed
+avl seasons run 2/5 passed
+avl seasons run 3/5 passed
+avl seasons run 4/5 passed
+avl seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "fenwick", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\ties-1000-seasons-100-fenwick.csv", "--players", "1000", "--scores", "1000", "--updates", "1000000", "--batch", "256", "--score-policy", "ties", "--high-percent", "100"]
+fenwick seasons run 1/5 passed
+fenwick seasons run 2/5 passed
+fenwick seasons run 3/5 passed
+fenwick seasons run 4/5 passed
+fenwick seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "queries", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\ties-10000-queries-avl.csv", "--players", "10000", "--scores", "1000", "--updates", "1000000", "--batch", "256", "--score-policy", "ties"]
+avl queries run 1/5 passed
+avl queries run 2/5 passed
+avl queries run 3/5 passed
+avl queries run 4/5 passed
+avl queries run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "fenwick", "--experiment", "queries", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\ties-10000-queries-fenwick.csv", "--players", "10000", "--scores", "1000", "--updates", "1000000", "--batch", "256", "--score-policy", "ties"]
+fenwick queries run 1/5 passed
+fenwick queries run 2/5 passed
+fenwick queries run 3/5 passed
+fenwick queries run 4/5 passed
+fenwick queries run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\ties-10000-seasons-0-avl.csv", "--players", "10000", "--scores", "1000", "--updates", "1000000", "--batch", "256", "--score-policy", "ties", "--high-percent", "0"]
+avl seasons run 1/5 passed
+avl seasons run 2/5 passed
+avl seasons run 3/5 passed
+avl seasons run 4/5 passed
+avl seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "fenwick", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\ties-10000-seasons-0-fenwick.csv", "--players", "10000", "--scores", "1000", "--updates", "1000000", "--batch", "256", "--score-policy", "ties", "--high-percent", "0"]
+fenwick seasons run 1/5 passed
+fenwick seasons run 2/5 passed
+fenwick seasons run 3/5 passed
+fenwick seasons run 4/5 passed
+fenwick seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\ties-10000-seasons-1-avl.csv", "--players", "10000", "--scores", "1000", "--updates", "1000000", "--batch", "256", "--score-policy", "ties", "--high-percent", "1"]
+avl seasons run 1/5 passed
+avl seasons run 2/5 passed
+avl seasons run 3/5 passed
+avl seasons run 4/5 passed
+avl seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "fenwick", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\ties-10000-seasons-1-fenwick.csv", "--players", "10000", "--scores", "1000", "--updates", "1000000", "--batch", "256", "--score-policy", "ties", "--high-percent", "1"]
+fenwick seasons run 1/5 passed
+fenwick seasons run 2/5 passed
+fenwick seasons run 3/5 passed
+fenwick seasons run 4/5 passed
+fenwick seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\ties-10000-seasons-50-avl.csv", "--players", "10000", "--scores", "1000", "--updates", "1000000", "--batch", "256", "--score-policy", "ties", "--high-percent", "50"]
+avl seasons run 1/5 passed
+avl seasons run 2/5 passed
+avl seasons run 3/5 passed
+avl seasons run 4/5 passed
+avl seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "fenwick", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\ties-10000-seasons-50-fenwick.csv", "--players", "10000", "--scores", "1000", "--updates", "1000000", "--batch", "256", "--score-policy", "ties", "--high-percent", "50"]
+fenwick seasons run 1/5 passed
+fenwick seasons run 2/5 passed
+fenwick seasons run 3/5 passed
+fenwick seasons run 4/5 passed
+fenwick seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\ties-10000-seasons-99-avl.csv", "--players", "10000", "--scores", "1000", "--updates", "1000000", "--batch", "256", "--score-policy", "ties", "--high-percent", "99"]
+avl seasons run 1/5 passed
+avl seasons run 2/5 passed
+avl seasons run 3/5 passed
+avl seasons run 4/5 passed
+avl seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "fenwick", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\ties-10000-seasons-99-fenwick.csv", "--players", "10000", "--scores", "1000", "--updates", "1000000", "--batch", "256", "--score-policy", "ties", "--high-percent", "99"]
+fenwick seasons run 1/5 passed
+fenwick seasons run 2/5 passed
+fenwick seasons run 3/5 passed
+fenwick seasons run 4/5 passed
+fenwick seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\ties-10000-seasons-100-avl.csv", "--players", "10000", "--scores", "1000", "--updates", "1000000", "--batch", "256", "--score-policy", "ties", "--high-percent", "100"]
+avl seasons run 1/5 passed
+avl seasons run 2/5 passed
+avl seasons run 3/5 passed
+avl seasons run 4/5 passed
+avl seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "fenwick", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\ties-10000-seasons-100-fenwick.csv", "--players", "10000", "--scores", "1000", "--updates", "1000000", "--batch", "256", "--score-policy", "ties", "--high-percent", "100"]
+fenwick seasons run 1/5 passed
+fenwick seasons run 2/5 passed
+fenwick seasons run 3/5 passed
+fenwick seasons run 4/5 passed
+fenwick seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "queries", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\ties-100000-queries-avl.csv", "--players", "100000", "--scores", "1000", "--updates", "1000000", "--batch", "256", "--score-policy", "ties"]
+avl queries run 1/5 passed
+avl queries run 2/5 passed
+avl queries run 3/5 passed
+avl queries run 4/5 passed
+avl queries run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "fenwick", "--experiment", "queries", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\ties-100000-queries-fenwick.csv", "--players", "100000", "--scores", "1000", "--updates", "1000000", "--batch", "256", "--score-policy", "ties"]
+fenwick queries run 1/5 passed
+fenwick queries run 2/5 passed
+fenwick queries run 3/5 passed
+fenwick queries run 4/5 passed
+fenwick queries run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\ties-100000-seasons-0-avl.csv", "--players", "100000", "--scores", "1000", "--updates", "1000000", "--batch", "256", "--score-policy", "ties", "--high-percent", "0"]
+avl seasons run 1/5 passed
+avl seasons run 2/5 passed
+avl seasons run 3/5 passed
+avl seasons run 4/5 passed
+avl seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "fenwick", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\ties-100000-seasons-0-fenwick.csv", "--players", "100000", "--scores", "1000", "--updates", "1000000", "--batch", "256", "--score-policy", "ties", "--high-percent", "0"]
+fenwick seasons run 1/5 passed
+fenwick seasons run 2/5 passed
+fenwick seasons run 3/5 passed
+fenwick seasons run 4/5 passed
+fenwick seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\ties-100000-seasons-1-avl.csv", "--players", "100000", "--scores", "1000", "--updates", "1000000", "--batch", "256", "--score-policy", "ties", "--high-percent", "1"]
+avl seasons run 1/5 passed
+avl seasons run 2/5 passed
+avl seasons run 3/5 passed
+avl seasons run 4/5 passed
+avl seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "fenwick", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\ties-100000-seasons-1-fenwick.csv", "--players", "100000", "--scores", "1000", "--updates", "1000000", "--batch", "256", "--score-policy", "ties", "--high-percent", "1"]
+fenwick seasons run 1/5 passed
+fenwick seasons run 2/5 passed
+fenwick seasons run 3/5 passed
+fenwick seasons run 4/5 passed
+fenwick seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\ties-100000-seasons-50-avl.csv", "--players", "100000", "--scores", "1000", "--updates", "1000000", "--batch", "256", "--score-policy", "ties", "--high-percent", "50"]
+avl seasons run 1/5 passed
+avl seasons run 2/5 passed
+avl seasons run 3/5 passed
+avl seasons run 4/5 passed
+avl seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "fenwick", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\ties-100000-seasons-50-fenwick.csv", "--players", "100000", "--scores", "1000", "--updates", "1000000", "--batch", "256", "--score-policy", "ties", "--high-percent", "50"]
+fenwick seasons run 1/5 passed
+fenwick seasons run 2/5 passed
+fenwick seasons run 3/5 passed
+fenwick seasons run 4/5 passed
+fenwick seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\ties-100000-seasons-99-avl.csv", "--players", "100000", "--scores", "1000", "--updates", "1000000", "--batch", "256", "--score-policy", "ties", "--high-percent", "99"]
+avl seasons run 1/5 passed
+avl seasons run 2/5 passed
+avl seasons run 3/5 passed
+avl seasons run 4/5 passed
+avl seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "fenwick", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\ties-100000-seasons-99-fenwick.csv", "--players", "100000", "--scores", "1000", "--updates", "1000000", "--batch", "256", "--score-policy", "ties", "--high-percent", "99"]
+fenwick seasons run 1/5 passed
+fenwick seasons run 2/5 passed
+fenwick seasons run 3/5 passed
+fenwick seasons run 4/5 passed
+fenwick seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\ties-100000-seasons-100-avl.csv", "--players", "100000", "--scores", "1000", "--updates", "1000000", "--batch", "256", "--score-policy", "ties", "--high-percent", "100"]
+avl seasons run 1/5 passed
+avl seasons run 2/5 passed
+avl seasons run 3/5 passed
+avl seasons run 4/5 passed
+avl seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "fenwick", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\ties-100000-seasons-100-fenwick.csv", "--players", "100000", "--scores", "1000", "--updates", "1000000", "--batch", "256", "--score-policy", "ties", "--high-percent", "100"]
+fenwick seasons run 1/5 passed
+fenwick seasons run 2/5 passed
+fenwick seasons run 3/5 passed
+fenwick seasons run 4/5 passed
+fenwick seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "queries", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\ties-1000000-queries-avl.csv", "--players", "1000000", "--scores", "1000", "--updates", "1000000", "--batch", "256", "--score-policy", "ties"]
+avl queries run 1/5 passed
+avl queries run 2/5 passed
+avl queries run 3/5 passed
+avl queries run 4/5 passed
+avl queries run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "fenwick", "--experiment", "queries", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\ties-1000000-queries-fenwick.csv", "--players", "1000000", "--scores", "1000", "--updates", "1000000", "--batch", "256", "--score-policy", "ties"]
+fenwick queries run 1/5 passed
+fenwick queries run 2/5 passed
+fenwick queries run 3/5 passed
+fenwick queries run 4/5 passed
+fenwick queries run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\ties-1000000-seasons-0-avl.csv", "--players", "1000000", "--scores", "1000", "--updates", "1000000", "--batch", "256", "--score-policy", "ties", "--high-percent", "0"]
+avl seasons run 1/5 passed
+avl seasons run 2/5 passed
+avl seasons run 3/5 passed
+avl seasons run 4/5 passed
+avl seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "fenwick", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\ties-1000000-seasons-0-fenwick.csv", "--players", "1000000", "--scores", "1000", "--updates", "1000000", "--batch", "256", "--score-policy", "ties", "--high-percent", "0"]
+fenwick seasons run 1/5 passed
+fenwick seasons run 2/5 passed
+fenwick seasons run 3/5 passed
+fenwick seasons run 4/5 passed
+fenwick seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\ties-1000000-seasons-1-avl.csv", "--players", "1000000", "--scores", "1000", "--updates", "1000000", "--batch", "256", "--score-policy", "ties", "--high-percent", "1"]
+avl seasons run 1/5 passed
+avl seasons run 2/5 passed
+avl seasons run 3/5 passed
+avl seasons run 4/5 passed
+avl seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "fenwick", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\ties-1000000-seasons-1-fenwick.csv", "--players", "1000000", "--scores", "1000", "--updates", "1000000", "--batch", "256", "--score-policy", "ties", "--high-percent", "1"]
+fenwick seasons run 1/5 passed
+fenwick seasons run 2/5 passed
+fenwick seasons run 3/5 passed
+fenwick seasons run 4/5 passed
+fenwick seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\ties-1000000-seasons-50-avl.csv", "--players", "1000000", "--scores", "1000", "--updates", "1000000", "--batch", "256", "--score-policy", "ties", "--high-percent", "50"]
+avl seasons run 1/5 passed
+avl seasons run 2/5 passed
+avl seasons run 3/5 passed
+avl seasons run 4/5 passed
+avl seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "fenwick", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\ties-1000000-seasons-50-fenwick.csv", "--players", "1000000", "--scores", "1000", "--updates", "1000000", "--batch", "256", "--score-policy", "ties", "--high-percent", "50"]
+fenwick seasons run 1/5 passed
+fenwick seasons run 2/5 passed
+fenwick seasons run 3/5 passed
+fenwick seasons run 4/5 passed
+fenwick seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\ties-1000000-seasons-99-avl.csv", "--players", "1000000", "--scores", "1000", "--updates", "1000000", "--batch", "256", "--score-policy", "ties", "--high-percent", "99"]
+avl seasons run 1/5 passed
+avl seasons run 2/5 passed
+avl seasons run 3/5 passed
+avl seasons run 4/5 passed
+avl seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "fenwick", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\ties-1000000-seasons-99-fenwick.csv", "--players", "1000000", "--scores", "1000", "--updates", "1000000", "--batch", "256", "--score-policy", "ties", "--high-percent", "99"]
+fenwick seasons run 1/5 passed
+fenwick seasons run 2/5 passed
+fenwick seasons run 3/5 passed
+fenwick seasons run 4/5 passed
+fenwick seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\ties-1000000-seasons-100-avl.csv", "--players", "1000000", "--scores", "1000", "--updates", "1000000", "--batch", "256", "--score-policy", "ties", "--high-percent", "100"]
+avl seasons run 1/5 passed
+avl seasons run 2/5 passed
+avl seasons run 3/5 passed
+avl seasons run 4/5 passed
+avl seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "fenwick", "--experiment", "seasons", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\ties-1000000-seasons-100-fenwick.csv", "--players", "1000000", "--scores", "1000", "--updates", "1000000", "--batch", "256", "--score-policy", "ties", "--high-percent", "100"]
+fenwick seasons run 1/5 passed
+fenwick seasons run 2/5 passed
+fenwick seasons run 3/5 passed
+fenwick seasons run 4/5 passed
+fenwick seasons run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "ordered-join", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\ordered-1000-0-avl.csv", "--players", "1000", "--high-percent", "0"]
+avl ordered-join run 1/5 passed
+avl ordered-join run 2/5 passed
+avl ordered-join run 3/5 passed
+avl ordered-join run 4/5 passed
+avl ordered-join run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "ordered-join", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\ordered-1000-1-avl.csv", "--players", "1000", "--high-percent", "1"]
+avl ordered-join run 1/5 passed
+avl ordered-join run 2/5 passed
+avl ordered-join run 3/5 passed
+avl ordered-join run 4/5 passed
+avl ordered-join run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "ordered-join", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\ordered-1000-50-avl.csv", "--players", "1000", "--high-percent", "50"]
+avl ordered-join run 1/5 passed
+avl ordered-join run 2/5 passed
+avl ordered-join run 3/5 passed
+avl ordered-join run 4/5 passed
+avl ordered-join run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "ordered-join", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\ordered-1000-99-avl.csv", "--players", "1000", "--high-percent", "99"]
+avl ordered-join run 1/5 passed
+avl ordered-join run 2/5 passed
+avl ordered-join run 3/5 passed
+avl ordered-join run 4/5 passed
+avl ordered-join run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "ordered-join", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\ordered-1000-100-avl.csv", "--players", "1000", "--high-percent", "100"]
+avl ordered-join run 1/5 passed
+avl ordered-join run 2/5 passed
+avl ordered-join run 3/5 passed
+avl ordered-join run 4/5 passed
+avl ordered-join run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "ordered-join", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\ordered-10000-0-avl.csv", "--players", "10000", "--high-percent", "0"]
+avl ordered-join run 1/5 passed
+avl ordered-join run 2/5 passed
+avl ordered-join run 3/5 passed
+avl ordered-join run 4/5 passed
+avl ordered-join run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "ordered-join", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\ordered-10000-1-avl.csv", "--players", "10000", "--high-percent", "1"]
+avl ordered-join run 1/5 passed
+avl ordered-join run 2/5 passed
+avl ordered-join run 3/5 passed
+avl ordered-join run 4/5 passed
+avl ordered-join run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "ordered-join", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\ordered-10000-50-avl.csv", "--players", "10000", "--high-percent", "50"]
+avl ordered-join run 1/5 passed
+avl ordered-join run 2/5 passed
+avl ordered-join run 3/5 passed
+avl ordered-join run 4/5 passed
+avl ordered-join run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "ordered-join", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\ordered-10000-99-avl.csv", "--players", "10000", "--high-percent", "99"]
+avl ordered-join run 1/5 passed
+avl ordered-join run 2/5 passed
+avl ordered-join run 3/5 passed
+avl ordered-join run 4/5 passed
+avl ordered-join run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "ordered-join", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\ordered-10000-100-avl.csv", "--players", "10000", "--high-percent", "100"]
+avl ordered-join run 1/5 passed
+avl ordered-join run 2/5 passed
+avl ordered-join run 3/5 passed
+avl ordered-join run 4/5 passed
+avl ordered-join run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "ordered-join", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\ordered-100000-0-avl.csv", "--players", "100000", "--high-percent", "0"]
+avl ordered-join run 1/5 passed
+avl ordered-join run 2/5 passed
+avl ordered-join run 3/5 passed
+avl ordered-join run 4/5 passed
+avl ordered-join run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "ordered-join", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\ordered-100000-1-avl.csv", "--players", "100000", "--high-percent", "1"]
+avl ordered-join run 1/5 passed
+avl ordered-join run 2/5 passed
+avl ordered-join run 3/5 passed
+avl ordered-join run 4/5 passed
+avl ordered-join run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "ordered-join", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\ordered-100000-50-avl.csv", "--players", "100000", "--high-percent", "50"]
+avl ordered-join run 1/5 passed
+avl ordered-join run 2/5 passed
+avl ordered-join run 3/5 passed
+avl ordered-join run 4/5 passed
+avl ordered-join run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "ordered-join", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\ordered-100000-99-avl.csv", "--players", "100000", "--high-percent", "99"]
+avl ordered-join run 1/5 passed
+avl ordered-join run 2/5 passed
+avl ordered-join run 3/5 passed
+avl ordered-join run 4/5 passed
+avl ordered-join run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "ordered-join", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\ordered-100000-100-avl.csv", "--players", "100000", "--high-percent", "100"]
+avl ordered-join run 1/5 passed
+avl ordered-join run 2/5 passed
+avl ordered-join run 3/5 passed
+avl ordered-join run 4/5 passed
+avl ordered-join run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "ordered-join", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\ordered-1000000-0-avl.csv", "--players", "1000000", "--high-percent", "0"]
+avl ordered-join run 1/5 passed
+avl ordered-join run 2/5 passed
+avl ordered-join run 3/5 passed
+avl ordered-join run 4/5 passed
+avl ordered-join run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "ordered-join", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\ordered-1000000-1-avl.csv", "--players", "1000000", "--high-percent", "1"]
+avl ordered-join run 1/5 passed
+avl ordered-join run 2/5 passed
+avl ordered-join run 3/5 passed
+avl ordered-join run 4/5 passed
+avl ordered-join run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "ordered-join", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\ordered-1000000-50-avl.csv", "--players", "1000000", "--high-percent", "50"]
+avl ordered-join run 1/5 passed
+avl ordered-join run 2/5 passed
+avl ordered-join run 3/5 passed
+avl ordered-join run 4/5 passed
+avl ordered-join run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "ordered-join", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\ordered-1000000-99-avl.csv", "--players", "1000000", "--high-percent", "99"]
+avl ordered-join run 1/5 passed
+avl ordered-join run 2/5 passed
+avl ordered-join run 3/5 passed
+avl ordered-join run 4/5 passed
+avl ordered-join run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "ordered-join", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\ordered-1000000-100-avl.csv", "--players", "1000000", "--high-percent", "100"]
+avl ordered-join run 1/5 passed
+avl ordered-join run 2/5 passed
+avl ordered-join run 3/5 passed
+avl ordered-join run 4/5 passed
+avl ordered-join run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "counters", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\counters-1000-avl.csv", "--players", "1000", "--scores", "1000"]
+avl counters run 1/5 passed
+avl counters run 2/5 passed
+avl counters run 3/5 passed
+avl counters run 4/5 passed
+avl counters run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "counters", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\counters-10000-avl.csv", "--players", "10000", "--scores", "1000"]
+avl counters run 1/5 passed
+avl counters run 2/5 passed
+avl counters run 3/5 passed
+avl counters run 4/5 passed
+avl counters run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "counters", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\counters-100000-avl.csv", "--players", "100000", "--scores", "1000"]
+avl counters run 1/5 passed
+avl counters run 2/5 passed
+avl counters run 3/5 passed
+avl counters run 4/5 passed
+avl counters run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "counters", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\counters-1000000-avl.csv", "--players", "1000000", "--scores", "1000"]
+avl counters run 1/5 passed
+avl counters run 2/5 passed
+avl counters run 3/5 passed
+avl counters run 4/5 passed
+avl counters run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "fenwick", "--experiment", "counters", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\counters-1000-fenwick.csv", "--players", "1000", "--scores", "1000"]
+fenwick counters run 1/5 passed
+fenwick counters run 2/5 passed
+fenwick counters run 3/5 passed
+fenwick counters run 4/5 passed
+fenwick counters run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "fenwick", "--experiment", "counters", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\counters-10000-fenwick.csv", "--players", "10000", "--scores", "1000"]
+fenwick counters run 1/5 passed
+fenwick counters run 2/5 passed
+fenwick counters run 3/5 passed
+fenwick counters run 4/5 passed
+fenwick counters run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "fenwick", "--experiment", "counters", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\counters-100000-fenwick.csv", "--players", "100000", "--scores", "1000"]
+fenwick counters run 1/5 passed
+fenwick counters run 2/5 passed
+fenwick counters run 3/5 passed
+fenwick counters run 4/5 passed
+fenwick counters run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "fenwick", "--experiment", "counters", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\counters-1000000-fenwick.csv", "--players", "1000000", "--scores", "1000"]
+fenwick counters run 1/5 passed
+fenwick counters run 2/5 passed
+fenwick counters run 3/5 passed
+fenwick counters run 4/5 passed
+fenwick counters run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "trace", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\trace-0-avl.csv", "--trace", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\adversary-final\\ties.trace", "--check-trace", "0"]
+avl trace run 1/5 passed
+avl trace run 2/5 passed
+avl trace run 3/5 passed
+avl trace run 4/5 passed
+avl trace run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "fenwick", "--experiment", "trace", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\trace-0-fenwick.csv", "--trace", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\adversary-final\\ties.trace", "--check-trace", "0"]
+fenwick trace run 1/5 passed
+fenwick trace run 2/5 passed
+fenwick trace run 3/5 passed
+fenwick trace run 4/5 passed
+fenwick trace run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "trace", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\trace-1-avl.csv", "--trace", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\adversary-final\\wide.trace", "--check-trace", "0"]
+avl trace run 1/5 passed
+avl trace run 2/5 passed
+avl trace run 3/5 passed
+avl trace run 4/5 passed
+avl trace run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "fenwick", "--experiment", "trace", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\trace-1-fenwick.csv", "--trace", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\adversary-final\\wide.trace", "--check-trace", "0"]
+fenwick trace run 1/5 passed
+fenwick trace run 2/5 passed
+fenwick trace run 3/5 passed
+fenwick trace run 4/5 passed
+fenwick trace run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "trace", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\trace-2-avl.csv", "--trace", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\adversary-final\\nested_split.trace", "--check-trace", "0"]
+avl trace run 1/5 passed
+avl trace run 2/5 passed
+avl trace run 3/5 passed
+avl trace run 4/5 passed
+avl trace run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "fenwick", "--experiment", "trace", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\trace-2-fenwick.csv", "--trace", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\adversary-final\\nested_split.trace", "--check-trace", "0"]
+fenwick trace run 1/5 passed
+fenwick trace run 2/5 passed
+fenwick trace run 3/5 passed
+fenwick trace run 4/5 passed
+fenwick trace run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "trace", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\trace-3-avl.csv", "--trace", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\adversary-final\\rotations-253.trace", "--check-trace", "0"]
+avl trace run 1/5 passed
+avl trace run 2/5 passed
+avl trace run 3/5 passed
+avl trace run 4/5 passed
+avl trace run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "fenwick", "--experiment", "trace", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\trace-3-fenwick.csv", "--trace", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\adversary-final\\rotations-253.trace", "--check-trace", "0"]
+fenwick trace run 1/5 passed
+fenwick trace run 2/5 passed
+fenwick trace run 3/5 passed
+fenwick trace run 4/5 passed
+fenwick trace run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "trace", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\trace-4-avl.csv", "--trace", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\adversary-final\\cascade-253.trace", "--check-trace", "0"]
+avl trace run 1/5 passed
+avl trace run 2/5 passed
+avl trace run 3/5 passed
+avl trace run 4/5 passed
+avl trace run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "fenwick", "--experiment", "trace", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\trace-4-fenwick.csv", "--trace", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\adversary-final\\cascade-253.trace", "--check-trace", "0"]
+fenwick trace run 1/5 passed
+fenwick trace run 2/5 passed
+fenwick trace run 3/5 passed
+fenwick trace run 4/5 passed
+fenwick trace run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "trace", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\trace-5-avl.csv", "--trace", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\adversary-final\\ascending-253.trace", "--check-trace", "0"]
+avl trace run 1/5 passed
+avl trace run 2/5 passed
+avl trace run 3/5 passed
+avl trace run 4/5 passed
+avl trace run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "fenwick", "--experiment", "trace", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\trace-5-fenwick.csv", "--trace", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\adversary-final\\ascending-253.trace", "--check-trace", "0"]
+fenwick trace run 1/5 passed
+fenwick trace run 2/5 passed
+fenwick trace run 3/5 passed
+fenwick trace run 4/5 passed
+fenwick trace run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "trace", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\trace-6-avl.csv", "--trace", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\adversary-final\\descending-253.trace", "--check-trace", "0"]
+avl trace run 1/5 passed
+avl trace run 2/5 passed
+avl trace run 3/5 passed
+avl trace run 4/5 passed
+avl trace run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "fenwick", "--experiment", "trace", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\trace-6-fenwick.csv", "--trace", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\adversary-final\\descending-253.trace", "--check-trace", "0"]
+fenwick trace run 1/5 passed
+fenwick trace run 2/5 passed
+fenwick trace run 3/5 passed
+fenwick trace run 4/5 passed
+fenwick trace run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "trace", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\trace-7-avl.csv", "--trace", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\adversary-final\\ties-253.trace", "--check-trace", "0"]
+avl trace run 1/5 passed
+avl trace run 2/5 passed
+avl trace run 3/5 passed
+avl trace run 4/5 passed
+avl trace run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "fenwick", "--experiment", "trace", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\trace-7-fenwick.csv", "--trace", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\adversary-final\\ties-253.trace", "--check-trace", "0"]
+fenwick trace run 1/5 passed
+fenwick trace run 2/5 passed
+fenwick trace run 3/5 passed
+fenwick trace run 4/5 passed
+fenwick trace run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "trace", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\trace-8-avl.csv", "--trace", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\adversary-final\\churn-253.trace", "--check-trace", "0"]
+avl trace run 1/5 passed
+avl trace run 2/5 passed
+avl trace run 3/5 passed
+avl trace run 4/5 passed
+avl trace run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "fenwick", "--experiment", "trace", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\trace-8-fenwick.csv", "--trace", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\adversary-final\\churn-253.trace", "--check-trace", "0"]
+fenwick trace run 1/5 passed
+fenwick trace run 2/5 passed
+fenwick trace run 3/5 passed
+fenwick trace run 4/5 passed
+fenwick trace run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "trace", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\trace-9-avl.csv", "--trace", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\adversary-final\\extremes-253.trace", "--check-trace", "0"]
+avl trace run 1/5 passed
+avl trace run 2/5 passed
+avl trace run 3/5 passed
+avl trace run 4/5 passed
+avl trace run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "fenwick", "--experiment", "trace", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\trace-9-fenwick.csv", "--trace", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\adversary-final\\extremes-253.trace", "--check-trace", "0"]
+fenwick trace run 1/5 passed
+fenwick trace run 2/5 passed
+fenwick trace run 3/5 passed
+fenwick trace run 4/5 passed
+fenwick trace run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "trace", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\trace-10-avl.csv", "--trace", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\adversary-final\\seasons-253.trace", "--check-trace", "0"]
+avl trace run 1/5 passed
+avl trace run 2/5 passed
+avl trace run 3/5 passed
+avl trace run 4/5 passed
+avl trace run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "fenwick", "--experiment", "trace", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\trace-10-fenwick.csv", "--trace", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\adversary-final\\seasons-253.trace", "--check-trace", "0"]
+fenwick trace run 1/5 passed
+fenwick trace run 2/5 passed
+fenwick trace run 3/5 passed
+fenwick trace run 4/5 passed
+fenwick trace run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "trace", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\trace-11-avl.csv", "--trace", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\adversary-final\\unequal-253.trace", "--check-trace", "0"]
+avl trace run 1/5 passed
+avl trace run 2/5 passed
+avl trace run 3/5 passed
+avl trace run 4/5 passed
+avl trace run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "fenwick", "--experiment", "trace", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\trace-11-fenwick.csv", "--trace", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\adversary-final\\unequal-253.trace", "--check-trace", "0"]
+fenwick trace run 1/5 passed
+fenwick trace run 2/5 passed
+fenwick trace run 3/5 passed
+fenwick trace run 4/5 passed
+fenwick trace run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "trace", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\trace-12-avl.csv", "--trace", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\adversary-final\\errors-253.trace", "--check-trace", "0"]
+avl trace run 1/5 passed
+avl trace run 2/5 passed
+avl trace run 3/5 passed
+avl trace run 4/5 passed
+avl trace run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "fenwick", "--experiment", "trace", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\trace-12-fenwick.csv", "--trace", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\adversary-final\\errors-253.trace", "--check-trace", "0"]
+fenwick trace run 1/5 passed
+fenwick trace run 2/5 passed
+fenwick trace run 3/5 passed
+fenwick trace run 4/5 passed
+fenwick trace run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "trace", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\trace-13-avl.csv", "--trace", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\adversary-final\\mixed-253.trace", "--check-trace", "0"]
+avl trace run 1/5 passed
+avl trace run 2/5 passed
+avl trace run 3/5 passed
+avl trace run 4/5 passed
+avl trace run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "fenwick", "--experiment", "trace", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\trace-13-fenwick.csv", "--trace", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\adversary-final\\mixed-253.trace", "--check-trace", "0"]
+fenwick trace run 1/5 passed
+fenwick trace run 2/5 passed
+fenwick trace run 3/5 passed
+fenwick trace run 4/5 passed
+fenwick trace run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "trace", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\trace-14-avl.csv", "--trace", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\adversary-final\\mixed-42.trace", "--check-trace", "0"]
+avl trace run 1/5 passed
+avl trace run 2/5 passed
+avl trace run 3/5 passed
+avl trace run 4/5 passed
+avl trace run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "fenwick", "--experiment", "trace", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\trace-14-fenwick.csv", "--trace", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\adversary-final\\mixed-42.trace", "--check-trace", "0"]
+fenwick trace run 1/5 passed
+fenwick trace run 2/5 passed
+fenwick trace run 3/5 passed
+fenwick trace run 4/5 passed
+fenwick trace run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "trace", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\trace-15-avl.csv", "--trace", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\adversary-final\\mixed-20261115.trace", "--check-trace", "0"]
+avl trace run 1/5 passed
+avl trace run 2/5 passed
+avl trace run 3/5 passed
+avl trace run 4/5 passed
+avl trace run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "fenwick", "--experiment", "trace", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\trace-15-fenwick.csv", "--trace", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\adversary-final\\mixed-20261115.trace", "--check-trace", "0"]
+fenwick trace run 1/5 passed
+fenwick trace run 2/5 passed
+fenwick trace run 3/5 passed
+fenwick trace run 4/5 passed
+fenwick trace run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "avl", "--experiment", "trace", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\trace-16-avl.csv", "--trace", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\adversary-final\\scale-million.trace", "--check-trace", "0"]
+avl trace run 1/5 passed
+avl trace run 2/5 passed
+avl trace run 3/5 passed
+avl trace run 4/5 passed
+avl trace run 5/5 passed
+
+["C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\runner.exe", "--backend", "fenwick", "--experiment", "trace", "--seed", "253", "--runs", "5", "--output", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\results\\full-20261117-final\\raw\\trace-16-fenwick.csv", "--trace", "C:\\Users\\Sumit\\OneDrive\\Desktop\\dsa_project\\DSA_PROJECT\\build\\bench\\adversary-final\\scale-million.trace", "--check-trace", "0"]
+fenwick trace run 1/5 passed
+fenwick trace run 2/5 passed
+fenwick trace run 3/5 passed
+fenwick trace run 4/5 passed
+fenwick trace run 5/5 passed

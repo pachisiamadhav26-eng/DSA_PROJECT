@@ -1,0 +1,1103 @@
+{
+  "source_run": "results/full-20261117-final",
+  "source_metadata_sha256": "ff4fb2505e0151e2303dd838cc85c6f1a325fd43b4e766163ee89baefeb7f7f3",
+  "plot_script_sha256": "3f7b0efc1c58de270e825c0aa05167eeeae5c4853203dd52685a53a4f73f151b",
+  "export_script_sha256": "bc89839a9dbfeadd23a878d2b7262ca252d07a955280b03d4c75f7eba65e683c",
+  "files": [
+    {
+      "path": "results/raw/counters-1000-avl.csv",
+      "source": "results/full-20261117-final/raw/counters-1000-avl.csv",
+      "sha256": "f225278feda021aca0162fc20a69ac6ccda260e0fb4234786cde6acee19cc3f6"
+    },
+    {
+      "path": "results/raw/counters-1000-fenwick.csv",
+      "source": "results/full-20261117-final/raw/counters-1000-fenwick.csv",
+      "sha256": "6c634fb2a5ccc8d48c44365287396d635b3fad8d8d07639e47d0ef0ca77e9e9c"
+    },
+    {
+      "path": "results/raw/counters-10000-avl.csv",
+      "source": "results/full-20261117-final/raw/counters-10000-avl.csv",
+      "sha256": "4782e3c6e19535a2ac896f3e1e3e8cefedd18b178330fec7b6bbe5bdaf8e8a8e"
+    },
+    {
+      "path": "results/raw/counters-10000-fenwick.csv",
+      "source": "results/full-20261117-final/raw/counters-10000-fenwick.csv",
+      "sha256": "e306ed89872d71cb6556be1d43b90d0d55339f6819db71fec7fef3e97407240c"
+    },
+    {
+      "path": "results/raw/counters-100000-avl.csv",
+      "source": "results/full-20261117-final/raw/counters-100000-avl.csv",
+      "sha256": "bb93831a05d566b583c15fe5cf57aeb9dd78505b2ccfa25bd9fbaf561f696cb6"
+    },
+    {
+      "path": "results/raw/counters-100000-fenwick.csv",
+      "source": "results/full-20261117-final/raw/counters-100000-fenwick.csv",
+      "sha256": "5ccf0cf9ce43b09afeba8e738a32d4ad69930d22489b707a28882373cd31b3e9"
+    },
+    {
+      "path": "results/raw/counters-1000000-avl.csv",
+      "source": "results/full-20261117-final/raw/counters-1000000-avl.csv",
+      "sha256": "6f17b9b6c9669d6b8638d7f3d88b196286e65c58cc3bd98acbb38e4bbc84ed64"
+    },
+    {
+      "path": "results/raw/counters-1000000-fenwick.csv",
+      "source": "results/full-20261117-final/raw/counters-1000000-fenwick.csv",
+      "sha256": "bc2240b40aafb34c6fb76c63fcb4cf02c58f7b7ef751f7dea4772c1b5cbf9efe"
+    },
+    {
+      "path": "results/raw/ordered-1000-0-avl.csv",
+      "source": "results/full-20261117-final/raw/ordered-1000-0-avl.csv",
+      "sha256": "81e90199e819b84872ab430564e5776676ff95d3363a84a2b87ff673488d7afe"
+    },
+    {
+      "path": "results/raw/ordered-1000-1-avl.csv",
+      "source": "results/full-20261117-final/raw/ordered-1000-1-avl.csv",
+      "sha256": "983f9c6ef8e146140ae9102f98a0df3f118d71aa7a330e6d666ab6dfceadb0d0"
+    },
+    {
+      "path": "results/raw/ordered-1000-100-avl.csv",
+      "source": "results/full-20261117-final/raw/ordered-1000-100-avl.csv",
+      "sha256": "46c07ef6baf754910e5ca26a03fc48fceb8bb34e6610a5ab79e0af415e7dd918"
+    },
+    {
+      "path": "results/raw/ordered-1000-50-avl.csv",
+      "source": "results/full-20261117-final/raw/ordered-1000-50-avl.csv",
+      "sha256": "84d29771c910a52cafbb18fa3c523755dd05fc09580a45b98887cf1d87663829"
+    },
+    {
+      "path": "results/raw/ordered-1000-99-avl.csv",
+      "source": "results/full-20261117-final/raw/ordered-1000-99-avl.csv",
+      "sha256": "b724f34b8e16403b880b128abe5719cfd67be775ced54cd50fae51e4dc2414e5"
+    },
+    {
+      "path": "results/raw/ordered-10000-0-avl.csv",
+      "source": "results/full-20261117-final/raw/ordered-10000-0-avl.csv",
+      "sha256": "201ade70ce3ddc183c5a3402de5b4fccf2c27cb53a25966ee7237383e9788c19"
+    },
+    {
+      "path": "results/raw/ordered-10000-1-avl.csv",
+      "source": "results/full-20261117-final/raw/ordered-10000-1-avl.csv",
+      "sha256": "1814d50500b6d96f437687b5639fc4fe5872a917474366609a1062dc8a5a81d7"
+    },
+    {
+      "path": "results/raw/ordered-10000-100-avl.csv",
+      "source": "results/full-20261117-final/raw/ordered-10000-100-avl.csv",
+      "sha256": "a70884088dbd10c9fe2d7ff4ec67d83604b36c53838033c63f34594e9cce3764"
+    },
+    {
+      "path": "results/raw/ordered-10000-50-avl.csv",
+      "source": "results/full-20261117-final/raw/ordered-10000-50-avl.csv",
+      "sha256": "5fc2268104c234231955516dc4c5e15159936d3f408e6dc29e0c33fb5b1ad71c"
+    },
+    {
+      "path": "results/raw/ordered-10000-99-avl.csv",
+      "source": "results/full-20261117-final/raw/ordered-10000-99-avl.csv",
+      "sha256": "8c0fa8b7c55f2f73d036620a3cffe91b064b30a629324999762f49a2c18860d4"
+    },
+    {
+      "path": "results/raw/ordered-100000-0-avl.csv",
+      "source": "results/full-20261117-final/raw/ordered-100000-0-avl.csv",
+      "sha256": "3de001c6df9579db3d57b53125912c5be42f04066d06ef3e7c4b62316d1062c6"
+    },
+    {
+      "path": "results/raw/ordered-100000-1-avl.csv",
+      "source": "results/full-20261117-final/raw/ordered-100000-1-avl.csv",
+      "sha256": "7937efdf71fb5b25ec07d83cad86d94dced2f76a72898be4077616fb0154dcbf"
+    },
+    {
+      "path": "results/raw/ordered-100000-100-avl.csv",
+      "source": "results/full-20261117-final/raw/ordered-100000-100-avl.csv",
+      "sha256": "a878be3f423a649df5771014cd0e1c2df3b9004ffef79548706013da257fbae4"
+    },
+    {
+      "path": "results/raw/ordered-100000-50-avl.csv",
+      "source": "results/full-20261117-final/raw/ordered-100000-50-avl.csv",
+      "sha256": "f98a10603f9131885410c1230f7f7fbbfafa02a88911484ed48ce41257b75481"
+    },
+    {
+      "path": "results/raw/ordered-100000-99-avl.csv",
+      "source": "results/full-20261117-final/raw/ordered-100000-99-avl.csv",
+      "sha256": "248058bacdadb76594818cd2d66366d09d15e63c07b909173a49bfd138a432f8"
+    },
+    {
+      "path": "results/raw/ordered-1000000-0-avl.csv",
+      "source": "results/full-20261117-final/raw/ordered-1000000-0-avl.csv",
+      "sha256": "1ca9294dd0df4ce564251990665dfee1a423412818b911cb4e1d27dfb7bda5e9"
+    },
+    {
+      "path": "results/raw/ordered-1000000-1-avl.csv",
+      "source": "results/full-20261117-final/raw/ordered-1000000-1-avl.csv",
+      "sha256": "c3baffb3db4ef37431da00f3a2157210e55037b5833d772a890693bb095e501a"
+    },
+    {
+      "path": "results/raw/ordered-1000000-100-avl.csv",
+      "source": "results/full-20261117-final/raw/ordered-1000000-100-avl.csv",
+      "sha256": "47ac2b02911fa22cca30d393fe2506d1a873ad10c5882543036073cfc830cca0"
+    },
+    {
+      "path": "results/raw/ordered-1000000-50-avl.csv",
+      "source": "results/full-20261117-final/raw/ordered-1000000-50-avl.csv",
+      "sha256": "00d96cc82cfbdbc3527a8a49851e06353837f24eb17cded21014909c3ee0334f"
+    },
+    {
+      "path": "results/raw/ordered-1000000-99-avl.csv",
+      "source": "results/full-20261117-final/raw/ordered-1000000-99-avl.csv",
+      "sha256": "0beec8b17ef8768c53fc4c4e03c8d14c91d34b16b66d4f3413966eaa076cfda1"
+    },
+    {
+      "path": "results/raw/players-1000-queries-avl.csv",
+      "source": "results/full-20261117-final/raw/players-1000-queries-avl.csv",
+      "sha256": "44d5c2794d378cc04289ba30c3575ce3a136c0ee119f8fd4a7c1d786949bda3b"
+    },
+    {
+      "path": "results/raw/players-1000-queries-fenwick.csv",
+      "source": "results/full-20261117-final/raw/players-1000-queries-fenwick.csv",
+      "sha256": "1e41733255f5f422887edf64a62897711859469c6e97dd9357bda6f8f01dce70"
+    },
+    {
+      "path": "results/raw/players-1000-seasons-0-avl.csv",
+      "source": "results/full-20261117-final/raw/players-1000-seasons-0-avl.csv",
+      "sha256": "ac980b5e0c57e11c11afa1bdf3d720b93fa61dae777d7342804a5ae20b665064"
+    },
+    {
+      "path": "results/raw/players-1000-seasons-0-fenwick.csv",
+      "source": "results/full-20261117-final/raw/players-1000-seasons-0-fenwick.csv",
+      "sha256": "9470f4711a2c2775cdc7d6a6bbbb21bebe292100f2db8c307b7a1d2877ec95d9"
+    },
+    {
+      "path": "results/raw/players-1000-seasons-1-avl.csv",
+      "source": "results/full-20261117-final/raw/players-1000-seasons-1-avl.csv",
+      "sha256": "1800d7c813378bbbb8ce7cfba221bee6afaab393c5f5603178376d9cf2e03984"
+    },
+    {
+      "path": "results/raw/players-1000-seasons-1-fenwick.csv",
+      "source": "results/full-20261117-final/raw/players-1000-seasons-1-fenwick.csv",
+      "sha256": "f94653aa24fc6c5862b0cddfab5e1ba1d620162591985998b7f4d4d69a103e30"
+    },
+    {
+      "path": "results/raw/players-1000-seasons-100-avl.csv",
+      "source": "results/full-20261117-final/raw/players-1000-seasons-100-avl.csv",
+      "sha256": "dc175fef0a47e9e08ec780b5acedfd7a733a85c4e2576a7cc1ce9d9c59d3998c"
+    },
+    {
+      "path": "results/raw/players-1000-seasons-100-fenwick.csv",
+      "source": "results/full-20261117-final/raw/players-1000-seasons-100-fenwick.csv",
+      "sha256": "37ae748feac3107d508ef24932a364d100b525ddc1ec3987e69272757b71f72a"
+    },
+    {
+      "path": "results/raw/players-1000-seasons-50-avl.csv",
+      "source": "results/full-20261117-final/raw/players-1000-seasons-50-avl.csv",
+      "sha256": "ad0101fa2aa18546be5af4e8d8f7986f7cd6f3c2f233c211fff6d7c4e3a920bf"
+    },
+    {
+      "path": "results/raw/players-1000-seasons-50-fenwick.csv",
+      "source": "results/full-20261117-final/raw/players-1000-seasons-50-fenwick.csv",
+      "sha256": "80014e59080162f8fe440782f8c47f4c8ac851545a280ac44470d8026a176414"
+    },
+    {
+      "path": "results/raw/players-1000-seasons-99-avl.csv",
+      "source": "results/full-20261117-final/raw/players-1000-seasons-99-avl.csv",
+      "sha256": "08fa964b46da69c5c9661ff32b8e1def45d7c2c3bdb92e2f5aca6a68c31f5c83"
+    },
+    {
+      "path": "results/raw/players-1000-seasons-99-fenwick.csv",
+      "source": "results/full-20261117-final/raw/players-1000-seasons-99-fenwick.csv",
+      "sha256": "1d1a3bdc29a339412dd615dcd08b34be1857df1aa18dd342f471f573339f871a"
+    },
+    {
+      "path": "results/raw/players-10000-queries-avl.csv",
+      "source": "results/full-20261117-final/raw/players-10000-queries-avl.csv",
+      "sha256": "3ac2a8244c603015374bd0c0e4cb1109486bf4070ca5ac7dcf1e4b8b142cd967"
+    },
+    {
+      "path": "results/raw/players-10000-queries-fenwick.csv",
+      "source": "results/full-20261117-final/raw/players-10000-queries-fenwick.csv",
+      "sha256": "7ba204a7a27d9d1f56cc9a1b9e3459361aa48feca6fceff2a1937214b52e4a17"
+    },
+    {
+      "path": "results/raw/players-10000-seasons-0-avl.csv",
+      "source": "results/full-20261117-final/raw/players-10000-seasons-0-avl.csv",
+      "sha256": "ec09252067bff035f8d48f210710c4f8857308588fdfbe2b926e6484eca09c7c"
+    },
+    {
+      "path": "results/raw/players-10000-seasons-0-fenwick.csv",
+      "source": "results/full-20261117-final/raw/players-10000-seasons-0-fenwick.csv",
+      "sha256": "0d52a3c357c460302730b28eaeca274a0e35258129b30b2f282ce406eeb754ff"
+    },
+    {
+      "path": "results/raw/players-10000-seasons-1-avl.csv",
+      "source": "results/full-20261117-final/raw/players-10000-seasons-1-avl.csv",
+      "sha256": "fa790afbcb5436aa840547e2fd1b0f08316d93d94b1ead89d96ff202ca387a6f"
+    },
+    {
+      "path": "results/raw/players-10000-seasons-1-fenwick.csv",
+      "source": "results/full-20261117-final/raw/players-10000-seasons-1-fenwick.csv",
+      "sha256": "af45a215750b4d9ece26af6fee0896c9f64200c43624cf728152aaaca6ec154b"
+    },
+    {
+      "path": "results/raw/players-10000-seasons-100-avl.csv",
+      "source": "results/full-20261117-final/raw/players-10000-seasons-100-avl.csv",
+      "sha256": "4cd3b3d83f0ffa36c93508713506734f964da2e9a2dfa1812ea84d4b04bed40b"
+    },
+    {
+      "path": "results/raw/players-10000-seasons-100-fenwick.csv",
+      "source": "results/full-20261117-final/raw/players-10000-seasons-100-fenwick.csv",
+      "sha256": "b1b2d3a6151740ec6458e1e49d164e62589a67059857eaca0272059d5ef22946"
+    },
+    {
+      "path": "results/raw/players-10000-seasons-50-avl.csv",
+      "source": "results/full-20261117-final/raw/players-10000-seasons-50-avl.csv",
+      "sha256": "3ec5f2577c066390849ce16cf5b406a9a119b145ee0ccde03f0b75dc8932af5b"
+    },
+    {
+      "path": "results/raw/players-10000-seasons-50-fenwick.csv",
+      "source": "results/full-20261117-final/raw/players-10000-seasons-50-fenwick.csv",
+      "sha256": "89c9b6dc728b078021b5921ed65d66672ba89a4bb0eec900beed5660cd046d78"
+    },
+    {
+      "path": "results/raw/players-10000-seasons-99-avl.csv",
+      "source": "results/full-20261117-final/raw/players-10000-seasons-99-avl.csv",
+      "sha256": "8e47b4c5efe59f6fe2cc28782e0496610df7fa080b9fa870aae083fe1faa213f"
+    },
+    {
+      "path": "results/raw/players-10000-seasons-99-fenwick.csv",
+      "source": "results/full-20261117-final/raw/players-10000-seasons-99-fenwick.csv",
+      "sha256": "387288b3c28c239780c1b06b9947c6ac558ddb9d401b46d4a337008972cb41d3"
+    },
+    {
+      "path": "results/raw/players-100000-queries-avl.csv",
+      "source": "results/full-20261117-final/raw/players-100000-queries-avl.csv",
+      "sha256": "62a39e8f29a6a478f124b1358b4dc729689d08ae55bf196795ab44f9baacb4d5"
+    },
+    {
+      "path": "results/raw/players-100000-queries-fenwick.csv",
+      "source": "results/full-20261117-final/raw/players-100000-queries-fenwick.csv",
+      "sha256": "fca0c71f1e2000ef25937e3b76738d7d004f58e3a4c690ba177a398019b8da5d"
+    },
+    {
+      "path": "results/raw/players-100000-seasons-0-avl.csv",
+      "source": "results/full-20261117-final/raw/players-100000-seasons-0-avl.csv",
+      "sha256": "4f54df705e7da8cb11e8e646dddd1f0d5943b6979c934aeb853c70cd593bd062"
+    },
+    {
+      "path": "results/raw/players-100000-seasons-0-fenwick.csv",
+      "source": "results/full-20261117-final/raw/players-100000-seasons-0-fenwick.csv",
+      "sha256": "d08fe3dbb97ce03ed416bb21c8e279b4c2e10bc468cffa88f9f09d50d272c49d"
+    },
+    {
+      "path": "results/raw/players-100000-seasons-1-avl.csv",
+      "source": "results/full-20261117-final/raw/players-100000-seasons-1-avl.csv",
+      "sha256": "a61763ca935740521562416c3c5018012d2f44fa2757046f79d4262ea917dc98"
+    },
+    {
+      "path": "results/raw/players-100000-seasons-1-fenwick.csv",
+      "source": "results/full-20261117-final/raw/players-100000-seasons-1-fenwick.csv",
+      "sha256": "c9b89f3408418871c9e68da06ce5fd8480ff331764e63e919493b9e5679fb965"
+    },
+    {
+      "path": "results/raw/players-100000-seasons-100-avl.csv",
+      "source": "results/full-20261117-final/raw/players-100000-seasons-100-avl.csv",
+      "sha256": "688bd9d71797c91130b316313c3108263e6fe44aa9e2fc30752696ec99373efa"
+    },
+    {
+      "path": "results/raw/players-100000-seasons-100-fenwick.csv",
+      "source": "results/full-20261117-final/raw/players-100000-seasons-100-fenwick.csv",
+      "sha256": "1d8bddd4bc8c338e1afae520f8f426bdbc491c4f021161840b51414bf67dc0d7"
+    },
+    {
+      "path": "results/raw/players-100000-seasons-50-avl.csv",
+      "source": "results/full-20261117-final/raw/players-100000-seasons-50-avl.csv",
+      "sha256": "42ecb62f1e1bf1c09ed8bb8af04ffea66e56fc742108ea3cd4ed9df2e951594c"
+    },
+    {
+      "path": "results/raw/players-100000-seasons-50-fenwick.csv",
+      "source": "results/full-20261117-final/raw/players-100000-seasons-50-fenwick.csv",
+      "sha256": "be48d39a535d6ef78d72d6f027a81762fd0e49822f4b5b86b573c968f3258768"
+    },
+    {
+      "path": "results/raw/players-100000-seasons-99-avl.csv",
+      "source": "results/full-20261117-final/raw/players-100000-seasons-99-avl.csv",
+      "sha256": "47e31f3a8738182316bc1b3eb2fc9daba3e980a613ef77777c91f35e0bacaa28"
+    },
+    {
+      "path": "results/raw/players-100000-seasons-99-fenwick.csv",
+      "source": "results/full-20261117-final/raw/players-100000-seasons-99-fenwick.csv",
+      "sha256": "a51faf80c653c65f1019fddce26e6e79aad130d4fb40858b4d101fa613de2752"
+    },
+    {
+      "path": "results/raw/players-1000000-queries-avl.csv",
+      "source": "results/full-20261117-final/raw/players-1000000-queries-avl.csv",
+      "sha256": "de476f04e4ea01e7c84604eeb5250d48c7d111be9e03fb43d0773fc3ba30f46a"
+    },
+    {
+      "path": "results/raw/players-1000000-queries-fenwick.csv",
+      "source": "results/full-20261117-final/raw/players-1000000-queries-fenwick.csv",
+      "sha256": "bc30bad2cf45ba8d6c47e036ca4b162355c43ac5a9750de3cd232bc59f1788b3"
+    },
+    {
+      "path": "results/raw/players-1000000-seasons-0-avl.csv",
+      "source": "results/full-20261117-final/raw/players-1000000-seasons-0-avl.csv",
+      "sha256": "417aa7c3aa938b81df5d1a38659824e891c6f75e3038a7f193bfbb05e6c62057"
+    },
+    {
+      "path": "results/raw/players-1000000-seasons-0-fenwick.csv",
+      "source": "results/full-20261117-final/raw/players-1000000-seasons-0-fenwick.csv",
+      "sha256": "fca9306df7ab7ca7241f57f79f9bcbec953f606bcd1ecada86983e8dc8b00231"
+    },
+    {
+      "path": "results/raw/players-1000000-seasons-1-avl.csv",
+      "source": "results/full-20261117-final/raw/players-1000000-seasons-1-avl.csv",
+      "sha256": "5f1b2bce1615236c2420233c2069fa410fd40c3679ede2c999bcc991686a5b68"
+    },
+    {
+      "path": "results/raw/players-1000000-seasons-1-fenwick.csv",
+      "source": "results/full-20261117-final/raw/players-1000000-seasons-1-fenwick.csv",
+      "sha256": "efb02790c8e78efc3c1ab609a8ae3ac918bba9bf5baff75bac3eb2be4a2556f8"
+    },
+    {
+      "path": "results/raw/players-1000000-seasons-100-avl.csv",
+      "source": "results/full-20261117-final/raw/players-1000000-seasons-100-avl.csv",
+      "sha256": "6eff8df42c926bdff087ecdd4a63d12223665bace8e593aebbe1d02df9445161"
+    },
+    {
+      "path": "results/raw/players-1000000-seasons-100-fenwick.csv",
+      "source": "results/full-20261117-final/raw/players-1000000-seasons-100-fenwick.csv",
+      "sha256": "54c5c07c725406490157f872cf729cf2fadff581dc784b901038d250b09c07ae"
+    },
+    {
+      "path": "results/raw/players-1000000-seasons-50-avl.csv",
+      "source": "results/full-20261117-final/raw/players-1000000-seasons-50-avl.csv",
+      "sha256": "a76d78ed74e2e89dd51d4fc85370fe637e9450ff5ee9508ca17fc0921fb71a56"
+    },
+    {
+      "path": "results/raw/players-1000000-seasons-50-fenwick.csv",
+      "source": "results/full-20261117-final/raw/players-1000000-seasons-50-fenwick.csv",
+      "sha256": "ba67f3665022088a59b40649160612910bcfae53e556dab8f1c44339917e8b21"
+    },
+    {
+      "path": "results/raw/players-1000000-seasons-99-avl.csv",
+      "source": "results/full-20261117-final/raw/players-1000000-seasons-99-avl.csv",
+      "sha256": "34944f519f7f434837f122e90d4bd4d5d69d621e1555f848cdce921757478bb2"
+    },
+    {
+      "path": "results/raw/players-1000000-seasons-99-fenwick.csv",
+      "source": "results/full-20261117-final/raw/players-1000000-seasons-99-fenwick.csv",
+      "sha256": "d6873c5d674cf249e54f83feead9cd3d8560c7a19dc7c96f7bed8102656af68e"
+    },
+    {
+      "path": "results/raw/ties-1000-queries-avl.csv",
+      "source": "results/full-20261117-final/raw/ties-1000-queries-avl.csv",
+      "sha256": "afbc8135d17759d5d7755719d85f5f55d8097d308542a3250cc87c8946646c3c"
+    },
+    {
+      "path": "results/raw/ties-1000-queries-fenwick.csv",
+      "source": "results/full-20261117-final/raw/ties-1000-queries-fenwick.csv",
+      "sha256": "d6bc9c5b76b5bb3f494b728e64528ce472d0468827283ad231147936b6f93865"
+    },
+    {
+      "path": "results/raw/ties-1000-seasons-0-avl.csv",
+      "source": "results/full-20261117-final/raw/ties-1000-seasons-0-avl.csv",
+      "sha256": "d3e892fb7a4df0a0058956f02da9125e47896c14b88d5f7d95afdeeb6e62b7e1"
+    },
+    {
+      "path": "results/raw/ties-1000-seasons-0-fenwick.csv",
+      "source": "results/full-20261117-final/raw/ties-1000-seasons-0-fenwick.csv",
+      "sha256": "27049dc3787d67c0d29776e53a86cfbbf5eb0c1e46bb34dbd1aaac7449691ecb"
+    },
+    {
+      "path": "results/raw/ties-1000-seasons-1-avl.csv",
+      "source": "results/full-20261117-final/raw/ties-1000-seasons-1-avl.csv",
+      "sha256": "717b1274e3b4787f1eb0b1ec89a5a5ce714ef44c3206f3b8feb3235032a3aea2"
+    },
+    {
+      "path": "results/raw/ties-1000-seasons-1-fenwick.csv",
+      "source": "results/full-20261117-final/raw/ties-1000-seasons-1-fenwick.csv",
+      "sha256": "b052f552108a7b7c7ddb4da8919a98d5c490d9c5785bc081635af63b8d049c9c"
+    },
+    {
+      "path": "results/raw/ties-1000-seasons-100-avl.csv",
+      "source": "results/full-20261117-final/raw/ties-1000-seasons-100-avl.csv",
+      "sha256": "5415e089ddae6fc79fe408bdd3a2afa8617a57a2f24a6e56c3ff4a98383e5e3a"
+    },
+    {
+      "path": "results/raw/ties-1000-seasons-100-fenwick.csv",
+      "source": "results/full-20261117-final/raw/ties-1000-seasons-100-fenwick.csv",
+      "sha256": "afac02b6582cda861abcb21e4f7a3cb814eccd667207b9787156113722c28965"
+    },
+    {
+      "path": "results/raw/ties-1000-seasons-50-avl.csv",
+      "source": "results/full-20261117-final/raw/ties-1000-seasons-50-avl.csv",
+      "sha256": "d584a93323f262b27197284914ab545572d60d7cbaade606d282e7f786d06e59"
+    },
+    {
+      "path": "results/raw/ties-1000-seasons-50-fenwick.csv",
+      "source": "results/full-20261117-final/raw/ties-1000-seasons-50-fenwick.csv",
+      "sha256": "5bd7fa4820c2ec0d8a1282f9dbd0e1b1ff19e50123b5c169c35a0f7a2317bcb9"
+    },
+    {
+      "path": "results/raw/ties-1000-seasons-99-avl.csv",
+      "source": "results/full-20261117-final/raw/ties-1000-seasons-99-avl.csv",
+      "sha256": "c834385d22af25939781bfab7683d553c686628207274a529680d79201bb8c31"
+    },
+    {
+      "path": "results/raw/ties-1000-seasons-99-fenwick.csv",
+      "source": "results/full-20261117-final/raw/ties-1000-seasons-99-fenwick.csv",
+      "sha256": "d31e286a3384681ef44eb5a20d160faf068af714670f18b95b963ef3656228d5"
+    },
+    {
+      "path": "results/raw/ties-10000-queries-avl.csv",
+      "source": "results/full-20261117-final/raw/ties-10000-queries-avl.csv",
+      "sha256": "32b48ebef0ecc6cc52ce56af27ad1b7dc3b9f5a65300fc06fc85e21c990c74cf"
+    },
+    {
+      "path": "results/raw/ties-10000-queries-fenwick.csv",
+      "source": "results/full-20261117-final/raw/ties-10000-queries-fenwick.csv",
+      "sha256": "1098a5e9c632f887821b9e2c020ba0eb6279c52143b65a160114dfb91a364ba3"
+    },
+    {
+      "path": "results/raw/ties-10000-seasons-0-avl.csv",
+      "source": "results/full-20261117-final/raw/ties-10000-seasons-0-avl.csv",
+      "sha256": "f4c3067092da3196c2656a60cb283f936f0360ceee95f724f7610e1018ca4541"
+    },
+    {
+      "path": "results/raw/ties-10000-seasons-0-fenwick.csv",
+      "source": "results/full-20261117-final/raw/ties-10000-seasons-0-fenwick.csv",
+      "sha256": "0fd6f180a25dfc2cbe65145597cd40502c98fd6ff21b6aadb99f535faf653c2e"
+    },
+    {
+      "path": "results/raw/ties-10000-seasons-1-avl.csv",
+      "source": "results/full-20261117-final/raw/ties-10000-seasons-1-avl.csv",
+      "sha256": "ef8b320608a24d71021f649367d522af6ac95a7c2f4895dda73c5c4596419e29"
+    },
+    {
+      "path": "results/raw/ties-10000-seasons-1-fenwick.csv",
+      "source": "results/full-20261117-final/raw/ties-10000-seasons-1-fenwick.csv",
+      "sha256": "1da588431f35f4bafbd540702ae7a3579e278083cf0beed918a2145e17bafeaa"
+    },
+    {
+      "path": "results/raw/ties-10000-seasons-100-avl.csv",
+      "source": "results/full-20261117-final/raw/ties-10000-seasons-100-avl.csv",
+      "sha256": "3559cb06ccfc276964d915157f3bbd89d83eee9c04d8bae30b25964c5464fbc2"
+    },
+    {
+      "path": "results/raw/ties-10000-seasons-100-fenwick.csv",
+      "source": "results/full-20261117-final/raw/ties-10000-seasons-100-fenwick.csv",
+      "sha256": "9a802109cf35514464065694f85028577e8f0b6c74134138bf20d13b892a9a4b"
+    },
+    {
+      "path": "results/raw/ties-10000-seasons-50-avl.csv",
+      "source": "results/full-20261117-final/raw/ties-10000-seasons-50-avl.csv",
+      "sha256": "bb83df909429d412e70dd4ddaea7ecf2cffd91f202c299360f16e66e43f187d7"
+    },
+    {
+      "path": "results/raw/ties-10000-seasons-50-fenwick.csv",
+      "source": "results/full-20261117-final/raw/ties-10000-seasons-50-fenwick.csv",
+      "sha256": "d42fe22f3e46143bf5e54650732f6ef70ff8b5058691359a2a1b987bf4b31f65"
+    },
+    {
+      "path": "results/raw/ties-10000-seasons-99-avl.csv",
+      "source": "results/full-20261117-final/raw/ties-10000-seasons-99-avl.csv",
+      "sha256": "ed18c595e513dc6f6e9b84e70da58ce851595d6def14106c7b43dab8298bc70a"
+    },
+    {
+      "path": "results/raw/ties-10000-seasons-99-fenwick.csv",
+      "source": "results/full-20261117-final/raw/ties-10000-seasons-99-fenwick.csv",
+      "sha256": "0416d158ebe68a836521adf12e20cc6da829f42b7e3328a613db40db04f29dab"
+    },
+    {
+      "path": "results/raw/ties-100000-queries-avl.csv",
+      "source": "results/full-20261117-final/raw/ties-100000-queries-avl.csv",
+      "sha256": "501eeb32671063af0940a2f8ab4a05937aa371441d91dd83c880adabc2a5e38a"
+    },
+    {
+      "path": "results/raw/ties-100000-queries-fenwick.csv",
+      "source": "results/full-20261117-final/raw/ties-100000-queries-fenwick.csv",
+      "sha256": "4a8f5b12284532fcf0a1ad2eda98c2c5c56723260a03a481dd594f006640f38f"
+    },
+    {
+      "path": "results/raw/ties-100000-seasons-0-avl.csv",
+      "source": "results/full-20261117-final/raw/ties-100000-seasons-0-avl.csv",
+      "sha256": "f4fd524196814f3163e42b7e1e767a3e1ec93e4139ccb5a0f7465b842aae79ca"
+    },
+    {
+      "path": "results/raw/ties-100000-seasons-0-fenwick.csv",
+      "source": "results/full-20261117-final/raw/ties-100000-seasons-0-fenwick.csv",
+      "sha256": "162f49d47488b9029e9309116b8bbde215df17f3656fd0d1294ff73fd6be21ff"
+    },
+    {
+      "path": "results/raw/ties-100000-seasons-1-avl.csv",
+      "source": "results/full-20261117-final/raw/ties-100000-seasons-1-avl.csv",
+      "sha256": "937f0a8d876b3cec7513cc061c67245808478732e46a554713c57ba14df24b51"
+    },
+    {
+      "path": "results/raw/ties-100000-seasons-1-fenwick.csv",
+      "source": "results/full-20261117-final/raw/ties-100000-seasons-1-fenwick.csv",
+      "sha256": "8bc496518a928d2eececd0cd2dac2d4e11c31616af2bf6a547b3ce0aa5d56e8c"
+    },
+    {
+      "path": "results/raw/ties-100000-seasons-100-avl.csv",
+      "source": "results/full-20261117-final/raw/ties-100000-seasons-100-avl.csv",
+      "sha256": "055f193a8c29f0b9117a867616d7945bff21646f798360e07c76995c1d8e333c"
+    },
+    {
+      "path": "results/raw/ties-100000-seasons-100-fenwick.csv",
+      "source": "results/full-20261117-final/raw/ties-100000-seasons-100-fenwick.csv",
+      "sha256": "4c0f0507213f48047fc7034064c740ad8f8231491e72e1a88ddde87ca2cce611"
+    },
+    {
+      "path": "results/raw/ties-100000-seasons-50-avl.csv",
+      "source": "results/full-20261117-final/raw/ties-100000-seasons-50-avl.csv",
+      "sha256": "02e15e3a389aa3e33008962a860cf9ff42c773ebab3794252109c8874ed67485"
+    },
+    {
+      "path": "results/raw/ties-100000-seasons-50-fenwick.csv",
+      "source": "results/full-20261117-final/raw/ties-100000-seasons-50-fenwick.csv",
+      "sha256": "7610348b86695c6e3c6a7283bca80ea23e8b34d19e5eb9f943a0f158ae8db680"
+    },
+    {
+      "path": "results/raw/ties-100000-seasons-99-avl.csv",
+      "source": "results/full-20261117-final/raw/ties-100000-seasons-99-avl.csv",
+      "sha256": "91195685651945cda87d1ef6239224f44b162ec43819f48367a3cf29a1ffd9f3"
+    },
+    {
+      "path": "results/raw/ties-100000-seasons-99-fenwick.csv",
+      "source": "results/full-20261117-final/raw/ties-100000-seasons-99-fenwick.csv",
+      "sha256": "e47731a7400a8e22686ff130926b95c15a0d59726e71e8fa5b0b1dcbe6ee987a"
+    },
+    {
+      "path": "results/raw/ties-1000000-queries-avl.csv",
+      "source": "results/full-20261117-final/raw/ties-1000000-queries-avl.csv",
+      "sha256": "006412e1a9377bbd0d4957dd6966527504b312e9bc810e7915cbb2d0732531ef"
+    },
+    {
+      "path": "results/raw/ties-1000000-queries-fenwick.csv",
+      "source": "results/full-20261117-final/raw/ties-1000000-queries-fenwick.csv",
+      "sha256": "229abfa3e4f5851e0bc67da1802b4d2adb67ef418f02e9846ba8ef8ee0347412"
+    },
+    {
+      "path": "results/raw/ties-1000000-seasons-0-avl.csv",
+      "source": "results/full-20261117-final/raw/ties-1000000-seasons-0-avl.csv",
+      "sha256": "46f19d72697a53d4152be15cb8dc29e0f408c220196b328ceefd7cb057e9f677"
+    },
+    {
+      "path": "results/raw/ties-1000000-seasons-0-fenwick.csv",
+      "source": "results/full-20261117-final/raw/ties-1000000-seasons-0-fenwick.csv",
+      "sha256": "2a1f642994d6b78b0d2b5d081f92314b6fb277d2a12066cb834184f2d62baf95"
+    },
+    {
+      "path": "results/raw/ties-1000000-seasons-1-avl.csv",
+      "source": "results/full-20261117-final/raw/ties-1000000-seasons-1-avl.csv",
+      "sha256": "eb9669fb01b5a357a49788102605406b080d0cf06c772c46eceaeefe793e70d3"
+    },
+    {
+      "path": "results/raw/ties-1000000-seasons-1-fenwick.csv",
+      "source": "results/full-20261117-final/raw/ties-1000000-seasons-1-fenwick.csv",
+      "sha256": "e687c04ef0b04486eff5ffe6afbf7848598666b78e691ada88425e62bf6b0dee"
+    },
+    {
+      "path": "results/raw/ties-1000000-seasons-100-avl.csv",
+      "source": "results/full-20261117-final/raw/ties-1000000-seasons-100-avl.csv",
+      "sha256": "c150ca0537cc907bab2404f8b453c388812f7cfc3d2d94dc007854bd79676056"
+    },
+    {
+      "path": "results/raw/ties-1000000-seasons-100-fenwick.csv",
+      "source": "results/full-20261117-final/raw/ties-1000000-seasons-100-fenwick.csv",
+      "sha256": "c33029ee6a99d8f7a483e8d869c9d858e8c2c03ce872f7c1c7f0320d12b2e0a9"
+    },
+    {
+      "path": "results/raw/ties-1000000-seasons-50-avl.csv",
+      "source": "results/full-20261117-final/raw/ties-1000000-seasons-50-avl.csv",
+      "sha256": "81f0b2329f9509e11ff47039488aaff97a3256c420c22c4d7cb9308cc741c960"
+    },
+    {
+      "path": "results/raw/ties-1000000-seasons-50-fenwick.csv",
+      "source": "results/full-20261117-final/raw/ties-1000000-seasons-50-fenwick.csv",
+      "sha256": "bee8a72d26464ef309541fb6736d9f4f14be8bbb61a9832fd6c46f15462951be"
+    },
+    {
+      "path": "results/raw/ties-1000000-seasons-99-avl.csv",
+      "source": "results/full-20261117-final/raw/ties-1000000-seasons-99-avl.csv",
+      "sha256": "834be2877111e360543a5d3b33843293d0e5cafce9e9837f1235c009fde3bf85"
+    },
+    {
+      "path": "results/raw/ties-1000000-seasons-99-fenwick.csv",
+      "source": "results/full-20261117-final/raw/ties-1000000-seasons-99-fenwick.csv",
+      "sha256": "21be61d14e804870f3a8c212f78b2899b19e7e917ce29f25d05ad5cffcaebf1c"
+    },
+    {
+      "path": "results/raw/trace-0-avl.csv",
+      "source": "results/full-20261117-final/raw/trace-0-avl.csv",
+      "sha256": "2a0f60f55f6b5d4f1c58f649bb23c477f1fd9ed7b87d573b83e8846ce542e4db"
+    },
+    {
+      "path": "results/raw/trace-0-fenwick.csv",
+      "source": "results/full-20261117-final/raw/trace-0-fenwick.csv",
+      "sha256": "bf84313dbf6a8515c47745bba1716ea6fa270fa028de21438e6e7221b1671ad1"
+    },
+    {
+      "path": "results/raw/trace-1-avl.csv",
+      "source": "results/full-20261117-final/raw/trace-1-avl.csv",
+      "sha256": "213ccb0c1baef9f8dcb0e683881531ff882903849b6f01dd9201c4f7a33633ed"
+    },
+    {
+      "path": "results/raw/trace-1-fenwick.csv",
+      "source": "results/full-20261117-final/raw/trace-1-fenwick.csv",
+      "sha256": "05b6cf3181d1b070b0672ba1ad64b10d87aab7050e2ae96ae00c36c966bb648d"
+    },
+    {
+      "path": "results/raw/trace-10-avl.csv",
+      "source": "results/full-20261117-final/raw/trace-10-avl.csv",
+      "sha256": "4b7a7ff328bfc7fb7fd7f55e2e18a9d5166ecf07bb9b249cd0d5fc58e9626d2e"
+    },
+    {
+      "path": "results/raw/trace-10-fenwick.csv",
+      "source": "results/full-20261117-final/raw/trace-10-fenwick.csv",
+      "sha256": "ed80e98b6e00ca21d8c664f65224b2953f25980f89367c06e265d4ff2394f855"
+    },
+    {
+      "path": "results/raw/trace-11-avl.csv",
+      "source": "results/full-20261117-final/raw/trace-11-avl.csv",
+      "sha256": "285cfd58d6a5021aac700ceda929e8263c44c760f82ec5b36a9616c32fd31cfa"
+    },
+    {
+      "path": "results/raw/trace-11-fenwick.csv",
+      "source": "results/full-20261117-final/raw/trace-11-fenwick.csv",
+      "sha256": "9a8deba3a92e233522c5f7079670dad6d63d53f625e54e3fdc5e50cffe5a3775"
+    },
+    {
+      "path": "results/raw/trace-12-avl.csv",
+      "source": "results/full-20261117-final/raw/trace-12-avl.csv",
+      "sha256": "80678bfda14a5d5b3956a414e2a0f4b60f28da9a78883e707fc0452e3353135a"
+    },
+    {
+      "path": "results/raw/trace-12-fenwick.csv",
+      "source": "results/full-20261117-final/raw/trace-12-fenwick.csv",
+      "sha256": "4850495aa9a495d23e3e3c42dc20eac4e6a609733027dd16f3f2ea158349c8b0"
+    },
+    {
+      "path": "results/raw/trace-13-avl.csv",
+      "source": "results/full-20261117-final/raw/trace-13-avl.csv",
+      "sha256": "c66cd14d207906b2a29e043cf630cfb1049150f7d3d1a103b1960e3f3ab1a5fb"
+    },
+    {
+      "path": "results/raw/trace-13-fenwick.csv",
+      "source": "results/full-20261117-final/raw/trace-13-fenwick.csv",
+      "sha256": "5d93ec573738ae8c9e7125ff4609c3c5fd99075e56d10d81abf3ac343ff8b104"
+    },
+    {
+      "path": "results/raw/trace-14-avl.csv",
+      "source": "results/full-20261117-final/raw/trace-14-avl.csv",
+      "sha256": "cd534fde33e9961d298b752a2ee2bbadd03c22edee2a443a08a2f5f58a868090"
+    },
+    {
+      "path": "results/raw/trace-14-fenwick.csv",
+      "source": "results/full-20261117-final/raw/trace-14-fenwick.csv",
+      "sha256": "5da1ca988e2ee219cf91eff4efd939a5954c8ceb35805dd24b796cf585419d4d"
+    },
+    {
+      "path": "results/raw/trace-15-avl.csv",
+      "source": "results/full-20261117-final/raw/trace-15-avl.csv",
+      "sha256": "5ccf6be0f7434393ce80c6d69aea608c608b00c9c4e11afb38778ed6177e7ada"
+    },
+    {
+      "path": "results/raw/trace-15-fenwick.csv",
+      "source": "results/full-20261117-final/raw/trace-15-fenwick.csv",
+      "sha256": "86bc7721a2d0632e3cd736cc243f8df23ff01b94c9f7c2e712bcb124565dae5a"
+    },
+    {
+      "path": "results/raw/trace-16-avl.csv",
+      "source": "results/full-20261117-final/raw/trace-16-avl.csv",
+      "sha256": "24c72962ada87d28c62e19002fedb57fd548455e44dbdb3211f6ef3c0143dc65"
+    },
+    {
+      "path": "results/raw/trace-16-fenwick.csv",
+      "source": "results/full-20261117-final/raw/trace-16-fenwick.csv",
+      "sha256": "207baa1b01c034720b7f9feccbcd996411bd6c4d78251fd0efaf67c26b6239e4"
+    },
+    {
+      "path": "results/raw/trace-2-avl.csv",
+      "source": "results/full-20261117-final/raw/trace-2-avl.csv",
+      "sha256": "864b0a8b266e1c6856611f88fca64d5e610d1d64ce7c09b5e65105710a11d671"
+    },
+    {
+      "path": "results/raw/trace-2-fenwick.csv",
+      "source": "results/full-20261117-final/raw/trace-2-fenwick.csv",
+      "sha256": "9d3806c2429062c82e703de06169ad06e84e4b4d382edfe89d38dcb6365b9eb4"
+    },
+    {
+      "path": "results/raw/trace-3-avl.csv",
+      "source": "results/full-20261117-final/raw/trace-3-avl.csv",
+      "sha256": "6621b0ce8d7b0ef70501b1920f841d6bc87d6ae40b22e97ded12434a87b1b51c"
+    },
+    {
+      "path": "results/raw/trace-3-fenwick.csv",
+      "source": "results/full-20261117-final/raw/trace-3-fenwick.csv",
+      "sha256": "02b246115c3853cac4e8726349831efe1f291a2b3b5e8ca8a28283edc7924a2e"
+    },
+    {
+      "path": "results/raw/trace-4-avl.csv",
+      "source": "results/full-20261117-final/raw/trace-4-avl.csv",
+      "sha256": "c7f61f44e0d4a7ca76ec228c7bf29d90a2c26ece5d28d9690ccee2cd7f4b46d6"
+    },
+    {
+      "path": "results/raw/trace-4-fenwick.csv",
+      "source": "results/full-20261117-final/raw/trace-4-fenwick.csv",
+      "sha256": "4cd0af5af200fd7c9c49d7ddf7fef697ad5897cd1c1e9ab6343488c96f6a6df7"
+    },
+    {
+      "path": "results/raw/trace-5-avl.csv",
+      "source": "results/full-20261117-final/raw/trace-5-avl.csv",
+      "sha256": "91d319f7ffa4a0e72f281a9b367631d96631ea33ca8e929e08d82f3358daa9f1"
+    },
+    {
+      "path": "results/raw/trace-5-fenwick.csv",
+      "source": "results/full-20261117-final/raw/trace-5-fenwick.csv",
+      "sha256": "7cb5b2f124bba32c3a415b1cf6c137e59cba5a2fb6371ac1a9cd08c4a04a7761"
+    },
+    {
+      "path": "results/raw/trace-6-avl.csv",
+      "source": "results/full-20261117-final/raw/trace-6-avl.csv",
+      "sha256": "eb5ee52c41f36770627bbb96e7b7a78b41b621e0d56cd8152a883216e105e398"
+    },
+    {
+      "path": "results/raw/trace-6-fenwick.csv",
+      "source": "results/full-20261117-final/raw/trace-6-fenwick.csv",
+      "sha256": "c96a4c0f0ac9f820bbeebc98ef26f2e51cd220628d9c1625afd947eaf9823b1e"
+    },
+    {
+      "path": "results/raw/trace-7-avl.csv",
+      "source": "results/full-20261117-final/raw/trace-7-avl.csv",
+      "sha256": "6976db281ccb3d73b0876cad70e2d1162b8d07db002993d097803888d32c65d7"
+    },
+    {
+      "path": "results/raw/trace-7-fenwick.csv",
+      "source": "results/full-20261117-final/raw/trace-7-fenwick.csv",
+      "sha256": "a3b9a0b39235562b6e60aa34d995c0c6e4d3401ea2bb3f71dcd1c8d1d16b2384"
+    },
+    {
+      "path": "results/raw/trace-8-avl.csv",
+      "source": "results/full-20261117-final/raw/trace-8-avl.csv",
+      "sha256": "77afcdbfabb1cf9f5d61d8474d48728da98041518851533d091815275b1a8735"
+    },
+    {
+      "path": "results/raw/trace-8-fenwick.csv",
+      "source": "results/full-20261117-final/raw/trace-8-fenwick.csv",
+      "sha256": "8ca6e75e25bea4570bd1cef74d6a558d3143f6cec962b0b66088e1b236d3de6c"
+    },
+    {
+      "path": "results/raw/trace-9-avl.csv",
+      "source": "results/full-20261117-final/raw/trace-9-avl.csv",
+      "sha256": "44c65be46ac655f4bd03579203d692dd5bdbdd8321b57dc6f4a5d722b60c876b"
+    },
+    {
+      "path": "results/raw/trace-9-fenwick.csv",
+      "source": "results/full-20261117-final/raw/trace-9-fenwick.csv",
+      "sha256": "ccf421c93b82cb3ece7173bf49849c109cac8fab0d3a338d859d1315ab4310ce"
+    },
+    {
+      "path": "results/figures/01-ordered_join_supplied_pivot.png",
+      "source": "results/full-20261117-final/figures/01-ordered_join_supplied_pivot.png",
+      "sha256": "49af359fa194c1f0a562d00b1ced56604c817f7f09d8b6c42e98720c0181e826"
+    },
+    {
+      "path": "results/figures/02-ordered_join_supplied_pivot.png",
+      "source": "results/full-20261117-final/figures/02-ordered_join_supplied_pivot.png",
+      "sha256": "67ae477559f292bb78ec4af8c448f42f0ec5e4d020efedce367c6401257b1b6a"
+    },
+    {
+      "path": "results/figures/03-ordered_join_supplied_pivot.png",
+      "source": "results/full-20261117-final/figures/03-ordered_join_supplied_pivot.png",
+      "sha256": "a0af87db08736551771ec23fb1cf6d2e2b3135058a5c7fd75a989cbf94f5ba2c"
+    },
+    {
+      "path": "results/figures/04-ordered_join_supplied_pivot.png",
+      "source": "results/full-20261117-final/figures/04-ordered_join_supplied_pivot.png",
+      "sha256": "b6baa0cb4abc520447d08b83cb66a5f11f2c8edececa4110a5c72fda238cee10"
+    },
+    {
+      "path": "results/figures/05-ordered_join_supplied_pivot.png",
+      "source": "results/full-20261117-final/figures/05-ordered_join_supplied_pivot.png",
+      "sha256": "e03ab67ca6ab84ff3f2dcaceacb4c4cfe08e2f16ca75ec2b372ff86e996ff4dd"
+    },
+    {
+      "path": "results/figures/06-rejoin_merge_from.png",
+      "source": "results/full-20261117-final/figures/06-rejoin_merge_from.png",
+      "sha256": "4882a390eb24513973d65c240c381093f1b7582fc5c500fad8d3bc9256da879e"
+    },
+    {
+      "path": "results/figures/07-split.png",
+      "source": "results/full-20261117-final/figures/07-split.png",
+      "sha256": "b204ea372be7c1dd414f8db71c98a2ca166528a094974a435e087cfeca39d05f"
+    },
+    {
+      "path": "results/figures/08-rejoin_merge_from.png",
+      "source": "results/full-20261117-final/figures/08-rejoin_merge_from.png",
+      "sha256": "47af7b7d7e8da7e24dd7db95cbc503711a11848b70af913ed2b561c33a88a4bf"
+    },
+    {
+      "path": "results/figures/09-split.png",
+      "source": "results/full-20261117-final/figures/09-split.png",
+      "sha256": "6c637ea769938a3f9ff7ae46e216934c2486282e70dcc160a65436e55ad2fd17"
+    },
+    {
+      "path": "results/figures/10-rejoin_merge_from.png",
+      "source": "results/full-20261117-final/figures/10-rejoin_merge_from.png",
+      "sha256": "318748be0e30fdda9276506f009ccd1dcad6ece4131f59e495bdbecb2ecbbd54"
+    },
+    {
+      "path": "results/figures/11-split.png",
+      "source": "results/full-20261117-final/figures/11-split.png",
+      "sha256": "56d8977b70556c6929633e01d469115f8adc6008d37e3c665bfd3614936193f5"
+    },
+    {
+      "path": "results/figures/12-rejoin_merge_from.png",
+      "source": "results/full-20261117-final/figures/12-rejoin_merge_from.png",
+      "sha256": "abc5f2328310eb3317b62b73a9de6e840034e316f11e994c0dda5c9e16e2bf3e"
+    },
+    {
+      "path": "results/figures/13-split.png",
+      "source": "results/full-20261117-final/figures/13-split.png",
+      "sha256": "db9f046db82bfae8b3b3ed84b11bf4e6af0fa3f0912fa80b7c85f3c5660b7b78"
+    },
+    {
+      "path": "results/figures/14-rejoin_merge_from.png",
+      "source": "results/full-20261117-final/figures/14-rejoin_merge_from.png",
+      "sha256": "0c2d9a4a1ebea680ef8b1086d752810176e5b333356b56dc6ec2d8bfb74d2acb"
+    },
+    {
+      "path": "results/figures/15-split.png",
+      "source": "results/full-20261117-final/figures/15-split.png",
+      "sha256": "9dd4827e3dd6235d22d192d861b21fc3ffea6c3fc4b104cc0e302efaf5e607b8"
+    },
+    {
+      "path": "results/figures/16-rejoin_merge_from.png",
+      "source": "results/full-20261117-final/figures/16-rejoin_merge_from.png",
+      "sha256": "1450b5fa078bee50824b768dd16d5785917bca7cf0f309b8ae23d56a3d6aef37"
+    },
+    {
+      "path": "results/figures/17-split.png",
+      "source": "results/full-20261117-final/figures/17-split.png",
+      "sha256": "5d80a8e30cab673248264fbbdec11ff5b15e3cbeda8c8f14aa6653a052825795"
+    },
+    {
+      "path": "results/figures/18-rejoin_merge_from.png",
+      "source": "results/full-20261117-final/figures/18-rejoin_merge_from.png",
+      "sha256": "7f734a3c4025d050a5450caf0fdc8bb5072469ebce2402c8a0f0d4b034f633b9"
+    },
+    {
+      "path": "results/figures/19-split.png",
+      "source": "results/full-20261117-final/figures/19-split.png",
+      "sha256": "57ea6150ebdf2acb5c9946eea615f8727726f8a112ea3fd256fa49fdea0a7754"
+    },
+    {
+      "path": "results/figures/20-rejoin_merge_from.png",
+      "source": "results/full-20261117-final/figures/20-rejoin_merge_from.png",
+      "sha256": "6883ed5a04bf8f600982fea9411043102f7869fee9872631e15d98fb0829f4b9"
+    },
+    {
+      "path": "results/figures/21-split.png",
+      "source": "results/full-20261117-final/figures/21-split.png",
+      "sha256": "e5e00f040646c440cdb977670692f11d14b27293ddeef244ede08814e6c1b83e"
+    },
+    {
+      "path": "results/figures/22-rejoin_merge_from.png",
+      "source": "results/full-20261117-final/figures/22-rejoin_merge_from.png",
+      "sha256": "21463c463157eb817d4588b1723bc6ccd44a1e8103b12daaaa7e31d236bdb0bd"
+    },
+    {
+      "path": "results/figures/23-split.png",
+      "source": "results/full-20261117-final/figures/23-split.png",
+      "sha256": "dfc87a9de1150f7260f2674ba9a730f5d4d9b0e1835a976ba823a5293ed2780e"
+    },
+    {
+      "path": "results/figures/24-rejoin_merge_from.png",
+      "source": "results/full-20261117-final/figures/24-rejoin_merge_from.png",
+      "sha256": "8af915b0fcef147e1e6ce338e50a210d895b5e3e67b8bb3345c72b335fd3a544"
+    },
+    {
+      "path": "results/figures/25-split.png",
+      "source": "results/full-20261117-final/figures/25-split.png",
+      "sha256": "04f0e78d36ab5773f8eeff860127ed53d0af547e2c977886fb5ccb158b3405cc"
+    },
+    {
+      "path": "results/figures/26-rank.png",
+      "source": "results/full-20261117-final/figures/26-rank.png",
+      "sha256": "774692d01bac9aad4bb908a14051781cf3c75b550c085855fef784ac0132332d"
+    },
+    {
+      "path": "results/figures/27-select.png",
+      "source": "results/full-20261117-final/figures/27-select.png",
+      "sha256": "cbc16e78713dd91a2689d85dcffc35f70bede36ff8f12cba3beb3f14978797a2"
+    },
+    {
+      "path": "results/figures/28-rank.png",
+      "source": "results/full-20261117-final/figures/28-rank.png",
+      "sha256": "05e72861ec694f65360528c342471a7bf0e490a0e09a096d98035bc80dd7cde1"
+    },
+    {
+      "path": "results/figures/29-select.png",
+      "source": "results/full-20261117-final/figures/29-select.png",
+      "sha256": "64254758260c5fe2f2f739f07484b86a48163d9e44ec5f9f3eab045e428b3baf"
+    },
+    {
+      "path": "results/figures/01-ordered_join_supplied_pivot.svg",
+      "source": "results/full-20261117-final/figures/01-ordered_join_supplied_pivot.svg",
+      "sha256": "3046f26bae635bded6c3585e2d3b44adbee78d8158eb377ae84ff7e748b86720"
+    },
+    {
+      "path": "results/figures/02-ordered_join_supplied_pivot.svg",
+      "source": "results/full-20261117-final/figures/02-ordered_join_supplied_pivot.svg",
+      "sha256": "85a2990e7a7a1450376e37a83b085bd7577f710ac5ce7f6faabffe05f9a5dfa7"
+    },
+    {
+      "path": "results/figures/03-ordered_join_supplied_pivot.svg",
+      "source": "results/full-20261117-final/figures/03-ordered_join_supplied_pivot.svg",
+      "sha256": "8302bff4291d0df1eed7db1d3cf0d28787b82befc834becdf5c999290d3daea9"
+    },
+    {
+      "path": "results/figures/04-ordered_join_supplied_pivot.svg",
+      "source": "results/full-20261117-final/figures/04-ordered_join_supplied_pivot.svg",
+      "sha256": "2edf0ea945c612d70af4d1fa61da9e9db20fd859b33a8a0f76e6e20f196a9af7"
+    },
+    {
+      "path": "results/figures/05-ordered_join_supplied_pivot.svg",
+      "source": "results/full-20261117-final/figures/05-ordered_join_supplied_pivot.svg",
+      "sha256": "0f9223650b41ac0c5ad7429012d50158cdaaa82ff8b8caaa3a714c61e17fbb4f"
+    },
+    {
+      "path": "results/figures/06-rejoin_merge_from.svg",
+      "source": "results/full-20261117-final/figures/06-rejoin_merge_from.svg",
+      "sha256": "2553c26d791cb05a3bb78f6ad3876361f53fcc3277a78ccf4505d3be69f47bbd"
+    },
+    {
+      "path": "results/figures/07-split.svg",
+      "source": "results/full-20261117-final/figures/07-split.svg",
+      "sha256": "9762993466c398a821b6503c19b47d8f00f35da1ae11e09c807c521b70580d91"
+    },
+    {
+      "path": "results/figures/08-rejoin_merge_from.svg",
+      "source": "results/full-20261117-final/figures/08-rejoin_merge_from.svg",
+      "sha256": "f5cb110a865c81ce163bf80a711c4ca51cb90d30bf8a89aaedfc05b23c476c0f"
+    },
+    {
+      "path": "results/figures/09-split.svg",
+      "source": "results/full-20261117-final/figures/09-split.svg",
+      "sha256": "50c9548e7f6bea3c8e3b6f391cf935f8a7d5ca5319f65414111c786eaa8be466"
+    },
+    {
+      "path": "results/figures/10-rejoin_merge_from.svg",
+      "source": "results/full-20261117-final/figures/10-rejoin_merge_from.svg",
+      "sha256": "ba6c098c9ec58a2f34c7eba24cb9b930334ec560cd4324ab2d38d7c8e508bbaf"
+    },
+    {
+      "path": "results/figures/11-split.svg",
+      "source": "results/full-20261117-final/figures/11-split.svg",
+      "sha256": "47144549b4bb23f21ffc323f8068700f394eb2f2ebb19e1a8fa14a0c6987ff0a"
+    },
+    {
+      "path": "results/figures/12-rejoin_merge_from.svg",
+      "source": "results/full-20261117-final/figures/12-rejoin_merge_from.svg",
+      "sha256": "76a851e255b3f57a58e29e36938cbcd58e922f42e5b36a89dfa8cb0c3edc902f"
+    },
+    {
+      "path": "results/figures/13-split.svg",
+      "source": "results/full-20261117-final/figures/13-split.svg",
+      "sha256": "cdd48b724f02a48af1a1fb7e60a2b8640d40960038de913c6f7e6b3d00254482"
+    },
+    {
+      "path": "results/figures/14-rejoin_merge_from.svg",
+      "source": "results/full-20261117-final/figures/14-rejoin_merge_from.svg",
+      "sha256": "096634b799dcbd65a5c459e33bc99879e89012387932e3c814a799967c18b86a"
+    },
+    {
+      "path": "results/figures/15-split.svg",
+      "source": "results/full-20261117-final/figures/15-split.svg",
+      "sha256": "941c1ee3fa0e9f2c1df62c95b9d0a070c46d74d36e6af9b8c3e2ffed4e54f760"
+    },
+    {
+      "path": "results/figures/16-rejoin_merge_from.svg",
+      "source": "results/full-20261117-final/figures/16-rejoin_merge_from.svg",
+      "sha256": "58d1e8eceb288e593f2b92e8dd6f56b7f0897130b733862c5edaf0ed1bef1789"
+    },
+    {
+      "path": "results/figures/17-split.svg",
+      "source": "results/full-20261117-final/figures/17-split.svg",
+      "sha256": "02fca768cf5d297fb895a6c72afd8d1f19e1abaaf571086d394092dde6a77251"
+    },
+    {
+      "path": "results/figures/18-rejoin_merge_from.svg",
+      "source": "results/full-20261117-final/figures/18-rejoin_merge_from.svg",
+      "sha256": "ad8ddb3cdda01ec2d9b0f92deebb3e38cf01f583a2aaa82a32ea1940b6c25688"
+    },
+    {
+      "path": "results/figures/19-split.svg",
+      "source": "results/full-20261117-final/figures/19-split.svg",
+      "sha256": "4998b61153156bdd65b7bfd0e25b070301ebeb8118e9b44375925762d2a88716"
+    },
+    {
+      "path": "results/figures/20-rejoin_merge_from.svg",
+      "source": "results/full-20261117-final/figures/20-rejoin_merge_from.svg",
+      "sha256": "26c0f3f5508c39145e248f8d84d8fd98836a32b3096fa6b8d6dbcfed30383255"
+    },
+    {
+      "path": "results/figures/21-split.svg",
+      "source": "results/full-20261117-final/figures/21-split.svg",
+      "sha256": "27b9173840a4bf8e36188cfbb2788bdf13b6685eb76793be557264954a2863da"
+    },
+    {
+      "path": "results/figures/22-rejoin_merge_from.svg",
+      "source": "results/full-20261117-final/figures/22-rejoin_merge_from.svg",
+      "sha256": "c41cd6e6b72eec8f83137da5973147e930f019dcda7c4e20515a0df52ab7b557"
+    },
+    {
+      "path": "results/figures/23-split.svg",
+      "source": "results/full-20261117-final/figures/23-split.svg",
+      "sha256": "f1fa9c849113847ae41f52b9b4650656c10313fb19425e78cbdfef52daa784b1"
+    },
+    {
+      "path": "results/figures/24-rejoin_merge_from.svg",
+      "source": "results/full-20261117-final/figures/24-rejoin_merge_from.svg",
+      "sha256": "c49862ba3e9b1c7b8d0172a3397dd676f759e6ecf95a0ef24f5e78144a0d4c80"
+    },
+    {
+      "path": "results/figures/25-split.svg",
+      "source": "results/full-20261117-final/figures/25-split.svg",
+      "sha256": "bbcfaed78419c79fbfc4bd1dad1ffe9e4f5d975b3140b39ce23c7eabae884b0f"
+    },
+    {
+      "path": "results/figures/26-rank.svg",
+      "source": "results/full-20261117-final/figures/26-rank.svg",
+      "sha256": "883958348cbf4dcb492d69591f4551a4fb90592ffe14f2e090d28198cc6a717d"
+    },
+    {
+      "path": "results/figures/27-select.svg",
+      "source": "results/full-20261117-final/figures/27-select.svg",
+      "sha256": "4cf77ba946b05ce9f3c9c3d8e8330bca3fa3edb562a0b9b1376000a3e4a67bbb"
+    },
+    {
+      "path": "results/figures/28-rank.svg",
+      "source": "results/full-20261117-final/figures/28-rank.svg",
+      "sha256": "5f12ac24a16292178fc4436df94c96fa536cae68c369ecfb870d69b4becdbed6"
+    },
+    {
+      "path": "results/figures/29-select.svg",
+      "source": "results/full-20261117-final/figures/29-select.svg",
+      "sha256": "6b8547431f0a550a9505b204f5ed4dd1b19656061e294ecf06ad0cdc921e1797"
+    },
+    {
+      "path": "results/figures/sources.json",
+      "source": "results/full-20261117-final/figures/sources.json",
+      "sha256": "e2be2dc40c4028f466f176c0b3b4c7c53204bc22787aaa229d63fede628df8db"
+    },
+    {
+      "path": "results/figures/INDEX.md",
+      "source": "results/full-20261117-final/figures/INDEX.md",
+      "sha256": "37ec8c2ecdf165d95b71d52d8c43e5be55534e6bb3e3cbb6d97574d39262cd23"
+    },
+    {
+      "path": "results/summary.csv",
+      "source": "results/full-20261117-final/summary.csv",
+      "sha256": "b90c374a1ed66f8e5bb5ea004be1fec1522642783632586a71b043928b258021"
+    }
+  ]
+}

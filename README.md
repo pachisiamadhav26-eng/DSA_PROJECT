@@ -13,8 +13,6 @@ CS 253 / MA 253. Team **PEAKY BLINDERS**.
 | Bianca Jain | 250041008 | @Bianca-the-sensational | Adversary | `adversary/` | D5 |
 | Sumit | 250041038 | @sumitdobal04 | Analyst | `bench/`, `results/` | D6 |
 
-Sumit's full name still needs confirmation before the final tag.
-
 ## Summary
 
 The application replays player score changes, competition-rank and position queries, and season split/merge commands. Structure A is an AVL tree augmented with subtree sizes; Structure B is a Fenwick tree over compressed scores with ordered ID buckets for ties. Both use the same `Board` interface and are checked against an independent sorted-array Oracle. In the recorded million-player experiments, Fenwick answered rank/select faster, while AVL split and separated-league rejoin were much faster; see [REPORT.md](REPORT.md) and the raw data for the exact workloads and spread.
@@ -126,7 +124,7 @@ These are measurements on one machine and one workload, not universal guarantees
 
 ## Before submission
 
-Confirm Sumit's full name and the instructor's GitHub account. Check the required repository name and privacy setting, and resolve the missing checkpoint tags. If the course provides a different hidden-test command, update the documented CLI instructions to match.
+Add the instructor's GitHub account as a collaborator, and resolve the missing checkpoint tags. If the course provides a different hidden-test command, update the documented CLI instructions to match.
 
 ## Tools and references
 
